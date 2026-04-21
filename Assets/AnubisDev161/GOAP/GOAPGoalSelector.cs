@@ -21,26 +21,24 @@ namespace GOAP
             // ---------------------------
 
             string hasFire = "hasFire";
+            string hasFood = "hasFood";
+            string hasShelter = "hasShelter";
+            string haveAHome = "haveAHome";
 
             // ---------------------------
             // GOAL
             // ---------------------------
             Dictionary<string, bool> hasFireGoalWorldState = new Dictionary<string, bool>();
-            hasFireGoalWorldState.Add(hasFire, true);
-            goalList.Add(new GOAPGoal(100, hasFireGoalWorldState, hasFire));
+            hasFireGoalWorldState.Add(hasFood, true);
+            hasFireGoalWorldState.Add(hasShelter, true);
+            goalList.Add(new GOAPGoal(100, hasFireGoalWorldState, haveAHome));
 
             // ---------------------------
             // GOAL
             // ---------------------------
 
-            string hasFood = "hasFood";
+       
 
-            // ---------------------------
-            // GOAL
-            // ---------------------------
-            Dictionary<string, bool> hasFoodGoalWorldState = new Dictionary<string, bool>();
-            hasFoodGoalWorldState.Add(hasFood, true);
-            goalList.Add(new GOAPGoal(5, hasFoodGoalWorldState, hasFood));
         }
 
         // TODO add more criteria to find the "best" goal

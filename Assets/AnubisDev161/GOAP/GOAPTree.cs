@@ -1,6 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
+using Unity.VisualScripting;
 
 namespace GOAP.Tree
 {
@@ -28,6 +30,7 @@ namespace GOAP.Tree
             List<GOAPNode> closedList = new List<GOAPNode>();
             ListBasedPriorityQueue openQueue = new ListBasedPriorityQueue();
             Dictionary<GOAPNode, float> costSoFar = new Dictionary<GOAPNode, float>();
+
             openQueue.Push(goal);
 
             while (openQueue.count > 0)
@@ -42,41 +45,67 @@ namespace GOAP.Tree
                 }
 
                 closedList.Add(currentNode);
-                GOAPNode previousAction = null;
+
+                if (openQueue.count == 40)
+                {
+                    var x = 254;
+                }
 
                 foreach (var action in availableActions)
                 {
-                    var parentNode = currentNode;
-
-                    if (!HasAnyRequiredEffects(action, parentNode.requiredWorldState.worldFacts))
+                    if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts))
                     {
                         continue;
                     }
 
                     // create copy of parent's world state and apply the action's effects
-                    var mutatedWorldState = parentNode.requiredWorldState.Copy();
+                    var mutatedWorldState = currentNode.requiredWorldState.Copy();
                     action.RemoveEffectsAndAddPreconditionsToState(mutatedWorldState);
 
-                    var tentativeGCost = parentNode.gCost + action.GetCost();
+                    if (IsInList(closedList, mutatedWorldState))
+                    {
+                        continue;
+                    }
+
+                    var tentativeGCost = currentNode.gCost + action.GetCost();
                     var hCost = CalculateHeuristic(mutatedWorldState, goalWorldState);
                     var fCost = tentativeGCost + hCost;
 
 
-                    var nodeToAdd = new GOAPNode(action, parentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
-
-
-                 //   if (previousAction != null && previousAction.gCost < nodeToAdd.gCost) continue;
                     
-                    previousAction = nodeToAdd;
-
-
-                    openQueue.Push(nodeToAdd);
-                    
+                    //if (openQueue.Contains(mutatedWorldState) && tentativeGCost < openQueue.GetItem(mutatedWorldState).gCost)
+                    //{
+                    //    var item = openQueue.GetItem(mutatedWorldState);
+                    //    item.gCost = tentativeGCost + item.hCost;
+                    //    item.parent = currentNode;
+                        
+                    //}
+                    //else if (!openQueue.Contains(mutatedWorldState))
+                    {
+                        var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
+                        openQueue.Push(nodeToAdd);
+                        
+                        if (currentNode.action == null) continue;
+                        MessageBus.PrintToUnityLog(mutatedWorldState.ToString());
+                    }
                 }
             }
 
             MessageBus.print("No valid plan found!");
             return null;
+        }
+
+        private bool IsInList(List<GOAPNode> closedList, WorldState worldStateToFind)
+        {
+            foreach (var node in closedList)
+            {
+                if (worldStateToFind == node.requiredWorldState)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
 
         private int CalculateHeuristic(WorldState worldState, WorldState goalState)

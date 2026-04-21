@@ -1,10 +1,9 @@
 using System.Collections.Generic;
 using System;
-using UnityEngine;
 
 namespace GOAP
 {
-    public class WorldState
+    public class WorldState : IComparer<WorldState>
     {
         public Dictionary<string, bool> worldFacts { get; private set; }
 
@@ -66,6 +65,36 @@ namespace GOAP
             return mutatedBlackboard;
         }
 
+        public static bool operator ==(WorldState left, WorldState right)
+        {
+            if (left.worldFacts.Count != right.worldFacts.Count) return false;
+
+            foreach (var fact in left.worldFacts)
+            {
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        public static bool operator !=(WorldState left, WorldState right)
+        {
+            if (left.worldFacts.Count != right.worldFacts.Count) return true;
+
+            foreach (var fact in left.worldFacts)
+            {
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
         public override bool Equals(object obj)
         {
             if (!(obj is WorldState)) return false;
@@ -76,13 +105,34 @@ namespace GOAP
 
             foreach (var fact in worldFacts)
             {
-                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
+                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
                 {
                     return false;
                 }
             }
 
             return true;
+        }
+
+        public override string ToString()
+        {
+            string allFacts = "";
+
+            foreach (var state in worldFacts)
+            {
+                allFacts += state.ToString() + " | ";
+            }
+
+            return allFacts;
+        }
+
+        public int Compare(WorldState x, WorldState y)
+        {
+            if (x == y) return 0;
+            else
+            {
+                return 1;
+            }
         }
     }
 

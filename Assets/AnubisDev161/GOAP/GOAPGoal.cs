@@ -25,5 +25,18 @@ namespace GOAP
         {
             return priority;
         }
+
+        public override string ToString()
+        {
+            string allFacts = "";
+
+            foreach (var state in desiredConditions)
+            {
+                allFacts += state.ToString() + " | ";
+            }
+
+            return allFacts;
+        }
+
     }
 }

@@ -5,6 +5,7 @@ namespace GOAP
     public class ListBasedPriorityQueue
     {
         private List<GOAPNode> insertedNodes = new List<GOAPNode>();
+        Dictionary<WorldState, GOAPNode> insertedStates = new Dictionary<WorldState, GOAPNode>();
 
         public float count => insertedNodes.Count;
 
@@ -21,6 +22,7 @@ namespace GOAP
             }
 
             insertedNodes.Remove(cheapestNode);
+            insertedStates.Remove(cheapestNode.requiredWorldState);
 
             return cheapestNode;
         }
@@ -40,50 +42,36 @@ namespace GOAP
             return cheapestNode;
         }
 
-        public void Push(GOAPNode nodeToAdd)
+        public GOAPNode GetItem(WorldState worldState)
         {
             foreach (var node in insertedNodes)
             {
-                if (node.gCost <= nodeToAdd.gCost)
+                if (node.requiredWorldState == worldState)
                 {
-                    return;
+                    return node;
                 }
             }
 
+            return null;
+        }
+
+        public bool Contains(WorldState worldStateToFind)
+        {
+            foreach (var node in insertedNodes)
+            {
+                if (node.requiredWorldState == (worldStateToFind))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public void Push(GOAPNode nodeToAdd)
+        {
+            insertedStates.Add(nodeToAdd.requiredWorldState, nodeToAdd);
             insertedNodes.Add(nodeToAdd);
         }
     }
 }
-//public class MinHeapNode
-//{
-//    internal MinHeapNode chidlLeft;
-//    internal MinHeapNode childRight;
-//    public GOAPNode value;
-//    internal MinHeapNode(GOAPNode value)
-//    {
-//        this.value = value;
-//    }
-
-//    internal bool IsMoreExpansiveThan(GOAPNode other)
-//    {
-//        return value.fCost > other.fCost || value.fCost == other.fCost && value.hCost > other.hCost;
-//    }
-
-//    public void PrintAllNodes()
-//    {
-//        if (value.action != null)
-//        {
-//            MessageBus.PrintToUnityLog($"Node value {value.action.name}");
-//        }
-
-//        if (chidlLeft != null)
-//        {
-//            chidlLeft.PrintAllNodes();
-//        }
-
-//        if (childRight != null)
-//        {
-//            childRight.PrintAllNodes();
-//        }
-//    }
-//}

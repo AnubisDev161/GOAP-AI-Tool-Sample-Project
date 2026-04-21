@@ -13,13 +13,13 @@ namespace GOAP
             // ---------------------------
             string hasWood = "hasWood";
             string hasFire = "hasFire";
-
-
+            string hasSpear = "hasSpear";
 
             var worldState = new Dictionary<string, bool>
             {
                 { hasWood, false },
                 { hasFire, false },
+                { hasSpear, true },
             
             };
             goapBrain = new GOAPBrain(new WorldState(worldState));
@@ -37,7 +37,7 @@ namespace GOAP
             var planSize = plan.Count;
             float totalCost = 0;
 
-            MessageBus.PrintToUnityLog($"Started executing plan with {planSize} actions | cost {totalCost} | goal {goapBrain.goalSelector.currentGoal.name}");
+            MessageBus.PrintToUnityLog($"Started executing plan with {planSize} actions | goal {goapBrain.goalSelector.currentGoal.name}");
 
             foreach (var action in plan)
             {
@@ -59,10 +59,14 @@ namespace GOAP
             if (WorldStateCompare.IsWorldStateBAchieved(blackboard.worldFacts, goapBrain.goalSelector.currentGoal.desiredConditions))
             {
                 MessageBus.PrintToUnityLog($"Plan with {planSize} actions executed successfully | cost {totalCost}");
+                MessageBus.PrintToUnityLog($"New world state is ${blackboard.ToString()}");
+                MessageBus.PrintToUnityLog($"Desired world state is ${goapBrain.goalSelector.currentGoal.ToString()}");
             }
             else
             {
                 MessageBus.PrintErrorToUnityLog($"Failed to execute plan with {planSize} actions | cost {totalCost}");
+                MessageBus.PrintErrorToUnityLog($"New world state is ${blackboard.ToString()}");
+                MessageBus.PrintErrorToUnityLog($"Desired world state is ${goapBrain.goalSelector.currentGoal.ToString()}");
             }
         }
     }
