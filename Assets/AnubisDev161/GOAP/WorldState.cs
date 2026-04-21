@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace GOAP
 {
-    public class GOAPBlackboard
+    public class WorldState
     {
         public Dictionary<string, bool> worldFacts { get; private set; }
 
-        public GOAPBlackboard(Dictionary<string, bool> worldFacts = null)
+        public WorldState(Dictionary<string, bool> worldFacts = null)
         {
             if (worldFacts == null)
             {
@@ -55,9 +55,9 @@ namespace GOAP
 
             return false;
         }
-        public GOAPBlackboard Copy()
+        public WorldState Copy()
         {
-            GOAPBlackboard mutatedBlackboard = new GOAPBlackboard();
+            WorldState mutatedBlackboard = new WorldState();
             foreach (var fact in worldFacts)
             {
                 mutatedBlackboard.TryAddFact(new WorldFact(fact.Key, fact.Value));
@@ -68,15 +68,15 @@ namespace GOAP
 
         public override bool Equals(object obj)
         {
-            if (!(obj is GOAPBlackboard)) return false;
+            if (!(obj is WorldState)) return false;
 
-            var other = obj as GOAPBlackboard;
+            var other = obj as WorldState;
 
             if (other.worldFacts.Count != worldFacts.Count) return false;
 
             foreach (var fact in worldFacts)
             {
-                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || value == fact.Value)
+                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
                 {
                     return false;
                 }

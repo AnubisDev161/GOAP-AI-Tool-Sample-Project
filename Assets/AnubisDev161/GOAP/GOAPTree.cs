@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 
 namespace GOAP.Tree
@@ -7,7 +8,7 @@ namespace GOAP.Tree
     {
         List<GOAPAction> availableActions;
 
-        public Queue<GOAPNode> GeneratePlan(GOAPBlackboard blackboard, GOAPGoal goal, List<GOAPAction> availableActions)
+        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal, List<GOAPAction> availableActions)
         {
             this.availableActions = availableActions;
 
@@ -21,25 +22,27 @@ namespace GOAP.Tree
 
             return bestPlan;
         }
-        private Queue<GOAPNode> BuildGraph(GOAPNode goal, GOAPBlackboard currentWorldState)
+        private Queue<GOAPAction> BuildGraph(GOAPNode goal, WorldState currentWorldState)
         {
-            GOAPBlackboard goalWorldState = new GOAPBlackboard(goal.requiredWorldState.worldFacts);
+            WorldState goalWorldState = new WorldState(goal.requiredWorldState.worldFacts);
             List<GOAPNode> closedList = new List<GOAPNode>();
             ListBasedPriorityQueue openQueue = new ListBasedPriorityQueue();
+            Dictionary<GOAPNode, float> costSoFar = new Dictionary<GOAPNode, float>();
             openQueue.Push(goal);
 
             while (openQueue.count > 0)
             {
                 var currentNode = openQueue.Pop();
 
-                if (IsCurrentWorldStateAchieved(currentWorldState.worldFacts, currentNode.requiredWorldState.worldFacts))
+                if (WorldStateCompare.IsWorldStateBAchieved(currentWorldState, currentNode.requiredWorldState))
                 {
                     // valid plan found
 
-                    return ReconstructPath(closedList);
+                    return ReconstructPath(currentNode);
                 }
 
                 closedList.Add(currentNode);
+                GOAPNode previousAction = null;
 
                 foreach (var action in availableActions)
                 {
@@ -55,16 +58,20 @@ namespace GOAP.Tree
                     action.RemoveEffectsAndAddPreconditionsToState(mutatedWorldState);
 
                     var tentativeGCost = parentNode.gCost + action.GetCost();
-                    var hCost = CalculateHeuristic(mutatedWorldState.worldFacts, goalWorldState.worldFacts);
+                    var hCost = CalculateHeuristic(mutatedWorldState, goalWorldState);
                     var fCost = tentativeGCost + hCost;
+
 
                     var nodeToAdd = new GOAPNode(action, parentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
 
 
-                    if (closedList.Contains(nodeToAdd) && !TryReplaceExistingIfCheaper(closedList, nodeToAdd)) continue;
-                  
+                 //   if (previousAction != null && previousAction.gCost < nodeToAdd.gCost) continue;
+                    
+                    previousAction = nodeToAdd;
+
 
                     openQueue.Push(nodeToAdd);
+                    
                 }
             }
 
@@ -72,27 +79,12 @@ namespace GOAP.Tree
             return null;
         }
 
-        private bool TryReplaceExistingIfCheaper(List<GOAPNode> closedList, GOAPNode nodeToAdd)
-        {
-            GOAPNode foundNode = null;
-            foreach (var node in closedList)
-            {
-                if (node == nodeToAdd && (node.fCost < nodeToAdd.fCost || node.fCost == nodeToAdd.fCost && node.hCost < nodeToAdd.hCost))
-                {
-                    closedList.Remove(node);
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private int CalculateHeuristic(Dictionary<string, bool> worldState, Dictionary<string, bool> goalState)
+        private int CalculateHeuristic(WorldState worldState, WorldState goalState)
         {
             int h = 0;
-            foreach (var goalFact in goalState)
+            foreach (var goalFact in goalState.worldFacts)
             {
-                if (!worldState.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
+                if (!worldState.worldFacts.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
                 {
                     h++;
                 }
@@ -101,28 +93,15 @@ namespace GOAP.Tree
             return h;
         }
 
-        private bool IsCurrentWorldStateAchieved(Dictionary<string, bool> nodeState, Dictionary<string, bool> currentWorldState)
+        private Queue<GOAPAction> ReconstructPath(GOAPNode currentWorldState)
         {
-            foreach (var goalFact in currentWorldState)
-            {
-                if (!nodeState.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
-                {
-                    return false;
-                }
-            }
+            var path = new Queue<GOAPAction>();
+            var node = currentWorldState;
 
-            return true;
-        }
-
-        private Queue<GOAPNode> ReconstructPath(List<GOAPNode> closedList)
-        {
-            var path = new Queue<GOAPNode>();
-            foreach (var node in closedList)
+            while (node.action != null)
             {
-                if (node.action != null)
-                {
-                    path.Enqueue(node);
-                }
+                path.Enqueue(node.action);
+                node = node.parent;
             }
 
             return path;
@@ -180,7 +159,3 @@ namespace GOAP.Tree
     }
 
 }
-
-
-    
-

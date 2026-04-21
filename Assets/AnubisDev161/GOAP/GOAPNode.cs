@@ -15,8 +15,8 @@ namespace GOAP
         public float hCost{ get; private set; }
         public float gCost { get; private set; }
 
-        public GOAPBlackboard requiredWorldState {  get; private set; }
-        public GOAPNode(GOAPAction action, GOAPNode parent, GOAPBlackboard requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
+        public WorldState requiredWorldState {  get; private set; }
+        public GOAPNode(GOAPAction action, GOAPNode parent, WorldState requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
         {
             this.action = action;
             this.parent = parent;
@@ -29,7 +29,7 @@ namespace GOAP
         {
             this.action = action;
             this.parent = parent;
-            this.requiredWorldState = new GOAPBlackboard(requiredWorldState);
+            this.requiredWorldState = new WorldState(requiredWorldState);
             this.fCost = fCost;
             this.hCost = hCost;
             this.gCost = gCost;

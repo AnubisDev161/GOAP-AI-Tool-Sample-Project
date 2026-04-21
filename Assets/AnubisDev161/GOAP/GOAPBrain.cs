@@ -5,11 +5,11 @@ namespace GOAP
 {
     public class GOAPBrain
     {
-        public GOAPBlackboard blackboard { get; private set; }
+        public WorldState blackboard { get; private set; }
         private GOAPPlanner planner;
-        private GOAPGoalSelector goalSelector;
+        public GOAPGoalSelector goalSelector;
 
-        public GOAPBrain(GOAPBlackboard blackboard)
+        public GOAPBrain(WorldState blackboard)
         {
             this.blackboard = blackboard;
             planner = new GOAPPlanner();

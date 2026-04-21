@@ -7,11 +7,13 @@ namespace GOAP
     {
         private float priority;
         public Dictionary<string, bool> desiredConditions {  get; private set; }
+        public string name { get; private set; }
 
-        public GOAPGoal(float priority, Dictionary<string, bool> desiredConditions)
+        public GOAPGoal(float priority, Dictionary<string, bool> desiredConditions, string goalName = "baseGoal")
         {
             this.priority = priority;
             this.desiredConditions = desiredConditions;
+            this.name = goalName;
         }
 
         public bool IsValid()

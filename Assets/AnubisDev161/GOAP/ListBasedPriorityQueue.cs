@@ -42,23 +42,15 @@ namespace GOAP
 
         public void Push(GOAPNode nodeToAdd)
         {
-            GOAPNode nodeToReplace = null;
             foreach (var node in insertedNodes)
             {
-                if (node == nodeToAdd && (node.fCost < nodeToAdd.fCost || node.fCost == nodeToAdd.fCost && node.hCost < nodeToAdd.hCost))
+                if (node.gCost <= nodeToAdd.gCost)
                 {
-                    nodeToReplace = nodeToAdd;
+                    return;
                 }
             }
 
-            if (nodeToReplace != null)
-            {
-                nodeToReplace = nodeToAdd;
-            }
-            else
-            {
-                insertedNodes.Add(nodeToAdd);
-            }
+            insertedNodes.Add(nodeToAdd);
         }
     }
 }

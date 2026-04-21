@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GOAP
@@ -39,13 +38,13 @@ namespace GOAP
             return true;
         }
 
-        public bool Execute(GOAPBlackboard blackboard)
+        public bool Execute(WorldState blackboard)
         {
             PrintPreconditions();
 
             if (!CheckIfPrconditionsMet(blackboard.worldFacts))
             {
-                MessageBus.PrintToUnityLog("Precondtions not met " + $"could not run action {name}");
+                MessageBus.PrintErrorToUnityLog("Precondtions not met " + $"could not run action {name}");
                 return false;
             }
 
@@ -56,7 +55,7 @@ namespace GOAP
         }
 
         // If the plan is being executed, you need to start at the current world state and remove all the preconditions of the action from tbhe current world state
-        public void RemovePreconditionsAndAddEffectsToState(GOAPBlackboard currentWorldState)
+        public void RemovePreconditionsAndAddEffectsToState(WorldState currentWorldState)
         {
             foreach (var precondition in preconditions)
             {
@@ -73,7 +72,7 @@ namespace GOAP
         }
 
         // If the plan is being planned, you need to start at the goal world state and remove all the effects of the action from the required world state
-        public void RemoveEffectsAndAddPreconditionsToState(GOAPBlackboard requiredWorldState)
+        public void RemoveEffectsAndAddPreconditionsToState(WorldState requiredWorldState)
         {
             foreach (var effect in effects)
             {
