@@ -1,8 +1,6 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
-using Unity.VisualScripting;
+
 
 namespace GOAP.Tree
 {
@@ -62,23 +60,24 @@ namespace GOAP.Tree
                     var mutatedWorldState = currentNode.requiredWorldState.Copy();
                     action.RemoveEffectsAndAddPreconditionsToState(mutatedWorldState);
 
+
                     if (IsInList(closedList, mutatedWorldState))
                     {
                         continue;
                     }
 
                     var tentativeGCost = currentNode.gCost + action.GetCost();
-                    var hCost = CalculateHeuristic(mutatedWorldState, goalWorldState);
+                    var hCost = 0;// CalculateHeuristic(mutatedWorldState, goalWorldState);
                     var fCost = tentativeGCost + hCost;
 
 
-                    
+
                     //if (openQueue.Contains(mutatedWorldState) && tentativeGCost < openQueue.GetItem(mutatedWorldState).gCost)
                     //{
                     //    var item = openQueue.GetItem(mutatedWorldState);
                     //    item.gCost = tentativeGCost + item.hCost;
                     //    item.parent = currentNode;
-                        
+
                     //}
                     //else if (!openQueue.Contains(mutatedWorldState))
                     {
@@ -95,9 +94,9 @@ namespace GOAP.Tree
             return null;
         }
 
-        private bool IsInList(List<GOAPNode> closedList, WorldState worldStateToFind)
+        private bool IsInList(List<GOAPNode> list, WorldState worldStateToFind)
         {
-            foreach (var node in closedList)
+            foreach (var node in list)
             {
                 if (worldStateToFind == node.requiredWorldState)
                 {
@@ -106,6 +105,19 @@ namespace GOAP.Tree
             }
 
             return false;
+        }
+
+        private GOAPNode FindNodeInList(List<GOAPNode> list,  WorldState worldState)
+        {
+            foreach (var node in list)
+            {
+                if (node.requiredWorldState == worldState)
+                {
+                    return node;
+                }
+            }
+
+            return null;
         }
 
         private int CalculateHeuristic(WorldState worldState, WorldState goalState)

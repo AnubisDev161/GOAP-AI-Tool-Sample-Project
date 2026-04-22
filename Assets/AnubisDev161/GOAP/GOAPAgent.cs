@@ -65,8 +65,8 @@ namespace GOAP
             else
             {
                 MessageBus.PrintErrorToUnityLog($"Failed to execute plan with {planSize} actions | cost {totalCost}");
-                MessageBus.PrintErrorToUnityLog($"New world state is ${blackboard.ToString()}");
-                MessageBus.PrintErrorToUnityLog($"Desired world state is ${goapBrain.goalSelector.currentGoal.ToString()}");
+                MessageBus.PrintErrorToUnityLog($"New world state is {blackboard.ToString()}");
+                MessageBus.PrintErrorToUnityLog($"Desired world state is {goapBrain.goalSelector.currentGoal.ToString()}");
             }
         }
     }
