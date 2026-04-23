@@ -15,6 +15,7 @@ namespace GOAP
         public float hCost{ get;  set; }
         public float gCost { get;  set; }
 
+        
         public WorldState requiredWorldState {  get; private set; }
         public GOAPNode(GOAPAction action, GOAPNode parent, WorldState requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
         {

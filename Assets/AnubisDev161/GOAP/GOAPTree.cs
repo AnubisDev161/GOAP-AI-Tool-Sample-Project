@@ -84,7 +84,6 @@ namespace GOAP.Tree
                         var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
                         openQueue.Push(nodeToAdd);
                         
-                        if (currentNode.action == null) continue;
                         MessageBus.PrintToUnityLog(mutatedWorldState.ToString());
                     }
                 }
