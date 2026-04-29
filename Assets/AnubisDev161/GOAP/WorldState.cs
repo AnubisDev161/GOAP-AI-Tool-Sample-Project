@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System;
+using System.Linq;
 
 namespace GOAP
 {
@@ -76,6 +77,17 @@ namespace GOAP
                     return false;
                 }
             }
+
+            //foreach (var rightFact in left.worldFacts)
+            //{
+            //    foreach (var leftFact in right.worldFacts)
+            //    {
+            //        if (!(rightFact.Key == leftFact.Key) || !rightFact.Value == leftFact.Value)
+            //        {
+            //            return false;
+            //        }
+            //    }
+            //}
 
             return true;
         }

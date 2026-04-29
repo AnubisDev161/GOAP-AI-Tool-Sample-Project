@@ -101,6 +101,7 @@ namespace GOAP
             // ---------------------------
             Dictionary<string, bool> wanderInRandomDirectionPre = new Dictionary<string, bool>();
             wanderInRandomDirectionPre.Add(hasWood, true);
+            
             Dictionary<string, bool> wanderInRandomDirectionEff = new Dictionary<string, bool>();
             wanderInRandomDirectionEff.Add(isStupid, true);
 

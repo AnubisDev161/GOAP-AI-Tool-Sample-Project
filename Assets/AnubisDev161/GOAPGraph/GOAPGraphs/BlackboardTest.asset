@@ -1,0 +1,57 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
+  m_Name: BlackboardTest
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 846655403666964543
+  - rid: 846655403666964544
+  connections: []
+  goapGraphObject: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 846655403666964543
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 19bc4e4f-f539-4496-a638-7fcea4a5a8fd
+        pos:
+          serializedVersion: 2
+          x: 265.6
+          y: 102.4
+          width: 286.4
+          height: 119.200005
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000010000000200000003000000
+        name: 
+    - rid: 846655403666964544
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 73f3d939-5848-48fb-b08a-161e44c1ec5a
+        pos:
+          serializedVersion: 2
+          x: 627.2
+          y: 100.8
+          width: 281.59998
+          height: 199.99998
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        worldFact:
+          name: sda
+          value:
+            rid: 846655403666964685
+          valueType: 3
+    - rid: 846655403666964685
+      type: {class: String, ns: System, asm: mscorlib}
+      data: 
