@@ -1,10 +1,13 @@
+using Codice.Client.BaseCommands.BranchExplorer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
+using UnityEditor.PackageManager.UI;
 using UnityEditor.UIElements;
+using UnityEngine.UIElements;
 
 namespace GOAPGraph.Editor
 {
@@ -27,6 +30,7 @@ namespace GOAPGraph.Editor
 
             serializedObject = goapGraphObject;
             graphNode = node;
+            graphNode.valueUpdated += OnGraphNodeValueUpdated;
 
             Type typeInfo = node.GetType();
             NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
@@ -65,28 +69,28 @@ namespace GOAPGraph.Editor
             {
                 CreateParamOutputPort(info.paramPortsHaveSingleCapacity);
             }
-            
-            foreach (FieldInfo property in typeInfo.GetFields())
-            {
-                if (property.GetCustomAttribute<ExposedPropertyAttribute>() is ExposedPropertyAttribute exposedProperty)
-                {
-                    PropertyField propertyField = DrawProperty(property.Name);
-                    propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
-                }
 
-                if (property.GetCustomAttribute<ExposedWorldFactPropertyAttribute>() is ExposedWorldFactPropertyAttribute exposedWorldFactProperty)
-                {
-                    PropertyField propertyField = DrawWorldFactProperty(property.Name);
-                    propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
-                }
-            }   
+            DrawProperties(typeInfo);
+            
 
             RefreshExpandedState();
         }
-       
+
+        private void DrawProperties(Type typeInfo)
+        {
+            foreach (FieldInfo property in typeInfo.GetFields())
+            {
+                if (property.GetCustomAttribute<Attribute>() is Attribute exposedProperty)
+                {
+                    PropertyField propertyField = DrawProperty(property.Name);
+                    //propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
+                }
+            }
+        }
+
         private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
         {
-       
+            
         }
 
         public void RemoveInputParams()
@@ -143,6 +147,7 @@ namespace GOAPGraph.Editor
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
 
+
             return field;
         }
 
@@ -156,23 +161,23 @@ namespace GOAPGraph.Editor
             SerializedProperty property = serializedProperty.FindPropertyRelative(propertyName);
 
             // Creates the needed bindings to get a value callback
-            var name = property.FindPropertyRelative("name");
-            var value = property.FindPropertyRelative("value");
-            var valueType = property.FindPropertyRelative("valueType");
 
             PropertyField field = new PropertyField(property);
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
 
-            extensionContainer.TrackPropertyValue(name, OnFieldValueChanged);
-            extensionContainer.TrackPropertyValue(value, OnFieldValueChanged);
-            extensionContainer.TrackPropertyValue(valueType, OnFieldValueChanged);
+           // extensionContainer.TrackPropertyValue(property, OnFieldValueChanged);
+
+           
+            
+          //  extensionContainer.TrackPropertyValue(valueType, OnFieldValueChanged);
             return field;
         }
 
         private void OnFieldValueChanged(SerializedProperty property)
         {
-            graphNode.OnFieldValueChangedCallback(property);
+            //graphNode.OnFieldValueChangedCallback(property);
+
         }
 
         private void CreateFlowInputPort()
@@ -231,6 +236,15 @@ namespace GOAPGraph.Editor
         public void SavePorts()
         {
             graphNode.SetPorts(portsIndices);
+        }
+
+        public void OnGraphNodeValueUpdated()
+        {
+            var x = 23;
+            //Type typeInfo = graphNode.GetType();
+            //NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
+            //DrawProperties(typeInfo);
+           //this = new GOAPGraphEditorNode(node, goapGraphObject);
         }
     }
 }

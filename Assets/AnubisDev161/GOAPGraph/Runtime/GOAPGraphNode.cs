@@ -18,6 +18,7 @@ namespace GOAPGraph
         private Rect pos;
 
         public Action<string, string, GOAPGraphAsset> processFinished;
+        public Action valueUpdated;
 
         public const int OUTPUT_PORT_INDEX = 0;
         public string typeName;
@@ -68,7 +69,7 @@ namespace GOAPGraph
 
         public virtual void OnFieldValueChangedCallback(SerializedProperty property)
         {
-            
+            valueUpdated?.Invoke();
         }
     }
 

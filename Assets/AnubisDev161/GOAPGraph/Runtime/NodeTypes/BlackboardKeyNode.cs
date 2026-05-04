@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using UnityEditor;
+using UnityEditor.PackageManager.UI;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -12,38 +13,47 @@ namespace GOAPGraph
     public class BlackbaordKeyNode : GOAPGraphNode
     {
         [ExposedWorldFactProperty]
-        public WorldFact worldFact;
+        public WorldFact worldFact = new("Default", false, ValueType.Bool);
 
         public WorldFact GetData()
         {
             return worldFact;
+
         }
 
-        public override void OnFieldValueChangedCallback(SerializedProperty property)
-        {
-            if (property.name == "valueType")
-            {
-                switch (worldFact.valueType)
-                {
-                    case ValueType.Bool:
-                        worldFact.value = false;
-                        break;
-                    case ValueType.Int:
-                        worldFact.value = 0;
-                        break;
-                    case ValueType.Float:
-                        worldFact.value = 0.0f;
-                        break;
-                    case ValueType.String:
-                        worldFact.value = "Default";
-                        break;
-                }
-            }  
-        }
+
+
+    //    public override void OnFieldValueChangedCallback(SerializedProperty property)
+    //    {
+    //        worldFact.value = 0;
+
+    //        if (property.name == "valueType")
+    //        {
+    //            switch (worldFact.valueType)
+    //            {
+    //                case ValueType.Bool:
+    //                    worldFact.value = false;
+    //                    break;
+    //                case ValueType.Int:
+    //                    worldFact.value = 0;
+    //                    break;
+    //                case ValueType.Float:
+    //                    worldFact.value = 0.0f;
+    //                    break;
+    //                case ValueType.String:
+    //                    worldFact.value = "Default";
+    //                    break;
+    //            }
+    //            base.OnFieldValueChangedCallback(property);
+    //        }
+
+    //    }
+
     }
 
+
     [Serializable]
-    public struct WorldFact 
+    public class WorldFact : ISerializationCallbackReceiver
     {
         [ExposedProperty]
         public string name;
@@ -54,11 +64,26 @@ namespace GOAPGraph
         [ExposedProperty]
         public ValueType valueType;
 
-        public WorldFact(string name, bool value, ValueType valueType)
+        public WorldFact(string name, object value, ValueType valueType)
         {
             this.name = name;
+
             this.value = value;
+
             this.valueType = valueType;
+        }
+
+        public void OnAfterDeserialize()
+        {
+            Debug.Log(name);
+            Debug.Log(value);
+            Debug.Log(valueType);
+           
+        }
+
+        public void OnBeforeSerialize()
+        {
+           
         }
 
         public static bool operator ==(WorldFact x, WorldFact y)
@@ -80,4 +105,22 @@ namespace GOAPGraph
         Float,
         String
     }
+    
 }
+
+
+//switch (valueType)
+//{
+//    case ValueType.Bool:
+//        this.value = false;
+//        break;
+//    case ValueType.Int:
+//        this.value = 0;
+//        break;
+//    case ValueType.Float:
+//        this.value = 0.0f;
+//        break;
+//    case ValueType.String:
+//        this.value = "Default";
+//        break;
+//}

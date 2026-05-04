@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.Properties;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -13,7 +14,8 @@ namespace GOAPGraph
 
         private GOAPGraphAsset graphInstance;
 
-        public WorldFact WorldFact = new WorldFact("HasFood", false, ValueType.Bool);
+        [HideInInspector]
+        public WorldFact worldFact = new WorldFact("DialogueText", false, ValueType.Bool);
 
         public NavMeshAgent navMeshAgent;
 

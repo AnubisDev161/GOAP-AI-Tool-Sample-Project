@@ -31,7 +31,7 @@ namespace GOAPGraph
                 Debug.Log("Data: " + data);
                 
 
-                if (currentGraph.goapGraphObject.WorldFact == data)
+                if (currentGraph.goapGraphObject.worldFact == data)
                 {
                     Debug.Log("Preconditions met " + data);
                     debugInfo.success = true;
@@ -44,9 +44,9 @@ namespace GOAPGraph
                 var data = inputParam.GetData();
                 Debug.Log("Data: " + data);
 
-                if (currentGraph.goapGraphObject.WorldFact.name == data.name && currentGraph.goapGraphObject.WorldFact.value != data.value)
+                if (currentGraph.goapGraphObject.worldFact.name == data.name && currentGraph.goapGraphObject.worldFact.value != data.value)
                 {
-                    currentGraph.goapGraphObject.WorldFact.value = data.value;
+                    currentGraph.goapGraphObject.worldFact.value = data.value;
 
                     Debug.Log("Effects applied " + data);
                 }
