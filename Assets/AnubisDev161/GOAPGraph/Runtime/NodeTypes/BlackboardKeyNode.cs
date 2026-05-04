@@ -1,9 +1,6 @@
-using PlasticGui.WorkspaceWindow;
+
 using System;
-using System.Collections.Generic;
-using System.Reflection;
-using UnityEditor;
-using UnityEditor.PackageManager.UI;
+
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -21,7 +18,37 @@ namespace GOAPGraph
 
         }
 
+        public override void OnWorldFactPropertyChanged(SerializedPropertyChangeEvent evt)
+        {
+            var valueTypeProperty = evt.changedProperty.FindPropertyRelative("valueType");
+            var valueProperty = evt.changedProperty.FindPropertyRelative("value");
 
+            if (valueTypeProperty == null || (ValueType)valueTypeProperty.boxedValue != worldFact.valueType) return;
+
+            switch (worldFact.valueType)
+            {
+                case ValueType.Bool:
+                    worldFact.value = true;
+                    break;
+                case ValueType.Int:
+                    worldFact.value = 0;
+                    break;
+                case ValueType.Float:
+                    worldFact.value = 0.0f;
+                    break;
+                case ValueType.String:
+                    worldFact.value = "Default";
+                    break;
+            }
+
+
+            valueProperty.serializedObject.ApplyModifiedProperties();
+            valueProperty.serializedObject.Update();
+
+            evt.changedProperty.serializedObject.ApplyModifiedProperties();
+            evt.changedProperty.serializedObject.Update();
+        }
+    }
 
     //    public override void OnFieldValueChangedCallback(SerializedProperty property)
     //    {
@@ -49,7 +76,7 @@ namespace GOAPGraph
 
     //    }
 
-    }
+
 
 
     [Serializable]
@@ -78,12 +105,12 @@ namespace GOAPGraph
             Debug.Log(name);
             Debug.Log(value);
             Debug.Log(valueType);
-           
+
         }
 
         public void OnBeforeSerialize()
         {
-           
+
         }
 
         public static bool operator ==(WorldFact x, WorldFact y)
@@ -105,8 +132,9 @@ namespace GOAPGraph
         Float,
         String
     }
-    
 }
+    
+
 
 
 //switch (valueType)

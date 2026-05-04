@@ -67,9 +67,9 @@ namespace GOAPGraph
             Debug.Log("Graph process terminated at Node: " + this + " Reason: " + debugInfo.terminationReason);
         }
 
-        public virtual void OnFieldValueChangedCallback(SerializedProperty property)
+        public virtual void OnWorldFactPropertyChanged(SerializedPropertyChangeEvent evt)
         {
-            valueUpdated?.Invoke();
+        
         }
     }
 

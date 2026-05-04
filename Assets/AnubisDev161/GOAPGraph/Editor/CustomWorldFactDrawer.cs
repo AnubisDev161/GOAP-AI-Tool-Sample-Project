@@ -19,11 +19,11 @@ namespace GOAPGraph.Editor
             return 120;
             
         }
-        
+
         public override VisualElement CreatePropertyGUI(SerializedProperty property)
         {
             // Create property container element.
-            var container = new CustomVisaulElement();
+            var container = new WorldFactVisualElement();
             
             var foldOut = new Foldout();
             foldOut.value = false;
@@ -39,12 +39,10 @@ namespace GOAPGraph.Editor
            
 
             TextField textField;
-
             Toggle toggle;
             bool requiresTextField;
 
-            
-            DefineValueByType(valueProperty, valueType, out textField, out toggle, out requiresTextField);
+            DefineFieldByType(valueProperty, valueType, out textField, out toggle, out requiresTextField);
 
             property.serializedObject.ApplyModifiedProperties();
             property.serializedObject.Update();
@@ -56,21 +54,21 @@ namespace GOAPGraph.Editor
 
             foldOut.Add(nameField);
 
-            valueTypeField.RegisterValueChangeCallback(Test);
+            //valueTypeField.RegisterValueChangeCallback(OnFieldValueChanged);
+            
+            foldOut.Add(valueTypeField);
 
-            if (toggle.value == true)
-            {
-                foldOut.Add(toggle);
-            }
-            else if (textField.value == "Default")
+            if (requiresTextField)
             {
                 foldOut.Add(textField);
             }
-
-
-
+            else if (!requiresTextField)
+            {
+                foldOut.Add(toggle);
+            }
+            
             // Add either a textField or a toggle according to the property's value
-     
+
 
             foldOut.Add(valueTypeField);
 
@@ -82,12 +80,13 @@ namespace GOAPGraph.Editor
             return container;
         }
 
-        private void Test(SerializedPropertyChangeEvent evt)
+        private void OnFieldValueChanged(SerializedPropertyChangeEvent evt)
         {
             // throw new System.NotImplementedException();
 
            var valueType =  (ValueType)evt.changedProperty.boxedValue;
 
+            //evt.changedProperty.serializedObject.t
             //Debug.Log(evt.changedProperty.boxedValue);
 
             switch (valueType)
@@ -120,24 +119,7 @@ namespace GOAPGraph.Editor
             }
         }
 
-        private void OnValueTypeChanged(SerializedProperty property)
-        {
-            test.serializedObject.ApplyModifiedProperties();
-            test.serializedObject.Update();
-        }
-
-        private void OnValueChanged(SerializedPropertyChangeEvent evt)
-        {
-            // CreatePropertyGUI(onlyForTesting);
-            // Value changing seems to wrok, the node's data is updated and the create propertyGUI method in the correct moment,
-            // you only need to call the method from were it is usually being called
-            //onlyForTestingParent.f
-            //DefineValueByType()
-
-            
-        }
-
-        public static void DefineValueByType(SerializedProperty valueProperty, ValueType valueType, out TextField textField, out Toggle toggle, out bool requiresTextField)
+        public void DefineFieldByType(SerializedProperty valueProperty, ValueType valueType, out TextField textField, out Toggle toggle, out bool requiresTextField)
         {
             textField = new TextField("value");
             toggle = new Toggle("value");
@@ -147,29 +129,26 @@ namespace GOAPGraph.Editor
             switch (valueType)
             {
                 case ValueType.Bool:
-                    valueProperty.boxedValue = true;
-                    valueProperty.serializedObject.ApplyModifiedProperties();
-                    valueProperty.serializedObject.Update();
+                    //valueProperty.serializedObject.ApplyModifiedProperties();
+                    //valueProperty.serializedObject.Update();
                     requiresTextField = false;
-                    toggle.value = true;
+                    toggle.value = ((bool)valueProperty.boxedValue);
                     break;
                 case ValueType.Int:
-                    valueProperty.boxedValue = (int)0 ;
-                    textField.value = "0";
-                    valueProperty.serializedObject.ApplyModifiedProperties();
-                    valueProperty.serializedObject.Update();
+                    textField.value = ((int)valueProperty.boxedValue).ToString();
+                    //valueProperty.serializedObject.ApplyModifiedProperties();
+                    //valueProperty.serializedObject.Update();
                     break;
                 case ValueType.Float:
-                    valueProperty.boxedValue = 0.0f;
-                    textField.value = "0.0f";
-                    valueProperty.serializedObject.ApplyModifiedProperties();
-                    valueProperty.serializedObject.Update();
+   
+                    textField.value = ((float)valueProperty.boxedValue).ToString();
+                    //valueProperty.serializedObject.ApplyModifiedProperties();
+                    //valueProperty.serializedObject.Update();
                     break;
                 case ValueType.String:
-                    valueProperty.boxedValue = "Default";
-                    valueProperty.serializedObject.ApplyModifiedProperties();
-                    valueProperty.serializedObject.Update();
-                    textField.value = "Default";
+                    textField.value = ((string)valueProperty.boxedValue).ToString();
+                    //valueProperty.serializedObject.ApplyModifiedProperties();
+                    //valueProperty.serializedObject.Update();
                     break;
 
                 default:

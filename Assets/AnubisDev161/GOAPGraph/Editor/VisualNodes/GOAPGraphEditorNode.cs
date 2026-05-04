@@ -83,14 +83,19 @@ namespace GOAPGraph.Editor
                 if (property.GetCustomAttribute<Attribute>() is Attribute exposedProperty)
                 {
                     PropertyField propertyField = DrawProperty(property.Name);
-                    //propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
+
+
+                    if (exposedProperty is ExposedWorldFactPropertyAttribute)
+                    {
+                        propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
+                    }
                 }
             }
         }
 
         private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
         {
-            
+            graphNode.OnWorldFactPropertyChanged(evt);
         }
 
         public void RemoveInputParams()
@@ -147,6 +152,8 @@ namespace GOAPGraph.Editor
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
 
+          //  var valueType = property.FindPropertyRelative("valueType");
+          
 
             return field;
         }
@@ -172,12 +179,6 @@ namespace GOAPGraph.Editor
             
           //  extensionContainer.TrackPropertyValue(valueType, OnFieldValueChanged);
             return field;
-        }
-
-        private void OnFieldValueChanged(SerializedProperty property)
-        {
-            //graphNode.OnFieldValueChangedCallback(property);
-
         }
 
         private void CreateFlowInputPort()
