@@ -90,8 +90,7 @@ namespace GOAPGraph.Editor
             var valueTypeProperty = evt.changedProperty;
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
 
-           // if ((ValueType)valueTypeProperty.boxedValue) == serializedWorldFact.FindPropertyRelative("worldFact").boxedValue;
-
+            if (IsRequiredValueType((ValueType)valueTypeProperty.boxedValue, valueProperty)) return;
 
             object newValue = null;
 
@@ -111,9 +110,26 @@ namespace GOAPGraph.Editor
                     break;
             }
 
+
+            //EvaluateInputDataType(newValue, valueProperty.boxedValue);
+
             valueProperty.boxedValue = newValue;
             valueProperty.serializedObject.ApplyModifiedProperties();
             valueProperty.serializedObject.Update();
+        }
+
+        private bool IsRequiredValueType(ValueType requiredValueType, SerializedProperty serializedProperty)
+        {
+            var type = serializedProperty.boxedValue as Type;
+
+            
+            
+            if (serializedProperty.boxedValue is bool && requiredValueType == ValueType.Bool) return true;
+            if (serializedProperty.boxedValue is int &&requiredValueType == ValueType.Int) return true;
+            if (serializedProperty.boxedValue is float && requiredValueType == ValueType.Float) return true;
+            if (serializedProperty.boxedValue is string && requiredValueType == ValueType.String) return true;
+      
+            return false;
         }
 
         private void OnValueFieldChanged(ChangeEvent<string> evt)
@@ -122,11 +138,12 @@ namespace GOAPGraph.Editor
 
             object result = EvaluateInputDataType(evt.newValue, serializedValueProperty.boxedValue);
 
+
             if (result == null) return;
-         //  if (boxedValue is )
+    
             serializedValueProperty.boxedValue = result;
 
-            serializedValueProperty.boxedValue = evt.newValue;
+  
 
             serializedValueProperty.serializedObject.ApplyModifiedProperties();
             serializedValueProperty.serializedObject.Update();
@@ -158,8 +175,6 @@ namespace GOAPGraph.Editor
             {
                 result = newValue.ToString();
             }
-
-           
 
             return result;
         }
