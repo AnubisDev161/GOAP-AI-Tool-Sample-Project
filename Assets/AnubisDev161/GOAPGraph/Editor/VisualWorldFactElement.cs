@@ -1,42 +1,33 @@
-using GOAPGraph;
-using GOAPGraph.Editor;
 using System;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using System.ComponentModel;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
+using static UnityEditor.Search.SearchValue;
 
 namespace GOAPGraph.Editor
 {
-    [CustomPropertyDrawer(typeof(WorldFact))]
-    public class WorldFactDrawer : PropertyDrawer
+    public class VisualWorldFactElement : VisualElement
     {
         private SerializedProperty serializedWorldFact;
-        // Draw the property inside the given rect
 
-        public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
+        private Foldout foldOut;
+        public VisualWorldFactElement(SerializedProperty worldFactProperty)
         {
-            return 120;
-            
-        }
-
-        public override VisualElement CreatePropertyGUI(SerializedProperty property)
-        {
-            // Create property container element.
-            var container = new WorldFactVisualElement();
-            
-            var foldOut = new Foldout();
+            this.serializedWorldFact = worldFactProperty;
+            foldOut = new Foldout();
             foldOut.value = false;
 
-            var valueTypeProperty = property.FindPropertyRelative("valueType");
-           
-            var valueProperty = property.FindPropertyRelative("value");
+            Init();
+        }
 
-            serializedWorldFact = property;
-
+        private void Init()
+        {
+            var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
+            var valueProperty = serializedWorldFact.FindPropertyRelative("value");
             var valueType = (ValueType)valueTypeProperty.boxedValue;
-           
+
 
             TextField textField;
             Toggle toggle;
@@ -44,25 +35,19 @@ namespace GOAPGraph.Editor
 
             DefineFieldByType(valueProperty, valueType, out textField, out toggle, out requiresTextField);
 
-            property.serializedObject.ApplyModifiedProperties();
-            property.serializedObject.Update();
+            serializedWorldFact.serializedObject.ApplyModifiedProperties();
+            serializedWorldFact.serializedObject.Update();
 
             // Create property fields.
             var valueField = new PropertyField(valueProperty);
             var valueTypeField = new PropertyField(valueTypeProperty);
-            var nameField = new PropertyField(property.FindPropertyRelative("name"));
-
-            valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
-
-            textField.RegisterValueChangedCallback(OnValueFieldChanged);
-            toggle.RegisterValueChangedCallback(OnValueFieldChanged);
+            var nameField = new PropertyField(serializedWorldFact.FindPropertyRelative("name"));
 
             foldOut.Add(nameField);
 
-            //valueTypeField.RegisterValueChangeCallback(OnFieldValueChanged);
-            
-            foldOut.Add(valueTypeField);
+         
 
+            // Add either a textField or a toggle according to the property's value
             if (requiresTextField)
             {
                 foldOut.Add(textField);
@@ -71,18 +56,16 @@ namespace GOAPGraph.Editor
             {
                 foldOut.Add(toggle);
             }
-            
-            // Add either a textField or a toggle according to the property's value
-           
+
+
+            valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
+            textField.RegisterValueChangedCallback(OnValueFieldChanged);
+            toggle.RegisterValueChangedCallback(OnValueFieldChanged);
 
             foldOut.Add(valueTypeField);
 
-            // Add fields to the container.
-            container.Add(foldOut);
 
-           // toggle.TrackPropertyValue
-
-            return container;
+            contentContainer.Add(foldOut);
         }
 
         private void ValueTypeChangedCallback(SerializedPropertyChangeEvent evt)
@@ -110,9 +93,6 @@ namespace GOAPGraph.Editor
                     break;
             }
 
-
-            //EvaluateInputDataType(newValue, valueProperty.boxedValue);
-
             valueProperty.boxedValue = newValue;
             valueProperty.serializedObject.ApplyModifiedProperties();
             valueProperty.serializedObject.Update();
@@ -122,13 +102,11 @@ namespace GOAPGraph.Editor
         {
             var type = serializedProperty.boxedValue as Type;
 
-            
-            
             if (serializedProperty.boxedValue is bool && requiredValueType == ValueType.Bool) return true;
-            if (serializedProperty.boxedValue is int &&requiredValueType == ValueType.Int) return true;
+            if (serializedProperty.boxedValue is int && requiredValueType == ValueType.Int) return true;
             if (serializedProperty.boxedValue is float && requiredValueType == ValueType.Float) return true;
             if (serializedProperty.boxedValue is string && requiredValueType == ValueType.String) return true;
-      
+
             return false;
         }
 
@@ -140,10 +118,10 @@ namespace GOAPGraph.Editor
 
 
             if (result == null) return;
-    
+
             serializedValueProperty.boxedValue = result;
 
-  
+
 
             serializedValueProperty.serializedObject.ApplyModifiedProperties();
             serializedValueProperty.serializedObject.Update();
@@ -171,7 +149,8 @@ namespace GOAPGraph.Editor
             else if (intValue != 0 && boxedValue is int)
             {
                 result = intValue;
-            } else if (boxedValue is string)
+            }
+            else if (boxedValue is string)
             {
                 result = newValue.ToString();
             }
@@ -190,45 +169,6 @@ namespace GOAPGraph.Editor
             serializedValueProperty.serializedObject.ApplyModifiedProperties();
             serializedValueProperty.serializedObject.Update();
         }
-
-        //private void OnFieldValueChanged(SerializedPropertyChangeEvent evt)
-        //{
-        //    // throw new System.NotImplementedException();
-
-        //   var valueType =  (ValueType)evt.changedProperty.boxedValue;
-
-        //    //evt.changedProperty.serializedObject.t
-        //    //Debug.Log(evt.changedProperty.boxedValue);
-
-        //    switch (valueType)
-        //    {
-        //        case ValueType.Bool:
-        //            test.boxedValue = true;
-        //            test.serializedObject.ApplyModifiedProperties();
-        //            test.serializedObject.Update();
-        //            break;
-        //        case ValueType.Int:
-        //            test.boxedValue = (int)0;
-        //            test.serializedObject.ApplyModifiedProperties();
-        //            test.serializedObject.Update();
-        //            break;
-        //        case ValueType.Float:
-        //            test.boxedValue = 0.0f;
-        //            test.serializedObject.ApplyModifiedProperties();
-        //            test.serializedObject.Update();
-        //            break;
-        //        case ValueType.String:
-        //            test.boxedValue = "Default";
-        //            test.serializedObject.ApplyModifiedProperties();
-        //            test.serializedObject.Update();
-        //            break;
-
-        //        default:
-        //            Debug.LogError("Could not convert valueType to known value");
-
-        //            break;
-        //    }
-        //}
 
         public void DefineFieldByType(SerializedProperty valueProperty, ValueType valueType, out TextField textField, out Toggle toggle, out bool requiresTextField)
         {
@@ -251,7 +191,7 @@ namespace GOAPGraph.Editor
                     //valueProperty.serializedObject.Update();
                     break;
                 case ValueType.Float:
-   
+
                     textField.value = (valueProperty.boxedValue).ToString();
                     //valueProperty.serializedObject.ApplyModifiedProperties();
                     //valueProperty.serializedObject.Update();
@@ -270,4 +210,6 @@ namespace GOAPGraph.Editor
             }
         }
     }
+
 }
+

@@ -14,10 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - rid: 61793776611099164
-  - rid: 61793776611099166
-  - rid: 61793776611099198
-  - rid: 61793776611099217
-  - rid: 61793776611099229
+  - rid: 61793776611099342
+  - rid: 61793776611099346
   connections: []
   goapGraphObject: {fileID: 0}
   references:
@@ -29,70 +27,57 @@ MonoBehaviour:
         guid: 4444ec1b-886d-4b85-9870-40148d5ed81f
         pos:
           serializedVersion: 2
-          x: 160.8
-          y: 88.8
+          x: 179.2
+          y: 44
           width: 281.6
-          height: 147.99998
+          height: 148
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
         worldFact:
-          name: DialogueText
+          name: HasFood
           value:
-            rid: 61793776611099239
-          valueType: 1
-    - rid: 61793776611099166
-      type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
+            rid: 61793776611099359
+          valueType: 3
+    - rid: 61793776611099342
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 5cb863a6-b8dc-4d76-be8a-9b8ee08a8332
+        guid: 2e638016-d73c-47a3-99a2-62e78eb66c5e
         pos:
           serializedVersion: 2
-          x: 688
-          y: 107.19998
-          width: 0
-          height: 0
-        typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          x: 536.8
+          y: 124.8
+          width: 281.60004
+          height: 95.2
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        portsIndices: 00000000
-    - rid: 61793776611099198
-      type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
+        portsIndices: 0000000001000000
+        worldFact:
+          name: HEalth
+          value:
+            rid: 61793776611099373
+          valueType: 2
+    - rid: 61793776611099346
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 097fab60-a2d0-4521-b7ad-8d938f773a7a
+        guid: 708eadd0-3725-4f28-88ac-b957e311e3af
         pos:
           serializedVersion: 2
-          x: 558.4
-          y: 112.79997
-          width: 0
-          height: 0
-        typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          x: 196.8
+          y: 228
+          width: 281.6
+          height: 148.79999
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        portsIndices: 00000000
-    - rid: 61793776611099217
-      type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 848fd633-bcfa-451d-988a-0b950e95d651
-        pos:
-          serializedVersion: 2
-          x: 629.6
-          y: 62.39998
-          width: 0
-          height: 0
-        typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-    - rid: 61793776611099229
-      type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 62279c32-bc2d-4772-ae30-05796481fcb4
-        pos:
-          serializedVersion: 2
-          x: 639.2
-          y: 252.79997
-          width: 0
-          height: 0
-        typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-    - rid: 61793776611099239
-      type: {class: Int32, ns: System, asm: mscorlib}
+        portsIndices: 0000000001000000
+        worldFact:
+          name: StringVariable
+          value:
+            rid: 61793776611099359
+          valueType: 3
+    - rid: 61793776611099359
+      type: {class: String, ns: System, asm: mscorlib}
+      data: 
+    - rid: 61793776611099373
+      type: {class: Single, ns: System, asm: mscorlib}
       data: 

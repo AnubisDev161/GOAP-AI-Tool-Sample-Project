@@ -19,7 +19,7 @@ namespace GOAPGraph
 
 
     [Serializable]
-    public class WorldFact : ISerializationCallbackReceiver
+    public struct WorldFact : ISerializationCallbackReceiver
     {
         [ExposedProperty]
         public string name;
@@ -28,7 +28,7 @@ namespace GOAPGraph
         public object value;
 
         [ExposedProperty]
-        public ValueType valueType = ValueType.Bool;
+        public ValueType valueType;
 
         public WorldFact(string name, object value, ValueType valueType)
         {
@@ -72,19 +72,3 @@ namespace GOAPGraph
         String
     }
 }
-
-//switch (valueType)
-//{
-//    case ValueType.Bool:
-//        this.value = false;
-//        break;
-//    case ValueType.Int:
-//        this.value = 0;
-//        break;
-//    case ValueType.Float:
-//        this.value = 0.0f;
-//        break;
-//    case ValueType.String:
-//        this.value = "Default";
-//        break;
-//}

@@ -99,21 +99,6 @@ namespace GOAPGraph.Editor
             var valueTypeProperty = evt.changedProperty.FindPropertyRelative("valueType");
             var valueProperty = evt.changedProperty.FindPropertyRelative("value");
 
-
-
-            var worldFact = graphNode.GetType().GetProperties();
-
-            var nodeInfo = graphNode.GetType().GetCustomAttribute<NodeInfoAttribute>();
-
-            //if (nodeInfo.title == "Blackbaord Key")
-            //{
-            //    var blackboardNode = (BlackbaordKeyNode)graphNode;
-            //    if (blackboardNode.worldFact.valueType == (ValueType)valueTypeProperty.boxedValue)
-            //    {
-            //        return;
-            //    }
-            //}
-
             object newValue = null;
 
             switch ((ValueType)valueTypeProperty.boxedValue)
@@ -135,9 +120,6 @@ namespace GOAPGraph.Editor
             valueProperty.boxedValue = newValue;
             valueProperty.serializedObject.ApplyModifiedProperties();
             valueProperty.serializedObject.Update();
-
-            //evt.changedProperty.serializedObject.ApplyModifiedProperties();
-            //evt.changedProperty.serializedObject.Update();
         }
 
         private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
