@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
-  m_Name: BlackboardTest
+  m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
   nodes: []
   connections: []

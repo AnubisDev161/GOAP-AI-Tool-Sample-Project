@@ -10,33 +10,33 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
-  m_Name: AZB
+  m_Name: New GOAP Graph Asset 1
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 61793750956376257
+  - rid: 61793776250388808
   connections: []
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 61793750956376257
+    - rid: 61793776250388808
       type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 83bb7401-1f5b-44c4-9d36-88736582a101
+        guid: a276a14e-36bc-4436-b9f8-b040d2373836
         pos:
           serializedVersion: 2
-          x: 364.80005
-          y: 145.6
+          x: 375.2
+          y: 192.79999
           width: 0
           height: 0
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
         worldFact:
-          name: Default
+          name: DialogueText
           value:
-            rid: 61793763269804101
-          valueType: 3
-    - rid: 61793763269804101
-      type: {class: Boolean, ns: System, asm: mscorlib}
+            rid: 61793776590913543
+          valueType: 2
+    - rid: 61793776590913543
+      type: {class: Single, ns: System, asm: mscorlib}
       data: 

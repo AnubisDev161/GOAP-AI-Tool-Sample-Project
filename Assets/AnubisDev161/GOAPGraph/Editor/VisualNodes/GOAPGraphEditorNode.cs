@@ -82,15 +82,62 @@ namespace GOAPGraph.Editor
             {
                 if (property.GetCustomAttribute<Attribute>() is Attribute exposedProperty)
                 {
-                    PropertyField propertyField = DrawProperty(property.Name);
-
-
                     if (exposedProperty is ExposedWorldFactPropertyAttribute)
                     {
-                        propertyField.RegisterValueChangeCallback(OnFieldChangedCallback);
+                        DrawWorldFactProperty(property.Name);
+                        continue;
                     }
+
+                    PropertyField propertyField = DrawProperty(property.Name);
                 }
             }
+        }
+
+        public void OnWorldFactPropertyChanged(SerializedPropertyChangeEvent evt)
+        {
+
+            var valueTypeProperty = evt.changedProperty.FindPropertyRelative("valueType");
+            var valueProperty = evt.changedProperty.FindPropertyRelative("value");
+
+
+
+            var worldFact = graphNode.GetType().GetProperties();
+
+            var nodeInfo = graphNode.GetType().GetCustomAttribute<NodeInfoAttribute>();
+
+            //if (nodeInfo.title == "Blackbaord Key")
+            //{
+            //    var blackboardNode = (BlackbaordKeyNode)graphNode;
+            //    if (blackboardNode.worldFact.valueType == (ValueType)valueTypeProperty.boxedValue)
+            //    {
+            //        return;
+            //    }
+            //}
+
+            object newValue = null;
+
+            switch ((ValueType)valueTypeProperty.boxedValue)
+            {
+                case ValueType.Bool:
+                    newValue = true;
+                    break;
+                case ValueType.Int:
+                    newValue = 0;
+                    break;
+                case ValueType.Float:
+                    newValue = 0.0f;
+                    break;
+                case ValueType.String:
+                    newValue = "Default";
+                    break;
+            }
+
+            valueProperty.boxedValue = newValue;
+            valueProperty.serializedObject.ApplyModifiedProperties();
+            valueProperty.serializedObject.Update();
+
+            //evt.changedProperty.serializedObject.ApplyModifiedProperties();
+            //evt.changedProperty.serializedObject.Update();
         }
 
         private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
@@ -152,12 +199,9 @@ namespace GOAPGraph.Editor
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
 
-          //  var valueType = property.FindPropertyRelative("valueType");
-          
-
             return field;
         }
-
+        
         private PropertyField DrawWorldFactProperty(string propertyName)
         {
             if (serializedProperty == null)
@@ -165,19 +209,14 @@ namespace GOAPGraph.Editor
                 FetchSerializedProperty();
             }
 
+            
             SerializedProperty property = serializedProperty.FindPropertyRelative(propertyName);
-
-            // Creates the needed bindings to get a value callback
-
             PropertyField field = new PropertyField(property);
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
 
-           // extensionContainer.TrackPropertyValue(property, OnFieldValueChanged);
-
-           
+           // field.RegisterValueChangeCallback(OnWorldFactPropertyChanged);
             
-          //  extensionContainer.TrackPropertyValue(valueType, OnFieldValueChanged);
             return field;
         }
 

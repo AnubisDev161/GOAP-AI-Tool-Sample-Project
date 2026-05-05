@@ -1,6 +1,4 @@
-
 using System;
-
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -10,73 +8,14 @@ namespace GOAPGraph
     public class BlackbaordKeyNode : GOAPGraphNode
     {
         [ExposedWorldFactProperty]
-        public WorldFact worldFact = new("Default", false, ValueType.Bool);
+        public WorldFact worldFact = new WorldFact("DialogueText", false, ValueType.Bool);
 
         public WorldFact GetData()
         {
             return worldFact;
 
         }
-
-        public override void OnWorldFactPropertyChanged(SerializedPropertyChangeEvent evt)
-        {
-            var valueTypeProperty = evt.changedProperty.FindPropertyRelative("valueType");
-            var valueProperty = evt.changedProperty.FindPropertyRelative("value");
-
-            if (valueTypeProperty == null || (ValueType)valueTypeProperty.boxedValue != worldFact.valueType) return;
-
-            switch (worldFact.valueType)
-            {
-                case ValueType.Bool:
-                    worldFact.value = true;
-                    break;
-                case ValueType.Int:
-                    worldFact.value = 0;
-                    break;
-                case ValueType.Float:
-                    worldFact.value = 0.0f;
-                    break;
-                case ValueType.String:
-                    worldFact.value = "Default";
-                    break;
-            }
-
-
-            valueProperty.serializedObject.ApplyModifiedProperties();
-            valueProperty.serializedObject.Update();
-
-            evt.changedProperty.serializedObject.ApplyModifiedProperties();
-            evt.changedProperty.serializedObject.Update();
-        }
     }
-
-    //    public override void OnFieldValueChangedCallback(SerializedProperty property)
-    //    {
-    //        worldFact.value = 0;
-
-    //        if (property.name == "valueType")
-    //        {
-    //            switch (worldFact.valueType)
-    //            {
-    //                case ValueType.Bool:
-    //                    worldFact.value = false;
-    //                    break;
-    //                case ValueType.Int:
-    //                    worldFact.value = 0;
-    //                    break;
-    //                case ValueType.Float:
-    //                    worldFact.value = 0.0f;
-    //                    break;
-    //                case ValueType.String:
-    //                    worldFact.value = "Default";
-    //                    break;
-    //            }
-    //            base.OnFieldValueChangedCallback(property);
-    //        }
-
-    //    }
-
-
 
 
     [Serializable]
@@ -89,7 +28,7 @@ namespace GOAPGraph
         public object value;
 
         [ExposedProperty]
-        public ValueType valueType;
+        public ValueType valueType = ValueType.Bool;
 
         public WorldFact(string name, object value, ValueType valueType)
         {
@@ -133,9 +72,6 @@ namespace GOAPGraph
         String
     }
 }
-    
-
-
 
 //switch (valueType)
 //{

@@ -436,17 +436,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86065e92bc4a7d4a8d33d13fa65c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphAsset: {fileID: 11400000, guid: 6af3d87d0f3289a4dae3b2fcf8263446, type: 2}
-  WorldFact:
+  graphAsset: {fileID: 11400000, guid: 5b1e0bf4d7855af4881342ad8236384f, type: 2}
+  worldFact:
     name: DialogueText
     value:
-      rid: 846655431868678771
-    valueType: 3
+      rid: 61793773713096704
+    valueType: 0
   navMeshAgent: {fileID: 2025528068}
   references:
     version: 2
     RefIds:
-    - rid: 846655431868678771
+    - rid: 61793773713096704
       type: {class: Boolean, ns: System, asm: mscorlib}
       data: 
 --- !u!65 &2025528071
