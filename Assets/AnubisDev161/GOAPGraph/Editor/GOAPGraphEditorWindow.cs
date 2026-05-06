@@ -1,3 +1,4 @@
+using System;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -45,6 +46,7 @@ namespace GOAPGraph.Editor
         {
             currentGraph = graphAssetToOpen;
             DrawGraph();
+            
         }
 
         private void DrawGraph()
@@ -61,11 +63,19 @@ namespace GOAPGraph.Editor
             return graphViewChange;
         }
 
+        public void SaveAndRedrawGraph()
+        {
+            EditorUtility.SetDirty(currentGraph);
+            AssetDatabase.SaveAssets();
+            Close();
+            Open(currentGraph);
+        }
+
         //[MenuItem("Window/AI/GOAP")]
         private void OnGUI()
         {
             GUILayout.Label("GOAP GRAPH", EditorStyles.boldLabel);
-
+           
             if (currentGraph == null) return;
             if (EditorUtility.IsDirty(currentGraph))
             {

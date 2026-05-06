@@ -51,7 +51,7 @@ namespace GOAPGraph.Editor
 
             DrawNodes();
             DrawConnections();
-
+          
             graphViewChanged += OnGraphViewChanged;
 
             logo.style.fontSize = 32;
@@ -239,6 +239,17 @@ namespace GOAPGraph.Editor
             nodeDictionary.Add(node.id, editorNode);
 
             AddElement(editorNode);
+
+            
+        }
+
+       
+        public void Repaint()
+        {
+            foreach (var test in contentViewContainer.Children())
+            {
+                test.MarkDirtyRepaint();
+            }
         }
 
         private void Bind()

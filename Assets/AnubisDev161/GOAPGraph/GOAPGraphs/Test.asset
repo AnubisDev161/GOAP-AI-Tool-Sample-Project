@@ -10,178 +10,37 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
-  m_Name: Test
+  m_Name: test
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 846655379545260109
-  - rid: 846655379545260117
-  - rid: 846655379545260119
-  - rid: 846655379545260125
-  - rid: 846655384982126651
-  - rid: 846655387203797051
-  - rid: 846655387203797052
-  - rid: 846655387203797053
-  connections:
-  - inputPort:
-      nodeId: de290d47-a32b-471a-abef-2e156e7e2f4e
-      portIndex: 1
-    outputPort:
-      nodeId: 256ecf0a-02bb-43ef-82d8-9fe959d0151e
-      portIndex: 0
-  - inputPort:
-      nodeId: b5584230-8b0e-4b20-bc22-d64bf53e0121
-      portIndex: 1
-    outputPort:
-      nodeId: 6c094313-da35-4cf6-923d-9eed77110a04
-      portIndex: 0
-  - inputPort:
-      nodeId: 256ecf0a-02bb-43ef-82d8-9fe959d0151e
-      portIndex: 1
-    outputPort:
-      nodeId: b5584230-8b0e-4b20-bc22-d64bf53e0121
-      portIndex: 0
-  - inputPort:
-      nodeId: b5584230-8b0e-4b20-bc22-d64bf53e0121
-      portIndex: 2
-    outputPort:
-      nodeId: 3c0ceef9-a2d4-4124-bf6f-8ab91c5b0dbd
-      portIndex: 1
-  - inputPort:
-      nodeId: dcbe767d-b189-4a5e-8ba0-697b4e570487
-      portIndex: 0
-    outputPort:
-      nodeId: b5584230-8b0e-4b20-bc22-d64bf53e0121
-      portIndex: 3
-  - inputPort:
-      nodeId: 256ecf0a-02bb-43ef-82d8-9fe959d0151e
-      portIndex: 2
-    outputPort:
-      nodeId: 5fc8f311-6bc9-453c-b4df-8db261fae870
-      portIndex: 1
+  - rid: 61793796514119949
+  connections: []
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 846655379545260109
-      type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 6c094313-da35-4cf6-923d-9eed77110a04
-        pos:
-          serializedVersion: 2
-          x: -20
-          y: 245.6
-          width: 108
-          height: 76.79999
-        typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-    - rid: 846655379545260117
+    - rid: 61793796514119949
       type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 3c0ceef9-a2d4-4124-bf6f-8ab91c5b0dbd
+        guid: 5ceefcf4-d61f-412a-9d7b-eacb79ede570
         pos:
           serializedVersion: 2
-          x: -58.399998
-          y: 376.8
-          width: 281.6
-          height: 132
-        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: HasFood
-          value: 0
-          valueType: 0
-    - rid: 846655379545260119
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: dcbe767d-b189-4a5e-8ba0-697b4e570487
-        pos:
-          serializedVersion: 2
-          x: 600
-          y: 391.2
-          width: 281.60004
-          height: 132
-        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: HasFood
-          value: 0
-          valueType: 0
-    - rid: 846655379545260125
-      type: {class: MoveTo, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 256ecf0a-02bb-43ef-82d8-9fe959d0151e
-        pos:
-          serializedVersion: 2
-          x: 613.60004
-          y: 171.2
-          width: 299.19995
-          height: 119.2
-        typeName: GOAPGraph.MoveTo, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 000000000100000002000000
-        destination: {x: -78.3, y: 0.65, z: 4.04}
-    - rid: 846655384982126651
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: de290d47-a32b-471a-abef-2e156e7e2f4e
-        pos:
-          serializedVersion: 2
-          x: 977.60004
-          y: 175.2
-          width: 286.40002
-          height: 119.2
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: 
-    - rid: 846655387203797051
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: b5584230-8b0e-4b20-bc22-d64bf53e0121
-        pos:
-          serializedVersion: 2
-          x: 246.4
-          y: 248
-          width: 286.39996
-          height: 119.20001
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: 
-    - rid: 846655387203797052
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 5fc8f311-6bc9-453c-b4df-8db261fae870
-        pos:
-          serializedVersion: 2
-          x: 312
-          y: -20
+          x: 234.4
+          y: 131.2
           width: 281.59998
-          height: 132
+          height: 148.8
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
         worldFact:
           name: HasFood
-          value: 1
-          valueType: 3
-    - rid: 846655387203797053
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: af00fb42-608b-49f1-86f1-650a1b5efd6b
-        pos:
-          serializedVersion: 2
-          x: 978.4
-          y: 373.6
-          width: 281.60004
-          height: 96
-        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: HasFood
-          value: 1
-          valueType: 0
+          value:
+            rid: 61793798176112733
+          intValue: 666
+          floatValue: 0
+          stringValue: ksdfklsndfl
+          boolValue: 0
+          valueType: 1
+    - rid: 61793798176112733
+      type: {class: Int32, ns: System, asm: mscorlib}
+      data: 

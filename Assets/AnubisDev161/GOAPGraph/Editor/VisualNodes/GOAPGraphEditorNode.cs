@@ -93,35 +93,6 @@ namespace GOAPGraph.Editor
             }
         }
 
-        public void OnWorldFactPropertyChanged(SerializedPropertyChangeEvent evt)
-        {
-
-            var valueTypeProperty = evt.changedProperty.FindPropertyRelative("valueType");
-            var valueProperty = evt.changedProperty.FindPropertyRelative("value");
-
-            object newValue = null;
-
-            switch ((ValueType)valueTypeProperty.boxedValue)
-            {
-                case ValueType.Bool:
-                    newValue = true;
-                    break;
-                case ValueType.Int:
-                    newValue = 0;
-                    break;
-                case ValueType.Float:
-                    newValue = 0.0f;
-                    break;
-                case ValueType.String:
-                    newValue = "Default";
-                    break;
-            }
-
-            valueProperty.boxedValue = newValue;
-            valueProperty.serializedObject.ApplyModifiedProperties();
-            valueProperty.serializedObject.Update();
-        }
-
         private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
         {
             graphNode.OnWorldFactPropertyChanged(evt);
@@ -131,7 +102,6 @@ namespace GOAPGraph.Editor
         {
             //RemoveParamInputPort();
 
-            
             RefreshExpandedState();
         }
 
@@ -190,14 +160,11 @@ namespace GOAPGraph.Editor
             {
                 FetchSerializedProperty();
             }
-
             
             SerializedProperty property = serializedProperty.FindPropertyRelative(propertyName);
             PropertyField field = new PropertyField(property);
             field.bindingPath = property.propertyPath;
             extensionContainer.Add(field);
-
-           // field.RegisterValueChangeCallback(OnWorldFactPropertyChanged);
             
             return field;
         }
@@ -263,10 +230,7 @@ namespace GOAPGraph.Editor
         public void OnGraphNodeValueUpdated()
         {
             var x = 23;
-            //Type typeInfo = graphNode.GetType();
-            //NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();
-            //DrawProperties(typeInfo);
-           //this = new GOAPGraphEditorNode(node, goapGraphObject);
+
         }
     }
 }

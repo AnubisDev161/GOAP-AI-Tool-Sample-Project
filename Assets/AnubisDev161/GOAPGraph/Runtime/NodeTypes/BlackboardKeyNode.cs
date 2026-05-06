@@ -1,4 +1,6 @@
 using System;
+using Unity.VisualScripting.YamlDotNet.Core.Tokens;
+using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 
@@ -8,12 +10,19 @@ namespace GOAPGraph
     public class BlackbaordKeyNode : GOAPGraphNode
     {
         [ExposedWorldFactProperty]
-        public WorldFact worldFact = new WorldFact("DialogueText", false, ValueType.Bool);
+        public WorldFact worldFact;
 
         public WorldFact GetData()
         {
             return worldFact;
 
+        }
+
+        public BlackbaordKeyNode()
+        {
+            {
+                worldFact.InitValue();
+            }
         }
     }
 
@@ -27,16 +36,29 @@ namespace GOAPGraph
         [SerializeReference]
         public object value;
 
+        [SerializeField]
+        private int intValue;
+
+        [SerializeField]
+        private float floatValue;
+
+        [SerializeField]
+        private string stringValue;
+
+        [SerializeField]
+        private bool boolValue;
+
         [ExposedProperty]
         public ValueType valueType;
 
-        public WorldFact(string name, object value, ValueType valueType)
+        
+
+        public void InitValue()
         {
-            this.name = name;
-
-            this.value = value;
-
-            this.valueType = valueType;
+            if (intValue != 0) value = intValue;
+            else if (floatValue != 0) value = floatValue;
+            else if (stringValue != "") value = stringValue;
+            else value = boolValue;
         }
 
         public void OnAfterDeserialize()
@@ -44,11 +66,15 @@ namespace GOAPGraph
             Debug.Log(name);
             Debug.Log(value);
             Debug.Log(valueType);
-
         }
 
         public void OnBeforeSerialize()
         {
+            if (value is int) intValue = (int)value;
+            if (value is float) floatValue = (float)value;
+            if (value is string) stringValue = (string)value;
+            if (value is bool) boolValue = (bool)value;
+
 
         }
 
