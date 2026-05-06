@@ -239,8 +239,6 @@ namespace GOAPGraph.Editor
             nodeDictionary.Add(node.id, editorNode);
 
             AddElement(editorNode);
-
-            
         }
 
        

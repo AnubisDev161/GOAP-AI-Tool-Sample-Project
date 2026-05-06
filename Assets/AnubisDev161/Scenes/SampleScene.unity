@@ -436,19 +436,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86065e92bc4a7d4a8d33d13fa65c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphAsset: {fileID: 11400000, guid: 5b1e0bf4d7855af4881342ad8236384f, type: 2}
+  graphAsset: {fileID: 11400000, guid: ededc7ea5a0792b4182a9be1210dcf77, type: 2}
   worldFact:
     name: DialogueText
-    value:
-      rid: 61793773713096704
+    value: 
     valueType: 0
   navMeshAgent: {fileID: 2025528068}
-  references:
-    version: 2
-    RefIds:
-    - rid: 61793773713096704
-      type: {class: Boolean, ns: System, asm: mscorlib}
-      data: 
 --- !u!65 &2025528071
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -532,7 +525,7 @@ Transform:
   m_GameObject: {fileID: 2025528067}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.15, y: 1, z: 0}
+  m_LocalPosition: {x: 0.29, y: 1, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

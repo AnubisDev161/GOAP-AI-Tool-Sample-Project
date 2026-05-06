@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
+  m_Name: New GOAP Graph Asset
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 61793805685489732
+  - rid: 61793805685489733
+  connections: []
+  goapGraphObject: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 61793805685489732
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 9cb30349-05f2-407a-8ace-5ed086c17e9f
+        pos:
+          serializedVersion: 2
+          x: 257.6
+          y: 207.2
+          width: 281.6
+          height: 148.00002
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        worldFact:
+          name: HasFood
+          value: 0f
+          valueType: 2
+    - rid: 61793805685489733
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 55e84e87-a162-4173-8226-178f4f640db3
+        pos:
+          serializedVersion: 2
+          x: 564
+          y: 186.4
+          width: 281.60004
+          height: 95.20001
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        worldFact:
+          name: HASasdjh
+          value: hsdfh
+          valueType: 3
