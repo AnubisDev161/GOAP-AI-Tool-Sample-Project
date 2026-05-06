@@ -14,7 +14,7 @@ namespace GOAPGraph
 
         private GOAPGraphAsset graphInstance;
 
-        [HideInInspector]
+      //  [HideInInspector]
         public WorldFact worldFact; //= new WorldFact("DialogueText", false, ValueType.Bool);
 
         public NavMeshAgent navMeshAgent;

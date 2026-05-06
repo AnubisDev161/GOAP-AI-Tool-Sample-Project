@@ -37,6 +37,13 @@ namespace GOAPGraph
                     debugInfo.success = true;
                     debugInfo.terminationReason = TerminationReason.None;
                 }
+                else
+                {
+                    Debug.Log("Preconditions not  met " + data);
+                    debugInfo.success = false;
+                    base.OnProcess(currentGraph, debugInfo);
+                    return;
+                }
             }
 
             foreach (var inputParam in connectedInputParams)
@@ -52,7 +59,7 @@ namespace GOAPGraph
                 }
             }
 
-           base.OnProcess(currentGraph, debugInfo);
+            base.OnProcess(currentGraph, debugInfo);
         }
 
         private List<BlackbaordKeyNode> GetConnectedOutputParams(GOAPGraphAsset currentGraph)

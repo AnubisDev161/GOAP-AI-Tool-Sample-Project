@@ -18,7 +18,6 @@ namespace GOAPGraph
         public WorldFact GetData()
         {
             return worldFact;
-
         }
     }
 
@@ -38,11 +37,6 @@ namespace GOAPGraph
 
         public void OnAfterDeserialize()
         {
-            if (valueType == ValueType.Float && !value.Contains("f"))
-            {
-                value += "f";
-            }
-
             Debug.Log(name);
             Debug.Log(value);
             Debug.Log(valueType);
@@ -50,7 +44,6 @@ namespace GOAPGraph
 
         public void OnBeforeSerialize()
         {
-
             if (valueType == ValueType.Float && !value.Contains("f"))
             {
                 value += "f";
@@ -67,26 +60,18 @@ namespace GOAPGraph
             return x.valueType == y.valueType || x.name != y.name || x.value != y.value;
         }
 
+        public object GetValue()
+        {
+            if (valueType == ValueType.Bool) return Convert.ToBoolean(value);
+            if (valueType == ValueType.Int) return Convert.ToInt32(value);
+            if (valueType == ValueType.Float) return Convert.ToSingle(value);
+            if (valueType == ValueType.String) return value;
+    
+            return null;
+        }
+
         public static bool IsRequiredValueType(ValueType requiredValueType, string value)
         {
-            //object testValue = value;
-
-
-
-            //bool boolValue;
-            //if (testValue is bool && requiredValueType == ValueType.Bool) return true;
-
-            //float floatValue;
-            //if (testValue is float && requiredValueType == ValueType.Float) return true;
-
-            //int intValue;
-            //if (testValue is int && requiredValueType == ValueType.Int) return true;
-
-
-            //Mathf.Approximately()
-            //if (testValue is string && requiredValueType == ValueType.String) return true;
-
-
             string potentialFloat = "";
             if (value.Length > 0)
             {
@@ -95,7 +80,6 @@ namespace GOAPGraph
                     value = value.Remove(value.Length - 1);
                     return false;
                 }
-
 
                 if (value[value.Length - 1] == 'f' && requiredValueType == ValueType.Float)
                 {
