@@ -50,12 +50,12 @@ namespace GOAPGraph.Editor
             // Flow output is created so that output can be at index 0
             if (info.hasFlowOutput)
             {
-                CreateFlowOutputPort();
+                CreateFlowOutputPort(info.paramPortsHaveSingleCapacity);
             }
 
             if (info.hasFlowInput)
             {
-                CreateFlowInputPort();
+                CreateFlowInputPort(info.paramPortsHaveSingleCapacity);
             }
 
 
@@ -169,9 +169,11 @@ namespace GOAPGraph.Editor
             return field;
         }
 
-        private void CreateFlowInputPort()
+        private void CreateFlowInputPort(bool paramPortsHaveSingleCapacity)
         {
-            Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Single, typeof(GOAPGraphPortTypes.FlowPort));
+            Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
+
+            Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, capacity, typeof(GOAPGraphPortTypes.FlowPort));
             inputPort.portName = "Required World State";
             inputPort.tooltip = "Flow input";
             ports.Add(inputPort);
@@ -180,9 +182,11 @@ namespace GOAPGraph.Editor
             SavePorts();
         }
 
-        private void CreateFlowOutputPort()
+        private void CreateFlowOutputPort(bool paramPortsHaveSingleCapacity)
         {
-            outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(GOAPGraphPortTypes.FlowPort));
+            Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
+
+            outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, capacity, typeof(GOAPGraphPortTypes.FlowPort));
             outputPort.portName = "World State";
             outputPort.tooltip = "Flow output";
             ports.Add(outputPort);

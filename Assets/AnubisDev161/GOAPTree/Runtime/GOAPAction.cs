@@ -12,7 +12,7 @@ namespace GOAP
         public Dictionary<string, bool> preconditions { get; private set; }
         public Dictionary<string, bool> effects { get; private set; }
 
-        public Action<bool> executed;
+        public Action<bool, GOAPAction> executed;
 
         public GOAPAction(Dictionary<string, bool> preconditions = null, Dictionary<string, bool> effects = null, string name = "Base Action", float cost = 1)
         {
@@ -49,12 +49,14 @@ namespace GOAP
             if (!CheckIfPrconditionsMet(blackboard.worldFacts))
             {
                 Debug.LogError("Precondtions not met " + $"could not run action {name}");
+                executed?.Invoke(false, this);
                 return false;
             }
 
             Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
             RemovePreconditionsAndAddEffectsToState(blackboard);
 
+            executed?.Invoke(true, this);
             return true;
         }
 
@@ -94,6 +96,12 @@ namespace GOAP
         public float GetCost()
         {
             return cost;
+        }
+
+        public override string ToString()
+        {
+            
+            return "[Name: " + name + " ]";
         }
     }
 }

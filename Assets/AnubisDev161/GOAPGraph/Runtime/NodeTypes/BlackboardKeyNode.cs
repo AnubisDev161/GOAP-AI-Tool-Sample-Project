@@ -1,9 +1,6 @@
-using Mono.Cecil;
 using System;
 using System.Linq;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -37,9 +34,9 @@ namespace GOAPGraph
 
         public void OnAfterDeserialize()
         {
-            Debug.Log(name);
-            Debug.Log(value);
-            Debug.Log(valueType);
+            //Debug.Log(name);
+            //Debug.Log(value);
+            //Debug.Log(valueType);
         }
 
         public void OnBeforeSerialize()

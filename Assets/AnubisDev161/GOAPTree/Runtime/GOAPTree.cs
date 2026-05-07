@@ -15,9 +15,9 @@ namespace GOAP.Tree
             var startNode = CreateStartNode(goal);
             var bestPlan = BuildGraph(startNode, blackboard);
 
-            if (bestPlan.Count == 0)
+            if (bestPlan == null)
             {
-                Console.WriteLine("No valid PLan found!");
+                Debug.LogError("Plan is null!");
             }
 
             return bestPlan;
@@ -89,7 +89,7 @@ namespace GOAP.Tree
                 }
             }
 
-            Debug.Log("No valid plan found!");
+            Debug.LogError("No valid plan found!");
             return null;
         }
 

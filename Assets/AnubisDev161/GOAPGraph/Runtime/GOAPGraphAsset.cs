@@ -59,7 +59,7 @@ namespace GOAPGraph
 
         public GOAPGraphNode GetStartNode()
         {
-            StartNode[] startNodes = nodes.OfType<StartNode>().ToArray();
+            StartWorldStateNode[] startNodes = nodes.OfType<StartWorldStateNode>().ToArray();
             if (startNodes.Length == 0)
             {
                 Debug.LogError("There is no start node in this graph");
