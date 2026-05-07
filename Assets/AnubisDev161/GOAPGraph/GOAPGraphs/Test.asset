@@ -13,106 +13,115 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 61793819329822720
-  - rid: 61793819329822721
-  - rid: 61793819329822722
-  - rid: 61793819329822723
-  - rid: 61793819329822724
+  - rid: 61793819329822790
+  - rid: 61793819329822791
+  - rid: 61793819329822792
+  - rid: 61793819329822795
+  - rid: 61793819329822796
   connections:
   - inputPort:
-      nodeId: 801723b0-301a-44c7-8a73-5aee699ae8b1
+      nodeId: 10c3b133-13b8-4107-b547-4c52b9ee6d0d
+      portIndex: 1
+    outputPort:
+      nodeId: 037b30fe-4eaa-4656-803d-b5a4bd7e1556
+      portIndex: 0
+  - inputPort:
+      nodeId: 9227ae46-8bf6-416c-90aa-170661782d67
+      portIndex: 0
+    outputPort:
+      nodeId: 10c3b133-13b8-4107-b547-4c52b9ee6d0d
+      portIndex: 3
+  - inputPort:
+      nodeId: 48709a7c-a1f8-4cf9-8162-1c1176622804
       portIndex: 2
     outputPort:
-      nodeId: c4c798ba-f4e9-4ae5-9118-5b51a518d934
+      nodeId: 9227ae46-8bf6-416c-90aa-170661782d67
       portIndex: 1
   - inputPort:
-      nodeId: 9c35de71-5061-4dbf-a2bd-a99d9dc84312
-      portIndex: 2
-    outputPort:
-      nodeId: 86cd4ba7-a9d8-4681-bfd7-c3f0983037c0
+      nodeId: 48709a7c-a1f8-4cf9-8162-1c1176622804
       portIndex: 1
+    outputPort:
+      nodeId: 10c3b133-13b8-4107-b547-4c52b9ee6d0d
+      portIndex: 0
   - inputPort:
-      nodeId: 801723b0-301a-44c7-8a73-5aee699ae8b1
-      portIndex: 1
+      nodeId: 9a3c43b5-bf1b-4dc5-94ab-07a7da01d1b2
+      portIndex: 0
     outputPort:
-      nodeId: a07c4b80-e41a-4b9f-9cf5-7bb5d6fc2bfd
+      nodeId: 48709a7c-a1f8-4cf9-8162-1c1176622804
       portIndex: 0
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 61793819329822720
+    - rid: 61793819329822790
       type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: c4c798ba-f4e9-4ae5-9118-5b51a518d934
+        guid: 9227ae46-8bf6-416c-90aa-170661782d67
         pos:
           serializedVersion: 2
-          x: 276.80002
-          y: 244
-          width: 281.6
-          height: 148.79999
+          x: 728.8
+          y: 208.8
+          width: 281.60004
+          height: 95.2
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
         worldFact:
           name: HasFood
-          value: True
+          value: False
           valueType: 0
-    - rid: 61793819329822721
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 801723b0-301a-44c7-8a73-5aee699ae8b1
-        pos:
-          serializedVersion: 2
-          x: 624.8
-          y: 115.2
-          width: 286.40002
-          height: 119.2
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: 
-    - rid: 61793819329822722
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 86cd4ba7-a9d8-4681-bfd7-c3f0983037c0
-        pos:
-          serializedVersion: 2
-          x: 863.2
-          y: -83.2
-          width: 281.59998
-          height: 148
-        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: Health
-          value: 50f
-          valueType: 2
-    - rid: 61793819329822723
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 9c35de71-5061-4dbf-a2bd-a99d9dc84312
-        pos:
-          serializedVersion: 2
-          x: 1036.7999
-          y: 112.8
-          width: 286.40002
-          height: 119.2
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: 
-    - rid: 61793819329822724
+    - rid: 61793819329822791
       type: {class: StartNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: a07c4b80-e41a-4b9f-9cf5-7bb5d6fc2bfd
+        guid: 037b30fe-4eaa-4656-803d-b5a4bd7e1556
         pos:
           serializedVersion: 2
-          x: 372
-          y: 121.600006
-          width: 108
-          height: 76.79999
+          x: 255.2
+          y: 82.4
+          width: 108.79999
+          height: 76.799995
         typeName: GOAPGraph.StartNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 00000000
+    - rid: 61793819329822792
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 10c3b133-13b8-4107-b547-4c52b9ee6d0d
+        pos:
+          serializedVersion: 2
+          x: 413.6
+          y: 80.8
+          width: 286.4
+          height: 119.2
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000010000000200000003000000
+        name: GetFood
+    - rid: 61793819329822795
+      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 9a3c43b5-bf1b-4dc5-94ab-07a7da01d1b2
+        pos:
+          serializedVersion: 2
+          x: 1438.3999
+          y: 72.8
+          width: 150.40002
+          height: 119.2
+        typeName: GOAPGraph.GoalWorldStateNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: HasFood
+    - rid: 61793819329822796
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 48709a7c-a1f8-4cf9-8162-1c1176622804
+        pos:
+          serializedVersion: 2
+          x: 1078.3999
+          y: 86.4
+          width: 286.40002
+          height: 119.200005
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000010000000200000003000000
+        name: DoSomething

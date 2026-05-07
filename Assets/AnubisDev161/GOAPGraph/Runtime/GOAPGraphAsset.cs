@@ -19,11 +19,6 @@ namespace GOAPGraph
         private Dictionary<string, GOAPGraphNode> nodeDictionary;
 
         public GOAPGraphObject goapGraphObject;
-        public GOAPGraphAsset()
-        {
-            nodes = new List<GOAPGraphNode>();
-            connections = new List<GOAPGraphConnection>();
-        }
 
         public void Initialize(GOAPGraphObject graphObject)
         {
@@ -35,7 +30,33 @@ namespace GOAPGraph
                 nodeDictionary.Add(node.id, node);
             }
         }
-            
+
+        public List<ActionNode> GetActionNodes()
+        {
+            List<ActionNode> actionNodes = new List<ActionNode>();
+            foreach (var node in nodes)
+            {
+                if (node is ActionNode)
+                {
+                    actionNodes.Add((ActionNode)node);
+                }
+            }
+
+            return actionNodes;
+        }
+
+        public GoalWorldStateNode[] GetGoalNodes()
+        {
+            GoalWorldStateNode[] goalNodes = nodes.OfType<GoalWorldStateNode>().ToArray();
+            if (goalNodes.Length == 0)
+            {
+                Debug.LogError("There is no goal node in this graph");
+                return null;
+            }
+
+            return goalNodes;
+        }
+
         public GOAPGraphNode GetStartNode()
         {
             StartNode[] startNodes = nodes.OfType<StartNode>().ToArray();

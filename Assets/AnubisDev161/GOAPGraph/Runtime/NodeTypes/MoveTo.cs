@@ -13,9 +13,9 @@ namespace GOAPGraph
         public Vector3 destination;
         public override void OnProcess(GOAPGraphAsset currentGraph, DebugInfo debugInfo)
         {
-            currentGraph.goapGraphObject.navMeshAgent.destination = destination;
+            //currentGraph.goapGraphObject.navMeshAgent.destination = destination;
 
-            currentGraph.goapGraphObject.destinationReached += OnDestinationReached;
+            //currentGraph.goapGraphObject.destinationReached += OnDestinationReached;
 
         }
 

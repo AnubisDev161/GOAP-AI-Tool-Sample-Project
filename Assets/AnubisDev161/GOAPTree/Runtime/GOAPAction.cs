@@ -1,3 +1,4 @@
+using GOAPGraph;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,6 +11,9 @@ namespace GOAP
         private float cost;
         public Dictionary<string, bool> preconditions {  get; private set; }
         public Dictionary<string, bool> effects { get; private set; }
+
+        public Action<bool> executed;
+
         public GOAPAction(Dictionary<string, bool> preconditions = null,  Dictionary<string, bool> effects = null,  string name = "Base Action", float cost = 1)
         {
             this.preconditions = preconditions;

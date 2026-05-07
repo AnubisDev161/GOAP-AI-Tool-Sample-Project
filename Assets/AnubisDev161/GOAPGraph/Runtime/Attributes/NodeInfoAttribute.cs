@@ -13,6 +13,7 @@ namespace GOAPGraph
         public bool hasInputParams { get; private set; }
         public bool hasOutputParams { get; private set; }
 
+
         public bool paramPortsHaveSingleCapacity { get; private set; }
 
         public NodeInfoAttribute(string title, string menuItem = "", bool hasFlowInput = true, bool hasFlowOutput = true, bool hasInputParams = false, bool hasOutputParams = false, bool paramPortsHaveSingleCapacity = true)

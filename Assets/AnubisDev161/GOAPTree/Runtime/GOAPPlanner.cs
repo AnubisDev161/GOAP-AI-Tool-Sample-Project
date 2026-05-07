@@ -8,208 +8,208 @@ namespace GOAP
     {
         private GOAPTree tree;
 
-        private List<GOAPAction> availableActions;
+  
         public GOAPPlanner()
         {
             tree = new GOAPTree();
             // ---------------------------
             // ACTION NAMES
-            // ---------------------------
+            //// ---------------------------
         
-            string collectBurningTorch = "collectBurningTorch";
-            string prayForALightning = "prayForALightning";
-            string useMagic = "useMagic";
-            string wanderInRandomDirection = "wanderInRandomDirection";
-            string wanderEvenFurtherAway = "wanderEvenFurtherAway";
+            //string collectBurningTorch = "collectBurningTorch";
+            //string prayForALightning = "prayForALightning";
+            //string useMagic = "useMagic";
+            //string wanderInRandomDirection = "wanderInRandomDirection";
+            //string wanderEvenFurtherAway = "wanderEvenFurtherAway";
 
-            // Caveman example
+            //// Caveman example
 
-            // Actions 
-            string goHunting = "goHunting";
-            string findStone = "findStone";
-            string makeTool = "makeTool";
-            string collectALotWood = "collectALotWood";
-            string gatherWood = "gatherWood";
-            string gatherALotOfWood = "gatherALotOfWood";
-            string makeFire = "makeFire";
-            string buildHouse = "buildHouse";
-            string findCave = "findCave";
-
-
-            // States
-            string hasShelter = "hasShelter";
-            string hasWood = "hasWood";
-            string hasALotOfWood = "hasALotOfWood";
-            string hasFire = "hasFire";
-            string hasFood = "hasFood";
-            string hasTool = "hasTool";
-            string hasStone = "hasStone";
-            string hasSpear = "hasSpear";
-
-            // ---------------------------
-            // STATE NAMES
-            // ---------------------------
+            //// Actions 
+            //string goHunting = "goHunting";
+            //string findStone = "findStone";
+            //string makeTool = "makeTool";
+            //string collectALotWood = "collectALotWood";
+            //string gatherWood = "gatherWood";
+            //string gatherALotOfWood = "gatherALotOfWood";
+            //string makeFire = "makeFire";
+            //string buildHouse = "buildHouse";
+            //string findCave = "findCave";
 
 
-            string isPagen = "isPagen";
-            string isNearTown = "isNearTown";
-            string isStupid = "isStupid";
-            string isRetarded = "isRetarded";
+            //// States
+            //string hasShelter = "hasShelter";
+            //string hasWood = "hasWood";
+            //string hasALotOfWood = "hasALotOfWood";
+            //string hasFire = "hasFire";
+            //string hasFood = "hasFood";
+            //string hasTool = "hasTool";
+            //string hasStone = "hasStone";
+            //string hasSpear = "hasSpear";
+
+            //// ---------------------------
+            //// STATE NAMES
+            //// ---------------------------
 
 
-            // ---------------------------
-            // AVAILABLE ACTIONS
-            // ---------------------------
-            availableActions = new List<GOAPAction>();
+            //string isPagen = "isPagen";
+            //string isNearTown = "isNearTown";
+            //string isStupid = "isStupid";
+            //string isRetarded = "isRetarded";
+
+
+            //// ---------------------------
+            //// AVAILABLE ACTIONS
+            //// ---------------------------
+            //availableActions = new List<GOAPAction>();
 
           
 
-            // ---------------------------
-            // 2. collectBurningTorch
-            // ---------------------------
-            Dictionary<string, bool> collectBurningTorchePre = new Dictionary<string, bool>();
-            collectBurningTorchePre.Add(isNearTown, true);
+            //// ---------------------------
+            //// 2. collectBurningTorch
+            //// ---------------------------
+            //Dictionary<string, bool> collectBurningTorchePre = new Dictionary<string, bool>();
+            //collectBurningTorchePre.Add(isNearTown, true);
 
-            Dictionary<string, bool> collectBurningTorchEff = new Dictionary<string, bool>();
-            collectBurningTorchEff.Add(hasFire, true);
+            //Dictionary<string, bool> collectBurningTorchEff = new Dictionary<string, bool>();
+            //collectBurningTorchEff.Add(hasFire, true);
 
-            availableActions.Add(new GOAPAction(collectBurningTorchePre, collectBurningTorchEff, collectBurningTorch, 1));
+            //availableActions.Add(new GOAPAction(collectBurningTorchePre, collectBurningTorchEff, collectBurningTorch, 1));
 
-            // ---------------------------
-            // 2. prayForALightning
-            // ---------------------------
-            Dictionary<string, bool> prayForALightningPre = new Dictionary<string, bool>();
-            prayForALightningPre.Add(isPagen, true);
+            //// ---------------------------
+            //// 2. prayForALightning
+            //// ---------------------------
+            //Dictionary<string, bool> prayForALightningPre = new Dictionary<string, bool>();
+            //prayForALightningPre.Add(isPagen, true);
 
-            Dictionary<string, bool> prayForALightningEff = new Dictionary<string, bool>();
-            prayForALightningEff.Add(hasFire, true);
+            //Dictionary<string, bool> prayForALightningEff = new Dictionary<string, bool>();
+            //prayForALightningEff.Add(hasFire, true);
 
-            availableActions.Add(new GOAPAction(prayForALightningPre, prayForALightningEff, prayForALightning, 1));
+            //availableActions.Add(new GOAPAction(prayForALightningPre, prayForALightningEff, prayForALightning, 1));
 
-            // ---------------------------
-            // 2. useMagic
-            // ---------------------------
-            Dictionary<string, bool> useMagicPre = new Dictionary<string, bool>();
+            //// ---------------------------
+            //// 2. useMagic
+            //// ---------------------------
+            //Dictionary<string, bool> useMagicPre = new Dictionary<string, bool>();
 
-            Dictionary<string, bool> useMagicEff = new Dictionary<string, bool>();
-            useMagicEff.Add(hasFire, true);
+            //Dictionary<string, bool> useMagicEff = new Dictionary<string, bool>();
+            //useMagicEff.Add(hasFire, true);
 
-            availableActions.Add(new GOAPAction(useMagicPre, useMagicEff, useMagic, 3));
+            //availableActions.Add(new GOAPAction(useMagicPre, useMagicEff, useMagic, 3));
 
-            // ---------------------------
-            // 2. wanderInRandomDirection
-            // ---------------------------
-            Dictionary<string, bool> wanderInRandomDirectionPre = new Dictionary<string, bool>();
-            wanderInRandomDirectionPre.Add(hasWood, true);
+            //// ---------------------------
+            //// 2. wanderInRandomDirection
+            //// ---------------------------
+            //Dictionary<string, bool> wanderInRandomDirectionPre = new Dictionary<string, bool>();
+            //wanderInRandomDirectionPre.Add(hasWood, true);
             
-            Dictionary<string, bool> wanderInRandomDirectionEff = new Dictionary<string, bool>();
-            wanderInRandomDirectionEff.Add(isStupid, true);
+            //Dictionary<string, bool> wanderInRandomDirectionEff = new Dictionary<string, bool>();
+            //wanderInRandomDirectionEff.Add(isStupid, true);
 
-            availableActions.Add(new GOAPAction(wanderInRandomDirectionPre, wanderInRandomDirectionEff, wanderInRandomDirection, 1));
+            //availableActions.Add(new GOAPAction(wanderInRandomDirectionPre, wanderInRandomDirectionEff, wanderInRandomDirection, 1));
 
-            // ---------------------------
-            // 2. wanderEvenFurtherAway
-            // ---------------------------
-            Dictionary<string, bool> wanderEvenFurtherAwayPre = new Dictionary<string, bool>();
-            wanderEvenFurtherAwayPre.Add(isStupid, true);
+            //// ---------------------------
+            //// 2. wanderEvenFurtherAway
+            //// ---------------------------
+            //Dictionary<string, bool> wanderEvenFurtherAwayPre = new Dictionary<string, bool>();
+            //wanderEvenFurtherAwayPre.Add(isStupid, true);
 
-            Dictionary<string, bool> wanderEvenFurtherAwayEff = new Dictionary<string, bool>();
-            wanderEvenFurtherAwayEff.Add(isRetarded, true);
+            //Dictionary<string, bool> wanderEvenFurtherAwayEff = new Dictionary<string, bool>();
+            //wanderEvenFurtherAwayEff.Add(isRetarded, true);
 
-            availableActions.Add(new GOAPAction(wanderEvenFurtherAwayPre, wanderEvenFurtherAwayEff, wanderEvenFurtherAway, 1));
-
-
-            // CAVEMAN EXAMPLE
-
-            // ---------------------------
-            // 1.Gather wood
-            // ---------------------------
-            Dictionary<string, bool> gatherWoodPre = new Dictionary<string, bool>();
-
-            Dictionary<string, bool> gatherWoodEff = new Dictionary<string, bool>();
-            gatherWoodEff.Add(hasWood, true);
-
-            availableActions.Add(new GOAPAction(gatherWoodPre, gatherWoodEff, gatherWood, 1));
-
-            // ---------------------------
-            // 2.Make fire
-            // ---------------------------
-            Dictionary<string, bool> makeFirePre = new Dictionary<string, bool>();
-            makeFirePre.Add(hasWood, true);
-
-            Dictionary<string, bool> makeFireEff = new Dictionary<string, bool>();
-            makeFireEff.Add(hasFire, true);
-
-            availableActions.Add(new GOAPAction(makeFirePre, makeFireEff, makeFire, 1));
-
-            // ---------------------------
-            // 2.Go Hunting
-            // ---------------------------
-            Dictionary<string, bool> goHuntingPre = new Dictionary<string, bool>();
-            goHuntingPre.Add(hasSpear, true);
-
-            Dictionary<string, bool> goHuntingeEff = new Dictionary<string, bool>();
-            goHuntingeEff.Add(hasFood, true);
-
-            availableActions.Add(new GOAPAction(goHuntingPre, goHuntingeEff, goHunting, 1));
-
-            // ---------------------------
-            // 3.findCave
-            // ---------------------------
-            Dictionary<string, bool> findCavePre = new Dictionary<string, bool>();
-            findCavePre.Add(hasFire, true);
-
-            Dictionary<string, bool> findCaveEff = new Dictionary<string, bool>();
-            findCaveEff.Add(hasShelter, true);
-
-            availableActions.Add(new GOAPAction(findCavePre, findCaveEff, findCave, 1));
+            //availableActions.Add(new GOAPAction(wanderEvenFurtherAwayPre, wanderEvenFurtherAwayEff, wanderEvenFurtherAway, 1));
 
 
-            // ---------------------------
-            // 3.build house
-            // ---------------------------
-            Dictionary<string, bool> buildHousePre = new Dictionary<string, bool>();
-            buildHousePre.Add(hasFire, true);
-            buildHousePre.Add(hasALotOfWood, true);
+            //// CAVEMAN EXAMPLE
 
-            Dictionary<string, bool> buildHouseEff = new Dictionary<string, bool>();
-            buildHouseEff.Add(hasShelter, true);
+            //// ---------------------------
+            //// 1.Gather wood
+            //// ---------------------------
+            //Dictionary<string, bool> gatherWoodPre = new Dictionary<string, bool>();
 
-            availableActions.Add(new GOAPAction(buildHousePre, buildHouseEff, buildHouse, 1));
+            //Dictionary<string, bool> gatherWoodEff = new Dictionary<string, bool>();
+            //gatherWoodEff.Add(hasWood, true);
 
-            // ---------------------------
-            // 1.Gather a lot of wood
-            // ---------------------------
-            Dictionary<string, bool> gatherALotOfWoodPre = new Dictionary<string, bool>();
-            gatherALotOfWoodPre.Add(hasTool, true);
+            //availableActions.Add(new GOAPAction(gatherWoodPre, gatherWoodEff, gatherWood, 1));
 
-            Dictionary<string, bool> gatherALotOfWoodEff = new Dictionary<string, bool>();
-            gatherALotOfWoodEff.Add(hasALotOfWood, true);
+            //// ---------------------------
+            //// 2.Make fire
+            //// ---------------------------
+            //Dictionary<string, bool> makeFirePre = new Dictionary<string, bool>();
+            //makeFirePre.Add(hasWood, true);
 
-            availableActions.Add(new GOAPAction(gatherALotOfWoodPre, gatherALotOfWoodEff, gatherALotOfWood, 1));
+            //Dictionary<string, bool> makeFireEff = new Dictionary<string, bool>();
+            //makeFireEff.Add(hasFire, true);
 
-            // ---------------------------
-            // 1.makeTool
-            // ---------------------------
-            Dictionary<string, bool> makeToolPre = new Dictionary<string, bool>();
-            makeToolPre.Add(hasStone, true);
+            //availableActions.Add(new GOAPAction(makeFirePre, makeFireEff, makeFire, 1));
 
-            Dictionary<string, bool> makeToolEff = new Dictionary<string, bool>();
-            makeToolEff.Add(hasTool, true);
+            //// ---------------------------
+            //// 2.Go Hunting
+            //// ---------------------------
+            //Dictionary<string, bool> goHuntingPre = new Dictionary<string, bool>();
+            //goHuntingPre.Add(hasSpear, true);
 
-            availableActions.Add(new GOAPAction(makeToolPre, makeToolEff, makeTool, 1));
+            //Dictionary<string, bool> goHuntingeEff = new Dictionary<string, bool>();
+            //goHuntingeEff.Add(hasFood, true);
+
+            //availableActions.Add(new GOAPAction(goHuntingPre, goHuntingeEff, goHunting, 1));
+
+            //// ---------------------------
+            //// 3.findCave
+            //// ---------------------------
+            //Dictionary<string, bool> findCavePre = new Dictionary<string, bool>();
+            //findCavePre.Add(hasFire, true);
+
+            //Dictionary<string, bool> findCaveEff = new Dictionary<string, bool>();
+            //findCaveEff.Add(hasShelter, true);
+
+            //availableActions.Add(new GOAPAction(findCavePre, findCaveEff, findCave, 1));
 
 
-            // ---------------------------
-            // 1.makeTool
-            // ---------------------------
-            Dictionary<string, bool> hasStonePre = new Dictionary<string, bool>();
-            hasStonePre.Add(hasStone, true);
+            //// ---------------------------
+            //// 3.build house
+            //// ---------------------------
+            //Dictionary<string, bool> buildHousePre = new Dictionary<string, bool>();
+            //buildHousePre.Add(hasFire, true);
+            //buildHousePre.Add(hasALotOfWood, true);
 
-            Dictionary<string, bool> hasStoneEff = new Dictionary<string, bool>();
-            hasStoneEff.Add(hasStone, true);
+            //Dictionary<string, bool> buildHouseEff = new Dictionary<string, bool>();
+            //buildHouseEff.Add(hasShelter, true);
 
-            availableActions.Add(new GOAPAction(hasStonePre, hasStoneEff, findStone, 1));
+            //availableActions.Add(new GOAPAction(buildHousePre, buildHouseEff, buildHouse, 1));
+
+            //// ---------------------------
+            //// 1.Gather a lot of wood
+            //// ---------------------------
+            //Dictionary<string, bool> gatherALotOfWoodPre = new Dictionary<string, bool>();
+            //gatherALotOfWoodPre.Add(hasTool, true);
+
+            //Dictionary<string, bool> gatherALotOfWoodEff = new Dictionary<string, bool>();
+            //gatherALotOfWoodEff.Add(hasALotOfWood, true);
+
+            //availableActions.Add(new GOAPAction(gatherALotOfWoodPre, gatherALotOfWoodEff, gatherALotOfWood, 1));
+
+            //// ---------------------------
+            //// 1.makeTool
+            //// ---------------------------
+            //Dictionary<string, bool> makeToolPre = new Dictionary<string, bool>();
+            //makeToolPre.Add(hasStone, true);
+
+            //Dictionary<string, bool> makeToolEff = new Dictionary<string, bool>();
+            //makeToolEff.Add(hasTool, true);
+
+            //availableActions.Add(new GOAPAction(makeToolPre, makeToolEff, makeTool, 1));
+
+
+            //// ---------------------------
+            //// 1.makeTool
+            //// ---------------------------
+            //Dictionary<string, bool> hasStonePre = new Dictionary<string, bool>();
+            //hasStonePre.Add(hasStone, true);
+
+            //Dictionary<string, bool> hasStoneEff = new Dictionary<string, bool>();
+            //hasStoneEff.Add(hasStone, true);
+
+            //availableActions.Add(new GOAPAction(hasStonePre, hasStoneEff, findStone, 1));
 
             //  string hasWood = "hasWood";
             //  string hasFire = "hasFire";
@@ -388,7 +388,7 @@ namespace GOAP
 
         }
 
-        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal)
+        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal, List<GOAPAction> availableActions)
         {
             return tree.GeneratePlan(blackboard, goal, availableActions);
         }

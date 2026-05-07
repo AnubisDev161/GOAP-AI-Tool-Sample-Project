@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace GOAP
 {
-    public class WorldState : IComparer<WorldState>
+    public class WorldState
     {
         public Dictionary<string, bool> worldFacts { get; private set; }
 
