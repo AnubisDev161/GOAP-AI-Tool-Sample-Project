@@ -60,6 +60,7 @@ namespace GOAP
             // retrieve the data from the GOAP graph nodes to create actual actions
             foreach (var actionNode in actionNodes)
             {
+                if (actionNode is GoalWorldStateNode ) continue;
                 var effects = GetEffectsFromBlackboardNodes(actionNode);
                 var preconditions = GetPrecondiotionsFromBlackboardNodes(actionNode);
 

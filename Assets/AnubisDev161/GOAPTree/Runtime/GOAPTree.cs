@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-
+using UnityEngine;
 
 namespace GOAP.Tree
 {
@@ -84,12 +84,12 @@ namespace GOAP.Tree
                         var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
                         openQueue.Push(nodeToAdd);
                         
-                        MessageBus.PrintToUnityLog(mutatedWorldState.ToString());
+                        Debug.Log(mutatedWorldState.ToString());
                     }
                 }
             }
 
-            MessageBus.print("No valid plan found!");
+            Debug.Log("No valid plan found!");
             return null;
         }
 

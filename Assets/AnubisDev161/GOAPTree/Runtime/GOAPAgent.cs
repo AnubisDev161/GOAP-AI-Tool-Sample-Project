@@ -1,4 +1,5 @@
 using GOAPGraph;
+using System;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -19,6 +20,11 @@ namespace GOAP
     
             goapBrain = new GOAPBrain(this, graphInstance);
             currentPlan =  goapBrain.CreatePLan();
+
+            if (VerifiyCurrentPlan())
+            {
+                ExecuteCurrentPlan();
+            }
         }
 
 
@@ -47,23 +53,49 @@ namespace GOAP
         //    currentPlan = goapBrain.CreatePLan(goal);
         //    ExecutePlan(currentPlan, goapBrain.blackboard);
         //}
-        //private void ExecutePlan(Queue<GOAPAction> plan, WorldState blackboard)
-        //{
-        //    var planSize = plan.Count;
-        //    float totalCost = 0;
+        private bool VerifiyCurrentPlan()
+        {
+            var planSize = currentPlan.Count;
+            float totalCost = 0;
 
-        //    MessageBus.PrintToUnityLog($"Started executing plan with {planSize} actions | goal {goapBrain.goalSelector.currentGoal.name}");
+            Debug.Log($"Started executing plan with {planSize} actions | goal {goapBrain.goalSelector.currentGoal.name}");
 
-        //    foreach (var action in plan)
-        //    {
-        //        totalCost += action.GetCost();
-        //    }
+            foreach (var action in currentPlan)
+            {
+                totalCost += action.GetCost();
+            }
 
-        //    if (plan.Count <= 0)
-        //    {
-        //        MessageBus.PrintErrorToUnityLog("Plan not valid, plan contains no actions!");
-        //        return;
-        //    }
+            if (currentPlan.Count <= 0)
+            {
+                Debug.LogError("Plan not valid, plan contains no actions!");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void ExecuteCurrentPlan()
+        {
+            if (currentPlan.Count > 0)
+            {
+                var action = currentPlan.Dequeue();
+
+                action.executed += OnActionExecuted;
+                action.Execute(goapBrain.currentWorldState);
+            }
+
+            Debug.Log("Plan executed");
+        }
+
+        private void OnActionExecuted(bool success)
+        {
+            if (success)
+            {
+                ExecuteCurrentPlan();
+            }
+
+            Debug.LogError("Action executed unsuccessfully, terminate plan");
+        }
 
 
 

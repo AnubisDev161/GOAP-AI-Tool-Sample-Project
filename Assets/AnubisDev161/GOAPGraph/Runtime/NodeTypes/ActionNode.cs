@@ -67,7 +67,7 @@ namespace GOAPGraph
             List<BlackbaordKeyNode> nodesConnectedToInput = new List<BlackbaordKeyNode>();
             foreach (var index in portsIndices)
             {
-                if (index < 2) continue;
+               // if (index < 2 || this is GoalWorldStateNode && ) continue;
                 // Check if connection to a blackboard node exists
                 var outputNode = currentGraph.GetOutputNode(id, index);
                 if (outputNode != null && outputNode is BlackbaordKeyNode)
@@ -84,7 +84,7 @@ namespace GOAPGraph
             List<BlackbaordKeyNode> nodesConnectedToOutput = new List<BlackbaordKeyNode>();
             foreach (var index in portsIndices)
             {
-                if (index < 2) continue;
+               // if (index < 2) continue;
                 // Check if connection to a blackboard node exists
                 var inputtNode = currentGraph.GetInputNode(id, index);
                 if (inputtNode != null && inputtNode is BlackbaordKeyNode)

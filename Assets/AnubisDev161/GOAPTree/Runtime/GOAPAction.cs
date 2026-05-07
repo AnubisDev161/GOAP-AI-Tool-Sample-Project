@@ -9,12 +9,12 @@ namespace GOAP
     {
         public string name { get; private set; } = ("Base Action");
         private float cost;
-        public Dictionary<string, bool> preconditions {  get; private set; }
+        public Dictionary<string, bool> preconditions { get; private set; }
         public Dictionary<string, bool> effects { get; private set; }
 
         public Action<bool> executed;
 
-        public GOAPAction(Dictionary<string, bool> preconditions = null,  Dictionary<string, bool> effects = null,  string name = "Base Action", float cost = 1)
+        public GOAPAction(Dictionary<string, bool> preconditions = null, Dictionary<string, bool> effects = null, string name = "Base Action", float cost = 1)
         {
             this.preconditions = preconditions;
             this.name = name;
@@ -25,12 +25,12 @@ namespace GOAP
         {
             foreach (var preCon in preconditions)
             {
-                MessageBus.PrintToUnityLog($"Action {name} is evaluating preconditions " + "| Precondition: Name " + preCon.Key.ToString() + " - Value " + preCon.Value + " | ");
+                Debug.Log($"Action {name} is evaluating preconditions " + "| Precondition: Name " + preCon.Key.ToString() + " - Value " + preCon.Value + " | ");
             }
         }
         public bool CheckIfPrconditionsMet(Dictionary<string, bool> worldFacts)
         {
-            foreach(var preCon in preconditions)
+            foreach (var preCon in preconditions)
             {
                 bool value;
                 if (!worldFacts.TryGetValue(preCon.Key, out value) || value != preCon.Value)
@@ -48,11 +48,11 @@ namespace GOAP
 
             if (!CheckIfPrconditionsMet(blackboard.worldFacts))
             {
-                MessageBus.PrintErrorToUnityLog("Precondtions not met " + $"could not run action {name}");
+                Debug.LogError("Precondtions not met " + $"could not run action {name}");
                 return false;
             }
 
-            MessageBus.PrintToUnityLog($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
+            Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
             RemovePreconditionsAndAddEffectsToState(blackboard);
 
             return true;
@@ -94,18 +94,6 @@ namespace GOAP
         public float GetCost()
         {
             return cost;
-        }
-    }
-
-    public class MessageBus : MonoBehaviour
-    {
-        public static void PrintToUnityLog(string message)
-        {
-            print(message);
-        }
-        public static void PrintErrorToUnityLog(string message)
-        {
-            Debug.LogError(message);
         }
     }
 }
