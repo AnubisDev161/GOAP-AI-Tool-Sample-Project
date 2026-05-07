@@ -50,6 +50,14 @@ namespace GOAPGraph.Editor
             this.AddManipulator(new ContentZoomer());
 
             DrawNodes();
+
+
+            Blackboard testBlackboard = new Blackboard(this);
+
+            // testBlackboard.Add()
+            this.AddElement(testBlackboard);
+            // testBlackboard.
+
             DrawConnections();
           
             graphViewChanged += OnGraphViewChanged;
@@ -237,7 +245,6 @@ namespace GOAPGraph.Editor
             editorNode.SetPosition(node.position);
             graphNodes.Add(editorNode);
             nodeDictionary.Add(node.id, editorNode);
-
             AddElement(editorNode);
         }
 

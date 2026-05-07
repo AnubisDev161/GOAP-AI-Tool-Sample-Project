@@ -401,7 +401,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &2025528068
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -436,11 +436,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b86065e92bc4a7d4a8d33d13fa65c1ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  graphAsset: {fileID: 11400000, guid: ededc7ea5a0792b4182a9be1210dcf77, type: 2}
+  graphAsset: {fileID: 11400000, guid: 4fc01a2ad4c33a64cb4e3593652e1853, type: 2}
   worldFact:
-    name: Health
-    value: 100f
-    valueType: 2
+    name: DevilNumber
+    value: 666
+    valueType: 1
   navMeshAgent: {fileID: 2025528068}
 --- !u!65 &2025528071
 BoxCollider:

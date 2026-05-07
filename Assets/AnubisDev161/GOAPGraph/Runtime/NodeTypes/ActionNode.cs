@@ -15,19 +15,19 @@ namespace GOAPGraph
             //currentGraph.gameObject.transform.position += direction;
             Debug.Log("Action executed");
 
-            var connectedOutputParams = GetConnectedOutputParams(currentGraph);
-            var connectedInputParams = GetConnectedInputParams(currentGraph);
+            var paramsConnectedToInput = GetParamsConnectedToInput(currentGraph);
+            var paramesConnectedToOutput = GetParamsConnectedToOutput(currentGraph);
 
             // TODO Replace this with actual World State from other project
          
             debugInfo.terminationReason = TerminationReason.preconditionsNotMet;
 
-            debugInfo.terminationReason = connectedOutputParams.Count > 0 ? TerminationReason.preconditionsNotMet : TerminationReason.None;
+            debugInfo.terminationReason = paramsConnectedToInput.Count > 0 ? TerminationReason.preconditionsNotMet : TerminationReason.None;
            // debugInfo.success = connectedInputParams.Count > 0 ? false : true;
 
-            foreach (var outputParam in connectedOutputParams)
+            foreach (var param in paramsConnectedToInput)
             {
-                var data = outputParam.GetData();
+                var data = param.GetData();
                 Debug.Log("Data: " + data);
                 
 
@@ -46,9 +46,9 @@ namespace GOAPGraph
                 }
             }
 
-            foreach (var inputParam in connectedInputParams)
+            foreach (var param in paramesConnectedToOutput)
             {
-                var data = inputParam.GetData();
+                var data = param.GetData();
                 Debug.Log("Data: " + data);
 
                 if (currentGraph.goapGraphObject.worldFact.name == data.name && currentGraph.goapGraphObject.worldFact.value != data.value)
@@ -62,9 +62,9 @@ namespace GOAPGraph
             base.OnProcess(currentGraph, debugInfo);
         }
 
-        private List<BlackbaordKeyNode> GetConnectedOutputParams(GOAPGraphAsset currentGraph)
+        private List<BlackbaordKeyNode> GetParamsConnectedToInput(GOAPGraphAsset currentGraph)
         {
-            List<BlackbaordKeyNode> outputParamNodes = new List<BlackbaordKeyNode>();
+            List<BlackbaordKeyNode> nodesConnectedToInput = new List<BlackbaordKeyNode>();
             foreach (var index in portsIndices)
             {
                 if (index < 2) continue;
@@ -72,16 +72,16 @@ namespace GOAPGraph
                 var outputNode = currentGraph.GetOutputNode(id, index);
                 if (outputNode != null && outputNode is BlackbaordKeyNode)
                 {
-                    outputParamNodes.Add((BlackbaordKeyNode)outputNode);
+                    nodesConnectedToInput.Add((BlackbaordKeyNode)outputNode);
                 }
             }
 
-            return outputParamNodes;
+            return nodesConnectedToInput;
         }
 
-        private List<BlackbaordKeyNode> GetConnectedInputParams(GOAPGraphAsset currentGraph)
+        private List<BlackbaordKeyNode> GetParamsConnectedToOutput(GOAPGraphAsset currentGraph)
         {
-            List<BlackbaordKeyNode> inputParamNodes = new List<BlackbaordKeyNode>();
+            List<BlackbaordKeyNode> nodesConnectedToOutput = new List<BlackbaordKeyNode>();
             foreach (var index in portsIndices)
             {
                 if (index < 2) continue;
@@ -89,11 +89,11 @@ namespace GOAPGraph
                 var inputtNode = currentGraph.GetInputNode(id, index);
                 if (inputtNode != null && inputtNode is BlackbaordKeyNode)
                 {
-                    inputParamNodes.Add((BlackbaordKeyNode)inputtNode);
+                    nodesConnectedToOutput.Add((BlackbaordKeyNode)inputtNode);
                 }
             }
 
-            return inputParamNodes;
+            return nodesConnectedToOutput;
         }
     }
 }

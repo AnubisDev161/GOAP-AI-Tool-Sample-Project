@@ -134,7 +134,6 @@ namespace GOAPGraph.Editor
             GOAPGraphNode node = (GOAPGraphNode)element.target;
             node.SetPosition(new Rect(graphMousePosition, new Vector2()));
             graph.Add(node);
-
             return true;
         }
     }
