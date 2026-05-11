@@ -30,7 +30,6 @@ namespace GOAPGraph.Editor
 
             serializedObject = goapGraphObject;
             graphNode = node;
-            graphNode.valueUpdated += OnGraphNodeValueUpdated;
 
             Type typeInfo = node.GetType();
             NodeInfoAttribute info = typeInfo.GetCustomAttribute<NodeInfoAttribute>();

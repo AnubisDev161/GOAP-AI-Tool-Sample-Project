@@ -14,13 +14,17 @@ namespace GOAP
 
         public Action<bool, GOAPAction> executed;
 
-        public GOAPAction(Dictionary<string, bool> preconditions = null, Dictionary<string, bool> effects = null, string name = "Base Action", float cost = 1)
+        GOAPGraphNode graphNode;
+
+        public GOAPAction(Dictionary<string, bool> preconditions = null, Dictionary<string, bool> effects = null, string name = "Base Action", float cost = 1, GOAPGraphNode graphNode = null)
         {
             this.preconditions = preconditions;
             this.name = name;
             this.effects = effects;
             this.cost = cost;
+            this.graphNode = graphNode;
         }
+
         public void PrintPreconditions()
         {
             foreach (var preCon in preconditions)
@@ -28,6 +32,7 @@ namespace GOAP
                 Debug.Log($"Action {name} is evaluating preconditions " + "| Precondition: Name " + preCon.Key.ToString() + " - Value " + preCon.Value + " | ");
             }
         }
+
         public bool CheckIfPrconditionsMet(Dictionary<string, bool> worldFacts)
         {
             foreach (var preCon in preconditions)
@@ -42,7 +47,7 @@ namespace GOAP
             return true;
         }
 
-        public virtual bool BeginExecute(WorldState worldState)
+        public virtual bool BeginExecute(WorldState worldState, GOAPGraphAsset graphAsset)
         {
             PrintPreconditions();
 
@@ -53,10 +58,17 @@ namespace GOAP
                 return false;
             }
 
-            return Execute(worldState);
+            graphNode.executeFinished += OnGraphNodeExecuteFinished;
+            graphNode.OnExecute(graphAsset, worldState.worldFacts);
+            return true;
         }
 
-        protected virtual bool Execute(WorldState worldState)
+        private void OnGraphNodeExecuteFinished(GOAPGraphAsset graphAsset, Dictionary<string, bool> worldFacts)
+        {
+            FinishExecute(new WorldState(worldFacts), graphAsset);
+        }
+
+        protected virtual bool FinishExecute(WorldState worldState, GOAPGraphAsset graphAsset)
         {
             Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
             RemovePreconditionsAndAddEffectsToState(worldState);

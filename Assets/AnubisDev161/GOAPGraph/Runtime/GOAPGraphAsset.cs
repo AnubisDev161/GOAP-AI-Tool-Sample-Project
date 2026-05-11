@@ -94,6 +94,27 @@ namespace GOAPGraph
             return null;
         }
 
+        public List<GOAPGraphNode> GetInputNodes(string outpuNodeId, int index)
+        {
+            List <GOAPGraphNode> inputNodes = null;
+            foreach (var connection in connections)
+            {
+                if (connection.outputPort.nodeId == outpuNodeId && connection.outputPort.portIndex == index)
+                {
+                    if (inputNodes == null)
+                    {
+                        inputNodes = new List <GOAPGraphNode>();
+                    }
+
+                    string nodeId = connection.inputPort.nodeId;
+                    GOAPGraphNode inputNode = nodeDictionary[nodeId];
+                    inputNodes.Add(inputNode);
+                }
+            }
+
+            return inputNodes;
+        }
+
         public GOAPGraphNode GetOutputNode(string inputNodeId, int index)
         {
             foreach (var connection in connections)
@@ -108,5 +129,27 @@ namespace GOAPGraph
 
             return null;
         }
+
+        public List<GOAPGraphNode> GetOutputNodes(string inputNodeId, int index)
+        {
+            List<GOAPGraphNode> outputNodes = null;
+            foreach (var connection in connections)
+            {
+                if (connection.inputPort.nodeId == inputNodeId && connection.inputPort.portIndex == index)
+                {
+                    if (outputNodes == null)
+                    {
+                        outputNodes = new List<GOAPGraphNode>();
+                    }
+
+                    string nodeId = connection.outputPort.nodeId;
+                    GOAPGraphNode outputNode = nodeDictionary[nodeId];
+                    outputNodes.Add(outputNode);
+                }
+            }
+
+            return outputNodes;
+        }
+
     }
 }

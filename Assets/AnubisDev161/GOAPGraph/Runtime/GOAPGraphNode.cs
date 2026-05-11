@@ -1,10 +1,8 @@
-using Codice.Client.GameUI.Update;
 using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
-using UnityEditor.Experimental.GraphView;
-using UnityEditor.UIElements;
+
 using UnityEngine;
 
 namespace GOAPGraph
@@ -17,8 +15,7 @@ namespace GOAPGraph
         [SerializeField]
         private Rect pos;
 
-        public Action<string, string, GOAPGraphAsset> processFinished;
-        public Action valueUpdated;
+        public Action<GOAPGraphAsset, Dictionary<string, bool>> executeFinished;
 
         public string typeName;
         
@@ -48,22 +45,14 @@ namespace GOAPGraph
             this.portsIndices = portsIndices;
         }
 
-        public virtual void OnProcess(GOAPGraphAsset currentGraph, DebugInfo debugInfo)
+        public virtual void OnExecute(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
         {
-            //GOAPGraphNode nextNodeInFlow = currentGraph.GetInputNode(guid, OUTPUT_PORT_INDEX);
-            //if (nextNodeInFlow != null && debugInfo.success)
-            //{
-            //    processFinished?.Invoke(this.id, nextNodeInFlow.id, currentGraph);
-            //    return;
-            //}
+            OnExecuteFinished(currentGraph, worldFacts);
+        }
 
-            //if (debugInfo.terminationReason == TerminationReason.None)
-            //{
-            //    debugInfo.terminationReason = TerminationReason.noSuccessorNodeFound;
-            //}
-
-            //processFinished?.Invoke(this.id, string.Empty, currentGraph);
-            //Debug.Log("Graph process terminated at Node: " + this + " Reason: " + debugInfo.terminationReason);
+        public virtual void OnExecuteFinished(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
+        {
+             executeFinished?.Invoke(currentGraph, worldFacts);
         }
 
         public List<BlackbaordKeyNode> GetPreconditionNodes(GOAPGraphAsset currentGraph)
@@ -72,10 +61,14 @@ namespace GOAPGraph
             foreach (var index in portsIndices)
             {
                 // Check if connection to a blackboard node exists
-                var outputNode = currentGraph.GetOutputNode(id, index);
-                if (outputNode != null && outputNode is BlackbaordKeyNode)
+                var outputNodes = currentGraph.GetOutputNodes(id, index);
+                if (outputNodes == null) continue;
+                foreach (var outputNode in outputNodes)
                 {
-                    nodesConnectedToInput.Add((BlackbaordKeyNode)outputNode);
+                    if (outputNode != null && outputNode is BlackbaordKeyNode)
+                    {
+                        nodesConnectedToInput.Add((BlackbaordKeyNode)outputNode);
+                    }
                 }
             }
 
@@ -88,10 +81,15 @@ namespace GOAPGraph
             foreach (var index in portsIndices)
             {
                 // Check if connection to a blackboard node exists
-                var inputtNode = currentGraph.GetInputNode(id, index);
-                if (inputtNode != null && inputtNode is BlackbaordKeyNode)
+
+                var inputNodes = currentGraph.GetInputNodes(id, index);
+                if (inputNodes == null) continue;
+                foreach (var inputNode in inputNodes)
                 {
-                    nodesConnectedToOutput.Add((BlackbaordKeyNode)inputtNode);
+                    if (inputNode != null && inputNode is BlackbaordKeyNode)
+                    {
+                        nodesConnectedToOutput.Add((BlackbaordKeyNode)inputNode);
+                    }
                 }
             }
 

@@ -72,7 +72,7 @@ namespace GOAP
                 var effects = GetNodeEffects(actionNode);
                 var preconditions = GetNodePreconditions(actionNode);
 
-                GOAPAction action = new GOAPAction(preconditions, effects, actionNode.name, actionNode.cost);
+                GOAPAction action = new GOAPAction(preconditions, effects, actionNode.name, actionNode.cost, actionNode);
                 actions.Add(action);
             }
 

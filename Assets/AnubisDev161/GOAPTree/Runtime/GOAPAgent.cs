@@ -39,36 +39,8 @@ namespace GOAP
             {
                 Debug.LogError("Agent stopped planning due to an invalid plan");
             }
-
-          
         }
 
-
-        //public GOAPAgent()
-        //{
-        //    // STATE NAMES
-        //    // ---------------------------
-        //    string hasWood = "hasWood";
-        //    string hasFire = "hasFire";
-        //    string hasSpear = "hasSpear";
-
-        //    var worldState = new Dictionary<string, bool>
-        //    {
-        //        { hasWood, false },
-        //        { hasFire, false },
-        //        { hasSpear, true },
-
-        //    };
-        //    goapBrain = new GOAPBrain(new WorldState(worldState));
-        //}
-
-        //// Goal
-        //private void Start()
-        //{
-        //    var goal = goapBrain.goalSelector.GetBestGoal();
-        //    currentPlan = goapBrain.CreatePLan(goal);
-        //    ExecutePlan(currentPlan, goapBrain.blackboard);
-        //}
         private bool VerifiyCurrentPlan()
         {
             var planSize = currentPlan.Count;
@@ -100,7 +72,7 @@ namespace GOAP
                 var action = currentPlan.Dequeue();
 
                 action.executed += OnActionExecuted;
-                action.BeginExecute(goapBrain.currentWorldState);
+                action.BeginExecute(goapBrain.currentWorldState, goapBrain.graphInstance);
                 return;
             }
 
@@ -136,8 +108,6 @@ namespace GOAP
                 Debug.LogError("Action executed unsuccessfully, execution stopped with last action: " + lastAction);
             }
         }
-
-
     }
 
     public struct PlanDebugInfo

@@ -13,57 +13,6 @@ namespace GOAPGraph
 
         [ExposedProperty]
         public float cost = 1.0f;
-        public override void OnProcess(GOAPGraphAsset currentGraph, DebugInfo debugInfo)
-        {
-           // //currentGraph.gameObject.transform.position += direction;
-           // Debug.Log("Action executed");
-
-           // var paramsConnectedToInput = GetPreconditionNodes(currentGraph);
-           // var paramesConnectedToOutput = GetEffectNodes(currentGraph);
-
-           // // TODO Replace this with actual World State from other project
-         
-           // debugInfo.terminationReason = TerminationReason.preconditionsNotMet;
-
-           // debugInfo.terminationReason = paramsConnectedToInput.Count > 0 ? TerminationReason.preconditionsNotMet : TerminationReason.None;
-           //// debugInfo.success = connectedInputParams.Count > 0 ? false : true;
-
-           // foreach (var param in paramsConnectedToInput)
-           // {
-           //     var data = param.GetData();
-           //     Debug.Log("Data: " + data);
-                
-
-           //     if (currentGraph.goapGraphObject.worldFact == data)
-           //     {
-           //         Debug.Log("Preconditions met " + data);
-           //         debugInfo.success = true;
-           //         debugInfo.terminationReason = TerminationReason.None;
-           //     }
-           //     else
-           //     {
-           //         Debug.Log("Preconditions not  met " + data);
-           //         debugInfo.success = false;
-           //         base.OnProcess(currentGraph, debugInfo);
-           //         return;
-           //     }
-           // }
-
-           // foreach (var param in paramesConnectedToOutput)
-           // {
-           //     var data = param.GetData();
-           //     Debug.Log("Data: " + data);
-
-           //     if (currentGraph.goapGraphObject.worldFact.name == data.name && currentGraph.goapGraphObject.worldFact.value != data.value)
-           //     {
-           //         currentGraph.goapGraphObject.worldFact.value = data.value;
-
-           //         Debug.Log("Effects applied " + data);
-           //     }
-           // }
-
-            base.OnProcess(currentGraph, debugInfo);
-        }
     }
 }
 

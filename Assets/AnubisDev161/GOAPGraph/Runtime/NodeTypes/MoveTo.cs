@@ -11,18 +11,19 @@ namespace GOAPGraph
     {
         [ExposedProperty]
         public Vector3 destination;
-        public override void OnProcess(GOAPGraphAsset currentGraph, DebugInfo debugInfo)
+
+        public override void OnExecute(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
         {
             //currentGraph.goapGraphObject.navMeshAgent.destination = destination;
 
             //currentGraph.goapGraphObject.destinationReached += OnDestinationReached;
-
+            base.OnExecute(currentGraph, worldFacts);
         }
 
-        private void OnDestinationReached(GOAPGraphAsset currentGraph)
+        private void OnDestinationReached(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
         {
             Debug.Log("Move to node executed");
-            base.OnProcess(currentGraph, new DebugInfo(true, TerminationReason.None));
+            base.OnExecuteFinished(currentGraph, worldFacts);
         }
     }
 }
