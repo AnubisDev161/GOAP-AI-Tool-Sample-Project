@@ -13,116 +13,148 @@ MonoBehaviour:
   m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 9217489822934106112
-  - rid: 9217489822934106113
-  - rid: 9217489822934106114
-  - rid: 9217489822934106175
-  - rid: 9217489822934106176
-  - rid: 9217489822934106177
-  - rid: 9217489822934106178
-  - rid: 9217489822934106179
+  - rid: 9217489907550781498
+  - rid: 9217489907550781499
+  - rid: 9217489907550781500
+  - rid: 9217489907550781502
+  - rid: 9217489908072972346
+  - rid: 9217489908072972347
+  - rid: 9217489908072972348
+  - rid: 9217489908072972349
+  - rid: 9217489908072972350
+  - rid: 9217489908072972351
   connections:
   - inputPort:
-      nodeId: fd23a579-970b-426f-a86e-6c79d97fa462
+      nodeId: 592a881c-6af2-4f74-a684-dd8d9a9e9c6e
       portIndex: 0
     outputPort:
-      nodeId: 23dd61de-1a91-41f2-89de-c66ae6b4a9d2
+      nodeId: e9fab325-646c-42c9-b0c5-c4dac82f1d04
       portIndex: 0
   - inputPort:
-      nodeId: 495da3fb-3446-4a82-867b-5c1db14c5e4f
+      nodeId: 3f531dc7-31b1-4d51-85f0-e386364d075c
       portIndex: 0
     outputPort:
-      nodeId: 23dd61de-1a91-41f2-89de-c66ae6b4a9d2
-      portIndex: 3
-  - inputPort:
-      nodeId: fd23a579-970b-426f-a86e-6c79d97fa462
-      portIndex: 1
-    outputPort:
-      nodeId: 495da3fb-3446-4a82-867b-5c1db14c5e4f
+      nodeId: 592a881c-6af2-4f74-a684-dd8d9a9e9c6e
       portIndex: 1
   - inputPort:
-      nodeId: 53b07bb8-f397-494b-a626-b1e04debe82c
+      nodeId: 6323eddb-28f5-4bdc-9425-961acaf4a73b
       portIndex: 0
     outputPort:
-      nodeId: 4c0d6a29-7ac0-4761-9d54-f6ddda750888
-      portIndex: 3
-  - inputPort:
-      nodeId: 23dd61de-1a91-41f2-89de-c66ae6b4a9d2
-      portIndex: 1
-    outputPort:
-      nodeId: 4c0d6a29-7ac0-4761-9d54-f6ddda750888
-      portIndex: 0
-  - inputPort:
-      nodeId: 23dd61de-1a91-41f2-89de-c66ae6b4a9d2
-      portIndex: 2
-    outputPort:
-      nodeId: 53b07bb8-f397-494b-a626-b1e04debe82c
+      nodeId: 3f531dc7-31b1-4d51-85f0-e386364d075c
       portIndex: 1
   - inputPort:
-      nodeId: 4c0d6a29-7ac0-4761-9d54-f6ddda750888
+      nodeId: 6323eddb-28f5-4bdc-9425-961acaf4a73b
+      portIndex: 0
+    outputPort:
+      nodeId: 47527841-a648-45e8-a060-aa4148a8aa8e
       portIndex: 1
-    outputPort:
-      nodeId: efe24cc1-b358-421e-aefe-f74ed90b396d
-      portIndex: 0
   - inputPort:
-      nodeId: 495da3fb-3446-4a82-867b-5c1db14c5e4f
+      nodeId: ee8610fd-aa4b-4800-81f1-c47a5878b7c4
       portIndex: 0
     outputPort:
-      nodeId: 1f3c8bc3-3764-4b94-a75b-d5dd4a6ef7fb
-      portIndex: 3
-  - inputPort:
-      nodeId: 1f3c8bc3-3764-4b94-a75b-d5dd4a6ef7fb
+      nodeId: 6323eddb-28f5-4bdc-9425-961acaf4a73b
       portIndex: 1
-    outputPort:
-      nodeId: efe24cc1-b358-421e-aefe-f74ed90b396d
-      portIndex: 0
   - inputPort:
-      nodeId: fd23a579-970b-426f-a86e-6c79d97fa462
+      nodeId: ed108f3a-a036-47b6-b612-d65266a684b0
       portIndex: 0
     outputPort:
-      nodeId: 1f3c8bc3-3764-4b94-a75b-d5dd4a6ef7fb
+      nodeId: 8e164a7a-835c-44b3-bddc-ef8ba50d9475
+      portIndex: 1
+  - inputPort:
+      nodeId: 2bd08034-ff4a-41bf-ad7e-485a838d0af6
       portIndex: 0
+    outputPort:
+      nodeId: ed108f3a-a036-47b6-b612-d65266a684b0
+      portIndex: 1
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 9217489822934106112
-      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
+    - rid: 9217489907550781498
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: fd23a579-970b-426f-a86e-6c79d97fa462
+        guid: 592a881c-6af2-4f74-a684-dd8d9a9e9c6e
         pos:
           serializedVersion: 2
-          x: 1495
-          y: 63
-          width: 193
-          height: 121
-        typeName: GOAPGraph.GoalWorldStateNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          x: 585
+          y: 291
+          width: 282
+          height: 96
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
-        name: HasFood
-    - rid: 9217489822934106113
-      type: {class: StartWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
+        worldFact:
+          name: HasMoney
+          value: True
+          valueType: 0
+    - rid: 9217489907550781499
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: efe24cc1-b358-421e-aefe-f74ed90b396d
+        guid: 47527841-a648-45e8-a060-aa4148a8aa8e
         pos:
           serializedVersion: 2
-          x: 142
-          y: 63
-          width: 108
+          x: 925
+          y: 87
+          width: 282
+          height: 116
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: RobSuermarket
+        cost: 0
+    - rid: 9217489907550781500
+      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: ee8610fd-aa4b-4800-81f1-c47a5878b7c4
+        pos:
+          serializedVersion: 2
+          x: 1591
+          y: 87
+          width: 193
+          height: 97
+        typeName: GOAPGraph.GoalWorldStateNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: HasFood
+        priority: 3
+    - rid: 9217489907550781502
+      type: {class: StartWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: e9fab325-646c-42c9-b0c5-c4dac82f1d04
+        pos:
+          serializedVersion: 2
+          x: 421
+          y: 165
+          width: 143
           height: 77
         typeName: GOAPGraph.StartWorldStateNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 00000000
-    - rid: 9217489822934106114
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+    - rid: 9217489908072972346
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 495da3fb-3446-4a82-867b-5c1db14c5e4f
+        guid: 3f531dc7-31b1-4d51-85f0-e386364d075c
         pos:
           serializedVersion: 2
-          x: 1187
-          y: 219
+          x: 915
+          y: 291
           width: 282
-          height: 96
+          height: 116
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: BuyFood
+        cost: 423
+    - rid: 9217489908072972347
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 6323eddb-28f5-4bdc-9425-961acaf4a73b
+        pos:
+          serializedVersion: 2
+          x: 1282
+          y: 205
+          width: 282
+          height: 152
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
@@ -130,76 +162,64 @@ MonoBehaviour:
           name: HasFood
           value: True
           valueType: 0
-    - rid: 9217489822934106175
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
+    - rid: 9217489908072972348
+      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 23dd61de-1a91-41f2-89de-c66ae6b4a9d2
+        guid: 2bd08034-ff4a-41bf-ad7e-485a838d0af6
         pos:
           serializedVersion: 2
-          x: 841
-          y: 63
-          width: 287
-          height: 121
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          x: 1528
+          y: 609
+          width: 217
+          height: 116
+        typeName: GOAPGraph.GoalWorldStateNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: GetFood
-    - rid: 9217489822934106176
+        portsIndices: 00000000
+        name: HaveAShelter
+        priority: 2
+    - rid: 9217489908072972349
       type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 4c0d6a29-7ac0-4761-9d54-f6ddda750888
+        guid: 8e164a7a-835c-44b3-bddc-ef8ba50d9475
         pos:
           serializedVersion: 2
-          x: 477
-          y: 63
-          width: 287
-          height: 121
+          x: 887
+          y: 761
+          width: 282
+          height: 116
         typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: GetSpear
-    - rid: 9217489822934106177
+        portsIndices: 0000000001000000
+        name: FindCave
+        cost: 1
+    - rid: 9217489908072972350
       type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 53b07bb8-f397-494b-a626-b1e04debe82c
+        guid: ed108f3a-a036-47b6-b612-d65266a684b0
         pos:
           serializedVersion: 2
-          x: 690
-          y: 384
+          x: 1224
+          y: 761
           width: 282
-          height: 152
+          height: 96
         typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
         worldFact:
-          name: HasSpear
+          name: HasShelter
           value: True
           valueType: 0
-    - rid: 9217489822934106178
-      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
-      data:
-        guid: 1f3c8bc3-3764-4b94-a75b-d5dd4a6ef7fb
-        pos:
-          serializedVersion: 2
-          x: 859
-          y: -195
-          width: 287
-          height: 121
-        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000010000000200000003000000
-        name: ForFree
-    - rid: 9217489822934106179
+    - rid: 9217489908072972351
       type: {class: MoveTo, ns: GOAPGraph, asm: GOAPGraph}
       data:
-        guid: 14f6fa1e-97c7-4d8b-b67f-ecb7b0fd0054
+        guid: f32a93df-2be3-4ee9-8c09-d56a6240255b
         pos:
           serializedVersion: 2
-          x: 1347
-          y: -183
-          width: 245
-          height: 121
+          x: 929
+          y: 499
+          width: 240
+          height: 97
         typeName: GOAPGraph.MoveTo, GOAPGraph, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
-        portsIndices: 000000000100000002000000
+        portsIndices: 00000000
         destination: {x: 0, y: 0, z: 0}

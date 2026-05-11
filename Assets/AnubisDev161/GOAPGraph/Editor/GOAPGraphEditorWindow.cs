@@ -21,7 +21,6 @@ namespace GOAPGraph.Editor
             if (currentGraph != null)
             {
                 DrawGraph();
-              
             }
         }
 

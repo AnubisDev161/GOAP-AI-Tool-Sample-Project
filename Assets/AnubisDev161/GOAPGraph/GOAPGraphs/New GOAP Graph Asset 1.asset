@@ -1,0 +1,75 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
+  m_Name: New GOAP Graph Asset 1
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 9217489908072972362
+  - rid: 9217489909968797754
+  - rid: 9217489909968797755
+  connections:
+  - inputPort:
+      nodeId: 6ffe118c-93ae-4768-a6ad-e7fbddaace57
+      portIndex: 0
+    outputPort:
+      nodeId: ca5facb9-e76a-4777-9c5a-52cd7f010834
+      portIndex: 1
+  goapGraphObject: {fileID: 0}
+  references:
+    version: 2
+    RefIds:
+    - rid: 9217489908072972362
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: ca5facb9-e76a-4777-9c5a-52cd7f010834
+        pos:
+          serializedVersion: 2
+          x: 422
+          y: 179
+          width: 282
+          height: 153
+        typeName: GOAPGraph.BlackbaordKeyNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        worldFact:
+          name: gfdrgf
+          value: (0.00, 0.00, 0.00)
+          valueType: 4
+    - rid: 9217489909968797754
+      type: {class: ActionNode, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 01d693a8-e561-4e2d-a0b1-5ca8cd2ffbd9
+        pos:
+          serializedVersion: 2
+          x: 880
+          y: 121
+          width: 282
+          height: 116
+        typeName: GOAPGraph.ActionNode, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: 
+        cost: 1
+    - rid: 9217489909968797755
+      type: {class: MoveTo, ns: GOAPGraph, asm: GOAPGraph}
+      data:
+        guid: 6ffe118c-93ae-4768-a6ad-e7fbddaace57
+        pos:
+          serializedVersion: 2
+          x: 783
+          y: 433
+          width: 240
+          height: 97
+        typeName: GOAPGraph.MoveTo, GOAPGraph, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        destination: {x: 0, y: 0, z: 0}

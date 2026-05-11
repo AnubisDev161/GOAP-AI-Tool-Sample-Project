@@ -10,6 +10,9 @@ namespace GOAPGraph
     {
         [ExposedProperty]
         public string name;
+
+        [ExposedProperty]
+        public float cost = 1.0f;
         public override void OnProcess(GOAPGraphAsset currentGraph, DebugInfo debugInfo)
         {
            // //currentGraph.gameObject.transform.position += direction;
@@ -60,40 +63,6 @@ namespace GOAPGraph
            // }
 
             base.OnProcess(currentGraph, debugInfo);
-        }
-
-        public List<BlackbaordKeyNode> GetPreconditionNodes(GOAPGraphAsset currentGraph)
-        {
-            List<BlackbaordKeyNode> nodesConnectedToInput = new List<BlackbaordKeyNode>();
-            foreach (var index in portsIndices)
-            {
-               // if (index < 2 || this is GoalWorldStateNode && ) continue;
-                // Check if connection to a blackboard node exists
-                var outputNode = currentGraph.GetOutputNode(id, index);
-                if (outputNode != null && outputNode is BlackbaordKeyNode)
-                {
-                    nodesConnectedToInput.Add((BlackbaordKeyNode)outputNode);
-                }
-            }
-
-            return nodesConnectedToInput;
-        }
-
-        public List<BlackbaordKeyNode> GetEffectNodes(GOAPGraphAsset currentGraph)
-        {
-            List<BlackbaordKeyNode> nodesConnectedToOutput = new List<BlackbaordKeyNode>();
-            foreach (var index in portsIndices)
-            {
-               // if (index < 2) continue;
-                // Check if connection to a blackboard node exists
-                var inputtNode = currentGraph.GetInputNode(id, index);
-                if (inputtNode != null && inputtNode is BlackbaordKeyNode)
-                {
-                    nodesConnectedToOutput.Add((BlackbaordKeyNode)inputtNode);
-                }
-            }
-
-            return nodesConnectedToOutput;
         }
     }
 }

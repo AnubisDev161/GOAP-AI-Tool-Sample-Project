@@ -48,15 +48,15 @@ namespace GOAPGraph.Editor
             name = typeInfo.Name;
 
             // Flow output is created so that output can be at index 0
-            if (info.hasFlowOutput)
-            {
-                CreateFlowOutputPort(info.paramPortsHaveSingleCapacity);
-            }
+            //if (info.hasFlowOutput)
+            //{
+            //    CreateFlowOutputPort(info.paramPortsHaveSingleCapacity);
+            //}
 
-            if (info.hasFlowInput)
-            {
-                CreateFlowInputPort(info.paramPortsHaveSingleCapacity);
-            }
+            //if (info.hasFlowInput)
+            //{
+            //    CreateFlowInputPort(info.paramPortsHaveSingleCapacity);
+            //}
 
 
             if (info.hasInputParams)
@@ -91,11 +91,6 @@ namespace GOAPGraph.Editor
                     PropertyField propertyField = DrawProperty(property.Name);
                 }
             }
-        }
-
-        private void OnFieldChangedCallback(SerializedPropertyChangeEvent evt)
-        {
-            graphNode.OnWorldFactPropertyChanged(evt);
         }
 
         public void RemoveInputParams()

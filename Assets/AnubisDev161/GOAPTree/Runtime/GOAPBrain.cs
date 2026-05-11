@@ -27,14 +27,23 @@ namespace GOAP
             goalSelector = new GOAPGoalSelector(currentWorldState);
         }
 
-
         public Queue<GOAPAction> CreatePLan()
         {
+            currentWorldState = FetchStartState();
             availableActions = FetchActions();
             availableGoals = FetchGoals();  
 
             var bestGoal = goalSelector.GetBestGoal(currentWorldState, availableGoals);
             return planner.GeneratePlan(currentWorldState, bestGoal, availableActions);
+        }
+
+        private WorldState FetchStartState()
+        {
+            var startNode = graphInstance.GetStartNode();
+            var effects = GetNodeEffects(startNode);
+            var startState = new WorldState(effects);
+
+            return startState;
         }
 
         private List<GOAPGoal> FetchGoals()
@@ -43,9 +52,9 @@ namespace GOAP
             var goalNodes = graphInstance.GetGoalNodes();
             foreach (var goalNode in goalNodes)
             {
-                var preconditions = GetPrecondiotionsFromBlackboardNodes(goalNode);
+                var preconditions = GetNodePreconditions(goalNode);
 
-                GOAPGoal goal = new GOAPGoal(1, preconditions, goalNode.name);
+                GOAPGoal goal = new GOAPGoal(goalNode.priority, preconditions, goalNode.name);
                 goals.Add(goal);
             }
 
@@ -60,22 +69,21 @@ namespace GOAP
             // retrieve the data from the GOAP graph nodes to create actual actions
             foreach (var actionNode in actionNodes)
             {
-                if (actionNode is GoalWorldStateNode ) continue;
-                var effects = GetEffectsFromBlackboardNodes(actionNode);
-                var preconditions = GetPrecondiotionsFromBlackboardNodes(actionNode);
+                var effects = GetNodeEffects(actionNode);
+                var preconditions = GetNodePreconditions(actionNode);
 
-                GOAPAction action = new GOAPAction(preconditions, effects, actionNode.name);
+                GOAPAction action = new GOAPAction(preconditions, effects, actionNode.name, actionNode.cost);
                 actions.Add(action);
             }
 
             return actions;
         }
 
-        private Dictionary<string, bool> GetEffectsFromBlackboardNodes(ActionNode actionNode)
+        private Dictionary<string, bool> GetNodeEffects(GOAPGraphNode graphNode)
         {
             var effects = new Dictionary<string, bool>();
 
-            var effectNodes = actionNode.GetEffectNodes(graphInstance);
+            var effectNodes = graphNode.GetEffectNodes(graphInstance);
             foreach (var effectNode in effectNodes)
             {
                 var effect = effectNode.GetData();
@@ -86,11 +94,11 @@ namespace GOAP
             return effects;
         }
 
-        private Dictionary<string, bool> GetPrecondiotionsFromBlackboardNodes(ActionNode actionNode)
+        private Dictionary<string, bool> GetNodePreconditions(GOAPGraphNode graphNode)
         {
             var preconditions = new Dictionary<string, bool>();
 
-            var preconditionNodes = actionNode.GetPreconditionNodes(graphInstance);
+            var preconditionNodes = graphNode.GetPreconditionNodes(graphInstance);
             foreach (var preconditionNode in preconditionNodes)
             {
                 var precondition = preconditionNode.GetData();
@@ -100,21 +108,5 @@ namespace GOAP
 
             return preconditions;
         }
-
-        private Dictionary<string, bool> GetPrecondiotionsFromBlackboardNodes(GoalWorldStateNode actionNode)
-        {
-            var preconditions = new Dictionary<string, bool>();
-
-            var preconditionNodes = actionNode.GetPreconditionNodes(graphInstance);
-            foreach (var preconditionNode in preconditionNodes)
-            {
-                var precondition = preconditionNode.GetData();
-
-                preconditions.Add(precondition.name, Convert.ToBoolean(precondition.value));
-            }
-
-            return preconditions;
-        }
-
     }
 }

@@ -9,7 +9,7 @@ namespace GOAPGraph
     public class GOAPGraphAsset : ScriptableObject
     {
         [SerializeReference]
-        private List<GOAPGraphNode> nodes;
+        private List<GOAPGraphNode> nodes = new List<GOAPGraphNode>();
         public List<GOAPGraphNode> Nodes => nodes;
         
         [SerializeField]

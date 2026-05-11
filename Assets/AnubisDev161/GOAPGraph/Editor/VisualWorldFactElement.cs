@@ -79,6 +79,12 @@ namespace GOAPGraph.Editor
                 case ValueType.String:
                     newValue = "Default"; 
                     break;
+                case ValueType.Vector3:
+                    newValue = Vector3.zero;
+                    break;
+                default:
+                    Debug.LogError("Could not convert valueType to known value");
+                    break;
             }
 
             valueProperty.stringValue = newValue.ToString();
@@ -160,40 +166,46 @@ namespace GOAPGraph.Editor
         public VisualElement CreateFieldByType(SerializedProperty valueProperty, ValueType valueType)
         {
             VisualElement field = null;
-            
+            const string VALUE_TITLE = "Value";
 
             switch (valueType)
             {
                 case ValueType.Bool:
-                    field = new Toggle("value");
+                    field = new Toggle(VALUE_TITLE);
                     var toggle = (field as Toggle);
                     toggle.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
                     toggle.value = Convert.ToBoolean(valueProperty.stringValue);
                     break;
                 case ValueType.Int:
-                    field = new IntegerField("value");
+                    field = new IntegerField(VALUE_TITLE);
                     var intField = (field as IntegerField);
                     intField.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
                     intField.value = Convert.ToInt32(valueProperty.stringValue);
                     break;
                 case ValueType.Float:
-                    field = new FloatField("value");
+                    field = new FloatField(VALUE_TITLE);
                     var floatField = (field as FloatField);
                     floatField.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
-
 
                     var value = valueProperty.stringValue.Remove(valueProperty.stringValue.Length - 1);
 
                     floatField.value = float.Parse(value);
                     break;
                 case ValueType.String:
-                    field = new TextField("value");
+                    field = new TextField(VALUE_TITLE);
                     var textField = (field as TextField);
                     textField.RegisterValueChangedCallback(OnValueFieldChanged);
                     textField.value = valueProperty.stringValue;
+                    break;
+
+                case ValueType.Vector3:
+                    field = new Vector3Field(VALUE_TITLE);
+                    var vector3Field = (field as Vector3Field);
+                    vector3Field.RegisterValueChangedCallback(OnValueFieldChanged);
+                    vector3Field.value = WorldFact.ConvertValueToVector3(valueProperty.stringValue);
                     break;
                 default:
                     Debug.LogError("Could not convert valueType to known value");
@@ -201,6 +213,13 @@ namespace GOAPGraph.Editor
             }
 
             return field;
+        }
+
+        private void OnValueFieldChanged(ChangeEvent<Vector3> evt)
+        {
+            var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
+            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Vector3)) return;
+            SetWorldFactValue(evt.newValue.ToString());
         }
     }
 }

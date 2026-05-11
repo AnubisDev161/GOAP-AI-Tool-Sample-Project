@@ -42,19 +42,24 @@ namespace GOAP
             return true;
         }
 
-        public bool Execute(WorldState blackboard)
+        public virtual bool BeginExecute(WorldState worldState)
         {
             PrintPreconditions();
 
-            if (!CheckIfPrconditionsMet(blackboard.worldFacts))
+            if (!CheckIfPrconditionsMet(worldState.worldFacts))
             {
                 Debug.LogError("Precondtions not met " + $"could not run action {name}");
                 executed?.Invoke(false, this);
                 return false;
             }
 
+            return Execute(worldState);
+        }
+
+        protected virtual bool Execute(WorldState worldState)
+        {
             Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
-            RemovePreconditionsAndAddEffectsToState(blackboard);
+            RemovePreconditionsAndAddEffectsToState(worldState);
 
             executed?.Invoke(true, this);
             return true;
@@ -93,6 +98,7 @@ namespace GOAP
                 requiredWorldState.worldFacts[precondition.Key] = precondition.Value;
             }
         }
+
         public float GetCost()
         {
             return cost;
@@ -101,7 +107,7 @@ namespace GOAP
         public override string ToString()
         {
             
-            return "[Name: " + name + " ]";
+            return "[Name: " + name + "cost: " + cost + " ]";
         }
     }
 }

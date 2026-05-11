@@ -100,7 +100,7 @@ namespace GOAP
                 var action = currentPlan.Dequeue();
 
                 action.executed += OnActionExecuted;
-                action.Execute(goapBrain.currentWorldState);
+                action.BeginExecute(goapBrain.currentWorldState);
                 return;
             }
 
