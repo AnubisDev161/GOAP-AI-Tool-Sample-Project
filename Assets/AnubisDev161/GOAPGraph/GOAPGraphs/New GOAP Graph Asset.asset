@@ -13,52 +13,26 @@ MonoBehaviour:
   m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 9217489930599530558
-  - rid: 9217489930599530559
   - rid: 9217489930599530560
   - rid: 9217489930599530561
   - rid: 9217489930599530562
   - rid: 9217489930599530563
-  - rid: 9217489930599530564
-  - rid: 9217489930599530565
   - rid: 9217489930599530566
   - rid: 9217489930599530567
+  - rid: 9217489930599530572
+  - rid: 9217489930599530573
   connections:
-  - inputPort:
-      nodeId: e095712b-9b15-4151-a1f8-0e3dd6f7b617
-      portIndex: 0
-    outputPort:
-      nodeId: 7151f0e8-ffe8-4b06-b9cd-926775c30fb2
-      portIndex: 1
   - inputPort:
       nodeId: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
       portIndex: 0
     outputPort:
       nodeId: ccbbb756-aa6c-4936-8852-4e275d94f06f
-      portIndex: 1
-  - inputPort:
-      nodeId: 7151f0e8-ffe8-4b06-b9cd-926775c30fb2
-      portIndex: 0
-    outputPort:
-      nodeId: 94d627e6-d588-490f-82fd-f01817de892c
-      portIndex: 1
-  - inputPort:
-      nodeId: 94d627e6-d588-490f-82fd-f01817de892c
-      portIndex: 0
-    outputPort:
-      nodeId: 444d0915-ef28-40ec-8593-77973b7f807c
       portIndex: 1
   - inputPort:
       nodeId: 12fdb86d-23f2-49d4-bf02-ddfaa5662036
       portIndex: 0
     outputPort:
       nodeId: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
-      portIndex: 1
-  - inputPort:
-      nodeId: ccbbb756-aa6c-4936-8852-4e275d94f06f
-      portIndex: 0
-    outputPort:
-      nodeId: e095712b-9b15-4151-a1f8-0e3dd6f7b617
       portIndex: 1
   - inputPort:
       nodeId: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
@@ -72,51 +46,30 @@ MonoBehaviour:
     outputPort:
       nodeId: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
       portIndex: 1
+  - inputPort:
+      nodeId: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
+      portIndex: 0
+    outputPort:
+      nodeId: 52524275-e055-4399-8bb8-7e42569ea32c
+      portIndex: 1
+  - inputPort:
+      nodeId: ccbbb756-aa6c-4936-8852-4e275d94f06f
+      portIndex: 0
+    outputPort:
+      nodeId: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
+      portIndex: 1
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 9217489930599530558
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: e095712b-9b15-4151-a1f8-0e3dd6f7b617
-        pos:
-          serializedVersion: 2
-          x: 949
-          y: 658
-          width: 282
-          height: 96
-        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: Destination
-          value: (0.26, 1.28, 21.84)
-          valueType: 4
-          acceptedValue: 0
-    - rid: 9217489930599530559
-      type: {class: ActionNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: 7151f0e8-ffe8-4b06-b9cd-926775c30fb2
-        pos:
-          serializedVersion: 2
-          x: 634
-          y: 659
-          width: 282
-          height: 116
-        typeName: GOAPGraph.ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: GetRandomDestination
-        cost: 1
     - rid: 9217489930599530560
       type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
         guid: 12fdb86d-23f2-49d4-bf02-ddfaa5662036
         pos:
           serializedVersion: 2
-          x: 2000
-          y: 726
+          x: 1972
+          y: 775
           width: 217
           height: 116
         typeName: GOAPGraph.GoalWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
@@ -130,8 +83,8 @@ MonoBehaviour:
         guid: 451f3199-6b8a-4fc1-a34a-a5e065919fe9
         pos:
           serializedVersion: 2
-          x: -402
-          y: 672
+          x: 840
+          y: 501
           width: 143
           height: 77
         typeName: GOAPGraph.StartWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
@@ -159,10 +112,10 @@ MonoBehaviour:
         guid: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
         pos:
           serializedVersion: 2
-          x: 1664
-          y: 726
+          x: 1661
+          y: 658
           width: 282
-          height: 96
+          height: 171
         typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         portsIndices: 0000000001000000
@@ -171,39 +124,6 @@ MonoBehaviour:
           value: True
           valueType: 0
           acceptedValue: 0
-    - rid: 9217489930599530564
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: 94d627e6-d588-490f-82fd-f01817de892c
-        pos:
-          serializedVersion: 2
-          x: 324
-          y: 658
-          width: 282
-          height: 96
-        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: Health
-          value: 0,25f
-          valueType: 2
-          acceptedValue: 0
-    - rid: 9217489930599530565
-      type: {class: ActionNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: 444d0915-ef28-40ec-8593-77973b7f807c
-        pos:
-          serializedVersion: 2
-          x: -15
-          y: 667
-          width: 282
-          height: 116
-        typeName: GOAPGraph.ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: SetHealth
-        cost: 1
     - rid: 9217489930599530566
       type: {class: ActionNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
@@ -225,10 +145,10 @@ MonoBehaviour:
         guid: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
         pos:
           serializedVersion: 2
-          x: 1676
-          y: 890
+          x: 1661
+          y: 891
           width: 282
-          height: 96
+          height: 171
         typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         portsIndices: 0000000001000000
@@ -237,3 +157,37 @@ MonoBehaviour:
           value: True
           valueType: 0
           acceptedValue: 0
+    - rid: 9217489930599530572
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
+      data:
+        guid: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
+        pos:
+          serializedVersion: 2
+          x: 983
+          y: 659
+          width: 282
+          height: 171
+        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        portsIndices: 0000000001000000
+        worldFact:
+          name: HasDestination
+          value: True
+          valueType: 0
+          acceptedValue: 0
+    - rid: 9217489930599530573
+      type: {class: GenerateRandomDestination, ns: GOAPGraph, asm: Assembly-CSharp}
+      data:
+        guid: 52524275-e055-4399-8bb8-7e42569ea32c
+        pos:
+          serializedVersion: 2
+          x: 654
+          y: 659
+          width: 282
+          height: 135
+        typeName: GOAPGraph.GenerateRandomDestination, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: generate random poin
+        cost: 1
+        range: 20
