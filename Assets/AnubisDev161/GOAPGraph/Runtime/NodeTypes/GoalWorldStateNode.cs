@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using GOAP.Data;
 
 namespace GOAPGraph
 {

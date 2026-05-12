@@ -1,11 +1,11 @@
 using System;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
-namespace GOAPGraph
+namespace GOAP.Data
 {
     public class ExposedWorldFactPropertyAttribute : Attribute
     {
 
     }
 }
+

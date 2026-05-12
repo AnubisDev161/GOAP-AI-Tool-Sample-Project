@@ -1,0 +1,32 @@
+using UnityEngine;
+using UnityEngine.AI;
+
+namespace GOAP
+{
+    [RequireComponent(typeof(NavMeshAgent))]
+    public class DefaultGOAPNavigationAgent : GOAPNavigation
+    {
+        private NavMeshAgent navMeshAgent;
+
+        bool destinationReached;
+        private void OnEnable()
+        {
+            navMeshAgent = GetComponent<NavMeshAgent>();
+        }
+
+        void Update()
+        {
+            if (destinationReached == false && navMeshAgent.remainingDistance <= 2)
+            {
+                OnDestinationReached();
+                destinationReached = true;
+            }
+        }
+
+        public override void SetDestination(Vector3 destination)
+        {
+            destinationReached = false;
+            navMeshAgent.SetDestination(destination);
+        }
+    }
+}

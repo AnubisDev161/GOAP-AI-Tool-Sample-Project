@@ -1,3 +1,4 @@
+using GOAP.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,6 @@ namespace GOAP
         public float hCost{ get;  set; }
         public float gCost { get;  set; }
 
-        
         public WorldState requiredWorldState {  get; private set; }
         public GOAPNode(GOAPAction action, GOAPNode parent, WorldState requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
         {
@@ -26,7 +26,7 @@ namespace GOAP
             this.hCost = hCost;
             this.gCost = gCost;
         }
-        public GOAPNode(GOAPAction action, GOAPNode parent, Dictionary<string, bool> requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
+        public GOAPNode(GOAPAction action, GOAPNode parent, Dictionary<string, WorldFact> requiredWorldState, float fCost, float gCost = 1, float hCost = 1)
         {
             this.action = action;
             this.parent = parent;

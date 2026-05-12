@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using GOAP.Data;
 
 namespace GOAP.Tree
 {
@@ -44,11 +45,13 @@ namespace GOAP.Tree
 
                 closedList.Add(currentNode);
 
-                if (openQueue.count == 40)
-                {
-                    var x = 254;
-                }
 
+                if (closedList.Count > 20)
+                {
+                    Debug.Log("Stuck in loop!");
+                    break;
+                }
+                
                 foreach (var action in availableActions)
                 {
                     if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts))
@@ -124,7 +127,7 @@ namespace GOAP.Tree
             int h = 0;
             foreach (var goalFact in goalState.worldFacts)
             {
-                if (!worldState.worldFacts.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
+                if (!worldState.worldFacts.TryGetValue(goalFact.Key, out var value) || value != goalFact.Value)
                 {
                     h++;
                 }
@@ -154,12 +157,12 @@ namespace GOAP.Tree
             return startNode;
         }
 
-        private bool HasAnyRequiredEffects(GOAPAction action, Dictionary<string, bool> preconditions)
+        private bool HasAnyRequiredEffects(GOAPAction action, Dictionary<string, WorldFact> preconditions)
         {
             bool satisfiesAtLeastOne = false;
             foreach (var effect in action.effects)
             {
-                if (preconditions.TryGetValue(effect.Key, out bool value))
+                if (preconditions.TryGetValue(effect.Key, out WorldFact value))
                 {
                     if (value == effect.Value)
                     {

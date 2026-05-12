@@ -1,3 +1,4 @@
+using GOAP.Data;
 using System.Collections.Generic;
 
 namespace GOAP

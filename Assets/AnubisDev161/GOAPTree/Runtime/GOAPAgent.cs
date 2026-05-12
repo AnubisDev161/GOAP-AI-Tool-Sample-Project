@@ -1,3 +1,4 @@
+using GOAP.Data;
 using GOAPGraph;
 using System;
 using System.Collections.Generic;
@@ -10,8 +11,7 @@ namespace GOAP
 {
     public class GOAPAgent : GOAPGraphObject
     {
-        private GOAPBrain goapBrain;
-
+        public GOAPBrain goapBrain {  get; private set; }
         [field: SerializeField]
         public GOAPGraphAsset graphAsset { get; private set; }
         private Queue<GOAPAction> currentPlan;

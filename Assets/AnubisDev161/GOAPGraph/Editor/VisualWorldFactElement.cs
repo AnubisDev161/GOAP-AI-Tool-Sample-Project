@@ -1,12 +1,8 @@
-using Codice.Client.Common.GameUI;
-using System;
-using System.ComponentModel;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-
-
+using GOAP.Data;
+using UnityEditor.UIElements;
 namespace GOAPGraph.Editor
 {
     public class VisualWorldFactElement : VisualElement
@@ -25,8 +21,9 @@ namespace GOAPGraph.Editor
 
         private void Init()
         {
-            var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
+            var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
+            var acceptedValue = serializedWorldFact.FindPropertyRelative("acceptedValue");
             var valueType = (ValueType)valueTypeProperty.boxedValue;
 
             VisualElement valueField =  CreateFieldByType(valueProperty, valueType);
@@ -37,20 +34,21 @@ namespace GOAPGraph.Editor
             // Create property fields.
             var valueFieldName = new PropertyField(valueProperty);
             var valueTypeField = new PropertyField(valueTypeProperty);
+            var acceptedValueField = new PropertyField(acceptedValue);
             var nameField = new PropertyField(serializedWorldFact.FindPropertyRelative("name"));
 
             foldOut.Add(nameField);
 
             // Add either a textField or a toggle according to the property's value
             foldOut.Add(valueField);
+   
             //foldOut.Add(valueFieldName);
-            
 
-            
             valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
             
 
             foldOut.Add(valueTypeField);
+            foldOut.Add(acceptedValueField);
             contentContainer.Add(foldOut);
         }
 
@@ -58,7 +56,6 @@ namespace GOAPGraph.Editor
         {
             var valueTypeProperty = evt.changedProperty;
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
-            
 
 
             if (WorldFact.IsRequiredValueType((ValueType)valueTypeProperty.boxedValue, valueProperty.stringValue)) return;
@@ -130,8 +127,6 @@ namespace GOAPGraph.Editor
             serializedWorldFact.serializedObject.Update();
         }
 
-      
-
         private object EvaluateInputDataType(string newValue, object boxedValue)
         {
             object result = null;
@@ -161,8 +156,6 @@ namespace GOAPGraph.Editor
             return result;
         }
 
-      
-
         public VisualElement CreateFieldByType(SerializedProperty valueProperty, ValueType valueType)
         {
             VisualElement field = null;
@@ -175,14 +168,14 @@ namespace GOAPGraph.Editor
                     var toggle = (field as Toggle);
                     toggle.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
-                    toggle.value = Convert.ToBoolean(valueProperty.stringValue);
+                    toggle.value = System.Convert.ToBoolean(valueProperty.stringValue);
                     break;
                 case ValueType.Int:
                     field = new IntegerField(VALUE_TITLE);
                     var intField = (field as IntegerField);
                     intField.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
-                    intField.value = Convert.ToInt32(valueProperty.stringValue);
+                    intField.value = System.Convert.ToInt32(valueProperty.stringValue);
                     break;
                 case ValueType.Float:
                     field = new FloatField(VALUE_TITLE);

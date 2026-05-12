@@ -1,5 +1,6 @@
+using GOAP.Data;
 using System.Collections.Generic;
-using UnityEditor.Experimental.GraphView;
+
 namespace GOAP
 {
     public class GOAPGoalSelector 
@@ -11,35 +12,6 @@ namespace GOAP
         {
             this.blackboard = blackboard;
             goalList = new List<GOAPGoal>();
-
-            //FillGoalList();
-        }
-
-        private void FillGoalList()
-        {
-            //// ---------------------------
-            //// GOAL
-            //// ---------------------------
-
-            //string hasFire = "hasFire";
-            //string hasFood = "hasFood";
-            //string hasShelter = "hasShelter";
-            //string haveAHome = "haveAHome";
-
-            //// ---------------------------
-            //// GOAL
-            //// ---------------------------
-            //Dictionary<string, bool> hasFireGoalWorldState = new Dictionary<string, bool>();
-            //hasFireGoalWorldState.Add(hasFood, true);
-            //hasFireGoalWorldState.Add(hasShelter, true);
-            //goalList.Add(new GOAPGoal(100, hasFireGoalWorldState, haveAHome));
-
-            //// ---------------------------
-            //// GOAL
-            //// ---------------------------
-
-       
-
         }
 
         // TODO add more criteria to find the "best" goal

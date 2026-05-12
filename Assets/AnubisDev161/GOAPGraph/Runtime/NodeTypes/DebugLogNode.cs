@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using GOAP.Data;
 
 namespace GOAPGraph
 {
@@ -8,11 +9,11 @@ namespace GOAPGraph
     {
         [ExposedProperty] 
         public string logMessage;
-        public override void OnExecute(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
+        public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
         {
             Debug.Log(logMessage);
             
-            base.OnExecute(currentGraph, worldFacts);
+            base.OnExecute(currentGraph, worldState);
         }
     }
 }

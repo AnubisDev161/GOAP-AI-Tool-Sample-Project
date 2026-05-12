@@ -1,3 +1,4 @@
+using GOAP.Data;
 using GOAPGraph;
 using System;
 using System.Collections.Generic;
@@ -79,31 +80,34 @@ namespace GOAP
             return actions;
         }
 
-        private Dictionary<string, bool> GetNodeEffects(GOAPGraphNode graphNode)
+        private Dictionary<string, WorldFact> GetNodeEffects(GOAPGraphNode graphNode)
         {
-            var effects = new Dictionary<string, bool>();
+            var effects = new Dictionary<string, WorldFact>();
 
             var effectNodes = graphNode.GetEffectNodes(graphInstance);
+
+
+            // TODO Implement type conversion, currently only bool values are accepted!
             foreach (var effectNode in effectNodes)
             {
                 var effect = effectNode.GetData();
 
-                effects.Add(effect.name, Convert.ToBoolean(effect.value));
+                effects.Add(effect.name, effect);
             }
 
             return effects;
         }
 
-        private Dictionary<string, bool> GetNodePreconditions(GOAPGraphNode graphNode)
+        private Dictionary<string, WorldFact> GetNodePreconditions(GOAPGraphNode graphNode)
         {
-            var preconditions = new Dictionary<string, bool>();
+            var preconditions = new Dictionary<string, WorldFact>();
 
             var preconditionNodes = graphNode.GetPreconditionNodes(graphInstance);
             foreach (var preconditionNode in preconditionNodes)
             {
                 var precondition = preconditionNode.GetData();
 
-                preconditions.Add(precondition.name, Convert.ToBoolean(precondition.value));
+                preconditions.Add(precondition.name, precondition);
             }
 
             return preconditions;

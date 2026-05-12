@@ -2,6 +2,7 @@ using GOAPGraph;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using GOAP.Data;
 
 namespace GOAP
 {
@@ -9,14 +10,14 @@ namespace GOAP
     {
         public string name { get; private set; } = ("Base Action");
         private float cost;
-        public Dictionary<string, bool> preconditions { get; private set; }
-        public Dictionary<string, bool> effects { get; private set; }
+        public Dictionary<string, WorldFact> preconditions { get; private set; }
+        public Dictionary<string, WorldFact> effects { get; private set; }
 
         public Action<bool, GOAPAction> executed;
 
-        GOAPGraphNode graphNode;
+        private GOAPGraphNode graphNode;
 
-        public GOAPAction(Dictionary<string, bool> preconditions = null, Dictionary<string, bool> effects = null, string name = "Base Action", float cost = 1, GOAPGraphNode graphNode = null)
+        public GOAPAction(Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, string name = "Base Action", float cost = 1, GOAPGraphNode graphNode = null)
         {
             this.preconditions = preconditions;
             this.name = name;
@@ -33,11 +34,11 @@ namespace GOAP
             }
         }
 
-        public bool CheckIfPrconditionsMet(Dictionary<string, bool> worldFacts)
+        public bool CheckIfPrconditionsMet(Dictionary<string, WorldFact> worldFacts)
         {
             foreach (var preCon in preconditions)
             {
-                bool value;
+                WorldFact value;
                 if (!worldFacts.TryGetValue(preCon.Key, out value) || value != preCon.Value)
                 {
                     return false;
@@ -59,21 +60,24 @@ namespace GOAP
             }
 
             graphNode.executeFinished += OnGraphNodeExecuteFinished;
-            graphNode.OnExecute(graphAsset, worldState.worldFacts);
+            graphNode.OnExecute(graphAsset, worldState);
             return true;
         }
 
-        private void OnGraphNodeExecuteFinished(GOAPGraphAsset graphAsset, Dictionary<string, bool> worldFacts)
+        private void OnGraphNodeExecuteFinished(GOAPGraphAsset graphAsset, WorldState worldState, bool success)
         {
-            FinishExecute(new WorldState(worldFacts), graphAsset);
+            FinishExecute(graphAsset, worldState, success);
         }
 
-        protected virtual bool FinishExecute(WorldState worldState, GOAPGraphAsset graphAsset)
+        protected virtual bool FinishExecute(GOAPGraphAsset graphAsset, WorldState worldState, bool success)
         {
-            Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
-            RemovePreconditionsAndAddEffectsToState(worldState);
+            if (success)
+            {
+                Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
+                RemovePreconditionsAndAddEffectsToState(worldState);
+            }
 
-            executed?.Invoke(true, this);
+            executed?.Invoke(success, this);
             return true;
         }
 
@@ -82,7 +86,7 @@ namespace GOAP
         {
             foreach (var precondition in preconditions)
             {
-                if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out bool value) && value == precondition.Value)
+                if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out var value) && value == precondition.Value)
                 {
                     currentWorldState.TryRemoveFact(precondition.Key);
                 }
@@ -99,7 +103,8 @@ namespace GOAP
         {
             foreach (var effect in effects)
             {
-                if (requiredWorldState.worldFacts.TryGetValue(effect.Key, out bool value) && value == effect.Value)
+                // TODO Add other conditions such as equal, any, greater smaller
+                if (requiredWorldState.worldFacts.TryGetValue(effect.Key, out WorldFact value) && value == effect.Value)
                 {
                     requiredWorldState.TryRemoveFact(effect.Key);
                 }
@@ -119,7 +124,7 @@ namespace GOAP
         public override string ToString()
         {
             
-            return "[Name: " + name + "cost: " + cost + " ]";
+            return "[Name: " + name + " cost: " + cost + " ]";
         }
     }
 }

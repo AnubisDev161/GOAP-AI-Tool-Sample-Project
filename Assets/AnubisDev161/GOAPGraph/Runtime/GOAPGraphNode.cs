@@ -2,8 +2,8 @@ using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using UnityEditor;
-
 using UnityEngine;
+using GOAP.Data;
 
 namespace GOAPGraph
 {
@@ -15,7 +15,7 @@ namespace GOAPGraph
         [SerializeField]
         private Rect pos;
 
-        public Action<GOAPGraphAsset, Dictionary<string, bool>> executeFinished;
+        public Action<GOAPGraphAsset, WorldState, bool> executeFinished;
 
         public string typeName;
         
@@ -45,14 +45,14 @@ namespace GOAPGraph
             this.portsIndices = portsIndices;
         }
 
-        public virtual void OnExecute(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
+        public virtual void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, bool success = true)
         {
-            OnExecuteFinished(currentGraph, worldFacts);
+            OnExecuteFinished(currentGraph, worldState, success);
         }
 
-        public virtual void OnExecuteFinished(GOAPGraphAsset currentGraph, Dictionary<string, bool> worldFacts)
+        public virtual void OnExecuteFinished(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
         {
-             executeFinished?.Invoke(currentGraph, worldFacts);
+             executeFinished?.Invoke(currentGraph, worldState, success);
         }
 
         public List<BlackbaordKeyNode> GetPreconditionNodes(GOAPGraphAsset currentGraph)

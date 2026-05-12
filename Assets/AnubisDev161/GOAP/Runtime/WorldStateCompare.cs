@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 
-namespace GOAP
+namespace GOAP.Data
 {
     public static class WorldStateCompare
     {
@@ -8,7 +8,7 @@ namespace GOAP
         {
             foreach (var goalFact in worldStateB.worldFacts)
             {
-                if (!worldStateA.worldFacts.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
+                if (!worldStateA.worldFacts.TryGetValue(goalFact.Key, out var value) || value != goalFact.Value)
                 {
                     return false;
                 }
@@ -16,12 +16,11 @@ namespace GOAP
 
             return true;
         }
-
-        public static bool IsWorldStateBAchieved(Dictionary<string, bool> worldStateA, Dictionary<string, bool> worldStateB)
+        public static bool IsWorldStateBAchieved(Dictionary<string, WorldFact> worldStateA, Dictionary<string, WorldFact> worldStateB)
         {
             foreach (var goalFact in worldStateB)
             {
-                if (!worldStateA.TryGetValue(goalFact.Key, out bool value) || value != goalFact.Value)
+                if (!worldStateA.TryGetValue(goalFact.Key, out var value) || value != goalFact.Value)
                 {
                     return false;
                 }

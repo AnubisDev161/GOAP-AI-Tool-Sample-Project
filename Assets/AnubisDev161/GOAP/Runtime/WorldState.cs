@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using System;
 using System.Linq;
 
-namespace GOAP
+namespace GOAP.Data
 {
     public class WorldState
     {
-        public Dictionary<string, bool> worldFacts { get; private set; }
+        public Dictionary<string, WorldFact> worldFacts { get; private set; }
 
-        public WorldState(Dictionary<string, bool> worldFacts = null)
+        public WorldState(Dictionary<string, WorldFact> worldFacts = null)
         {
             if (worldFacts == null)
             {
-                worldFacts = new Dictionary<string, bool>();
+                worldFacts = new Dictionary<string, WorldFact>();
             }
 
             this.worldFacts = worldFacts;
@@ -22,12 +22,12 @@ namespace GOAP
         {
             if (!worldFacts.ContainsKey(worldFact.name))
             {
-                worldFacts.Add(worldFact.name, worldFact.value);
+                worldFacts.Add(worldFact.name, worldFact);
                 return true;
             }
-            else if (worldFacts[worldFact.name] != worldFact.value)
+            else if (worldFacts[worldFact.name] != worldFact)
             {
-                worldFacts[worldFact.name] = worldFact.value;
+                worldFacts[worldFact.name] = worldFact;
                 return true;
             }
 
@@ -49,7 +49,7 @@ namespace GOAP
         {
             if (worldFacts.ContainsKey(worldFact.name))
             {
-                worldFacts[worldFact.name] = worldFact.value;
+                worldFacts[worldFact.name] = worldFact;
                 return true;
             }
 
@@ -57,13 +57,13 @@ namespace GOAP
         }
         public WorldState Copy()
         {
-            WorldState mutatedBlackboard = new WorldState();
+            WorldState mutatedWorldState = new WorldState();
             foreach (var fact in worldFacts)
             {
-                mutatedBlackboard.TryAddFact(new WorldFact(fact.Key, fact.Value));
+                mutatedWorldState.TryAddFact(fact.Value);
             }
 
-            return mutatedBlackboard;
+            return mutatedWorldState;
         }
 
         public static bool operator ==(WorldState left, WorldState right)
@@ -72,22 +72,11 @@ namespace GOAP
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
                 {
                     return false;
                 }
             }
-
-            //foreach (var rightFact in left.worldFacts)
-            //{
-            //    foreach (var leftFact in right.worldFacts)
-            //    {
-            //        if (!(rightFact.Key == leftFact.Key) || !rightFact.Value == leftFact.Value)
-            //        {
-            //            return false;
-            //        }
-            //    }
-            //}
 
             return true;
         }
@@ -98,7 +87,7 @@ namespace GOAP
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
                 {
                     return true;
                 }
@@ -117,7 +106,7 @@ namespace GOAP
 
             foreach (var fact in worldFacts)
             {
-                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || !value.Equals(fact.Value))
+                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
                 {
                     return false;
                 }
@@ -132,7 +121,7 @@ namespace GOAP
 
             foreach (var state in worldFacts)
             {
-                allFacts += state.ToString() + " | ";
+                allFacts += state.Value.ToString() + " | ";
             }
 
             return allFacts;
@@ -145,18 +134,6 @@ namespace GOAP
             {
                 return 1;
             }
-        }
-    }
-
-    public struct WorldFact
-    {
-        public string name {  get; private set; }
-        public bool value { get; private set; }
-
-        public WorldFact(string name, bool value)
-        {
-            this.name = name;
-            this.value = value;
         }
     }
 }

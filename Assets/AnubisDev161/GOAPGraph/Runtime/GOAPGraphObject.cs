@@ -4,26 +4,38 @@ using System.Collections.Generic;
 using Unity.Properties;
 using UnityEngine;
 using UnityEngine.AI;
+using GOAP;
 
 namespace GOAPGraph
 {
     public class GOAPGraphObject : MonoBehaviour // TODO Replace with GOAP Brain
     {
+        public GOAPNavigation navigation { get; private set; }
+        private void OnEnable()
+        {
+            var navigation = GetComponent<GOAPNavigation>();
 
+            if (navigation == null)
+            {
+                Debug.LogError("No GOAPNaviagtion component found!");
+                return;
+            }
 
-      ////  [HideInInspector]
-      //  public WorldFact worldFact; //= new WorldFact("DialogueText", false, ValueType.Bool);
+            this.navigation = navigation;
+        }
+        ////  [HideInInspector]
+        //  public WorldFact worldFact; //= new WorldFact("DialogueText", false, ValueType.Bool);
 
-      //  public NavMeshAgent navMeshAgent;
+        //  public NavMeshAgent navMeshAgent;
 
-      //  public Action<GOAPGraphAsset> destinationReached;
+        //  public Action<GOAPGraphAsset> destinationReached;
 
-      //  private bool isDestinationReached;
+        //  private bool isDestinationReached;
 
-      //  private void Start()
-      //  {
-      //      navMeshAgent = GetComponent<NavMeshAgent>();
-      //  }
+        //  private void Start()
+        //  {
+        //      navMeshAgent = GetComponent<NavMeshAgent>();
+        //  }
 
         //private void OnEnable()
         //{
@@ -31,13 +43,13 @@ namespace GOAPGraph
         //    ExecuteAsset();
         //}
 
-        
+
         //private void ExecuteAsset()
         //{
         //    graphInstance.Initialize(this);
         //    GOAPGraphNode startNode = graphInstance.GetStartNode();
 
-            
+
         //   // ProcessAndMoveToNextNode(startNode);
         //}
 

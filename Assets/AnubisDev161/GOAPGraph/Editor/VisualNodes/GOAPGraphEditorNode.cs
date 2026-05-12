@@ -8,6 +8,7 @@ using UnityEditor.Experimental.GraphView;
 using UnityEditor.PackageManager.UI;
 using UnityEditor.UIElements;
 using UnityEngine.UIElements;
+using GOAP.Data;
 
 namespace GOAPGraph.Editor
 {

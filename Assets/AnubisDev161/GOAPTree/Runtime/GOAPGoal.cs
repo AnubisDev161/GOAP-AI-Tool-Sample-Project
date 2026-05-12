@@ -1,3 +1,4 @@
+using GOAP.Data;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,10 +7,10 @@ namespace GOAP
     public class GOAPGoal
     {
         private float priority;
-        public Dictionary<string, bool> desiredConditions {  get; private set; }
+        public Dictionary<string, WorldFact> desiredConditions {  get; private set; }
         public string name { get; private set; }
 
-        public GOAPGoal(float priority, Dictionary<string, bool> desiredConditions, string goalName = "baseGoal")
+        public GOAPGoal(float priority, Dictionary<string, WorldFact> desiredConditions, string goalName = "baseGoal")
         {
             this.priority = priority;
             this.desiredConditions = desiredConditions;
