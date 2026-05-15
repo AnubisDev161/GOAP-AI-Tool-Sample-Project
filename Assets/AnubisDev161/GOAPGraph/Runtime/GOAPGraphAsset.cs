@@ -1,7 +1,9 @@
+using GOAP;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static GOAP.GOAPBlackbaord;
 
 namespace GOAPGraph
 {
@@ -20,11 +22,17 @@ namespace GOAPGraph
 
         public GOAPGraphObject goapGraphObject;
 
+        public GOAPBlackbaord blackboard { get; private set; }
+
         public void Initialize(GOAPGraphObject graphObject)
         {
             this.goapGraphObject = graphObject;
             nodeDictionary = new Dictionary<string, GOAPGraphNode>();
-         
+            blackboard = new GOAPBlackbaord();  
+            var blackbaordKey = new BlackboardKey();
+            blackbaordKey.keyType = BlackboardKeyType.Vector3;
+            blackboard.AddKey("TargetPos", blackbaordKey);
+
             foreach (var node in nodes)
             {
                 nodeDictionary.Add(node.id, node);

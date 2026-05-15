@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
@@ -9,6 +10,10 @@ namespace GOAPGraph.Editor
     {
         [field: SerializeField]
         public GOAPGraphAsset currentGraph {  get; private set; }
+
+
+        private DragAndDropVisualMode dragAndDropMode = DragAndDropVisualMode.Generic;
+        public DragAndDropVisualMode dragAndDropVisualMode => dragAndDropMode;
 
         [SerializeField]
         private SerializedObject serializedObject;

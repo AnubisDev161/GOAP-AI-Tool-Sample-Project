@@ -1,14 +1,14 @@
-using NUnit.Framework;
+
 using System;
 using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 using GOAP.Data;
+using UnityEditor;
 
 namespace GOAPGraph
 {
     [Serializable]
-    public class GOAPGraphNode 
+    public class GOAPGraphNode
     {
         [SerializeField]
         private string guid;
@@ -16,9 +16,10 @@ namespace GOAPGraph
         private Rect pos;
 
         public Action<GOAPGraphAsset, WorldState, bool> executeFinished;
-
-        public string typeName;
         
+        public string typeName;
+
+
         [SerializeField]
         protected List<int> portsIndices = new List<int>();
 
@@ -45,7 +46,7 @@ namespace GOAPGraph
             this.portsIndices = portsIndices;
         }
 
-        public virtual void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, bool success = true)
+        public virtual void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             OnExecuteFinished(currentGraph, worldState, success);
         }

@@ -39,16 +39,19 @@ namespace GOAPGraph.Editor
 
             foldOut.Add(nameField);
 
+
             // Add either a textField or a toggle according to the property's value
             foldOut.Add(valueField);
    
             //foldOut.Add(valueFieldName);
 
             valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
-            
+
+           // var objectVield = new ObjectField("Object to add");
 
             foldOut.Add(valueTypeField);
             foldOut.Add(acceptedValueField);
+        //    foldOut.Add(objectVield);
             contentContainer.Add(foldOut);
         }
 
@@ -56,7 +59,6 @@ namespace GOAPGraph.Editor
         {
             var valueTypeProperty = evt.changedProperty;
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
-
 
             if (WorldFact.IsRequiredValueType((ValueType)valueTypeProperty.boxedValue, valueProperty.stringValue)) return;
 

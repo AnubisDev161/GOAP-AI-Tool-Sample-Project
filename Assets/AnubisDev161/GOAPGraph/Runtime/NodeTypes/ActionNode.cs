@@ -1,8 +1,9 @@
+using GOAP.Data;
 using GOAPGraph;
 using System;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
-using GOAP.Data;
 
 namespace GOAPGraph
 {
@@ -14,6 +15,10 @@ namespace GOAPGraph
 
         [ExposedProperty]
         public float cost = 1.0f;
+
+        // Tells the GOAPAction to remove the preconditions from the curretn worldState ater successful execution
+        [ExposedProperty]
+        public bool keepPreconditionsInWorldState;
     }
 }
 

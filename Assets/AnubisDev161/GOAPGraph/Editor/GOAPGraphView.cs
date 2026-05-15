@@ -48,10 +48,11 @@ namespace GOAPGraph.Editor
             this.AddManipulator(new RectangleSelector());
             this.AddManipulator(new ClickSelector());
             this.AddManipulator(new ContentZoomer());
+          
 
             DrawNodes();
            
-          
+            
 
             Blackboard testBlackboard = new Blackboard(this);
 
@@ -121,7 +122,7 @@ namespace GOAPGraph.Editor
                 {
                     RemoveConnection(edge);
 
-                    if (edge.input.portName == GOAPGraphEditorNode.PARAM_PORT_NAME)
+                    if (edge.input.portName == GOAPGraphEditorNode.INPUT_PARAM_PORT_NAME)
                     {
                         GOAPGraphEditorNode node = (GOAPGraphEditorNode)edge.input.node;
                       //  node.RemoveInputParams();
@@ -137,7 +138,7 @@ namespace GOAPGraph.Editor
                {
                     CreateEdge(edge);
 
-                    if (edge.input.portName == GOAPGraphEditorNode.PARAM_PORT_NAME)
+                    if (edge.input.portName == GOAPGraphEditorNode.INPUT_PARAM_PORT_NAME)
                     {
                         GOAPGraphEditorNode node = (GOAPGraphEditorNode)edge.input.node;
                       //  node.ExpandInputParams();

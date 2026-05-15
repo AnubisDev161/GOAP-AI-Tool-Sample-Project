@@ -6,6 +6,7 @@ using System.Drawing;
 using Unity.VisualScripting;
 
 using UnityEngine;
+using static GOAP.GOAPBlackbaord;
 
 namespace GOAP
 {
@@ -26,8 +27,11 @@ namespace GOAP
             }
 
             var graphInstance = Instantiate(graphAsset);
-    
+        
             goapBrain = new GOAPBrain(this, graphInstance);
+
+
+
             currentPlan =  goapBrain.CreatePLan();
 
 

@@ -13,159 +13,132 @@ MonoBehaviour:
   m_Name: New GOAP Graph Asset
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 9217489930599530560
-  - rid: 9217489930599530561
-  - rid: 9217489930599530562
-  - rid: 9217489930599530563
-  - rid: 9217489930599530566
-  - rid: 9217489930599530567
-  - rid: 9217489930599530572
-  - rid: 9217489930599530573
+  - rid: 9217489962295623746
+  - rid: 9217489962295623748
+  - rid: 9217489962295623749
+  - rid: 9217489977434701883
+  - rid: 9217489978161627194
+  - rid: 9217489978161627195
   connections:
   - inputPort:
-      nodeId: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
+      nodeId: 6ef26bee-a6d3-4c62-9ef6-0928e357a39a
       portIndex: 0
     outputPort:
-      nodeId: ccbbb756-aa6c-4936-8852-4e275d94f06f
+      nodeId: 4637fc47-54b0-4714-956a-90c8a14926b7
       portIndex: 1
   - inputPort:
-      nodeId: 12fdb86d-23f2-49d4-bf02-ddfaa5662036
+      nodeId: 4637fc47-54b0-4714-956a-90c8a14926b7
       portIndex: 0
     outputPort:
-      nodeId: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
+      nodeId: 65ade77d-30f2-4678-99f5-e06ae696aeec
       portIndex: 1
   - inputPort:
-      nodeId: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
+      nodeId: 459b25f9-ec48-4e46-9039-e5a18872c3af
       portIndex: 0
     outputPort:
-      nodeId: dd58b5b5-66c2-4a3f-9100-83c6252d4482
+      nodeId: 058f0ec0-a938-4ffa-9ed0-f4c771b62504
       portIndex: 1
   - inputPort:
-      nodeId: 12fdb86d-23f2-49d4-bf02-ddfaa5662036
+      nodeId: 65ade77d-30f2-4678-99f5-e06ae696aeec
       portIndex: 0
     outputPort:
-      nodeId: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
-      portIndex: 1
-  - inputPort:
-      nodeId: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
-      portIndex: 0
-    outputPort:
-      nodeId: 52524275-e055-4399-8bb8-7e42569ea32c
-      portIndex: 1
-  - inputPort:
-      nodeId: ccbbb756-aa6c-4936-8852-4e275d94f06f
-      portIndex: 0
-    outputPort:
-      nodeId: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
+      nodeId: 459b25f9-ec48-4e46-9039-e5a18872c3af
       portIndex: 1
   goapGraphObject: {fileID: 0}
   references:
     version: 2
     RefIds:
-    - rid: 9217489930599530560
-      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: Assembly-CSharp}
+    - rid: 9217489962295623746
+      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
-        guid: 12fdb86d-23f2-49d4-bf02-ddfaa5662036
+        guid: 4637fc47-54b0-4714-956a-90c8a14926b7
         pos:
           serializedVersion: 2
-          x: 1972
-          y: 775
-          width: 217
-          height: 116
-        typeName: GOAPGraph.GoalWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
+          x: 988
+          y: 332
+          width: 182
+          height: 96
+        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
-        portsIndices: 00000000
-        name: AtDestination
-        priority: 1
-    - rid: 9217489930599530561
+        portsIndices: 0000000001000000
+        worldFact:
+          name: AtDestination
+          value: True
+          valueType: 0
+          acceptedValue: 0
+    - rid: 9217489962295623748
       type: {class: StartWorldStateNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
-        guid: 451f3199-6b8a-4fc1-a34a-a5e065919fe9
+        guid: 422efb5f-afb8-4a04-99f1-80d07638cb53
         pos:
           serializedVersion: 2
-          x: 840
-          y: 501
-          width: 143
+          x: 918
+          y: 631
+          width: 108
           height: 77
         typeName: GOAPGraph.StartWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         portsIndices: 00000000
-    - rid: 9217489930599530562
-      type: {class: MoveTo, ns: GOAPGraph, asm: Assembly-CSharp}
+    - rid: 9217489962295623749
+      type: {class: GoalWorldStateNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
-        guid: ccbbb756-aa6c-4936-8852-4e275d94f06f
+        guid: 6ef26bee-a6d3-4c62-9ef6-0928e357a39a
         pos:
           serializedVersion: 2
-          x: 1331
-          y: 659
-          width: 282
-          height: 135
+          x: 1363
+          y: 515
+          width: 226
+          height: 116
+        typeName: GOAPGraph.GoalWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        portsIndices: 00000000
+        name: IsAtDestination
+        priority: 1
+    - rid: 9217489977434701883
+      type: {class: MoveTo, ns: GOAPGraph, asm: Assembly-CSharp}
+      data:
+        guid: 65ade77d-30f2-4678-99f5-e06ae696aeec
+        pos:
+          serializedVersion: 2
+          x: 605
+          y: 572
+          width: 233
+          height: 154
         typeName: GOAPGraph.MoveTo, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
-        name: Move to
-        cost: 3
-        destination: {x: 0, y: 0, z: 0}
-    - rid: 9217489930599530563
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: 97ceb52c-05cc-45e8-94ef-ccd2b8c7b03f
-        pos:
-          serializedVersion: 2
-          x: 1661
-          y: 658
-          width: 282
-          height: 171
-        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        portsIndices: 0000000001000000
-        worldFact:
-          name: IsAtDestination
-          value: True
-          valueType: 0
-          acceptedValue: 0
-    - rid: 9217489930599530566
-      type: {class: ActionNode, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: dd58b5b5-66c2-4a3f-9100-83c6252d4482
-        pos:
-          serializedVersion: 2
-          x: 1313
-          y: 890
-          width: 282
-          height: 116
-        typeName: GOAPGraph.ActionNode, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: RobBankAndChill
+        name: 
         cost: 1
-    - rid: 9217489930599530567
-      type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
+        keepPreconditionsInWorldState: 0
+        destination:
+          position: {x: 0.26, y: 1.28, z: 21.84}
+          sceneID: 44012
+    - rid: 9217489978161627194
+      type: {class: GenerateRandomDestination, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
-        guid: 800824be-8d45-4e1d-8c13-7a0ea5c76bf0
+        guid: 058f0ec0-a938-4ffa-9ed0-f4c771b62504
         pos:
           serializedVersion: 2
-          x: 1661
-          y: 891
-          width: 282
-          height: 171
-        typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
+          x: 69
+          y: 573
+          width: 212
+          height: 153
+        typeName: GOAPGraph.GenerateRandomDestination, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
         portsIndices: 0000000001000000
-        worldFact:
-          name: HasMoney
-          value: True
-          valueType: 0
-          acceptedValue: 0
-    - rid: 9217489930599530572
+        name: Generate point
+        cost: 1
+        keepPreconditionsInWorldState: 0
+        range: 20
+    - rid: 9217489978161627195
       type: {class: BlackbaordKeyNode, ns: GOAPGraph, asm: Assembly-CSharp}
       data:
-        guid: f6b1a8bb-bca5-4396-9b83-6813fee5ae5a
+        guid: 459b25f9-ec48-4e46-9039-e5a18872c3af
         pos:
           serializedVersion: 2
-          x: 983
-          y: 659
-          width: 282
+          x: 309
+          y: 572
+          width: 256
           height: 171
         typeName: GOAPGraph.BlackbaordKeyNode, Assembly-CSharp, Version=0.0.0.0,
           Culture=neutral, PublicKeyToken=null
@@ -175,19 +148,3 @@ MonoBehaviour:
           value: True
           valueType: 0
           acceptedValue: 0
-    - rid: 9217489930599530573
-      type: {class: GenerateRandomDestination, ns: GOAPGraph, asm: Assembly-CSharp}
-      data:
-        guid: 52524275-e055-4399-8bb8-7e42569ea32c
-        pos:
-          serializedVersion: 2
-          x: 654
-          y: 659
-          width: 282
-          height: 135
-        typeName: GOAPGraph.GenerateRandomDestination, Assembly-CSharp, Version=0.0.0.0,
-          Culture=neutral, PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: generate random poin
-        cost: 1
-        range: 20

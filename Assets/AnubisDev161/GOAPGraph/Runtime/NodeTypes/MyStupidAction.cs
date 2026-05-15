@@ -7,7 +7,7 @@ namespace GOAPGraph
     [NodeInfo("My stupid node", "Stupid / Node", hasInputParams: true, hasOutputParams: true)]
     public class MyStupidAction : ActionNode
     {
-        public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
+        public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
 
             Debug.Log("Write stupid text and then destroy plan");

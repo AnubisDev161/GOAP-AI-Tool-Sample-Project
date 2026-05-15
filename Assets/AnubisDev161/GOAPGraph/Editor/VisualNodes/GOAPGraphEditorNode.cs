@@ -21,7 +21,8 @@ namespace GOAPGraph.Editor
         private SerializedObject serializedObject;
         private SerializedProperty serializedProperty;
 
-        public static string PARAM_PORT_NAME { get; private set; } = "Required World Fact";
+        public static string INPUT_PARAM_PORT_NAME { get; private set; } = "Preconditions";
+        public static string OUTPUT_PARAM_PORT_NAME { get; private set; } = "Effects";
         public List<Port> ports {  get; private set; }
         public List<int> portsIndices { get; private set; } = new List<int>();
 
@@ -195,7 +196,7 @@ namespace GOAPGraph.Editor
             Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
 
             Port paramPort = InstantiatePort(Orientation.Horizontal, Direction.Input, capacity, typeof(GOAPGraphPortTypes.ParamPort));
-            paramPort.portName = PARAM_PORT_NAME;
+            paramPort.portName = INPUT_PARAM_PORT_NAME;
             paramPort.tooltip = "Param input";
             ports.Add(paramPort);
             inputContainer.Add(paramPort);
@@ -208,7 +209,7 @@ namespace GOAPGraph.Editor
             Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
 
             Port paramPort = InstantiatePort(Orientation.Horizontal, Direction.Output, capacity, typeof(GOAPGraphPortTypes.ParamPort));
-            paramPort.portName = "Mutated World Fact";
+            paramPort.portName = OUTPUT_PARAM_PORT_NAME;
             paramPort.tooltip = "Param output";
             ports.Add(paramPort);
             outputContainer.Add(paramPort);

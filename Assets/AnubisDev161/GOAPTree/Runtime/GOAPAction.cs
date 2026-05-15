@@ -1,8 +1,8 @@
+using GOAP.Data;
 using GOAPGraph;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP.Data;
 
 namespace GOAP
 {
@@ -15,15 +15,15 @@ namespace GOAP
 
         public Action<bool, GOAPAction> executed;
 
-        private GOAPGraphNode graphNode;
+        private ActionNode actionGraphNode;
 
-        public GOAPAction(Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, string name = "Base Action", float cost = 1, GOAPGraphNode graphNode = null)
+        public GOAPAction(Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, string name = "Base Action", float cost = 1, ActionNode graphNode = null)
         {
             this.preconditions = preconditions;
             this.name = name;
             this.effects = effects;
             this.cost = cost;
-            this.graphNode = graphNode;
+            this.actionGraphNode = graphNode;
         }
 
         public void PrintPreconditions()
@@ -59,8 +59,8 @@ namespace GOAP
                 return false;
             }
 
-            graphNode.executeFinished += OnGraphNodeExecuteFinished;
-            graphNode.OnExecute(graphAsset, worldState);
+            actionGraphNode.executeFinished += OnGraphNodeExecuteFinished;
+            actionGraphNode.OnExecute(graphAsset, worldState, preconditions, effects);
             return true;
         }
 
@@ -81,21 +81,32 @@ namespace GOAP
             return true;
         }
 
-        // If the plan is being executed, you need to start at the current world state and remove all the preconditions of the action from tbhe current world state
+        // If the plan is being executed, you need to start at the current world state
         public void RemovePreconditionsAndAddEffectsToState(WorldState currentWorldState)
         {
-            foreach (var precondition in preconditions)
+            // Be careful, this needs testing! Could cause errors!
+            // remove all the preconditions of the action from tbhe current world state if removePreconditions is true
+            if (!actionGraphNode.keepPreconditionsInWorldState)
             {
-                if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out var value) && value == precondition.Value)
+                foreach (var precondition in preconditions)
                 {
-                    currentWorldState.TryRemoveFact(precondition.Key);
+                    if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out var value) && value == precondition.Value)
+                    {
+                        currentWorldState.TryRemoveFact(precondition.Key);
+                    }
                 }
             }
+            else
+            {
+                Debug.Log("Apply effects after execution without removing preconditions from world state, could cause potential isssues");
+            }
 
+            
             foreach (var effect in effects)
             {
                 currentWorldState.worldFacts[effect.Key] = effect.Value;
             }
+            
         }
 
         // If the plan is being planned, you need to start at the goal world state and remove all the effects of the action from the required world state

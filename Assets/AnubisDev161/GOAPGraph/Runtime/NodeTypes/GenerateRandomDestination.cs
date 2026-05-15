@@ -1,8 +1,11 @@
+using GOAP;
 using GOAP.Data;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
+using static GOAP.GOAPBlackbaord;
 
 namespace GOAPGraph
 {
@@ -11,12 +14,23 @@ namespace GOAPGraph
     {
         [ExposedProperty]
         public float range;
-        public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
+        public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var newWordlFact = new WorldFact();
-            newWordlFact.name = "New destination";
-            newWordlFact.valueType = ValueType.Vector3;
+            var blackbaordKey = currentGraph.blackboard.GetKey("TargetPos");
+
+            if (blackbaordKey == null) return;
+
+
             
+            
+            //WorldFact reqiredEffect = new WorldFact();
+
+            //if (reqiredEffect.valueType != requiredValueType)
+            //{
+            //    base.OnExecuteFinished(currentGraph, worldState, false);
+            //    return;
+            //}
+
             var randomPointInsideUnitSphere = Random.insideUnitSphere;
             var randomPos = (randomPointInsideUnitSphere * range) + currentGraph.goapGraphObject.gameObject.transform.position;
 
@@ -25,11 +39,10 @@ namespace GOAPGraph
             NavMesh.SamplePosition(randomPos, out hit, range, 1);
 
             Vector3 finalPos = hit.position;
-            newWordlFact.value = finalPos.ToString();
+            blackbaordKey.key = finalPos; 
 
-            worldState.TryAddFact(newWordlFact);
-            
             base.OnExecute(currentGraph, worldState);
         }
+
     }
 }

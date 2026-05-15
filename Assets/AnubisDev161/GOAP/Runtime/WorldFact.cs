@@ -89,7 +89,6 @@ namespace GOAP.Data
                 return true;
             }
 
-
             string potentialFloat = "";
             if (value.Length > 0)
             {
@@ -139,7 +138,7 @@ namespace GOAP.Data
         Int,
         Float,
         String,
-        Vector3
+        Vector3,
 
     }
 
