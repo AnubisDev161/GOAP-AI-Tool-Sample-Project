@@ -1,5 +1,6 @@
 using GOAP;
 using GOAP.Data;
+using NUnit.Framework.Constraints;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -67,16 +68,26 @@ namespace GOAPGraph.Editor
 
         private void AddWorldFactBlackboard()
         {
-            GOAPEditorBlackbaord worldFactsBlackboard = new GOAPEditorBlackbaord();
+            GOAPEditorBlackboard worldFactsBlackboard = new GOAPEditorBlackboard();
             worldFactsBlackboard.graphView = this;
-            worldFactsBlackboard.title = "World Facts";
+            worldFactsBlackboard.title = "World State";
             worldFactsBlackboard.addItemRequested += OnAddWorldFactRequested;
             this.AddElement(worldFactsBlackboard);
+
+            AddExistingWorldFacts(worldFactsBlackboard);
+        }
+
+        private void AddExistingWorldFacts(GOAPEditorBlackboard worldFactsBlackboard)
+        {
+            foreach (var keyValuePair in goapGraph.Blackboard.GetWorldFacts())
+            {
+                AddBlackboardKey(worldFactsBlackboard, keyValuePair.Key, keyValuePair.Value.keyType, keyValuePair.Value.worldFactType, keyValuePair.Value.isWorldFact);
+            }
         }
 
         private void AddBlackboard()
         {
-            GOAPEditorBlackbaord blackboard = new GOAPEditorBlackbaord();
+            GOAPEditorBlackboard blackboard = new GOAPEditorBlackboard();
             blackboard.graphView = this;
             blackboard.title = "Blackboard";
             blackboard.addItemRequested += OnAddBlackboardKeyRequested;
@@ -85,36 +96,43 @@ namespace GOAPGraph.Editor
             this.AddElement(blackboard);
             blackboard.SetPosition(defaultPos);
 
-            AddExistingBlackboardKey(blackboard);
+            AddExistingBlackboardKeys(blackboard);
         }
 
-        private void AddExistingBlackboardKey(GOAPEditorBlackbaord blackboard)
+        private void AddExistingBlackboardKeys(GOAPEditorBlackboard blackboard)
         {
             foreach(var keyValuePair in goapGraph.Blackboard.GetKeys())
             {
-                AddBlackboardKey(blackboard, keyValuePair.Key, keyValuePair.Value.keyType);
+                AddBlackboardKey(blackboard, keyValuePair.Key, keyValuePair.Value.keyType, keyValuePair.Value.worldFactType, keyValuePair.Value.isWorldFact);
             }
         }
 
         private void OnAddWorldFactRequested(Blackboard blackboard)
         {
-            var valueTypeField = new EnumField(GOAP.Data.ValueType.Bool);
-            var blackboardField = new BlackboardField(null, "Default Name", "Value Type");
-
-            blackboardField.Add(valueTypeField);
-            blackboard.Add(blackboardField);
+            AddBlackboardKey(blackboard, isWorldFact: true);
         }
 
         // If I had had the time I would have improved the perfomance here because it is called for every new letter you insert in the name, not just when pressing enter.
-        private void AddBlackboardKey(Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool)
+        private void AddBlackboardKey(
+            Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool, 
+            WorldFactType worldFactType = WorldFactType.Bool, bool isWorldFact = false)
         {
-            var valueTypeField = new EnumField(keyType);
-            var blackboardField = new BlackboardField(null, keyName, "value Type");
+            EnumField valueTypeField;
+            if (isWorldFact)
+            {
+                valueTypeField = new EnumField(worldFactType);
+            }
+            else
+            {
+                valueTypeField = new EnumField(keyType);
+            }
+
+            var blackboardField = new BlackboardField(null, keyName, "Blackbaord Key");
 
             blackboardField.RegisterCallback<ChangeEvent<string>>(evt =>
             {
                 if (evt.previousValue == evt.newValue) return;
-                HandleChange(blackboardField, evt);
+                HandleChange(blackboardField, evt, isWorldFact);
             }
             );
 
@@ -122,7 +140,7 @@ namespace GOAPGraph.Editor
             blackboard.Add(blackboardField);
         }
 
-        private void HandleChange(BlackboardField blackboardField, ChangeEvent<string> evt)
+        private void HandleChange(BlackboardField blackboardField, ChangeEvent<string> evt, bool isWorldfact = false)
         {
             // Determine whether it is a name change or a value change
             bool isNameChange;
@@ -144,7 +162,15 @@ namespace GOAPGraph.Editor
                 if (child is EnumField)
                 {
                     var enumField = (EnumField)child;
-                    goapGraph.Blackboard.AddKey(newKeyName, (GOAPBlackbaord.BlackboardKeyType)enumField.value);
+
+                    if (isWorldfact)
+                    {
+                        goapGraph.Blackboard.AddKey(newKeyName, (WorldFactType)enumField.value);
+                    }
+                    else
+                    {
+                        goapGraph.Blackboard.AddKey(newKeyName, (GOAPBlackbaord.BlackboardKeyType)enumField.value);
+                    }
                 }
             }
 
@@ -159,7 +185,7 @@ namespace GOAPGraph.Editor
 
         private void OnAddBlackboardKeyRequested(Blackboard blackboard)
         {
-            AddBlackboardKey(blackboard);
+            AddBlackboardKey(blackboard, isWorldFact: false);
         }
 
      

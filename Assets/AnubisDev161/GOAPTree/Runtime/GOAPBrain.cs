@@ -55,6 +55,7 @@ namespace GOAP
             var effects = GetNodeEffects(startNode);
             var startState = new WorldState(effects);
 
+            // TODO add connection to blackboard world facts, only world facts declared in the blackboard are valid to use
             return startState;
         }
 

@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace GOAPGraph
 {
-    public class GOAPEditorBlackbaord : Blackboard
+    public class GOAPEditorBlackboard : Blackboard
     {
         public override void AddToSelection(ISelectable selectable)
         {

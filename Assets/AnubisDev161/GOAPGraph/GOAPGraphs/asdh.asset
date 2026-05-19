@@ -21,7 +21,6 @@ MonoBehaviour:
   - rid: 9217490092052447238
   - rid: 9217490092052447239
   - rid: 9217490092052447241
-  worldFacts: []
   connections:
   - inputPort:
       nodeId: 3c369982-c82b-4e4e-95d4-635c5d3c4a9b
@@ -49,10 +48,16 @@ MonoBehaviour:
       portIndex: 0
   goapGraphObject: {fileID: 0}
   blackboard:
+    facts:
+    - Thirsty
+    factValues:
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
     keys:
     - TargetPos
     values:
-    - rid: 9217490092052447302
+    - rid: 9217490094827765835
   references:
     version: 2
     RefIds:
@@ -62,8 +67,8 @@ MonoBehaviour:
         guid: 950b58f0-cc6c-4c2d-a600-4d5d8350bdbb
         pos:
           serializedVersion: 2
-          x: 825
-          y: 485
+          x: -195
+          y: 719
           width: 108
           height: 77
         typeName: GOAPGraph.StartWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
@@ -192,7 +197,9 @@ MonoBehaviour:
           value: True
           valueType: 0
           acceptedValue: 1
-    - rid: 9217490092052447302
+    - rid: 9217490094827765835
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP, asm: Assembly-CSharp}
       data:
+        isWorldFact: 0
         keyType: 5
+        worldFactType: 0

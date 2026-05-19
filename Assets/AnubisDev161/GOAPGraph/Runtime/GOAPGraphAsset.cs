@@ -15,9 +15,7 @@ namespace GOAPGraph
         private List<GOAPGraphNode> nodes = new List<GOAPGraphNode>();
         public List<GOAPGraphNode> Nodes => nodes;
 
-        [SerializeField]
-        private List<WorldFact> worldFacts = new List<WorldFact>();
-        public List<WorldFact> WorldFacts => worldFacts;
+
 
         [SerializeField]
         private List<GOAPGraphConnection> connections;
@@ -162,6 +160,5 @@ namespace GOAPGraph
 
             return outputNodes;
         }
-
     }
 }

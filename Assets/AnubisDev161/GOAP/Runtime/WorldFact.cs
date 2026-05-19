@@ -14,7 +14,7 @@ namespace GOAP.Data
         public string value;
 
         [ExposedProperty]
-        public ValueType valueType;
+        public WorldFactType valueType;
 
         [ExposedProperty]
         public AcceptedValue acceptedValue; 
@@ -26,7 +26,7 @@ namespace GOAP.Data
 
         public void OnBeforeSerialize()
         {
-            if (valueType == ValueType.Float && !value.Contains("f"))
+            if (valueType == WorldFactType.Float && !value.Contains("f"))
             {
                 value += "f";
             }
@@ -45,14 +45,14 @@ namespace GOAP.Data
         public static bool operator >(WorldFact x, WorldFact y)
         {
             if (x.valueType != y.valueType) return false;
-            if (x.valueType == ValueType.Bool) return false;
+            if (x.valueType == WorldFactType.Bool) return false;
 
-            if (x.valueType == ValueType.Int)
+            if (x.valueType == WorldFactType.Int)
             {
                 return (int)x.GetValue() > (int)y.GetValue();
             }
 
-            if (x.valueType == ValueType.Float)
+            if (x.valueType == WorldFactType.Float)
             {
                 return (float)x.GetValue() > (float)y.GetValue();
             }
@@ -63,14 +63,14 @@ namespace GOAP.Data
         public static bool operator <(WorldFact x, WorldFact y)
         {
             if (x.valueType != y.valueType) return false;
-            if (x.valueType == ValueType.Bool) return false;
+            if (x.valueType == WorldFactType.Bool) return false;
 
-            if (x.valueType == ValueType.Int)
+            if (x.valueType == WorldFactType.Int)
             {
                 return (int)x.GetValue() < (int)y.GetValue();
             }
 
-            if (x.valueType == ValueType.Float)
+            if (x.valueType == WorldFactType.Float)
             {
                 return (float)x.GetValue() < (float)y.GetValue();
             }
@@ -87,9 +87,9 @@ namespace GOAP.Data
 
         public object GetValue()
         {
-            if (valueType == ValueType.Bool) return Convert.ToBoolean(value);
-            if (valueType == ValueType.Int) return Convert.ToInt32(value);
-            if (valueType == ValueType.Float) return Convert.ToSingle(value.Remove(value.Length -1));
+            if (valueType == WorldFactType.Bool) return Convert.ToBoolean(value);
+            if (valueType == WorldFactType.Int) return Convert.ToInt32(value);
+            if (valueType == WorldFactType.Float) return Convert.ToSingle(value.Remove(value.Length -1));
 
             return null;
         }
@@ -121,20 +121,20 @@ namespace GOAP.Data
             }
         }
 
-        public static bool IsRequiredValueType(ValueType requiredValueType, string value)
+        public static bool IsRequiredValueType(WorldFactType requiredValueType, string value)
         {
             string potentialFloat = "";
             if (value.Length > 0)
             {
                 // check if value is a float, but the required one is not a float, remove the actual value "f"
-                if (value[value.Length - 1] == 'f' && requiredValueType != ValueType.Float)
+                if (value[value.Length - 1] == 'f' && requiredValueType != WorldFactType.Float)
                 {
                     value = value.Remove(value.Length - 1);
                     return false;
                 }
 
                 // check if value is a float. If this is the case, set the potential float equal to the value without the "f"
-                if (value[value.Length - 1] == 'f' && requiredValueType == ValueType.Float)
+                if (value[value.Length - 1] == 'f' && requiredValueType == WorldFactType.Float)
                 {
                     potentialFloat = value.Remove(value.Length - 1);
 
@@ -143,15 +143,15 @@ namespace GOAP.Data
 
             // check if value is a bool
             bool boolValue;
-            if (bool.TryParse(value, out boolValue) && requiredValueType == ValueType.Bool) return true;
+            if (bool.TryParse(value, out boolValue) && requiredValueType == WorldFactType.Bool) return true;
 
             // check if value is an int
             int intValue;
-            if (int.TryParse(value, out intValue) && requiredValueType == ValueType.Int) return true;
+            if (int.TryParse(value, out intValue) && requiredValueType == WorldFactType.Int) return true;
 
             // check if value is a bool
             float floatValue;
-            if (float.TryParse(potentialFloat, out floatValue) && requiredValueType == ValueType.Float) return true;
+            if (float.TryParse(potentialFloat, out floatValue) && requiredValueType == WorldFactType.Float) return true;
 
             return false;
         }
@@ -163,7 +163,7 @@ namespace GOAP.Data
     }
 
     [Serializable]
-    public enum ValueType
+    public enum WorldFactType
     {
         Bool,
         Int,

@@ -24,7 +24,7 @@ namespace GOAPGraph.Editor
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
             var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
             var acceptedValue = serializedWorldFact.FindPropertyRelative("acceptedValue");
-            var valueType = (ValueType)valueTypeProperty.boxedValue;
+            var valueType = (WorldFactType)valueTypeProperty.boxedValue;
 
             VisualElement valueField =  CreateFieldByType(valueProperty, valueType);
 
@@ -55,19 +55,19 @@ namespace GOAPGraph.Editor
             var valueTypeProperty = evt.changedProperty;
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
 
-            if (WorldFact.IsRequiredValueType((ValueType)valueTypeProperty.boxedValue, valueProperty.stringValue)) return;
+            if (WorldFact.IsRequiredValueType((WorldFactType)valueTypeProperty.boxedValue, valueProperty.stringValue)) return;
 
             object newValue = null;
 
-            switch ((ValueType)valueTypeProperty.boxedValue)
+            switch ((WorldFactType)valueTypeProperty.boxedValue)
             {
-                case ValueType.Bool:
+                case WorldFactType.Bool:
                     newValue = false;
                     break;
-                case ValueType.Int:
+                case WorldFactType.Int:
                     newValue = 0;
                     break;
-                case ValueType.Float:
+                case WorldFactType.Float:
                     newValue = 0.0f;
                     break;
                 default:
@@ -85,21 +85,21 @@ namespace GOAPGraph.Editor
         private void OnValueFieldChanged(ChangeEvent<bool> evt)
         {
             var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Bool)) return;
+            if (!((WorldFactType)serializedValueTypeProperty.boxedValue is WorldFactType.Bool)) return;
             SetWorldFactValue(evt.newValue.ToString());
         }
 
         private void OnValueFieldChanged(ChangeEvent<int> evt)
         {
             var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Int)) return;
+            if (!((WorldFactType)serializedValueTypeProperty.boxedValue is WorldFactType.Int)) return;
             SetWorldFactValue(evt.newValue.ToString());
         }
 
         private void OnValueFieldChanged(ChangeEvent<float> evt)
         {
             var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Float)) return;
+            if (!((WorldFactType)serializedValueTypeProperty.boxedValue is WorldFactType.Float)) return;
             SetWorldFactValue(evt.newValue.ToString());
         }
 
@@ -111,28 +111,28 @@ namespace GOAPGraph.Editor
             serializedWorldFact.serializedObject.Update();
         }
 
-        public VisualElement CreateFieldByType(SerializedProperty valueProperty, ValueType valueType)
+        public VisualElement CreateFieldByType(SerializedProperty valueProperty, WorldFactType valueType)
         {
             VisualElement field = null;
             const string VALUE_TITLE = "Value";
 
             switch (valueType)
             {
-                case ValueType.Bool:
+                case WorldFactType.Bool:
                     field = new Toggle(VALUE_TITLE);
                     var toggle = (field as Toggle);
                     toggle.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
                     toggle.value = System.Convert.ToBoolean(valueProperty.stringValue);
                     break;
-                case ValueType.Int:
+                case WorldFactType.Int:
                     field = new IntegerField(VALUE_TITLE);
                     var intField = (field as IntegerField);
                     intField.RegisterValueChangedCallback(OnValueFieldChanged);
                     if (valueProperty.stringValue == "") return field;
                     intField.value = System.Convert.ToInt32(valueProperty.stringValue);
                     break;
-                case ValueType.Float:
+                case WorldFactType.Float:
                     field = new FloatField(VALUE_TITLE);
                     var floatField = (field as FloatField);
                     floatField.RegisterValueChangedCallback(OnValueFieldChanged);
