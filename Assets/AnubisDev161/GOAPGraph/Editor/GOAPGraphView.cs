@@ -1,3 +1,5 @@
+using GOAP;
+using GOAP.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -51,23 +53,116 @@ namespace GOAPGraph.Editor
           
 
             DrawNodes();
-           
-            
-
-            Blackboard testBlackboard = new Blackboard(this);
-
-            // testBlackboard.Add()
-            this.AddElement(testBlackboard);
-            // testBlackboard.
-
             DrawConnections();
           
             graphViewChanged += OnGraphViewChanged;
 
             logo.style.fontSize = 32;
             Add(logo);
+
+            // Create blackboard
+            AddBlackboard();
+            AddWorldFactBlackboard();
         }
 
+        private void AddWorldFactBlackboard()
+        {
+            GOAPEditorBlackbaord worldFactsBlackboard = new GOAPEditorBlackbaord();
+            worldFactsBlackboard.graphView = this;
+            worldFactsBlackboard.title = "World Facts";
+            worldFactsBlackboard.addItemRequested += OnAddWorldFactRequested;
+            this.AddElement(worldFactsBlackboard);
+        }
+
+        private void AddBlackboard()
+        {
+            GOAPEditorBlackbaord blackboard = new GOAPEditorBlackbaord();
+            blackboard.graphView = this;
+            blackboard.title = "Blackboard";
+            blackboard.addItemRequested += OnAddBlackboardKeyRequested;
+
+            var defaultPos = new Rect(0, 400, 200, 400);
+            this.AddElement(blackboard);
+            blackboard.SetPosition(defaultPos);
+
+            AddExistingBlackboardKey(blackboard);
+        }
+
+        private void AddExistingBlackboardKey(GOAPEditorBlackbaord blackboard)
+        {
+            foreach(var keyValuePair in goapGraph.Blackboard.GetKeys())
+            {
+                AddBlackboardKey(blackboard, keyValuePair.Key, keyValuePair.Value.keyType);
+            }
+        }
+
+        private void OnAddWorldFactRequested(Blackboard blackboard)
+        {
+            var valueTypeField = new EnumField(GOAP.Data.ValueType.Bool);
+            var blackboardField = new BlackboardField(null, "Default Name", "Value Type");
+
+            blackboardField.Add(valueTypeField);
+            blackboard.Add(blackboardField);
+        }
+
+        // If I had had the time I would have improved the perfomance here because it is called for every new letter you insert in the name, not just when pressing enter.
+        private void AddBlackboardKey(Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool)
+        {
+            var valueTypeField = new EnumField(keyType);
+            var blackboardField = new BlackboardField(null, keyName, "value Type");
+
+            blackboardField.RegisterCallback<ChangeEvent<string>>(evt =>
+            {
+                if (evt.previousValue == evt.newValue) return;
+                HandleChange(blackboardField, evt);
+            }
+            );
+
+            blackboardField.Add(valueTypeField);
+            blackboard.Add(blackboardField);
+        }
+
+        private void HandleChange(BlackboardField blackboardField, ChangeEvent<string> evt)
+        {
+            // Determine whether it is a name change or a value change
+            bool isNameChange;
+            if (evt.newValue == blackboardField.text)
+            {
+                goapGraph.Blackboard.RemoveKey(evt.previousValue);
+                isNameChange = true;
+            }
+            else
+            {
+                goapGraph.Blackboard.RemoveKey(blackboardField.text);
+                isNameChange = false;
+            }
+
+           var newKeyName = isNameChange ? evt.newValue : blackboardField.text;
+
+            foreach (var child in blackboardField.Children())
+            {
+                if (child is EnumField)
+                {
+                    var enumField = (EnumField)child;
+                    goapGraph.Blackboard.AddKey(newKeyName, (GOAPBlackbaord.BlackboardKeyType)enumField.value);
+                }
+            }
+
+            EditorUtility.SetDirty(goapGraph);
+        }
+
+        private void RemoveBlackboardKey(BlackboardField field)
+        {
+            goapGraph.Blackboard.RemoveKey(field.text);
+            EditorUtility.SetDirty(goapGraph);
+        }
+
+        private void OnAddBlackboardKeyRequested(Blackboard blackboard)
+        {
+            AddBlackboardKey(blackboard);
+        }
+
+     
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             List<Port> allPorts = new List<Port>();
@@ -121,12 +216,13 @@ namespace GOAPGraph.Editor
                 foreach (Edge edge in graphViewChange.elementsToRemove.OfType<Edge>())
                 {
                     RemoveConnection(edge);
+                }
 
-                    if (edge.input.portName == GOAPGraphEditorNode.INPUT_PARAM_PORT_NAME)
-                    {
-                        GOAPGraphEditorNode node = (GOAPGraphEditorNode)edge.input.node;
-                      //  node.RemoveInputParams();
-                    }
+                List<BlackboardField> blackboardFieldsToRemove = graphViewChange.elementsToRemove.OfType<BlackboardField>().ToList();
+
+                foreach (var field in blackboardFieldsToRemove)
+                {
+                    RemoveBlackboardKey(field);
                 }
             }
 
@@ -137,12 +233,6 @@ namespace GOAPGraph.Editor
                foreach (var edge in graphViewChange.edgesToCreate)
                {
                     CreateEdge(edge);
-
-                    if (edge.input.portName == GOAPGraphEditorNode.INPUT_PARAM_PORT_NAME)
-                    {
-                        GOAPGraphEditorNode node = (GOAPGraphEditorNode)edge.input.node;
-                      //  node.ExpandInputParams();
-                    }
                }
             }
 
@@ -246,15 +336,6 @@ namespace GOAPGraph.Editor
             graphNodes.Add(editorNode);
             nodeDictionary.Add(node.id, editorNode);
             AddElement(editorNode);
-        }
-
-       
-        public void Repaint()
-        {
-            foreach (var test in contentViewContainer.Children())
-            {
-                test.MarkDirtyRepaint();
-            }
         }
 
         private void Bind()

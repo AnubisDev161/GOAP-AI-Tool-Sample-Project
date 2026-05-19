@@ -56,9 +56,9 @@ namespace GOAPGraph
              executeFinished?.Invoke(currentGraph, worldState, success);
         }
 
-        public List<BlackbaordKeyNode> GetPreconditionNodes(GOAPGraphAsset currentGraph)
+        public List<WorldFactNode> GetPreconditionNodes(GOAPGraphAsset currentGraph)
         {
-            List<BlackbaordKeyNode> nodesConnectedToInput = new List<BlackbaordKeyNode>();
+            List<WorldFactNode> nodesConnectedToInput = new List<WorldFactNode>();
             foreach (var index in portsIndices)
             {
                 // Check if connection to a blackboard node exists
@@ -66,9 +66,9 @@ namespace GOAPGraph
                 if (outputNodes == null) continue;
                 foreach (var outputNode in outputNodes)
                 {
-                    if (outputNode != null && outputNode is BlackbaordKeyNode)
+                    if (outputNode != null && outputNode is WorldFactNode)
                     {
-                        nodesConnectedToInput.Add((BlackbaordKeyNode)outputNode);
+                        nodesConnectedToInput.Add((WorldFactNode)outputNode);
                     }
                 }
             }
@@ -76,9 +76,9 @@ namespace GOAPGraph
             return nodesConnectedToInput;
         }
 
-        public List<BlackbaordKeyNode> GetEffectNodes(GOAPGraphAsset currentGraph)
+        public List<WorldFactNode> GetEffectNodes(GOAPGraphAsset currentGraph)
         {
-            List<BlackbaordKeyNode> nodesConnectedToOutput = new List<BlackbaordKeyNode>();
+            List<WorldFactNode> nodesConnectedToOutput = new List<WorldFactNode>();
             foreach (var index in portsIndices)
             {
                 // Check if connection to a blackboard node exists
@@ -87,9 +87,9 @@ namespace GOAPGraph
                 if (inputNodes == null) continue;
                 foreach (var inputNode in inputNodes)
                 {
-                    if (inputNode != null && inputNode is BlackbaordKeyNode)
+                    if (inputNode != null && inputNode is WorldFactNode)
                     {
-                        nodesConnectedToOutput.Add((BlackbaordKeyNode)inputNode);
+                        nodesConnectedToOutput.Add((WorldFactNode)inputNode);
                     }
                 }
             }

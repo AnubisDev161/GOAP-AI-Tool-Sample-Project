@@ -18,7 +18,7 @@ namespace GOAPGraph
 
         // Tells the GOAPAction to remove the preconditions from the curretn worldState ater successful execution
         [ExposedProperty]
-        public bool keepPreconditionsInWorldState;
+        public bool RemovePreconditionsFromWorldState;
     }
 }
 

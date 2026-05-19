@@ -9,12 +9,12 @@ namespace GOAPGraph.Editor
     {
         private SerializedProperty serializedWorldFact;
 
-        private Foldout foldOut;
+      //  private Foldout foldOut;
         public VisualWorldFactElement(SerializedProperty worldFactProperty)
         {
             this.serializedWorldFact = worldFactProperty;
-            foldOut = new Foldout();
-            foldOut.value = false;
+            //foldOut = new Foldout();
+            //foldOut.value = true;
 
             Init();
         }
@@ -37,22 +37,17 @@ namespace GOAPGraph.Editor
             var acceptedValueField = new PropertyField(acceptedValue);
             var nameField = new PropertyField(serializedWorldFact.FindPropertyRelative("name"));
 
-            foldOut.Add(nameField);
+            contentContainer.Add(nameField);
 
 
             // Add either a textField or a toggle according to the property's value
-            foldOut.Add(valueField);
-   
-            //foldOut.Add(valueFieldName);
+            contentContainer.Add(valueField);
 
             valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
 
-           // var objectVield = new ObjectField("Object to add");
-
-            foldOut.Add(valueTypeField);
-            foldOut.Add(acceptedValueField);
-        //    foldOut.Add(objectVield);
-            contentContainer.Add(foldOut);
+            contentContainer.Add(valueTypeField);
+            contentContainer.Add(acceptedValueField);
+           // contentContainer.Add(foldOut);
         }
 
         private void ValueTypeChangedCallback(SerializedPropertyChangeEvent evt)
@@ -75,12 +70,6 @@ namespace GOAPGraph.Editor
                 case ValueType.Float:
                     newValue = 0.0f;
                     break;
-                case ValueType.String:
-                    newValue = "Default"; 
-                    break;
-                case ValueType.Vector3:
-                    newValue = Vector3.zero;
-                    break;
                 default:
                     Debug.LogError("Could not convert valueType to known value");
                     break;
@@ -97,13 +86,6 @@ namespace GOAPGraph.Editor
         {
             var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
             if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Bool)) return;
-            SetWorldFactValue(evt.newValue.ToString());
-        }
-
-        private void OnValueFieldChanged(ChangeEvent<string> evt)
-        {
-            var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.String)) return;
             SetWorldFactValue(evt.newValue.ToString());
         }
 
@@ -127,35 +109,6 @@ namespace GOAPGraph.Editor
             serializedValueProperty.stringValue = newValue;
             serializedWorldFact.serializedObject.ApplyModifiedProperties();
             serializedWorldFact.serializedObject.Update();
-        }
-
-        private object EvaluateInputDataType(string newValue, object boxedValue)
-        {
-            object result = null;
-
-            if (boxedValue is bool) return result;
-
-            float floatValue;
-            float.TryParse(newValue, out floatValue);
-
-            int intValue;
-            int.TryParse(newValue, out intValue);
-
-
-            if (floatValue != 0 && boxedValue is float)
-            {
-                result = floatValue;
-            }
-            else if (intValue != 0 && boxedValue is int)
-            {
-                result = intValue;
-            }
-            else if (boxedValue is string)
-            {
-                result = newValue.ToString();
-            }
-
-            return result;
         }
 
         public VisualElement CreateFieldByType(SerializedProperty valueProperty, ValueType valueType)
@@ -189,32 +142,12 @@ namespace GOAPGraph.Editor
 
                     floatField.value = float.Parse(value);
                     break;
-                case ValueType.String:
-                    field = new TextField(VALUE_TITLE);
-                    var textField = (field as TextField);
-                    textField.RegisterValueChangedCallback(OnValueFieldChanged);
-                    textField.value = valueProperty.stringValue;
-                    break;
-
-                case ValueType.Vector3:
-                    field = new Vector3Field(VALUE_TITLE);
-                    var vector3Field = (field as Vector3Field);
-                    vector3Field.RegisterValueChangedCallback(OnValueFieldChanged);
-                    vector3Field.value = WorldFact.ConvertValueToVector3(valueProperty.stringValue);
-                    break;
                 default:
                     Debug.LogError("Could not convert valueType to known value");
                     break;
             }
 
             return field;
-        }
-
-        private void OnValueFieldChanged(ChangeEvent<Vector3> evt)
-        {
-            var serializedValueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            if (!((ValueType)serializedValueTypeProperty.boxedValue is ValueType.Vector3)) return;
-            SetWorldFactValue(evt.newValue.ToString());
         }
     }
 }

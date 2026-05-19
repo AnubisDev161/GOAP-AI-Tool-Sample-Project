@@ -18,8 +18,8 @@ namespace GOAP
         {
             if (destinationReached == false && navMeshAgent.remainingDistance <= 2)
             {
-                OnDestinationReached();
                 destinationReached = true;
+                OnDestinationReached();
             }
         }
 

@@ -31,14 +31,22 @@ namespace GOAPGraph.Editor
         // TODO Rplace vector3Value with actual serialized gameObject 
         private void OnFieldValueChanged(ChangeEvent<UnityEngine.Object> evt)
         {
-            if (evt.newValue is not GameObject) return;
-
             var gameObject = serializedProperty.FindPropertyRelative("position");
             var sceneID = serializedProperty.FindPropertyRelative("sceneID");
 
-            var pos = (evt.newValue as GameObject).transform.position;
-            gameObject.vector3Value = pos;
-            sceneID.intValue = (evt.newValue as GameObject).GetInstanceID();
+            if (evt.newValue is not GameObject)
+            {
+                gameObject.vector3Value = Vector3.zero;
+                sceneID.intValue = 0;
+            }
+            else
+            {
+                var pos = (evt.newValue as GameObject).transform.position;
+                gameObject.vector3Value = pos;
+                sceneID.intValue = (evt.newValue as GameObject).GetInstanceID();
+            }
+
+
             serializedProperty.serializedObject.ApplyModifiedProperties();
             serializedProperty.serializedObject.Update();
         }

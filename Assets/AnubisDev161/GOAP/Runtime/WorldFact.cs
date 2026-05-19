@@ -42,6 +42,42 @@ namespace GOAP.Data
             return x.valueType != y.valueType || x.name != y.name || x.value != y.value;
         }
 
+        public static bool operator >(WorldFact x, WorldFact y)
+        {
+            if (x.valueType != y.valueType) return false;
+            if (x.valueType == ValueType.Bool) return false;
+
+            if (x.valueType == ValueType.Int)
+            {
+                return (int)x.GetValue() > (int)y.GetValue();
+            }
+
+            if (x.valueType == ValueType.Float)
+            {
+                return (float)x.GetValue() > (float)y.GetValue();
+            }
+
+            return false;
+        }
+
+        public static bool operator <(WorldFact x, WorldFact y)
+        {
+            if (x.valueType != y.valueType) return false;
+            if (x.valueType == ValueType.Bool) return false;
+
+            if (x.valueType == ValueType.Int)
+            {
+                return (int)x.GetValue() < (int)y.GetValue();
+            }
+
+            if (x.valueType == ValueType.Float)
+            {
+                return (float)x.GetValue() < (float)y.GetValue();
+            }
+
+            return false;
+        }
+
         public override bool Equals(object obj)
         {
             if (obj == null || obj is not WorldFact) return false;
@@ -53,42 +89,40 @@ namespace GOAP.Data
         {
             if (valueType == ValueType.Bool) return Convert.ToBoolean(value);
             if (valueType == ValueType.Int) return Convert.ToInt32(value);
-            if (valueType == ValueType.Float) return Convert.ToSingle(value);
-            if (valueType == ValueType.String) return value;
-            if (valueType == ValueType.Vector3) return ConvertValueToVector3(value);
+            if (valueType == ValueType.Float) return Convert.ToSingle(value.Remove(value.Length -1));
 
             return null;
         }
 
-        public static Vector3 ConvertValueToVector3(string value)
+        public bool SetValue(string value)
         {
-            var numbers = value.Split(", ");
-
-            if (numbers.Length > 3)
+            if (IsRequiredValueType(valueType, value))
             {
-                throw new ArgumentException("could not convert value to vector, value contains more than 3 floats!");
+                this.value = value;
+                return true;
             }
 
-            numbers[0] = numbers[0].TrimStart('(');
-            numbers[2] = numbers[2].Remove(numbers[2].Length - 1);
+            return false;
+        }
 
-            foreach (var number in numbers)
+        public bool IsRequiredValue(WorldFact other)
+        {
+            switch (this.acceptedValue)
             {
-                number.Replace(',', '.');
+                case AcceptedValue.Equals:
+                    return (other == this);
+                case AcceptedValue.Grater:
+                    return other > this;
+                case AcceptedValue.Samller:
+                    return other < this;
+                default:
+                    Debug.LogError("Accepted type could not be evaluated");
+                    return false;
             }
-            var vector = new Vector3(Convert.ToSingle(numbers[0], CultureInfo.InvariantCulture), Convert.ToSingle(numbers[1], CultureInfo.InvariantCulture), Convert.ToSingle(numbers[2], CultureInfo.InvariantCulture));
-
-            return vector;
         }
 
         public static bool IsRequiredValueType(ValueType requiredValueType, string value)
         {
-            // check if value is a vector3
-            if (requiredValueType == ValueType.Vector3 && value[0] == '(' && value[value.Length - 1] == ')')
-            {
-                return true;
-            }
-
             string potentialFloat = "";
             if (value.Length > 0)
             {
@@ -119,15 +153,12 @@ namespace GOAP.Data
             float floatValue;
             if (float.TryParse(potentialFloat, out floatValue) && requiredValueType == ValueType.Float) return true;
 
-
-            if (boolValue.ToString() != value && intValue.ToString() != value && floatValue.ToString() != value && value != "" && requiredValueType == ValueType.String) return true;
-
             return false;
         }
 
         public override string ToString()
         {
-            return $"{name}, {value}, {valueType.ToString()}";
+            return $"{name}, {acceptedValue}, {value}, {valueType.ToString()}";
         }
     }
 
@@ -137,17 +168,23 @@ namespace GOAP.Data
         Bool,
         Int,
         Float,
-        String,
-        Vector3,
-
     }
 
     [Serializable]
     public enum AcceptedValue
     {
-        Any,
+        None,
+        Equals,
         Grater,
         Samller,
-        Equals
+    }
+
+    [Serializable]
+    public enum OperationType
+    {
+        None,
+        Set,
+        Increase,
+        Decrease
     }
 }

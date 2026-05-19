@@ -30,7 +30,5 @@ public class TestWindow : EditorWindow
             GUILayout.BeginArea(new Rect(Input.mousePosition.x, Input.mousePosition.y, 100, 100));
             GUILayout.VerticalScrollbar(10, 30, 30, 0);
         }
-
-        
     }
 }

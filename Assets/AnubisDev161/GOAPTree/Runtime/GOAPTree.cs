@@ -46,7 +46,7 @@ namespace GOAP.Tree
                 closedList.Add(currentNode);
 
 
-                if (closedList.Count > 20)
+                if (closedList.Count > 100)
                 {
                     Debug.Log("Stuck in loop!");
                     break;
@@ -87,7 +87,7 @@ namespace GOAP.Tree
                         var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
                         openQueue.Push(nodeToAdd);
                         
-                        Debug.Log(mutatedWorldState.ToString());
+                        //Debug.Log(mutatedWorldState.ToString());
                     }
                 }
             }
@@ -164,7 +164,7 @@ namespace GOAP.Tree
             {
                 if (preconditions.TryGetValue(effect.Key, out WorldFact value))
                 {
-                    if (value == effect.Value)
+                    if (value.IsRequiredValue(effect.Value))
                     {
                         satisfiesAtLeastOne = true; // match
                     }
@@ -175,6 +175,7 @@ namespace GOAP.Tree
                     }
                 }
             }
+
 
             return satisfiesAtLeastOne;
         }

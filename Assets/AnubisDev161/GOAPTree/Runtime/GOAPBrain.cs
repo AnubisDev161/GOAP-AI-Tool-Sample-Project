@@ -30,11 +30,22 @@ namespace GOAP
 
         public Queue<GOAPAction> CreatePLan()
         {
-            currentWorldState = FetchStartState();
+            if (currentWorldState.worldFacts.Count == 0)
+            {
+                currentWorldState = FetchStartState();
+            }
+
             availableActions = FetchActions();
             availableGoals = FetchGoals();  
 
             var bestGoal = goalSelector.GetBestGoal(currentWorldState, availableGoals);
+
+            if (bestGoal == null)
+            {
+                Debug.LogError("No achievable goal found, could not create plan");
+                return null;
+            }
+
             return planner.GeneratePlan(currentWorldState, bestGoal, availableActions);
         }
 

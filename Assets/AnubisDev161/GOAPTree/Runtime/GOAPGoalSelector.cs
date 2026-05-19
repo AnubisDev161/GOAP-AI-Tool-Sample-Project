@@ -1,5 +1,6 @@
 using GOAP.Data;
 using System.Collections.Generic;
+using UnityEngine;
 
 namespace GOAP
 {
@@ -19,17 +20,29 @@ namespace GOAP
         {
             goalList = availableGoals;
 
-            GOAPGoal bestGoal = goalList[0];
+            GOAPGoal bestGoal = null;
             foreach (GOAPGoal goal in goalList)
             {
-                if (bestGoal.GetPriority() < goal.GetPriority())
+                if (!WorldStateCompare.IsWorldStateBAchieved(worldState.worldFacts, goal.desiredConditions) && (bestGoal == null || bestGoal.GetPriority() < goal.GetPriority()))
                 {
                     bestGoal = goal;
                 }
             }
 
             currentGoal = bestGoal;
+
+            ValidateCurrenGoal();
+
             return bestGoal;
+        }
+
+        private void ValidateCurrenGoal()
+        {
+            if (currentGoal == null)
+            {
+                string errorReason = (goalList.Count > 0) ? "All goals are satisfied" : "no available goals found";
+                Debug.LogError($"No valid goal found du to: {errorReason}");
+            }
         }
     }
 }

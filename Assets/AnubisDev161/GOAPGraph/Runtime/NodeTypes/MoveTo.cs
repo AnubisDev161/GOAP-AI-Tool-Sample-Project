@@ -15,41 +15,33 @@ namespace GOAPGraph
         public Destination destination;
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var targetDestination = currentGraph.blackboard.GetKey("TargetPos");
+            var targetDestination = destination.position;
 
-            // TODO Add logic to get a destination from a blackboard 
-            if (destination == null)
+            if (targetDestination == Vector3.zero)
             {
-                Debug.LogError("Given vector world fact is vector.zero!");
+                var targetPosKey = currentGraph.Blackboard.GetKey("TargetPos");
+                if (targetPosKey != null && targetPosKey.value != null)
+                {
+                    targetDestination = (Vector3)targetPosKey.value;
+                }
+            } 
+
+            if (targetDestination == Vector3.zero)
+            {
+                Debug.LogError("Given vector is null or vector.zero!");
                 success = false;
                 base.OnExecuteFinished(currentGraph, worldState, success);
                 return;
             }
 
             currentGraph.goapGraphObject.navigation.desinationReached += OnDestinationReached;
-            currentGraph.goapGraphObject.navigation.SetDestination((Vector3)targetDestination.key);
-        }
-
-        private Vector3 GetTargetDestinationFromPreconditions(Dictionary<string, WorldFact> preconditions)
-        {
-            if (preconditions != null)
-            {
-                foreach (var precon in preconditions)
-                {
-                    if (precon.Value.valueType == GOAP.Data.ValueType.Vector3)
-                    {
-                        return WorldFact.ConvertValueToVector3(precon.Value.value);
-                    }
-                }
-            }
-
-            Debug.LogError("No vector3 found in given worldFacts, couldn't perform move to action!");
-            return Vector3.zero;
+            currentGraph.goapGraphObject.navigation.SetDestination(targetDestination);
         }
 
         private void OnDestinationReached(GOAPGraphAsset currentGraph, WorldState worldState)
         {
             Debug.Log("Move to node executed");
+            currentGraph.goapGraphObject.navigation.desinationReached -= OnDestinationReached;
             base.OnExecuteFinished(currentGraph, worldState, true);
         }
     }

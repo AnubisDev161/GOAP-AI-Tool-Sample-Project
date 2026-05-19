@@ -21,8 +21,6 @@ namespace GOAPGraph.Editor
         private SerializedObject serializedObject;
         private SerializedProperty serializedProperty;
 
-        public static string INPUT_PARAM_PORT_NAME { get; private set; } = "Preconditions";
-        public static string OUTPUT_PARAM_PORT_NAME { get; private set; } = "Effects";
         public List<Port> ports {  get; private set; }
         public List<int> portsIndices { get; private set; } = new List<int>();
 
@@ -48,27 +46,15 @@ namespace GOAPGraph.Editor
 
             name = typeInfo.Name;
 
-            // Flow output is created so that output can be at index 0
-            //if (info.hasFlowOutput)
-            //{
-            //    CreateFlowOutputPort(info.paramPortsHaveSingleCapacity);
-            //}
-
-            //if (info.hasFlowInput)
-            //{
-            //    CreateFlowInputPort(info.paramPortsHaveSingleCapacity);
-            //}
-
-
             if (info.hasInputParams)
             {
-                CreateParamInputPort(info.paramPortsHaveSingleCapacity);
+                CreateParamInputPort(info.paramPortsHaveSingleCapacity, info.inputPortName);
 
             }
 
             if (info.hasOutputParams)
             {
-                CreateParamOutputPort(info.paramPortsHaveSingleCapacity);
+                CreateParamOutputPort(info.paramPortsHaveSingleCapacity, info.outputPortName);
             }
 
             DrawProperties(typeInfo);
@@ -91,29 +77,6 @@ namespace GOAPGraph.Editor
 
                     PropertyField propertyField = DrawProperty(property.Name);
                 }
-            }
-        }
-
-        public void RemoveInputParams()
-        {
-            //RemoveParamInputPort();
-
-            RefreshExpandedState();
-        }
-
-        public void ExpandInputParams()
-        {
-            //CreateParamInputPort();
-
-            RefreshExpandedState();
-        }
-
-        private void RemoveParamInputPort()
-        {
-            if (ports.Count > 1)
-            {
-                inputContainer.Remove(ports[ports.Count -1]);
-                ports.RemoveAt(ports.Count -1);
             }
         }
       
@@ -165,38 +128,12 @@ namespace GOAPGraph.Editor
             return field;
         }
 
-        private void CreateFlowInputPort(bool paramPortsHaveSingleCapacity)
-        {
-            Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
-
-            Port inputPort = InstantiatePort(Orientation.Horizontal, Direction.Input, capacity, typeof(GOAPGraphPortTypes.FlowPort));
-            inputPort.portName = "Required World State";
-            inputPort.tooltip = "Flow input";
-            ports.Add(inputPort);
-            inputContainer.Add(inputPort);
-            portsIndices.Add(ports.Count - 1);
-            SavePorts();
-        }
-
-        private void CreateFlowOutputPort(bool paramPortsHaveSingleCapacity)
-        {
-            Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
-
-            outputPort = InstantiatePort(Orientation.Horizontal, Direction.Output, capacity, typeof(GOAPGraphPortTypes.FlowPort));
-            outputPort.portName = "World State";
-            outputPort.tooltip = "Flow output";
-            ports.Add(outputPort);
-            outputContainer.Add(outputPort);
-            portsIndices.Add(ports.Count - 1);
-            SavePorts();
-        }
-
-        private void CreateParamInputPort(bool paramPortsHaveSingleCapacity)
+        private void CreateParamInputPort(bool paramPortsHaveSingleCapacity, string inputPortName)
         {
             Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
 
             Port paramPort = InstantiatePort(Orientation.Horizontal, Direction.Input, capacity, typeof(GOAPGraphPortTypes.ParamPort));
-            paramPort.portName = INPUT_PARAM_PORT_NAME;
+            paramPort.portName = inputPortName;
             paramPort.tooltip = "Param input";
             ports.Add(paramPort);
             inputContainer.Add(paramPort);
@@ -204,12 +141,12 @@ namespace GOAPGraph.Editor
             SavePorts();
         }
             
-        private void CreateParamOutputPort(bool paramPortsHaveSingleCapacity)
+        private void CreateParamOutputPort(bool paramPortsHaveSingleCapacity, string outputPortName)
         {
             Port.Capacity capacity = paramPortsHaveSingleCapacity ? Port.Capacity.Single : Port.Capacity.Multi;
 
             Port paramPort = InstantiatePort(Orientation.Horizontal, Direction.Output, capacity, typeof(GOAPGraphPortTypes.ParamPort));
-            paramPort.portName = OUTPUT_PARAM_PORT_NAME;
+            paramPort.portName = outputPortName;
             paramPort.tooltip = "Param output";
             ports.Add(paramPort);
             outputContainer.Add(paramPort);
@@ -225,12 +162,6 @@ namespace GOAPGraph.Editor
         public void SavePorts()
         {
             graphNode.SetPorts(portsIndices);
-        }
-
-        public void OnGraphNodeValueUpdated()
-        {
-            var x = 23;
-
         }
     }
 }

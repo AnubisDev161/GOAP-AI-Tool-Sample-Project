@@ -1,4 +1,5 @@
 using GOAP;
+using GOAP.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,7 +14,11 @@ namespace GOAPGraph
         [SerializeReference]
         private List<GOAPGraphNode> nodes = new List<GOAPGraphNode>();
         public List<GOAPGraphNode> Nodes => nodes;
-        
+
+        [SerializeField]
+        private List<WorldFact> worldFacts = new List<WorldFact>();
+        public List<WorldFact> WorldFacts => worldFacts;
+
         [SerializeField]
         private List<GOAPGraphConnection> connections;
         public List<GOAPGraphConnection> Connections => connections;
@@ -22,16 +27,15 @@ namespace GOAPGraph
 
         public GOAPGraphObject goapGraphObject;
 
-        public GOAPBlackbaord blackboard { get; private set; }
+        [SerializeField]
+        private GOAPBlackbaord blackboard = new GOAPBlackbaord();
+
+        public GOAPBlackbaord Blackboard => blackboard;
 
         public void Initialize(GOAPGraphObject graphObject)
         {
             this.goapGraphObject = graphObject;
             nodeDictionary = new Dictionary<string, GOAPGraphNode>();
-            blackboard = new GOAPBlackbaord();  
-            var blackbaordKey = new BlackboardKey();
-            blackbaordKey.keyType = BlackboardKeyType.Vector3;
-            blackboard.AddKey("TargetPos", blackbaordKey);
 
             foreach (var node in nodes)
             {

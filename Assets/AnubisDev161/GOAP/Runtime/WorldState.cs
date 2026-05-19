@@ -1,6 +1,7 @@
-using System.Collections.Generic;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using UnityEngine;
 
 namespace GOAP.Data
 {
@@ -94,25 +95,6 @@ namespace GOAP.Data
             }
 
             return false;
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (!(obj is WorldState)) return false;
-
-            var other = obj as WorldState;
-
-            if (other.worldFacts.Count != worldFacts.Count) return false;
-
-            foreach (var fact in worldFacts)
-            {
-                if (!other.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
-                {
-                    return false;
-                }
-            }
-
-            return true;
         }
 
         public override string ToString()

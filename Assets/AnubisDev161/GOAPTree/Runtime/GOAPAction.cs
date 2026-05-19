@@ -39,10 +39,13 @@ namespace GOAP
             foreach (var preCon in preconditions)
             {
                 WorldFact value;
-                if (!worldFacts.TryGetValue(preCon.Key, out value) || value != preCon.Value)
+
+                if (!worldFacts.TryGetValue(preCon.Key, out value))
                 {
                     return false;
                 }
+
+                if (!preCon.Value.IsRequiredValue(value)) return false;
             }
 
             return true;
@@ -54,7 +57,7 @@ namespace GOAP
 
             if (!CheckIfPrconditionsMet(worldState.worldFacts))
             {
-                Debug.LogError("Precondtions not met " + $"could not run action {name}");
+                Debug.LogError("Precondtions not met " + $"could not run action: {name}");
                 executed?.Invoke(false, this);
                 return false;
             }
@@ -77,6 +80,7 @@ namespace GOAP
                 RemovePreconditionsAndAddEffectsToState(worldState);
             }
 
+            actionGraphNode.executeFinished -= OnGraphNodeExecuteFinished;
             executed?.Invoke(success, this);
             return true;
         }
@@ -84,29 +88,22 @@ namespace GOAP
         // If the plan is being executed, you need to start at the current world state
         public void RemovePreconditionsAndAddEffectsToState(WorldState currentWorldState)
         {
-            // Be careful, this needs testing! Could cause errors!
             // remove all the preconditions of the action from tbhe current world state if removePreconditions is true
-            if (!actionGraphNode.keepPreconditionsInWorldState)
+            if (actionGraphNode.RemovePreconditionsFromWorldState)
             {
                 foreach (var precondition in preconditions)
                 {
-                    if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out var value) && value == precondition.Value)
+                    if (currentWorldState.worldFacts.TryGetValue(precondition.Key, out var value) && value.IsRequiredValue(precondition.Value))
                     {
                         currentWorldState.TryRemoveFact(precondition.Key);
                     }
                 }
             }
-            else
-            {
-                Debug.Log("Apply effects after execution without removing preconditions from world state, could cause potential isssues");
-            }
-
             
             foreach (var effect in effects)
             {
                 currentWorldState.worldFacts[effect.Key] = effect.Value;
             }
-            
         }
 
         // If the plan is being planned, you need to start at the goal world state and remove all the effects of the action from the required world state
@@ -115,7 +112,7 @@ namespace GOAP
             foreach (var effect in effects)
             {
                 // TODO Add other conditions such as equal, any, greater smaller
-                if (requiredWorldState.worldFacts.TryGetValue(effect.Key, out WorldFact value) && value == effect.Value)
+                if (requiredWorldState.worldFacts.TryGetValue(effect.Key, out WorldFact value) && value.IsRequiredValue(effect.Value))
                 {
                     requiredWorldState.TryRemoveFact(effect.Key);
                 }

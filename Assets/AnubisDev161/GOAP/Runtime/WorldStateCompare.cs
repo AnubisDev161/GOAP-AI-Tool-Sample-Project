@@ -8,7 +8,7 @@ namespace GOAP.Data
         {
             foreach (var goalFact in worldStateB.worldFacts)
             {
-                if (!worldStateA.worldFacts.TryGetValue(goalFact.Key, out var value) || value != goalFact.Value)
+                if (!worldStateA.worldFacts.TryGetValue(goalFact.Key, out var value) || !goalFact.Value.IsRequiredValue(value))
                 {
                     return false;
                 }
@@ -20,7 +20,7 @@ namespace GOAP.Data
         {
             foreach (var goalFact in worldStateB)
             {
-                if (!worldStateA.TryGetValue(goalFact.Key, out var value) || value != goalFact.Value)
+                if (!worldStateA.TryGetValue(goalFact.Key, out var value) || !goalFact.Value.IsRequiredValue(value)) 
                 {
                     return false;
                 }

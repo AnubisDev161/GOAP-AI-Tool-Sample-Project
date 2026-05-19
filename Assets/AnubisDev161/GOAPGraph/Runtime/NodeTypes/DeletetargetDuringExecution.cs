@@ -5,12 +5,11 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
-using static GOAP.GOAPBlackbaord;
 
 namespace GOAPGraph
 {
-    [NodeInfo("Generate random destination", "Generate random / Destination", hasInputParams: true, hasOutputParams: true)]
-    public class GenerateRandomDestination : ActionNode
+    [NodeInfo("Delete random destination", "Generate random / Delete destination", hasInputParams: true, hasOutputParams: true)]
+    public class DeletetargetDuringExecution : ActionNode
     {
         [ExposedProperty]
         public float range;
@@ -24,15 +23,8 @@ namespace GOAPGraph
                 return;
             }
 
-            var randomPointInsideUnitSphere = Random.insideUnitSphere;
-            var randomPos = (randomPointInsideUnitSphere * range) + currentGraph.goapGraphObject.gameObject.transform.position;
-
-            NavMeshHit hit;
-
-            NavMesh.SamplePosition(randomPos, out hit, range, 1);
-
-            Vector3 finalPos = hit.position;
-            blackbaordKey.value = finalPos; 
+           
+            blackbaordKey.value = null; 
 
             base.OnExecute(currentGraph, worldState);
         }

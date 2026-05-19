@@ -1,6 +1,7 @@
 using GOAP.Data;
 using GOAPGraph;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
 using Unity.VisualScripting;
@@ -20,29 +21,7 @@ namespace GOAP
        
         private void Start()
         {
-            if (graphAsset == null)
-            {
-                Debug.LogError("Agent has no graph asset!");
-                return;
-            }
-
-            var graphInstance = Instantiate(graphAsset);
-        
-            goapBrain = new GOAPBrain(this, graphInstance);
-
-
-
-            currentPlan =  goapBrain.CreatePLan();
-
-
-            if (currentPlan != null && VerifiyCurrentPlan())
-            {
-                ExecuteCurrentPlan();
-            }
-            else
-            {
-                Debug.LogError("Agent stopped planning due to an invalid plan");
-            }
+            Init();
         }
 
         private bool VerifiyCurrentPlan()
@@ -69,6 +48,33 @@ namespace GOAP
             return true;
         }
 
+        protected void StartNewActionPlan()
+        {
+            currentPlan = goapBrain.CreatePLan();
+
+            if (currentPlan != null && VerifiyCurrentPlan())
+            {
+                ExecuteCurrentPlan();
+            }
+            else
+            {
+                Debug.LogError("Agent stopped planning due to an invalid plan");
+            }
+        }
+
+        protected virtual void Init()
+        {
+            if (graphAsset == null)
+            {
+                Debug.LogError("Agent has no graph asset!");
+                return;
+            }
+
+            var graphInstance = Instantiate(graphAsset);
+            goapBrain = new GOAPBrain(this, graphInstance);
+            StartNewActionPlan();
+        }
+
         private void ExecuteCurrentPlan()
         {
             if (currentPlan.Count > 0)
@@ -93,10 +99,8 @@ namespace GOAP
                 Debug.LogError($"Desired world state is {goapBrain.goalSelector.currentGoal.ToString()}");
                 return;
             }
-            
 
-
-            Debug.LogError("Agent stopped planning due to no other exisitng plan found");
+            StartCoroutine(CreateNewPlanAfterDelay(5));
         }
 
         private void OnActionExecuted(bool success, GOAPAction lastAction)
@@ -112,12 +116,17 @@ namespace GOAP
                 Debug.LogError("Action executed unsuccessfully, execution stopped with last action: " + lastAction);
             }
         }
+
+        private IEnumerator CreateNewPlanAfterDelay(float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            StartNewActionPlan();
+        }
     }
 
     public struct PlanDebugInfo
     {
         public int planSize;
         public float totalCost;
-
     }
 }
