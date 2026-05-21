@@ -3,17 +3,20 @@ using GOAP.Data;
 using System.Collections;
 using UnityEngine;
 
-public class ExampleAgent : GOAPAgent
+namespace ExampleProject
 {
-    [SerializeField]
-    private GameObject beaconPrefab;
-    public bool PlaceBeacon()
+    public class ExampleAgent : GOAPAgent
     {
-        var beacon = Instantiate(beaconPrefab, transform.position, Quaternion.identity);
+        [SerializeField]
+        private GameObject beaconPrefab;
+        public bool PlaceBeacon()
+        {
+            var beacon = Instantiate(beaconPrefab, transform.position, Quaternion.identity);
 
-        if (beacon == null) return false;
-        Debug.Log("<color=green>Beacon placed!");
+            if (beacon == null) return false;
+            Debug.Log("<color=green>Beacon placed!");
 
-        return true;
+            return true;
+        }
     }
 }

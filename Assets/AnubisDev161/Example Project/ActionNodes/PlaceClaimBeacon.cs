@@ -1,8 +1,9 @@
 using GOAP.Data;
 using System.Collections.Generic;
 using UnityEngine;
+using GOAPGraph;
 
-namespace GOAPGraph
+namespace ExampleProject
 {
     [NodeInfo("Place claim beacon", "Example / Claim territory", hasInputParams: true, hasOutputParams: true)]
     public class PlaceClaimBeacon : ActionNode

@@ -1,6 +1,9 @@
 using GOAP;
 
-public class ThreatAgent : GOAPAgent
+namespace ExampleProject
 {
+    public class ThreatAgent : GOAPAgent
+    {
 
+    }
 }
