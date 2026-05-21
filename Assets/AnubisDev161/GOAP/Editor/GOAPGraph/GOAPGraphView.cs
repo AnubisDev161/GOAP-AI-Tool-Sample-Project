@@ -36,7 +36,7 @@ namespace GOAP.GOAPGraph.Editor
             searchProvider.graph = this;
             this.nodeCreationRequest = ShowSearchWindow;
 
-            StyleSheet style = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/AnubisDev161/GOAP/GOAPGraph/Editor/USS/GOAPGraphEditor.uss");
+            StyleSheet style = AssetDatabase.LoadAssetAtPath<StyleSheet>("Assets/AnubisDev161/GOAP/Editor/GOAPGraph/USS/GOAPGraphEditor.uss");
             styleSheets.Add(style);
 
             GridBackground background = new GridBackground();

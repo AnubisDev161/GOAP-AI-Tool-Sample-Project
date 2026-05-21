@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &93664226
 Transform:
@@ -308,6 +309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &167028373
 Transform:
@@ -569,6 +571,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &403565916
 Transform:
@@ -708,7 +711,6 @@ GameObject:
   - component: {fileID: 628729288}
   - component: {fileID: 628729285}
   - component: {fileID: 628729284}
-  - component: {fileID: 628729289}
   - component: {fileID: 628729290}
   m_Layer: 0
   m_Name: Threat
@@ -716,7 +718,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &628729284
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -780,27 +782,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 64c8ea202fb72bf4b97084e32929e7c7, type: 2}
---- !u!135 &628729289
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 628729283}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
+  planningInterval: 5
 --- !u!136 &628729290
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1000,6 +982,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &674362004
 Transform:
@@ -1473,7 +1456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!195 &865711138
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1521,6 +1504,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &865711141
 Transform:
@@ -1862,6 +1846,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1075953726
 Transform:
@@ -2054,6 +2039,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1103090988
 Transform:
@@ -2084,6 +2070,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 0}
+  planningInterval: 5
 --- !u!1 &1238034984
 GameObject:
   m_ObjectHideFlags: 0
@@ -2150,6 +2137,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1238034988
 Transform:
@@ -2233,6 +2221,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1287290434
 Transform:
@@ -3236,6 +3225,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 24aad7f9d1807cc46a09f4b942dabd10, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1884580777
 Transform:
@@ -3319,6 +3309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &1982101920
 Transform:
@@ -3552,6 +3543,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &2133399648
 Transform:

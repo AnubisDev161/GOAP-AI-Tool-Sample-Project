@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 namespace GOAP.Core.Agent
@@ -169,8 +168,6 @@ namespace GOAP.Core.Agent
         [Serializable]
         public class BlackboardKey
         {
-
-            [DoNotSerialize]
             public object value { get; set; }
 
             [SerializeField]
