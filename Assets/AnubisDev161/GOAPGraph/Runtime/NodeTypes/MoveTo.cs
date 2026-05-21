@@ -47,6 +47,15 @@ namespace GOAPGraph
             currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
             base.OnExecuteFinished(currentGraph, worldState, true);
         }
+
+        public override void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
+        {
+            base.OnAbandonCurrentPlan(currentGraph, worldState);
+            currentGraph.agent.navigation.SetDestination(currentGraph.agent.transform.position);
+            Debug.Log("Move to node abandoned");
+            currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
+            base.OnExecuteFinished(currentGraph, worldState, false);
+        }
     }
 
     // Create a wrapper class you can draw with a custom property drawer

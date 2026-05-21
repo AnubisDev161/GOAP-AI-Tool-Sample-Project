@@ -7,6 +7,7 @@ namespace GOAP.Data
 {
     public class WorldState
     {
+        public Action worldStateChangedByTrigger;
         public Dictionary<string, WorldFact> worldFacts { get; private set; }
 
         public WorldState(Dictionary<string, WorldFact> worldFacts = null)
@@ -19,20 +20,31 @@ namespace GOAP.Data
             this.worldFacts = worldFacts;
         }
 
-        public bool TryAddFact(WorldFact worldFact)
+        public bool TryAddFact(WorldFact worldFact, bool callWorldStateChangedByTrigger = false)
         {
+            bool stateChanged = false;
             if (!worldFacts.ContainsKey(worldFact.name))
             {
                 worldFacts.Add(worldFact.name, worldFact);
-                return true;
+                stateChanged = true;
             }
             else if (worldFacts[worldFact.name] != worldFact)
             {
                 worldFacts[worldFact.name] = worldFact;
+                stateChanged =  true;
+            }
+
+            if (stateChanged)
+            {
+                if (callWorldStateChangedByTrigger)
+                {
+                    worldStateChangedByTrigger?.Invoke();
+                }
+
                 return true;
             }
 
-           return false;
+            return false;
         }
 
         public bool TryRemoveFact(string worldFact)

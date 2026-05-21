@@ -26,7 +26,7 @@ public class GOAPBlackboardTrigger : MonoBehaviour
     /// Defines the expected world fact type of the world fact to change, this makes sure you are writing the right data type in the world fact
     /// </value>
     [SerializeField]
-    private WorldFactType expectedWorldFactType;
+    private WorldFactType expectedWorldFactValueType;
 
     /// <summary>
     /// Retrieves the specified blackboard key from the graph's blackboard
@@ -50,12 +50,13 @@ public class GOAPBlackboardTrigger : MonoBehaviour
     }
 
     /// <summary>
-    /// Retrieves the specified world fact from the graph's blackboard
+    /// Retrieves the specified world fact from the GOAP brain's current world state
     /// </summary>
-    protected virtual GOAPBlackbaord.BlackboardKey GetSpecifiedWorldFact()
+    protected virtual WorldFact? GetSpecifiedWorldFact()
     {
         var agent = GetComponent<GOAPAgent>();
-        var worldFact = agent.goapBrain.graphInstance.Blackboard.GetKey(keyName);
+
+        agent.goapBrain.currentWorldState.worldFacts.TryGetValue(keyName, out WorldFact worldFact);
 
         if (worldFact == null)
         {
@@ -63,12 +64,31 @@ public class GOAPBlackboardTrigger : MonoBehaviour
             return null;
 
         }
-        else if (worldFact.worldFactType != expectedWorldFactType)
+        else if (worldFact.valueType != expectedWorldFactValueType)
         {
-            Debug.LogError($"Specified Key with name [{keyName}] has a different world fact type [{expectedWorldFactType}] than the world fact in the blackboard [{worldFact.worldFactType}]");
+            Debug.LogError($"Specified Key with name [{keyName}] has a different value type type [{expectedWorldFactValueType}] than the world fact in the blackboard [{worldFact.valueType}]");
             return null;
         }
 
         return worldFact;
+    }
+
+    /// <summary>
+    /// Uses the TryAddFact method of the current world state to add a new world fact or set it to a new value if the world fact is already defined in the current world state
+    /// </summary>
+    protected virtual bool AddSpecifiedWorldFactWithValue(string newValue, bool callWorldStateChangedByTrigger)
+    {
+        var agent = GetComponent<GOAPAgent>();
+        if (agent.goapBrain.currentWorldState.worldFacts.TryGetValue(keyName, out WorldFact specifiedWorldFact) && (specifiedWorldFact.valueType != expectedWorldFactValueType))
+        {
+            Debug.LogError($"Specified Key with name [{keyName}] has a different value type [{expectedWorldFactValueType}] than the world fact that is already defined in the world state [{specifiedWorldFact.valueType}]");
+            return false;
+        }
+
+        specifiedWorldFact = new WorldFact();
+        specifiedWorldFact.value = newValue;
+        specifiedWorldFact.valueType = expectedWorldFactValueType;
+        specifiedWorldFact.name = keyName;
+        return agent.goapBrain.currentWorldState.TryAddFact(specifiedWorldFact, callWorldStateChangedByTrigger);
     }
 }

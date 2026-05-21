@@ -134,5 +134,10 @@ namespace GOAP
             
             return "[Name: " + name + " cost: " + cost + " ]";
         }
+
+        public void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
+        {
+            actionGraphNode.OnAbandonCurrentPlan(currentGraph, worldState);
+        }
     }
 }

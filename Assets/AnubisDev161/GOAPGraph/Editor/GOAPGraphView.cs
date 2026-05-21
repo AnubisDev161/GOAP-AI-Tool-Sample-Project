@@ -114,8 +114,8 @@ namespace GOAPGraph.Editor
 
         // If I had had the time I would have improved the perfomance here because it is called for every new letter you insert in the name, not just when pressing enter.
         private void AddBlackboardKey(
-            Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool, 
-            WorldFactType worldFactType = WorldFactType.Bool, bool isWorldFact = false)
+            Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool,
+            GOAP.Data.WorldFactType worldFactType = GOAP.Data.WorldFactType.Bool, bool isWorldFact = false)
         {
             EnumField valueTypeField;
             if (isWorldFact)
@@ -165,7 +165,7 @@ namespace GOAPGraph.Editor
 
                     if (isWorldfact)
                     {
-                        goapGraph.Blackboard.AddKey(newKeyName, (WorldFactType)enumField.value);
+                        goapGraph.Blackboard.AddKey(newKeyName, (GOAP.Data.WorldFactType)enumField.value);
                     }
                     else
                     {

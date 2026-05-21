@@ -11,8 +11,6 @@ namespace GOAP
     [Serializable]
     public class GOAPBlackbaord : ISerializationCallbackReceiver
     {
-        public Action<string, BlackboardKey> triggerChangedWorldFact;
-
         public WorldState currentWorldState { get; private set; }
 
         private Dictionary<string, BlackboardKey> blackboardKeys = new Dictionary<string, BlackboardKey>();
@@ -96,7 +94,6 @@ namespace GOAP
             }
 
             var newKey = new BlackboardKey(value, keyType, isWorldFact: false);
-            newKey.triggerChangedWorldFact += OnTriggerChangedWorldFact;
             blackboardKeys.Add(keyName, newKey);
 
             Debug.Log("Blackboard key added");
@@ -172,18 +169,9 @@ namespace GOAP
             }
         }
 
-        private void OnTriggerChangedWorldFact(BlackboardKey key)
-        {
-            if (worldFacts.ContainsValue(key))
-            {
-
-            }
-        }
-
         [Serializable]
         public class BlackboardKey
         {
-            public Action<BlackboardKey> triggerChangedWorldFact;
 
             [DoNotSerialize]
             public object value { get; set; }
@@ -197,7 +185,7 @@ namespace GOAP
             [SerializeField]
             public GOAP.Data.WorldFactType worldFactType;
 
-            public BlackboardKey(object value, BlackboardKeyType keyType = BlackboardKeyType.Bool, WorldFactType worldFactType = WorldFactType.Bool, bool isWorldFact = false)
+            public BlackboardKey(object value, BlackboardKeyType keyType = BlackboardKeyType.Bool, Data.WorldFactType worldFactType = Data.WorldFactType.Bool, bool isWorldFact = false)
             {
                 this.value = value;
                 this.keyType = keyType;

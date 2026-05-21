@@ -33,11 +33,10 @@ namespace GOAP
 
             foreach (var state in desiredConditions)
             {
-                allFacts += state.ToString() + " | ";
+                allFacts += state.Value.ToString() + " | ";
             }
 
-            return allFacts;
+            return $"[{name}] {allFacts}";
         }
-
     }
 }

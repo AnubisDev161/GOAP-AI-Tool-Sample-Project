@@ -15,13 +15,17 @@ public class DangerTrigger : GOAPBlackboardTrigger
     [SerializeField]
     private string collisionExitValue;
 
+    private void OnEnable()
+    {
+        AddSpecifiedWorldFactWithValue(collisionExitValue, false);
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
 
-        var blackboardKey = GetSpecifiedWorldFact();
-
-        blackboardKey.value = collisionEnterValue;
+        var worldFact = GetSpecifiedWorldFact();
+        AddSpecifiedWorldFactWithValue(collisionEnterValue, true);
         Debug.Log("Threat in sight");
     }
 
@@ -29,9 +33,8 @@ public class DangerTrigger : GOAPBlackboardTrigger
     {
         if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
 
-        var blackboardKey = GetSpecifiedWorldFact();
-
-        blackboardKey.value = collisionExitValue;
+        var worldFact = GetSpecifiedWorldFact();
+        AddSpecifiedWorldFactWithValue(collisionExitValue, false);
         Debug.Log("Threat out of sight");
     }
 }

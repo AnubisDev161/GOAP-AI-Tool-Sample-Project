@@ -4,6 +4,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Drawing;
+using Unity.Collections;
 using Unity.VisualScripting;
 
 using UnityEngine;
@@ -11,17 +12,55 @@ using static GOAP.GOAPBlackbaord;
 
 namespace GOAP
 {
-    public class GOAPAgent : GOAPGraphObject
+    public class GOAPAgent : MonoBehaviour
     {
+        public GOAPNavigation navigation { get; private set; }
+
+        public Action<GOAPGraphAsset, WorldState> abandonCurrentPlan;
         public GOAPBrain goapBrain {  get; private set; }
         [field: SerializeField]
         public GOAPGraphAsset graphAsset { get; private set; }
         private Queue<GOAPAction> currentPlan;
         private PlanDebugInfo planDebugInfo;
-       
-        private void Start()
+
+        [SerializeField]
+        private float planningInterval = 5;
+
+        private void OnEnable()
         {
             Init();
+        }
+
+        protected virtual void Init()
+        {
+            InitNavigation();
+            InitBrain();
+            StartNewActionPlan();
+        }
+
+        private void InitBrain()
+        {
+            if (graphAsset == null)
+            {
+                Debug.LogError("Agent has no graph asset!");
+                return;
+            }
+
+            var graphInstance = Instantiate(graphAsset);
+            goapBrain = new GOAPBrain(this, graphInstance);
+        }
+
+        private void InitNavigation()
+        {
+            var navigation = GetComponent<GOAPNavigation>();
+
+            if (navigation == null)
+            {
+                Debug.LogError("No GOAPNaviagtion component found!");
+                return;
+            }
+
+            this.navigation = navigation;
         }
 
         private bool VerifiyCurrentPlan()
@@ -29,7 +68,7 @@ namespace GOAP
             var planSize = currentPlan.Count;
             float totalCost = 0;
 
-            Debug.Log($"Started executing plan with {planSize} actions | goal {goapBrain.goalSelector.currentGoal.name}");
+            Debug.Log($"<color=lightBlue>Started executing plan with {planSize} actions | goal {goapBrain.goalSelector.currentGoal.name} | {this}");
             planDebugInfo.planSize = planSize;
            
 
@@ -48,6 +87,19 @@ namespace GOAP
             return true;
         }
 
+        public virtual void OnCurrentWorldStateChangedByTrigger()
+        {
+            AbandonCurrentPlan();
+            StartNewActionPlan();
+        }
+
+        protected virtual void AbandonCurrentPlan()
+        {
+            StopAllCoroutines();
+            currentPlan.Clear();
+            abandonCurrentPlan?.Invoke(goapBrain.graphInstance, goapBrain.currentWorldState);
+        }
+
         protected void StartNewActionPlan()
         {
             currentPlan = goapBrain.CreatePLan();
@@ -61,34 +113,23 @@ namespace GOAP
                 Debug.LogError("Agent stopped planning due to an invalid plan");
             }
         }
-
-        protected virtual void Init()
-        {
-            if (graphAsset == null)
-            {
-                Debug.LogError("Agent has no graph asset!");
-                return;
-            }
-
-            var graphInstance = Instantiate(graphAsset);
-            goapBrain = new GOAPBrain(this, graphInstance);
-            StartNewActionPlan();
-        }
-
+        
         private void ExecuteCurrentPlan()
         {
             if (currentPlan.Count > 0)
             {
                 var action = currentPlan.Dequeue();
+                abandonCurrentPlan += action.OnAbandonCurrentPlan;
 
                 action.executed += OnActionExecuted;
+
                 action.BeginExecute(goapBrain.currentWorldState, goapBrain.graphInstance);
                 return;
             }
 
             if (WorldStateCompare.IsWorldStateBAchieved(goapBrain.currentWorldState.worldFacts, goapBrain.goalSelector.currentGoal.desiredConditions))
             {
-                Debug.Log( "<color=green>" + $"Plan with {planDebugInfo.planSize} + actions executed successfully | cost {planDebugInfo.totalCost}");
+                Debug.Log( "<color=green>" + $"Plan with {planDebugInfo.planSize} + actions executed successfully | cost {planDebugInfo.totalCost} | goal {goapBrain.goalSelector.currentGoal} | {this}");
                 Debug.Log($"New world state is ${goapBrain.currentWorldState.ToString()}");
                 Debug.Log($"Desired world state is ${goapBrain.goalSelector.currentGoal.ToString()}");
             }
@@ -99,13 +140,14 @@ namespace GOAP
                 Debug.LogError($"Desired world state is {goapBrain.goalSelector.currentGoal.ToString()}");
                 return;
             }
-
-            StartCoroutine(CreateNewPlanAfterDelay(5));
+            
+            StartCoroutine(CreateNewPlanAfterDelay(planningInterval));
         }
 
         private void OnActionExecuted(bool success, GOAPAction lastAction)
         {
             lastAction.executed -= OnActionExecuted;
+            abandonCurrentPlan -= lastAction.OnAbandonCurrentPlan;
 
             if (success)
             {
@@ -113,7 +155,7 @@ namespace GOAP
             }
             else
             {
-                Debug.LogError("Action executed unsuccessfully, execution stopped with last action: " + lastAction);
+                Debug.LogError($"Action executed unsuccessfully, execution stopped with last action: {lastAction} | {this}");
             }
         }
 
@@ -121,6 +163,11 @@ namespace GOAP
         {
             yield return new WaitForSeconds(delay);
             StartNewActionPlan();
+        }
+
+        public override string ToString()
+        {
+            return $"agent: {name}";
         }
     }
 

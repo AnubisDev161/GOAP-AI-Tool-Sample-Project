@@ -237,7 +237,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: InDanger
   expectedType: 0
-  expectedWorldFactType: 0
+  expectedWorldFactValueType: 0
   collisionEnterValue: True
   collisionExitValue: False
 --- !u!135 &167028369
@@ -498,7 +498,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: InDanger
   expectedType: 0
-  expectedWorldFactType: 0
+  expectedWorldFactValueType: 0
   collisionEnterValue: True
   collisionExitValue: False
 --- !u!135 &403565912
@@ -1552,7 +1552,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: InDanger
   expectedType: 0
-  expectedWorldFactType: 0
+  expectedWorldFactValueType: 0
   collisionEnterValue: True
   collisionExitValue: False
 --- !u!135 &865711143
@@ -3481,7 +3481,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   keyName: InDanger
   expectedType: 0
-  expectedWorldFactType: 0
+  expectedWorldFactValueType: 0
   collisionEnterValue: True
   collisionExitValue: False
 --- !u!135 &2133399644

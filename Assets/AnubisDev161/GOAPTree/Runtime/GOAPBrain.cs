@@ -26,27 +26,20 @@ namespace GOAP
             currentWorldState = new WorldState();
             planner = new GOAPPlanner();
             goalSelector = new GOAPGoalSelector(currentWorldState);
-          //  graphInstance.Blackboard.triggerChangedWorldFact += OnTriggerChangedWorldFact;
         }
 
-        //private void OnTriggerChangedWorldFact(GOAPBlackbaord.BlackboardKey key)
-        //{
-
-        //    if (currentWorldState.worldFacts.ContainsKey(key.va)
-        //    var newWorldFact = new WorldFact();
-        //    newWorldFact.valueType = key.worldFactType;
-        //    newWorldFact.value = key.value.ToString();
-
-
-
-        //    currentWorldState.TrySetFact(newWorldFact);
-        //}
+        private void OnCurrentWorldStateChangedByTrigger()
+        {
+            agent.OnCurrentWorldStateChangedByTrigger();
+        }
 
         public Queue<GOAPAction> CreatePLan()
         {
             if (currentWorldState.worldFacts.Count == 0)
             {
+                currentWorldState.worldStateChangedByTrigger -= OnCurrentWorldStateChangedByTrigger;
                 currentWorldState = FetchStartState();
+                currentWorldState.worldStateChangedByTrigger += OnCurrentWorldStateChangedByTrigger;
             }
 
             availableActions = FetchActions();

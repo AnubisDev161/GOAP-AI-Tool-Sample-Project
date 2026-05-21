@@ -83,7 +83,7 @@ MonoBehaviour:
     outputPort:
       nodeId: be23236e-12a6-49e0-90eb-b3098710bba2
       portIndex: 1
-  goapGraphObject: {fileID: 0}
+  agent: {fileID: 0}
   blackboard:
     facts:
     - IsAtDestination
@@ -125,8 +125,8 @@ MonoBehaviour:
         guid: 0354731e-9d00-405a-a39b-e1187a05ede3
         pos:
           serializedVersion: 2
-          x: 485
-          y: 1617
+          x: 474
+          y: 1825
           width: 211
           height: 116
         typeName: GOAPGraph.GoalWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
@@ -160,8 +160,8 @@ MonoBehaviour:
         guid: 4a9f7d78-60cf-4cf6-b506-6f7adffffcbd
         pos:
           serializedVersion: 2
-          x: 131
-          y: 1617
+          x: 120
+          y: 1825
           width: 256
           height: 171
         typeName: GOAPGraph.Precondition, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -243,8 +243,8 @@ MonoBehaviour:
         guid: 49a9e165-f528-4765-b314-fcfb3efc4e51
         pos:
           serializedVersion: 2
-          x: 482
-          y: 1374
+          x: 471
+          y: 1582
           width: 165
           height: 116
         typeName: GOAPGraph.GoalWorldStateNode, Assembly-CSharp, Version=0.0.0.0,
@@ -334,8 +334,8 @@ MonoBehaviour:
         guid: f10c0ad6-c35a-4a7b-9109-0332f91b3c6e
         pos:
           serializedVersion: 2
-          x: 235
-          y: 1374
+          x: 224
+          y: 1582
           width: 221
           height: 171
         typeName: GOAPGraph.Precondition, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
