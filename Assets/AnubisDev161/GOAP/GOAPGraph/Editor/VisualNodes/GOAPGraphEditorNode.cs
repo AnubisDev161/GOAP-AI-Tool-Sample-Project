@@ -1,16 +1,12 @@
-using Codice.Client.BaseCommands.BranchExplorer;
+using GOAP.Core;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
-using UnityEditor.PackageManager.UI;
 using UnityEditor.UIElements;
-using UnityEngine.UIElements;
-using GOAP.Data;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     public class GOAPGraphEditorNode : Node
     {

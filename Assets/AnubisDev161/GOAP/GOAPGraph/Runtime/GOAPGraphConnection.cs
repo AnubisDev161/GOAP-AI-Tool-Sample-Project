@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [Serializable]
     public struct GOAPGraphConnection

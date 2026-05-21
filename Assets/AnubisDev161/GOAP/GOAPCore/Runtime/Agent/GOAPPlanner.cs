@@ -1,4 +1,3 @@
-using GOAP.Data;
 using GOAP.Tree;
 using System.Collections.Generic;
 using UnityEngine;

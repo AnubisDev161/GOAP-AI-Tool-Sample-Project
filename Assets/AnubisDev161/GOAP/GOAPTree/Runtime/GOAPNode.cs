@@ -1,13 +1,7 @@
 using GOAP.Core;
-using GOAP.Data;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.Assertions.Must;
 
-namespace GOAP
+namespace GOAP.Tree
 {
     public class GOAPNode
     {

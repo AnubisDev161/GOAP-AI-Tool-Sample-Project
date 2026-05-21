@@ -1,7 +1,6 @@
-using GOAP.Data;
 using System.Collections.Generic;
-using UnityEngine;
-using GOAPGraph;
+using GOAP.GOAPGraph;
+using GOAP.Core;
 
 namespace ExampleProject
 {
@@ -10,7 +9,7 @@ namespace ExampleProject
     {
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var exampleAgent =  currentGraph.agent as ExampleAgent;
+            var exampleAgent = currentGraph.agent as ExampleAgent;
 
             base.OnExecuteFinished(currentGraph, worldState, exampleAgent.PlaceBeacon());
         }

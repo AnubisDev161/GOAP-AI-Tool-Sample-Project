@@ -1,5 +1,4 @@
-using GOAP.Data;
-using GOAPGraph;
+using GOAP.GOAPGraph;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

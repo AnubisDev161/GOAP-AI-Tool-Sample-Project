@@ -1,11 +1,7 @@
-using GOAP.Data;
-using GOAPGraph;
-using System;
-using System.Collections.Generic;
-using UnityEditor;
+using GOAP.Core;
 using UnityEngine;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Action", "Action / Action", hasInputParams: true, hasOutputParams: true, paramPortsHaveSingleCapacity: false)]
     public class ActionNode : GOAPGraphNode

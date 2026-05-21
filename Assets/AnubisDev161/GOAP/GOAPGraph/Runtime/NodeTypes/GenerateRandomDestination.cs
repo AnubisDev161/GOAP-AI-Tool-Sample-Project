@@ -1,12 +1,9 @@
-using GOAP;
-using GOAP.Data;
+using GOAP.Core;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.UI;
-using static GOAP.GOAPBlackbaord;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Generate random destination", "Generate random / Destination", hasInputParams: true, hasOutputParams: true)]
     public class GenerateRandomDestination : ActionNode

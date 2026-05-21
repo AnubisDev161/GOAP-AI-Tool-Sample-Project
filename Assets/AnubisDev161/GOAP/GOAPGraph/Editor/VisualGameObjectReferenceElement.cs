@@ -1,10 +1,9 @@
-using System;
 using UnityEditor;
 using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     // This is only a work around!
     public class VisualGameObjectReferenceElement : VisualElement

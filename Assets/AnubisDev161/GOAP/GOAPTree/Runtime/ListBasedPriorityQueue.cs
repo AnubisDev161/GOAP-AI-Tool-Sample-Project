@@ -1,7 +1,7 @@
-using GOAP.Data;
+using GOAP.Core;
 using System.Collections.Generic;
 
-namespace GOAP
+namespace GOAP.Tree
 {
     public class ListBasedPriorityQueue
     {

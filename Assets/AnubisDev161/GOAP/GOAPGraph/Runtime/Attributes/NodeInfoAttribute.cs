@@ -1,7 +1,6 @@
 using System;
-using UnityEngine.UIElements;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     public class NodeInfoAttribute : Attribute
     {

@@ -1,4 +1,5 @@
 using GOAP;
+using GOAP.Core.Agent;
 
 namespace ExampleProject
 {

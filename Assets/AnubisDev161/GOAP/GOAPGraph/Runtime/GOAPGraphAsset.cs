@@ -1,12 +1,9 @@
-using GOAP;
-using GOAP.Data;
-using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using GOAP.Core.Agent;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [CreateAssetMenu(menuName = "GOAPGraph/New Graph")]
     public class GOAPGraphAsset : ScriptableObject

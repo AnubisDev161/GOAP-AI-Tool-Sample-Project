@@ -1,8 +1,7 @@
-using GOAP.Data;
+using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
-
     public class WorldFactNode : GOAPGraphNode
     {
         [ExposedWorldFactProperty]

@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP.Data;
 using GOAP.Core;
 
 namespace GOAP.Tree

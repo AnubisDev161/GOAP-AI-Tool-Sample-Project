@@ -4,7 +4,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     // Only work around
     [CustomPropertyDrawer(typeof(Destination))]

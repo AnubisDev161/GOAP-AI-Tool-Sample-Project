@@ -1,3 +1,4 @@
+using GOAP.Core;
 using System;
 using System.Collections.Generic;
 using UnityEngine;

@@ -1,12 +1,7 @@
-using GOAP;
-using GOAP.Data;
+using GOAP.Core;
 using System.Collections.Generic;
-using System.Linq;
-using UnityEngine;
-using UnityEngine.AI;
-using UnityEngine.UI;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Delete random destination", "Generate random / Delete destination", hasInputParams: true, hasOutputParams: true)]
     public class DeletetargetDuringExecution : ActionNode
@@ -23,11 +18,8 @@ namespace GOAPGraph
                 return;
             }
 
-           
             blackbaordKey.value = null; 
-
             base.OnExecute(currentGraph, worldState);
         }
-
     }
 }

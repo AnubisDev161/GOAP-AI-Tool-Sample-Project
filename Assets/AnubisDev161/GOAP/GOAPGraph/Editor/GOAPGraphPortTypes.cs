@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     public class GOAPGraphPortTypes
     {

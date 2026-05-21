@@ -1,12 +1,9 @@
-using GOAPGraph;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP.Data;
+using GOAP.Core;
 using System;
-using UnityEditor;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Move To", "AI / Move To", hasInputParams: true, hasOutputParams: true)]
     public class MoveTo : ActionNode

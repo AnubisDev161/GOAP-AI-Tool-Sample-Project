@@ -5,9 +5,8 @@ using System.Reflection;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GOAPGraph.Editor;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     public struct SearchContextElement
     {

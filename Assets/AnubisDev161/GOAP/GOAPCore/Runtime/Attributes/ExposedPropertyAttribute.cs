@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-namespace GOAP.Data
+namespace GOAP.Core
 {
     public class ExposedPropertyAttribute : Attribute
     {

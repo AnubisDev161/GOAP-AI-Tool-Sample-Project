@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
-using GOAP.Data;
+using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Start State", "Start/Start", hasFlowInput: false, hasFlowOutput: true, paramPortsHaveSingleCapacity: false, hasOutputParams: true)]
     public class StartWorldStateNode : GOAPGraphNode

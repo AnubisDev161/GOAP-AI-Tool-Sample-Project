@@ -1,8 +1,6 @@
-using System;
-using UnityEngine;
-using GOAP.Data;
+using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Goal State", "Goal/Goal", hasFlowInput: true, hasFlowOutput: false, hasInputParams: true, hasOutputParams: false, paramPortsHaveSingleCapacity: false)]
     public class GoalWorldStateNode : GOAPGraphNode

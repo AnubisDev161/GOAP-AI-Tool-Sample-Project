@@ -1,14 +1,9 @@
-using GOAPGraph;
-using GOAPGraph.Editor;
-using System;
-using Unity.VisualScripting.YamlDotNet.Core.Tokens;
 using UnityEditor;
-using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GOAP.Data;
+using GOAP.Core;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     [CustomPropertyDrawer(typeof(WorldFact))]
     public class WorldFactDrawer : PropertyDrawer

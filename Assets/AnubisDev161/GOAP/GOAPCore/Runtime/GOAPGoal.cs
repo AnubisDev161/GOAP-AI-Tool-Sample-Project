@@ -1,6 +1,4 @@
-using GOAP.Data;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace GOAP.Core
 {

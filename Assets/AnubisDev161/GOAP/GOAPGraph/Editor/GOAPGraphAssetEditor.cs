@@ -2,7 +2,7 @@ using UnityEditor;
 using UnityEditor.Callbacks;
 using UnityEngine;
 
-namespace GOAPGraph.Editor
+namespace GOAP.GOAPGraph.Editor
 {
     [CustomEditor(typeof(GOAPGraphAsset))]
     public class GOAPGraphAssetEditor : UnityEditor.Editor

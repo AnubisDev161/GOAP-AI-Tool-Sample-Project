@@ -1,9 +1,10 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using GOAP.Data;
 using UnityEditor.UIElements;
-namespace GOAPGraph.Editor
+using GOAP.Core;
+
+namespace GOAP.GOAPGraph.Editor
 {
     public class VisualWorldFactElement : VisualElement
     {

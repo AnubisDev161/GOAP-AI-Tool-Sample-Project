@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP.Data;
+using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Debug Log", "Debug/Debug Log Console")]
     public class DebugLogNode : GOAPGraphNode    

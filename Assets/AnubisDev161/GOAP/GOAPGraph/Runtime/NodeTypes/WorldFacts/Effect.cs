@@ -1,7 +1,6 @@
-using GOAP.Data;
-using UnityEngine;
+using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [NodeInfo("Effect", "World Facts/Effect", hasInputParams: true, inputPortName: "World Fact")]
     public class Effect : WorldFactNode

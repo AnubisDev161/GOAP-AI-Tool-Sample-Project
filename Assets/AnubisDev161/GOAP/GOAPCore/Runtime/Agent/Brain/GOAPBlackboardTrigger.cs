@@ -1,6 +1,3 @@
-using GOAP;
-using GOAP.Data;
-using System.ComponentModel;
 using UnityEngine;
 
 namespace GOAP.Core.Agent

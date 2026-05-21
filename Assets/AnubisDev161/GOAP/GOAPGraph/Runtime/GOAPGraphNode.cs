@@ -1,12 +1,9 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using GOAP.Data;
-using UnityEditor;
 using GOAP.Core;
 
-namespace GOAPGraph
+namespace GOAP.GOAPGraph
 {
     [Serializable]
     public class GOAPGraphNode
