@@ -15,24 +15,22 @@ namespace GOAPGraph
         private List<GOAPGraphNode> nodes = new List<GOAPGraphNode>();
         public List<GOAPGraphNode> Nodes => nodes;
 
-
-
         [SerializeField]
         private List<GOAPGraphConnection> connections;
         public List<GOAPGraphConnection> Connections => connections;
 
         private Dictionary<string, GOAPGraphNode> nodeDictionary;
 
-        public GOAPGraphObject goapGraphObject;
+        public GOAPAgent agent;
 
         [SerializeField]
         private GOAPBlackbaord blackboard = new GOAPBlackbaord();
 
         public GOAPBlackbaord Blackboard => blackboard;
 
-        public void Initialize(GOAPGraphObject graphObject)
+        public void Initialize(GOAPAgent graphObject)
         {
-            this.goapGraphObject = graphObject;
+            this.agent = graphObject;
             nodeDictionary = new Dictionary<string, GOAPGraphNode>();
 
             foreach (var node in nodes)

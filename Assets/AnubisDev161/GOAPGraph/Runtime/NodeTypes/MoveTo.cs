@@ -13,13 +13,16 @@ namespace GOAPGraph
     {
         [ExposedProperty]
         public Destination destination;
+
+        [ExposedProperty]
+        public string targetPosKeyName;
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             var targetDestination = destination.position;
 
             if (targetDestination == Vector3.zero)
             {
-                var targetPosKey = currentGraph.Blackboard.GetKey("TargetPos");
+                var targetPosKey = currentGraph.Blackboard.GetKey(targetPosKeyName);
                 if (targetPosKey != null && targetPosKey.value != null)
                 {
                     targetDestination = (Vector3)targetPosKey.value;
@@ -34,14 +37,14 @@ namespace GOAPGraph
                 return;
             }
 
-            currentGraph.goapGraphObject.navigation.desinationReached += OnDestinationReached;
-            currentGraph.goapGraphObject.navigation.SetDestination(targetDestination);
+            currentGraph.agent.navigation.desinationReached += OnDestinationReached;
+            currentGraph.agent.navigation.SetDestination(targetDestination);
         }
 
         private void OnDestinationReached(GOAPGraphAsset currentGraph, WorldState worldState)
         {
             Debug.Log("Move to node executed");
-            currentGraph.goapGraphObject.navigation.desinationReached -= OnDestinationReached;
+            currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
             base.OnExecuteFinished(currentGraph, worldState, true);
         }
     }

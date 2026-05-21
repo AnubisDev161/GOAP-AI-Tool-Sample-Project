@@ -9,12 +9,12 @@ namespace GOAPGraph.Editor
     {
         private SerializedProperty serializedWorldFact;
 
-      //  private Foldout foldOut;
+        private Foldout foldOut;
         public VisualWorldFactElement(SerializedProperty worldFactProperty)
         {
             this.serializedWorldFact = worldFactProperty;
-            //foldOut = new Foldout();
-            //foldOut.value = true;
+            foldOut = new Foldout();
+            foldOut.value = true;
 
             Init();
         }
@@ -23,7 +23,6 @@ namespace GOAPGraph.Editor
         {
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
             var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
-            var acceptedValue = serializedWorldFact.FindPropertyRelative("acceptedValue");
             var valueType = (WorldFactType)valueTypeProperty.boxedValue;
 
             VisualElement valueField =  CreateFieldByType(valueProperty, valueType);
@@ -34,20 +33,18 @@ namespace GOAPGraph.Editor
             // Create property fields.
             var valueFieldName = new PropertyField(valueProperty);
             var valueTypeField = new PropertyField(valueTypeProperty);
-            var acceptedValueField = new PropertyField(acceptedValue);
             var nameField = new PropertyField(serializedWorldFact.FindPropertyRelative("name"));
 
-            contentContainer.Add(nameField);
+            foldOut.Add(nameField);
 
 
             // Add either a textField or a toggle according to the property's value
-            contentContainer.Add(valueField);
+            foldOut.Add(valueField);
 
             valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
 
-            contentContainer.Add(valueTypeField);
-            contentContainer.Add(acceptedValueField);
-           // contentContainer.Add(foldOut);
+            foldOut.Add(valueTypeField);
+            contentContainer.Add(foldOut);
         }
 
         private void ValueTypeChangedCallback(SerializedPropertyChangeEvent evt)

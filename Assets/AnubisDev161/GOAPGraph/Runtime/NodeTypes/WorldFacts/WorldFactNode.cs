@@ -8,7 +8,7 @@ namespace GOAPGraph
         [ExposedWorldFactProperty]
         public WorldFact worldFact;
 
-        public WorldFact GetData()
+        public virtual WorldFact GetData()
         {
             return worldFact;
         }

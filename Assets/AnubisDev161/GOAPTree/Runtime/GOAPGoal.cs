@@ -17,12 +17,12 @@ namespace GOAP
             this.name = goalName;
         }
 
-        public bool IsValid()
+        public virtual bool IsValid()
         {
             return true;
         }
 
-        public float GetPriority()
+        public virtual float GetPriority()
         {
             return priority;
         }

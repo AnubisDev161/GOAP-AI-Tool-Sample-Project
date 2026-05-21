@@ -1,5 +1,5 @@
 using System;
-using System.Globalization;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace GOAP.Data
@@ -16,9 +16,12 @@ namespace GOAP.Data
         [ExposedProperty]
         public WorldFactType valueType;
 
-        [ExposedProperty]
-        public AcceptedValue acceptedValue; 
-        
+        [SerializeField]
+        public AcceptedValue acceptedValue;
+
+        [SerializeField]
+        public OperationType operationType;
+
         public void OnAfterDeserialize()
         {
 
@@ -89,7 +92,7 @@ namespace GOAP.Data
         {
             if (valueType == WorldFactType.Bool) return Convert.ToBoolean(value);
             if (valueType == WorldFactType.Int) return Convert.ToInt32(value);
-            if (valueType == WorldFactType.Float) return Convert.ToSingle(value.Remove(value.Length -1));
+            if (valueType == WorldFactType.Float) return Convert.ToSingle(value.Remove(value.Length - 1));
 
             return null;
         }
@@ -110,8 +113,8 @@ namespace GOAP.Data
             switch (this.acceptedValue)
             {
                 case AcceptedValue.Equals:
-                    return (other == this);
-                case AcceptedValue.Grater:
+                    return other == this;
+                case AcceptedValue.Greater:
                     return other > this;
                 case AcceptedValue.Samller:
                     return other < this;
@@ -160,6 +163,106 @@ namespace GOAP.Data
         {
             return $"{name}, {acceptedValue}, {value}, {valueType.ToString()}";
         }
+
+        public void InitValue()
+        {
+            switch (valueType)
+            {
+                case WorldFactType.Bool:
+                    value = "False";
+                    break;
+                case WorldFactType.Int:
+                    value = "0";
+                    break;
+                case WorldFactType.Float:
+                    value = "0.0f";
+                    break;
+                default:
+                    Debug.LogError("Could not convert valueType to known value");
+                    break;
+            }
+        }
+
+        public void ChangeWorldFactAccordingToOperationType(Dictionary<string, WorldFact> worldFacts)
+        {
+            WorldFact newValue;
+            if (worldFacts.ContainsKey(name))
+            {
+                newValue = worldFacts[name];
+            }
+            else
+            {
+                newValue = new WorldFact();
+                newValue.valueType = this.valueType;
+                newValue.name = name;
+                newValue.InitValue();
+            }
+
+            switch (operationType)
+            {
+                case OperationType.Set:
+                    worldFacts[name] = this;
+                    return;
+
+                case OperationType.Add:
+                    newValue.value = ChangeValue(newValue);
+                    worldFacts[name] = newValue;
+                    return;
+            }
+        }
+
+        private string ChangeValue(WorldFact worldFact)
+        {
+            if (worldFact.valueType != this.valueType)
+            {
+                Debug.LogError("Fatal error, value to increase does not have the same value as the value to add");
+                return string.Empty;
+            }
+
+            return AddOrSubtractValue(worldFact);
+        }
+
+        private string AddOrSubtractValue(WorldFact worldFact)
+        {
+            switch (valueType)
+            {
+                case WorldFactType.Bool:
+                    Debug.LogError("Can't increase boolen!");
+                    return string.Empty;
+
+                case WorldFactType.Int:
+                    int intValue;
+                    intValue = Convert.ToInt32(worldFact.value) + Convert.ToInt32(this.value);
+
+                    return Convert.ToString(intValue);
+
+                case WorldFactType.Float:
+                    float floatValue;
+                    floatValue = Convert.ToSingle(worldFact.value.Remove(worldFact.value.Length - 1)) + Convert.ToSingle(this.value.Remove(this.value.Length - 1));
+                   
+                    return Convert.ToString(floatValue + "f");
+                default:
+                    Debug.LogError("Could not evaluate value type");
+                    break;
+            }
+
+            return string.Empty;
+        }
+
+        internal bool IsRequiredOperation(WorldFact other)
+        {
+            switch (other.operationType)
+            {
+                case OperationType.Set:
+                    return this == other;
+                case OperationType.Add:
+                    return acceptedValue == AcceptedValue.Greater && other > this || acceptedValue == AcceptedValue.Samller && other < this;
+
+                default:
+                    Debug.LogError("Accepted type could not be evaluated");
+                    return false;
+            }
+        }
     }
 
     [Serializable]
@@ -173,18 +276,15 @@ namespace GOAP.Data
     [Serializable]
     public enum AcceptedValue
     {
-        None,
         Equals,
-        Grater,
+        Greater,
         Samller,
     }
 
     [Serializable]
     public enum OperationType
     {
-        None,
         Set,
-        Increase,
-        Decrease
+        Add
     }
 }

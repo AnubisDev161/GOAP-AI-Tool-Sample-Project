@@ -7,12 +7,6 @@ public class ExampleAgent : GOAPAgent
 {
     [SerializeField]
     private GameObject beaconPrefab;
-
-    [SerializeField]
-    private float tiredInterval;
-
-    [SerializeField]
-    private string tiredKey;
     public bool PlaceBeacon()
     {
         var beacon = Instantiate(beaconPrefab, transform.position, Quaternion.identity);
@@ -22,18 +16,4 @@ public class ExampleAgent : GOAPAgent
 
         return true;
     }
-
-    protected override void Init()
-    {
-        base.Init();
-        StartCoroutine(SetTiredAfterDelay());
-    }
-
-    private IEnumerator SetTiredAfterDelay()
-    {
-        yield return new WaitForSeconds(tiredInterval);
-
-
-    }
-
 }

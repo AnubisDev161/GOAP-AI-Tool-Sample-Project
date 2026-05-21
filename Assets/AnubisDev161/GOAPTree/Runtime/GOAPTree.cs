@@ -164,7 +164,7 @@ namespace GOAP.Tree
             {
                 if (preconditions.TryGetValue(effect.Key, out WorldFact value))
                 {
-                    if (value.IsRequiredValue(effect.Value))
+                    if (value.IsRequiredOperation(effect.Value))
                     {
                         satisfiesAtLeastOne = true; // match
                     }

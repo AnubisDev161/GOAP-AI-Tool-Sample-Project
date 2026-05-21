@@ -26,7 +26,21 @@ namespace GOAP
             currentWorldState = new WorldState();
             planner = new GOAPPlanner();
             goalSelector = new GOAPGoalSelector(currentWorldState);
+          //  graphInstance.Blackboard.triggerChangedWorldFact += OnTriggerChangedWorldFact;
         }
+
+        //private void OnTriggerChangedWorldFact(GOAPBlackbaord.BlackboardKey key)
+        //{
+
+        //    if (currentWorldState.worldFacts.ContainsKey(key.va)
+        //    var newWorldFact = new WorldFact();
+        //    newWorldFact.valueType = key.worldFactType;
+        //    newWorldFact.value = key.value.ToString();
+
+
+
+        //    currentWorldState.TrySetFact(newWorldFact);
+        //}
 
         public Queue<GOAPAction> CreatePLan()
         {
@@ -36,8 +50,13 @@ namespace GOAP
             }
 
             availableActions = FetchActions();
-            availableGoals = FetchGoals();  
+            availableGoals = FetchGoals();
 
+            return CreateValidPlan();
+        }
+
+        private Queue<GOAPAction> CreateValidPlan()
+        {
             var bestGoal = goalSelector.GetBestGoal(currentWorldState, availableGoals);
 
             if (bestGoal == null)
@@ -46,7 +65,23 @@ namespace GOAP
                 return null;
             }
 
-            return planner.GeneratePlan(currentWorldState, bestGoal, availableActions);
+            var newPlan = planner.GeneratePlan(currentWorldState, bestGoal, availableActions);
+
+            if (availableGoals != null && availableGoals.Count > 0)
+            {
+                if (newPlan == null || newPlan.Count == 0)
+                {
+                    Debug.LogError($"Plan not valid, removing current {bestGoal} goal and choosing a different one");
+                    availableGoals.Remove(bestGoal);
+                    return CreateValidPlan();
+                }
+            }
+            else
+            {
+                Debug.LogError($"Could not find any valid goal");
+            }
+
+            return newPlan;
         }
 
         private WorldState FetchStartState()
@@ -95,7 +130,6 @@ namespace GOAP
         private Dictionary<string, WorldFact> GetNodeEffects(GOAPGraphNode graphNode)
         {
             var effects = new Dictionary<string, WorldFact>();
-
             var effectNodes = graphNode.GetEffectNodes(graphInstance);
 
 
@@ -104,10 +138,35 @@ namespace GOAP
             {
                 var effect = effectNode.GetData();
 
+                effect.operationType = (effectNode as Effect).operationType;
+
+                if (!ValidateWorldFact(effect)) continue;
+
                 effects.Add(effect.name, effect);
             }
 
             return effects;
+        }
+
+        private bool ValidateWorldFact(WorldFact worldFact)
+        {
+            if (graphInstance.Blackboard.Contains(worldFact.name))
+            {
+                var key = graphInstance.Blackboard.GetKey(worldFact.name);
+
+                if (key.worldFactType == worldFact.valueType)
+                {
+                    return true;
+                }
+                else
+                {
+                    Debug.LogError($"World Fact with name: {worldFact.name}, is used as precondition or effect but has a different valueType [{worldFact.valueType}] than the declared world fact in the world state blackboard [{key.worldFactType}]. ");
+                    return false;
+                }
+            }
+
+            Debug.LogError($"World Fact with name: {worldFact.name}, is used as precondition or effect but is not declared in world state blackboard");
+            return false;
         }
 
         private Dictionary<string, WorldFact> GetNodePreconditions(GOAPGraphNode graphNode)
@@ -118,6 +177,10 @@ namespace GOAP
             foreach (var preconditionNode in preconditionNodes)
             {
                 var precondition = preconditionNode.GetData();
+
+                precondition.acceptedValue = (preconditionNode as Precondition).acceptedValue;
+
+                if (!ValidateWorldFact(precondition)) continue;
 
                 preconditions.Add(precondition.name, precondition);
             }

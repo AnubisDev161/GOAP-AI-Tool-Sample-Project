@@ -11,6 +11,10 @@ namespace GOAP
     [Serializable]
     public class GOAPBlackbaord : ISerializationCallbackReceiver
     {
+        public Action<string, BlackboardKey> triggerChangedWorldFact;
+
+        public WorldState currentWorldState { get; private set; }
+
         private Dictionary<string, BlackboardKey> blackboardKeys = new Dictionary<string, BlackboardKey>();
 
         // World State
@@ -41,6 +45,14 @@ namespace GOAP
             return worldFacts;
         }
 
+        public bool Contains(string keyName)
+        {
+            if (blackboardKeys.ContainsKey(keyName)) return true;    
+            if (worldFacts.ContainsKey(keyName)) return true;
+
+            return false;
+        }
+
         public BlackboardKey GetKey(string keyName)
         {
             if (blackboardKeys.ContainsKey(keyName))
@@ -53,20 +65,40 @@ namespace GOAP
                 return worldFacts[keyName];
             }
 
-            Debug.LogError($"Blackboard does not contain a BlackboardKey with name {keyName}");
+            Debug.LogError($"Blackboard does not contain a BlackboardKey with name: {keyName}");
             return null;
+        }
+
+        public bool SetKey(string keyName, BlackboardKey value)
+        {
+            if (blackboardKeys.ContainsKey(keyName))
+            {
+                blackboardKeys[keyName] = value;
+                return true;
+            }
+
+            if (worldFacts.ContainsKey(keyName))
+            {
+                worldFacts[keyName] = value;
+                return true;
+            }
+
+            Debug.LogError($"Blackboard does not contain a BlackboardKey with name: {keyName}");
+            return false;
         }
 
         public bool AddKey(string keyName, BlackboardKeyType keyType, object value = null)
         {
             if (blackboardKeys.ContainsKey(keyName))
             {
-                Debug.LogError($"Blackboard already contains a BlackboardKey with name {keyName}");
+                Debug.LogError($"Blackboard already contains a BlackboardKey with name: {keyName}");
                 return false;
             }
 
             var newKey = new BlackboardKey(value, keyType, isWorldFact: false);
+            newKey.triggerChangedWorldFact += OnTriggerChangedWorldFact;
             blackboardKeys.Add(keyName, newKey);
+
             Debug.Log("Blackboard key added");
             return true;
         }
@@ -75,7 +107,7 @@ namespace GOAP
         {
             if (worldFacts.ContainsKey(keyName))
             {
-                Debug.LogError($"Blackboard already contains a BlackboardKey with name {keyName}");
+                Debug.LogError($"Blackboard already contains a BlackboardKey with name: {keyName}");
                 return false;
             }
             
@@ -140,11 +172,21 @@ namespace GOAP
             }
         }
 
+        private void OnTriggerChangedWorldFact(BlackboardKey key)
+        {
+            if (worldFacts.ContainsValue(key))
+            {
+
+            }
+        }
+
         [Serializable]
         public class BlackboardKey
         {
+            public Action<BlackboardKey> triggerChangedWorldFact;
+
             [DoNotSerialize]
-            public object value;
+            public object value { get; set; }
 
             [SerializeField]
             public bool isWorldFact = false;
@@ -172,7 +214,6 @@ namespace GOAP
             Float,
             String,
             Vector3,
-            GameObject
         }
     }
 }

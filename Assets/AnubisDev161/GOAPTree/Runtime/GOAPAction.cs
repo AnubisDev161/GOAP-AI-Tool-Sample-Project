@@ -102,7 +102,8 @@ namespace GOAP
             
             foreach (var effect in effects)
             {
-                currentWorldState.worldFacts[effect.Key] = effect.Value;
+                //currentWorldState.worldFacts[effect.Key] = effect.Value.ChangeWorldFactAccordingToOperationType(currentWorldState.worldFacts);
+                effect.Value.ChangeWorldFactAccordingToOperationType(currentWorldState.worldFacts);
             }
         }
 
@@ -111,7 +112,6 @@ namespace GOAP
         {
             foreach (var effect in effects)
             {
-                // TODO Add other conditions such as equal, any, greater smaller
                 if (requiredWorldState.worldFacts.TryGetValue(effect.Key, out WorldFact value) && value.IsRequiredValue(effect.Value))
                 {
                     requiredWorldState.TryRemoveFact(effect.Key);

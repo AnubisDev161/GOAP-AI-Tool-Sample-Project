@@ -1,7 +1,6 @@
 using GOAP;
 using GOAP.Data;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
@@ -25,7 +24,7 @@ namespace GOAPGraph
             }
 
             var randomPointInsideUnitSphere = Random.insideUnitSphere;
-            var randomPos = (randomPointInsideUnitSphere * range) + currentGraph.goapGraphObject.gameObject.transform.position;
+            var randomPos = (randomPointInsideUnitSphere * range) + currentGraph.agent.gameObject.transform.position;
 
             NavMeshHit hit;
 
@@ -36,6 +35,5 @@ namespace GOAPGraph
 
             base.OnExecute(currentGraph, worldState);
         }
-
     }
 }

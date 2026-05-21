@@ -9,7 +9,7 @@ namespace GOAPGraph
     {
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var exampleAgent =  currentGraph.goapGraphObject as ExampleAgent;
+            var exampleAgent =  currentGraph.agent as ExampleAgent;
 
             base.OnExecuteFinished(currentGraph, worldState, exampleAgent.PlaceBeacon());
         }
