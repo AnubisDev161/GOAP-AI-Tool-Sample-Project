@@ -85,7 +85,7 @@ namespace GOAP.Core
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
                 {
                     return false;
                 }
@@ -100,7 +100,7 @@ namespace GOAP.Core
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value)
+                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
                 {
                     return true;
                 }

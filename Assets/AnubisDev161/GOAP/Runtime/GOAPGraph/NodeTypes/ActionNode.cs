@@ -20,6 +20,15 @@ namespace GOAP.GOAPGraph
         {
             Debug.Log($"<color=orange>Action: {name} abandoned, current world state is {worldState}");
         }
+
+        /// <summary>
+        /// Gives you the possibility to add specific validation checks that don't require extra world facts
+        /// Returns true by default so that a base Action can always be executed
+        /// </summary>
+        /// <returns></returns>
+        public virtual bool IsAchvievable(GOAPGraphAsset currentGraph)
+        {
+            return true;
+        }
     }
 }
-

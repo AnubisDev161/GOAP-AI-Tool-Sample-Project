@@ -138,5 +138,10 @@ namespace GOAP.Core
         {
             actionGraphNode.OnAbandonCurrentPlan(currentGraph, worldState);
         }
+
+        public bool IsAchvievable(GOAPGraphAsset currentGraph)
+        {
+            return actionGraphNode.IsAchvievable(currentGraph);
+        }
     }
 }

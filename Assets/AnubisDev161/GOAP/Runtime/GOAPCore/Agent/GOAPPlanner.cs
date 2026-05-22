@@ -13,9 +13,9 @@ namespace GOAP.Core.Agent
             tree = new GOAPTree();
         }
 
-        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal, List<GOAPAction> availableActions)
+        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal, List<GOAPAction> availableActions, GOAPGraph.GOAPGraphAsset graphInstance)
         {
-            return tree.GeneratePlan(blackboard, goal, availableActions);
+            return tree.GeneratePlan(blackboard, goal, availableActions, graphInstance);
         }
     }
 }

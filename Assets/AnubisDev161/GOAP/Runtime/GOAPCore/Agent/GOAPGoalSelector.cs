@@ -39,7 +39,7 @@ namespace GOAP.Core.Agent
         {
             if (currentGoal == null)
             {
-                string errorReason = (goalList.Count > 0) ? "All goals are satisfied" : "no available goals found";
+                string errorReason = (goalList.Count > 0) ? "All remaining goals are satisfied" : "no available goals found";
                 Debug.LogError($"No valid goal found due to: {errorReason}");
             }
         }

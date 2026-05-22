@@ -8,12 +8,12 @@ namespace GOAP.Tree
     {
         List<GOAPAction> availableActions;
 
-        public Queue<GOAPAction> GeneratePlan(WorldState blackboard, GOAPGoal goal, List<GOAPAction> availableActions)
+        public Queue<GOAPAction> GeneratePlan(WorldState currentWorldState, GOAPGoal goal, List<GOAPAction> availableActions, GOAPGraph.GOAPGraphAsset graphInstance)
         {
             this.availableActions = availableActions;
 
             var startNode = CreateStartNode(goal);
-            var bestPlan = BuildGraph(startNode, blackboard);
+            var bestPlan = BuildGraph(startNode, currentWorldState, graphInstance);
 
             if (bestPlan == null)
             {
@@ -22,7 +22,7 @@ namespace GOAP.Tree
 
             return bestPlan;
         }
-        private Queue<GOAPAction> BuildGraph(GOAPNode goal, WorldState currentWorldState)
+        private Queue<GOAPAction> BuildGraph(GOAPNode goal, WorldState currentWorldState, GOAPGraph.GOAPGraphAsset graphInstance)
         {
             WorldState goalWorldState = new WorldState(goal.requiredWorldState.worldFacts);
             List<GOAPNode> closedList = new List<GOAPNode>();
@@ -53,7 +53,7 @@ namespace GOAP.Tree
                 
                 foreach (var action in availableActions)
                 {
-                    if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts))
+                    if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts) || !action.IsAchvievable(graphInstance))
                     {
                         continue;
                     }

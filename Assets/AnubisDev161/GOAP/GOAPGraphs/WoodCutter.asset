@@ -33,15 +33,26 @@ MonoBehaviour:
   - rid: 9217490154869227629
   - rid: 9217490154869227630
   - rid: 9217490154869227632
-  - rid: 9217490154869227633
   - rid: 9217490154869227634
   - rid: 9217490154869227635
   - rid: 9217490154869227644
-  - rid: 9217490154869227645
   - rid: 9217490154869227646
   - rid: 9217490154869227647
   - rid: 9217490154869227648
   - rid: 9217490154869227649
+  - rid: 9217490162272960570
+  - rid: 9217490162272960571
+  - rid: 9217490162272960573
+  - rid: 9217490162272960574
+  - rid: 9217490162272960575
+  - rid: 9217490162272960576
+  - rid: 9217490162272960577
+  - rid: 9217490162272960578
+  - rid: 9217490162272960579
+  - rid: 9217490162272960580
+  - rid: 9217490162272960581
+  - rid: 9217490162272960582
+  - rid: 9217490162272960583
   connections:
   - inputPort:
       nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
@@ -104,12 +115,6 @@ MonoBehaviour:
       nodeId: fe8470a8-d9a5-492c-ab5d-94af2f520c8c
       portIndex: 0
   - inputPort:
-      nodeId: 8b048a7d-d40b-474f-bead-474d58a6af2a
-      portIndex: 0
-    outputPort:
-      nodeId: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
-      portIndex: 1
-  - inputPort:
       nodeId: 2ea5e04f-0ffe-47c6-bee9-1c0671ca0eac
       portIndex: 0
     outputPort:
@@ -122,35 +127,89 @@ MonoBehaviour:
       nodeId: 98e044d6-3640-49d6-b37a-fe173551808b
       portIndex: 0
   - inputPort:
-      nodeId: ea2f7064-8415-4f1e-989b-91b91d22b907
-      portIndex: 0
-    outputPort:
-      nodeId: 5aa4e127-57f6-4968-852a-ec4ddd51cf19
-      portIndex: 0
-  - inputPort:
       nodeId: 10c21c6c-d3cf-434d-93cf-a539d092151e
       portIndex: 0
     outputPort:
       nodeId: 5addab78-b563-4f02-956a-52377b1224cf
       portIndex: 0
   - inputPort:
-      nodeId: af3e89ce-bfac-4897-9be8-db1616b8654f
+      nodeId: ea2f7064-8415-4f1e-989b-91b91d22b907
       portIndex: 0
     outputPort:
-      nodeId: 295dcbb1-fba1-4998-972c-5eb98475131f
+      nodeId: 5aa4e127-57f6-4968-852a-ec4ddd51cf19
+      portIndex: 0
+  - inputPort:
+      nodeId: 627d478a-10e7-4a9e-b2fa-0fb595c201cc
+      portIndex: 0
+    outputPort:
+      nodeId: 8e280e59-dbe0-448c-91d7-75312b49a185
       portIndex: 1
   - inputPort:
-      nodeId: 295dcbb1-fba1-4998-972c-5eb98475131f
+      nodeId: 8e280e59-dbe0-448c-91d7-75312b49a185
+      portIndex: 0
+    outputPort:
+      nodeId: 0161e026-eccb-4be3-b4e0-eb13430ac663
+      portIndex: 0
+  - inputPort:
+      nodeId: 6dc677ca-1327-4643-a776-3a3c5387fffa
+      portIndex: 0
+    outputPort:
+      nodeId: e9c624f6-3e32-49a0-995b-90e25ce96405
+      portIndex: 0
+  - inputPort:
+      nodeId: e6d24c19-bbda-456b-9c24-beb15a2feea0
+      portIndex: 0
+    outputPort:
+      nodeId: e2d2e4e3-6bcd-4396-be53-f55c3a281743
+      portIndex: 1
+  - inputPort:
+      nodeId: 62fd2166-3900-4060-a9b0-a5e3cbf8534a
+      portIndex: 0
+    outputPort:
+      nodeId: f28f8c3b-afaf-4e10-a87f-684c92252b04
+      portIndex: 1
+  - inputPort:
+      nodeId: 40ae62c9-e6fd-4e5b-ad71-d93b1c6c97d6
+      portIndex: 0
+    outputPort:
+      nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
+      portIndex: 1
+  - inputPort:
+      nodeId: 8e280e59-dbe0-448c-91d7-75312b49a185
+      portIndex: 0
+    outputPort:
+      nodeId: 8525081b-ad5b-40f8-b776-1edbd09e041f
+      portIndex: 0
+  - inputPort:
+      nodeId: 641ba596-4296-4132-af00-f7e26b77900c
       portIndex: 0
     outputPort:
       nodeId: a6740954-f598-4a19-8458-9854b921c293
       portIndex: 0
   - inputPort:
+      nodeId: af3e89ce-bfac-4897-9be8-db1616b8654f
+      portIndex: 0
+    outputPort:
+      nodeId: 641ba596-4296-4132-af00-f7e26b77900c
+      portIndex: 1
+  - inputPort:
       nodeId: e2f48c86-cb57-4650-a1a4-4c261d4f4182
       portIndex: 0
     outputPort:
-      nodeId: 295dcbb1-fba1-4998-972c-5eb98475131f
+      nodeId: 641ba596-4296-4132-af00-f7e26b77900c
       portIndex: 1
+  - inputPort:
+      nodeId: 44e19cfd-11e7-4948-8628-adafea11ba58
+      portIndex: 0
+    outputPort:
+      nodeId: 641ba596-4296-4132-af00-f7e26b77900c
+      portIndex: 1
+  - inputPort:
+      nodeId: 8e280e59-dbe0-448c-91d7-75312b49a185
+      portIndex: 0
+    outputPort:
+      nodeId: 00a96440-e7c3-4f78-9838-5e0fcb30f412
+      portIndex: 0
   agent: {fileID: 0}
   blackboard:
     facts:
@@ -160,6 +219,8 @@ MonoBehaviour:
     - IsInDanger
     - wood
     - StockpiledWood
+    - AtCampfire
+    - Tired
     factValues:
     - isWorldFact: 1
       keyType: 0
@@ -179,6 +240,12 @@ MonoBehaviour:
     - isWorldFact: 1
       keyType: 0
       worldFactType: 1
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 2
     keys:
     - TargetPosition
     - WoodSource
@@ -274,8 +341,8 @@ MonoBehaviour:
         guid: c2232ad8-f911-48a6-aa06-7de9d14287ba
         pos:
           serializedVersion: 2
-          x: 2631
-          y: 1113
+          x: 2131
+          y: -510
           width: 196
           height: 116
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -302,8 +369,8 @@ MonoBehaviour:
         guid: 040da302-0166-4560-897b-f2ffd745e929
         pos:
           serializedVersion: 2
-          x: 2101
-          y: 1345
+          x: 1553
+          y: -15
           width: 263
           height: 171
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -322,8 +389,8 @@ MonoBehaviour:
         guid: ea2f7064-8415-4f1e-989b-91b91d22b907
         pos:
           serializedVersion: 2
-          x: 304
-          y: 2474
+          x: 1151
+          y: 2022
           width: 183
           height: 116
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -337,8 +404,8 @@ MonoBehaviour:
         guid: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
         pos:
           serializedVersion: 2
-          x: 257
-          y: 2677
+          x: 1104
+          y: 2225
           width: 243
           height: 134
         typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -353,8 +420,8 @@ MonoBehaviour:
         guid: 5aa4e127-57f6-4968-852a-ec4ddd51cf19
         pos:
           serializedVersion: 2
-          x: 36
-          y: 2474
+          x: 883
+          y: 2022
           width: 221
           height: 171
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -393,8 +460,8 @@ MonoBehaviour:
         guid: 1c02323e-ea44-46f5-86ea-abdf1c0870e5
         pos:
           serializedVersion: 2
-          x: 1654
-          y: 3066
+          x: 2546
+          y: 2022
           width: 216
           height: 116
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -408,8 +475,8 @@ MonoBehaviour:
         guid: f7155caa-dfc6-4fbc-95f1-0b4256960d9e
         pos:
           serializedVersion: 2
-          x: 1672
-          y: 3272
+          x: 2636
+          y: 2228
           width: 232
           height: 171
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -428,8 +495,8 @@ MonoBehaviour:
         guid: 98e044d6-3640-49d6-b37a-fe173551808b
         pos:
           serializedVersion: 2
-          x: 1390
-          y: 3066
+          x: 2282
+          y: 2022
           width: 232
           height: 171
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -448,9 +515,9 @@ MonoBehaviour:
         guid: d3a649d3-85d8-49e7-95d2-7a493a32b735
         pos:
           serializedVersion: 2
-          x: 1379
-          y: 3272
-          width: 250
+          x: 2271
+          y: 2228
+          width: 363
           height: 173
         typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -468,8 +535,8 @@ MonoBehaviour:
         guid: 1ae6748a-cb86-4d21-8799-eb955362edee
         pos:
           serializedVersion: 2
-          x: 1123
-          y: 3274
+          x: 2015
+          y: 2230
           width: 232
           height: 171
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -501,7 +568,7 @@ MonoBehaviour:
         treeMask:
           serializedVersion: 2
           m_Bits: 8
-        sphereCastRadius: 15
+        sphereCastRadius: 40
         targetPosKeyName: TargetPosition
         wodSourceKeyName: WoodSource
     - rid: 9217490154869227629
@@ -510,8 +577,8 @@ MonoBehaviour:
         guid: f28f8c3b-afaf-4e10-a87f-684c92252b04
         pos:
           serializedVersion: 2
-          x: 2409
-          y: 1345
+          x: 1861
+          y: -15
           width: 243
           height: 153
         typeName: ExampleProject.ChopTree, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
@@ -527,8 +594,8 @@ MonoBehaviour:
         guid: 756d66a0-4c31-4c8e-8aea-81fe475082fb
         pos:
           serializedVersion: 2
-          x: 2672
-          y: 1345
+          x: 2124
+          y: -15
           width: 221
           height: 172
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -547,8 +614,8 @@ MonoBehaviour:
         guid: 1d67fa45-563b-4aa8-bede-0851dac08ff5
         pos:
           serializedVersion: 2
-          x: 2383
-          y: 1113
+          x: 1883
+          y: -510
           width: 221
           height: 172
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -561,41 +628,21 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 1
-    - rid: 9217490154869227633
-      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 8b048a7d-d40b-474f-bead-474d58a6af2a
-        pos:
-          serializedVersion: 2
-          x: 563
-          y: 2839
-          width: 221
-          height: 172
-        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-        worldFact:
-          name: wood
-          value: 0
-          valueType: 1
-          acceptedValue: 0
-          operationType: 0
-        operationType: 0
     - rid: 9217490154869227634
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
         guid: fe8470a8-d9a5-492c-ab5d-94af2f520c8c
         pos:
           serializedVersion: 2
-          x: 21
-          y: 2677
-          width: 221
+          x: 825
+          y: 2224
+          width: 261
           height: 172
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: wood
+          name: StockpiledWood
           value: 0
           valueType: 1
           acceptedValue: 0
@@ -607,8 +654,8 @@ MonoBehaviour:
         guid: 2ea5e04f-0ffe-47c6-bee9-1c0671ca0eac
         pos:
           serializedVersion: 2
-          x: 563
-          y: 2622
+          x: 1377
+          y: 2225
           width: 221
           height: 171
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -639,8 +686,8 @@ MonoBehaviour:
         guid: 10c21c6c-d3cf-434d-93cf-a539d092151e
         pos:
           serializedVersion: 2
-          x: 2762
-          y: 1931
+          x: 1792
+          y: 229
           width: 251
           height: 116
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -648,30 +695,14 @@ MonoBehaviour:
         portsIndices: 00000000
         name: HasStockpiledWood
         priority: 15
-    - rid: 9217490154869227645
-      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 295dcbb1-fba1-4998-972c-5eb98475131f
-        pos:
-          serializedVersion: 2
-          x: 1818
-          y: 1898
-          width: 243
-          height: 134
-        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: Stockpile wood
-        cost: 1
-        RemovePreconditionsFromWorldState: 0
     - rid: 9217490154869227646
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
         guid: af3e89ce-bfac-4897-9be8-db1616b8654f
         pos:
           serializedVersion: 2
-          x: 2101
-          y: 1726
+          x: 2083
+          y: 345
           width: 221
           height: 172
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -690,8 +721,8 @@ MonoBehaviour:
         guid: 5addab78-b563-4f02-956a-52377b1224cf
         pos:
           serializedVersion: 2
-          x: 2508
-          y: 1931
+          x: 1510
+          y: 229
           width: 221
           height: 172
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -710,8 +741,8 @@ MonoBehaviour:
         guid: e2f48c86-cb57-4650-a1a4-4c261d4f4182
         pos:
           serializedVersion: 2
-          x: 2090
-          y: 2070
+          x: 2083
+          y: 564
           width: 261
           height: 172
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -730,8 +761,8 @@ MonoBehaviour:
         guid: a6740954-f598-4a19-8458-9854b921c293
         pos:
           serializedVersion: 2
-          x: 1555
-          y: 1898
+          x: 1537
+          y: 463
           width: 221
           height: 172
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -744,3 +775,254 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 1
+    - rid: 9217490162272960570
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 6dc677ca-1327-4643-a776-3a3c5387fffa
+        pos:
+          serializedVersion: 2
+          x: 2619
+          y: 1378
+          width: 170
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: Rest
+        priority: 20
+    - rid: 9217490162272960571
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: e2d2e4e3-6bcd-4396-be53-f55c3a281743
+        pos:
+          serializedVersion: 2
+          x: 1832
+          y: 1378
+          width: 247
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Go to campfire
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: 0.57, y: 1.14, z: -17.06}
+          sceneID: -14806
+        targetPosKeyName: 
+    - rid: 9217490162272960573
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 62fd2166-3900-4060-a9b0-a5e3cbf8534a
+        pos:
+          serializedVersion: 2
+          x: 2124
+          y: -220
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 15f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 1
+    - rid: 9217490162272960574
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 8525081b-ad5b-40f8-b776-1edbd09e041f
+        pos:
+          serializedVersion: 2
+          x: 1854
+          y: 1871
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 65,5f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490162272960575
+      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 8e280e59-dbe0-448c-91d7-75312b49a185
+        pos:
+          serializedVersion: 2
+          x: 2101
+          y: 1610
+          width: 243
+          height: 134
+        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Sleep
+        cost: 1
+        RemovePreconditionsFromWorldState: 1
+    - rid: 9217490162272960576
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 627d478a-10e7-4a9e-b2fa-0fb595c201cc
+        pos:
+          serializedVersion: 2
+          x: 2367
+          y: 1609
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490162272960577
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: e6d24c19-bbda-456b-9c24-beb15a2feea0
+        pos:
+          serializedVersion: 2
+          x: 2101
+          y: 1380
+          width: 235
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: AtCampfire
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490162272960578
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 0161e026-eccb-4be3-b4e0-eb13430ac663
+        pos:
+          serializedVersion: 2
+          x: 1839
+          y: 1676
+          width: 235
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: AtCampfire
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490162272960579
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: e9c624f6-3e32-49a0-995b-90e25ce96405
+        pos:
+          serializedVersion: 2
+          x: 2388
+          y: 1378
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490162272960580
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 44e19cfd-11e7-4948-8628-adafea11ba58
+        pos:
+          serializedVersion: 2
+          x: 2083
+          y: 757
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 5,5f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 1
+    - rid: 9217490162272960581
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 40ae62c9-e6fd-4e5b-ad71-d93b1c6c97d6
+        pos:
+          serializedVersion: 2
+          x: 948
+          y: 1609
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Tired
+          value: 5,5f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 1
+    - rid: 9217490162272960582
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 641ba596-4296-4132-af00-f7e26b77900c
+        pos:
+          serializedVersion: 2
+          x: 1792
+          y: 463
+          width: 243
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Stockpile wood
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: -11.57, y: 0.81, z: -24.75}
+          sceneID: -34506
+        targetPosKeyName: 
+    - rid: 9217490162272960583
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 00a96440-e7c3-4f78-9838-5e0fcb30f412
+        pos:
+          serializedVersion: 2
+          x: 1582
+          y: 1610
+          width: 221
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: wood
+          value: 0
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0

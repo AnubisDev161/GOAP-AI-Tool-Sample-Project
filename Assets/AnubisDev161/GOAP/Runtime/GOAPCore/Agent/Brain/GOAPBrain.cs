@@ -57,7 +57,7 @@ namespace GOAP.Core.Agent
                 return null;
             }
 
-            var newPlan = planner.GeneratePlan(currentWorldState, bestGoal, availableActions);
+            var newPlan = planner.GeneratePlan(currentWorldState, bestGoal, availableActions, graphInstance);
 
             if (availableGoals != null && availableGoals.Count > 0)
             {

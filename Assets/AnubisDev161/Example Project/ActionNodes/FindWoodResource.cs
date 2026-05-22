@@ -53,5 +53,15 @@ namespace ExampleProject
 
             return closestTree;
         }
+
+        public override bool IsAchvievable(GOAPGraphAsset currentGraph)
+        {
+            if (GetClosestTree(currentGraph.agent.transform.position) == null)
+            {
+                return false;
+            }
+
+            return true;
+        }
     }
 }

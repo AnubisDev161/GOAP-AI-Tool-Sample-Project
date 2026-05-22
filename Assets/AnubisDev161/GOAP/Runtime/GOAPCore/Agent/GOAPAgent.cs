@@ -96,6 +96,7 @@ namespace GOAP.Core.Agent
             StopAllCoroutines();
             currentPlan.Clear();
             abandonCurrentPlan?.Invoke(goapBrain.graphInstance, goapBrain.currentWorldState);
+            Debug.Log($"<color=orange> Abandoned current plan with goal: {goapBrain.goalSelector.currentGoal}, current world state is: {goapBrain.currentWorldState}");
         }
 
         protected void StartNewActionPlan()
@@ -154,6 +155,8 @@ namespace GOAP.Core.Agent
             else
             {
                 Debug.LogError($"Action executed unsuccessfully, execution stopped with last action: {lastAction} | {this}");
+                AbandonCurrentPlan();
+                StartCoroutine(CreateNewPlanAfterDelay(planningInterval));
             }
         }
 
