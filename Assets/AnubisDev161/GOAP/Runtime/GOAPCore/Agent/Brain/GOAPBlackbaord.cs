@@ -195,6 +195,7 @@ namespace GOAP.Core.Agent
             Float,
             String,
             Vector3,
+            GameObject
         }
     }
 }

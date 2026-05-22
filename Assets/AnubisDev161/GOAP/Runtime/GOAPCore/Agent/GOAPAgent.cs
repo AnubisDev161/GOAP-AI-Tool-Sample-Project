@@ -21,7 +21,10 @@ namespace GOAP.Core.Agent
         [SerializeField]
         private float planningInterval = 5;
 
-        private void OnEnable()
+        /// <summary>
+        /// Init is called in the Start method to ensure that the GOAPNavigation Component has already been loaded
+        /// </summary>
+        private void Start()
         {
             Init();
         }

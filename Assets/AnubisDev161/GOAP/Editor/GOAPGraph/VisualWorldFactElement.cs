@@ -1,8 +1,8 @@
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
-using UnityEditor.UIElements;
 using GOAP.Core;
+using UnityEditor.UIElements;
 
 namespace GOAP.GOAPGraph.Editor
 {

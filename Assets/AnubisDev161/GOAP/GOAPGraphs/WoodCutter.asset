@@ -1,0 +1,601 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
+  m_Name: WoodCutter
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 9217490144426459240
+  - rid: 9217490144426459241
+  - rid: 9217490144426459243
+  - rid: 9217490144426459244
+  - rid: 9217490144426459245
+  - rid: 9217490144426459246
+  - rid: 9217490144426459247
+  - rid: 9217490144426459251
+  - rid: 9217490144426459254
+  - rid: 9217490144426459256
+  - rid: 9217490144426459257
+  - rid: 9217490154869227583
+  - rid: 9217490154869227584
+  - rid: 9217490154869227586
+  - rid: 9217490154869227587
+  - rid: 9217490154869227588
+  - rid: 9217490154869227593
+  - rid: 9217490154869227629
+  - rid: 9217490154869227630
+  - rid: 9217490154869227632
+  - rid: 9217490154869227633
+  - rid: 9217490154869227634
+  - rid: 9217490154869227635
+  connections:
+  - inputPort:
+      nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
+      portIndex: 0
+    outputPort:
+      nodeId: 4eec901b-1016-417d-93e2-b093697c4eee
+      portIndex: 0
+  - inputPort:
+      nodeId: 8e4a09ad-979c-4a74-b161-91af9aba608c
+      portIndex: 0
+    outputPort:
+      nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
+      portIndex: 1
+  - inputPort:
+      nodeId: 7a2f6424-71bf-4126-bde3-74e48b194dd0
+      portIndex: 0
+    outputPort:
+      nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
+      portIndex: 1
+  - inputPort:
+      nodeId: f7155caa-dfc6-4fbc-95f1-0b4256960d9e
+      portIndex: 0
+    outputPort:
+      nodeId: d3a649d3-85d8-49e7-95d2-7a493a32b735
+      portIndex: 1
+  - inputPort:
+      nodeId: d3a649d3-85d8-49e7-95d2-7a493a32b735
+      portIndex: 0
+    outputPort:
+      nodeId: 1ae6748a-cb86-4d21-8799-eb955362edee
+      portIndex: 0
+  - inputPort:
+      nodeId: ec2794c4-19dc-479b-a2f9-9b97c0a0bf2d
+      portIndex: 0
+    outputPort:
+      nodeId: ca170dfc-b60f-40f6-8ab2-0b0d259464ed
+      portIndex: 1
+  - inputPort:
+      nodeId: f28f8c3b-afaf-4e10-a87f-684c92252b04
+      portIndex: 0
+    outputPort:
+      nodeId: 040da302-0166-4560-897b-f2ffd745e929
+      portIndex: 0
+  - inputPort:
+      nodeId: 756d66a0-4c31-4c8e-8aea-81fe475082fb
+      portIndex: 0
+    outputPort:
+      nodeId: f28f8c3b-afaf-4e10-a87f-684c92252b04
+      portIndex: 1
+  - inputPort:
+      nodeId: c2232ad8-f911-48a6-aa06-7de9d14287ba
+      portIndex: 0
+    outputPort:
+      nodeId: 1d67fa45-563b-4aa8-bede-0851dac08ff5
+      portIndex: 0
+  - inputPort:
+      nodeId: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
+      portIndex: 0
+    outputPort:
+      nodeId: fe8470a8-d9a5-492c-ab5d-94af2f520c8c
+      portIndex: 0
+  - inputPort:
+      nodeId: 8b048a7d-d40b-474f-bead-474d58a6af2a
+      portIndex: 0
+    outputPort:
+      nodeId: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
+      portIndex: 1
+  - inputPort:
+      nodeId: 2ea5e04f-0ffe-47c6-bee9-1c0671ca0eac
+      portIndex: 0
+    outputPort:
+      nodeId: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
+      portIndex: 1
+  - inputPort:
+      nodeId: 1c02323e-ea44-46f5-86ea-abdf1c0870e5
+      portIndex: 0
+    outputPort:
+      nodeId: 98e044d6-3640-49d6-b37a-fe173551808b
+      portIndex: 0
+  - inputPort:
+      nodeId: ea2f7064-8415-4f1e-989b-91b91d22b907
+      portIndex: 0
+    outputPort:
+      nodeId: 5aa4e127-57f6-4968-852a-ec4ddd51cf19
+      portIndex: 0
+  agent: {fileID: 0}
+  blackboard:
+    facts:
+    - IsAtWoodSource
+    - IsIdling
+    - HasWoodSource
+    - IsInDanger
+    - wood
+    factValues:
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 1
+    keys:
+    - TargetPosition
+    - WoodSource
+    values:
+    - rid: 9217490154869227628
+    - rid: 9217490154869227627
+  references:
+    version: 2
+    RefIds:
+    - rid: 9217490144426459240
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: ec2794c4-19dc-479b-a2f9-9b97c0a0bf2d
+        pos:
+          serializedVersion: 2
+          x: 563
+          y: 1004
+          width: 256
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasWoodSource
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490144426459241
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 4eec901b-1016-417d-93e2-b093697c4eee
+        pos:
+          serializedVersion: 2
+          x: 345
+          y: 1294
+          width: 256
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasWoodSource
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490144426459243
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 42424f36-c2e8-4007-bd29-a7c43cb38840
+        pos:
+          serializedVersion: 2
+          x: 632
+          y: 1292
+          width: 292
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: move to random destination
+        cost: 1
+        RemovePreconditionsFromWorldState: 1
+        destination:
+          position: {x: 0, y: 0, z: 0}
+          sceneID: 0
+        targetPosKeyName: TargetPosition
+    - rid: 9217490144426459244
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 8e4a09ad-979c-4a74-b161-91af9aba608c
+        pos:
+          serializedVersion: 2
+          x: 948
+          y: 1184
+          width: 256
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsAtWoodSource
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490144426459245
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: c2232ad8-f911-48a6-aa06-7de9d14287ba
+        pos:
+          serializedVersion: 2
+          x: 2631
+          y: 1113
+          width: 196
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: HasWood
+        priority: 10
+    - rid: 9217490144426459246
+      type: {class: StartWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 7d247eef-f233-45c6-858e-0bf8b7bf9a8a
+        pos:
+          serializedVersion: 2
+          x: -110
+          y: 1089
+          width: 108
+          height: 77
+        typeName: GOAP.GOAPGraph.StartWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+    - rid: 9217490144426459247
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 040da302-0166-4560-897b-f2ffd745e929
+        pos:
+          serializedVersion: 2
+          x: 1466
+          y: 1393
+          width: 263
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsAtWoodSource
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490144426459251
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: ea2f7064-8415-4f1e-989b-91b91d22b907
+        pos:
+          serializedVersion: 2
+          x: 2482
+          y: 2013
+          width: 183
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: IsIdling
+        priority: 1
+    - rid: 9217490144426459254
+      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: d7b823c4-2980-4b3d-b57d-5f9c2fb3261f
+        pos:
+          serializedVersion: 2
+          x: 1447
+          y: 2013
+          width: 243
+          height: 134
+        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Idle
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+    - rid: 9217490144426459256
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 5aa4e127-57f6-4968-852a-ec4ddd51cf19
+        pos:
+          serializedVersion: 2
+          x: 2214
+          y: 2013
+          width: 221
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsIdling
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490144426459257
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 7a2f6424-71bf-4126-bde3-74e48b194dd0
+        pos:
+          serializedVersion: 2
+          x: 948
+          y: 1393
+          width: 221
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsIdling
+          value: False
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490154869227583
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 1c02323e-ea44-46f5-86ea-abdf1c0870e5
+        pos:
+          serializedVersion: 2
+          x: 2630
+          y: 2471
+          width: 216
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: AtSaveSpace
+        priority: 15
+    - rid: 9217490154869227584
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: f7155caa-dfc6-4fbc-95f1-0b4256960d9e
+        pos:
+          serializedVersion: 2
+          x: 1803
+          y: 2694
+          width: 232
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsInDanger
+          value: False
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490154869227586
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 98e044d6-3640-49d6-b37a-fe173551808b
+        pos:
+          serializedVersion: 2
+          x: 2366
+          y: 2471
+          width: 232
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsInDanger
+          value: False
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490154869227587
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: d3a649d3-85d8-49e7-95d2-7a493a32b735
+        pos:
+          serializedVersion: 2
+          x: 1510
+          y: 2694
+          width: 243
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Go to save space
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: 10.024499, y: 1.1, z: 28.612488}
+          sceneID: 44200
+        targetPosKeyName: move to save space
+    - rid: 9217490154869227588
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 1ae6748a-cb86-4d21-8799-eb955362edee
+        pos:
+          serializedVersion: 2
+          x: 1254
+          y: 2696
+          width: 232
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsInDanger
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490154869227593
+      type: {class: FindWoodResource, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: ca170dfc-b60f-40f6-8ab2-0b0d259464ed
+        pos:
+          serializedVersion: 2
+          x: 257
+          y: 1004
+          width: 243
+          height: 210
+        typeName: ExampleProject.FindWoodResource, Assembly-CSharp, Version=0.0.0.0,
+          Culture=neutral, PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: find tree source
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        treeMask:
+          serializedVersion: 2
+          m_Bits: 8
+        sphereCastRadius: 15
+        targetPosKeyName: TargetPosition
+        wodSourceKeyName: WoodSource
+    - rid: 9217490154869227627
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 9217490154869227628
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 4
+        worldFactType: 0
+    - rid: 9217490154869227629
+      type: {class: ChopTree, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: f28f8c3b-afaf-4e10-a87f-684c92252b04
+        pos:
+          serializedVersion: 2
+          x: 1774
+          y: 1393
+          width: 243
+          height: 153
+        typeName: ExampleProject.ChopTree, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: chop tree
+        cost: 1
+        RemovePreconditionsFromWorldState: 1
+        woodSourceKeyName: WoodSource
+    - rid: 9217490154869227630
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 756d66a0-4c31-4c8e-8aea-81fe475082fb
+        pos:
+          serializedVersion: 2
+          x: 2037
+          y: 1393
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: wood
+          value: 1
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        operationType: 1
+    - rid: 9217490154869227632
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 1d67fa45-563b-4aa8-bede-0851dac08ff5
+        pos:
+          serializedVersion: 2
+          x: 2383
+          y: 1113
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: wood
+          value: 0
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490154869227633
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 8b048a7d-d40b-474f-bead-474d58a6af2a
+        pos:
+          serializedVersion: 2
+          x: 1753
+          y: 2175
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: wood
+          value: 0
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490154869227634
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: fe8470a8-d9a5-492c-ab5d-94af2f520c8c
+        pos:
+          serializedVersion: 2
+          x: 1211
+          y: 2013
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: wood
+          value: 0
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490154869227635
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 2ea5e04f-0ffe-47c6-bee9-1c0671ca0eac
+        pos:
+          serializedVersion: 2
+          x: 1753
+          y: 1958
+          width: 221
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsIdling
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0

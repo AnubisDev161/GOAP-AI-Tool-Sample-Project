@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
-  m_Name: New GOAP Graph Asset
+  m_Name: Threat
   m_EditorClassIdentifier: 
   nodes:
   - rid: 9217490144426459240
@@ -102,7 +102,7 @@ MonoBehaviour:
     keys:
     - TargetPosition
     values:
-    - rid: 9217490154869227580
+    - rid: 9217490154869227594
   references:
     version: 2
     RefIds:
@@ -190,8 +190,8 @@ MonoBehaviour:
         guid: 8e4a09ad-979c-4a74-b161-91af9aba608c
         pos:
           serializedVersion: 2
-          x: 942
-          y: 1187
+          x: 952
+          y: 1105
           width: 256
           height: 171
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -369,8 +369,8 @@ MonoBehaviour:
         guid: 7a2f6424-71bf-4126-bde3-74e48b194dd0
         pos:
           serializedVersion: 2
-          x: 942
-          y: 1393
+          x: 952
+          y: 1311
           width: 221
           height: 171
         typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -383,7 +383,7 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         operationType: 0
-    - rid: 9217490154869227580
+    - rid: 9217490154869227594
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0

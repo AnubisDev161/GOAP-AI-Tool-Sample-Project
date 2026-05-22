@@ -18,7 +18,7 @@ namespace ExampleProject
 
         private void OnEnable()
         {
-            AddSpecifiedWorldFactWithValue(collisionExitValue, false);
+
         }
 
         private void OnTriggerEnter(Collider other)
