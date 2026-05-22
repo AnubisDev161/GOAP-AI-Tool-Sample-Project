@@ -57,7 +57,7 @@ namespace GOAP.Core.Agent
 
             agent.goapBrain.currentWorldState.worldFacts.TryGetValue(keyName, out WorldFact worldFact);
 
-            if (worldFact == null)
+            if (worldFact.name != keyName)
             {
                 Debug.LogError($"Could not find specified key with name [{keyName}]");
                 return null;
@@ -65,7 +65,7 @@ namespace GOAP.Core.Agent
             }
             else if (worldFact.valueType != expectedWorldFactValueType)
             {
-                Debug.LogError($"Specified Key with name [{keyName}] has a different value type type [{expectedWorldFactValueType}] than the world fact in the blackboard [{worldFact.valueType}]");
+                Debug.LogError($"Specified Key with name [{keyName}] has a different value type [{expectedWorldFactValueType}] than the world fact in the blackboard [{worldFact.valueType}]");
                 return null;
             }
 

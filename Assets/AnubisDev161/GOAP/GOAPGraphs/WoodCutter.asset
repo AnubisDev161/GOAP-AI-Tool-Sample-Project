@@ -53,6 +53,11 @@ MonoBehaviour:
   - rid: 9217490162272960581
   - rid: 9217490162272960582
   - rid: 9217490162272960583
+  - rid: 9217490162272960584
+  - rid: 9217490162272960586
+  - rid: 9217490162272960587
+  - rid: 9217490162272960588
+  - rid: 9217490162272960589
   connections:
   - inputPort:
       nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
@@ -210,6 +215,24 @@ MonoBehaviour:
     outputPort:
       nodeId: 00a96440-e7c3-4f78-9838-5e0fcb30f412
       portIndex: 0
+  - inputPort:
+      nodeId: 362a0d3c-8eb2-40b6-8dd8-05c7577c6ae5
+      portIndex: 0
+    outputPort:
+      nodeId: f5bcb7ae-9312-4052-b51f-38295db1721e
+      portIndex: 0
+  - inputPort:
+      nodeId: c6c3e391-6a8e-4992-a2ee-cdc5fa4446d2
+      portIndex: 0
+    outputPort:
+      nodeId: 4fd41c2a-a3be-4ff1-a650-3f36115438d6
+      portIndex: 0
+  - inputPort:
+      nodeId: 5fbbc8fb-da4a-4916-8a2b-f3f08834b76d
+      portIndex: 0
+    outputPort:
+      nodeId: c6c3e391-6a8e-4992-a2ee-cdc5fa4446d2
+      portIndex: 1
   agent: {fileID: 0}
   blackboard:
     facts:
@@ -221,6 +244,7 @@ MonoBehaviour:
     - StockpiledWood
     - AtCampfire
     - Tired
+    - Hungry
     factValues:
     - isWorldFact: 1
       keyType: 0
@@ -243,6 +267,9 @@ MonoBehaviour:
     - isWorldFact: 1
       keyType: 0
       worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 2
     - isWorldFact: 1
       keyType: 0
       worldFactType: 2
@@ -1026,3 +1053,98 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 0
+    - rid: 9217490162272960584
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 362a0d3c-8eb2-40b6-8dd8-05c7577c6ae5
+        pos:
+          serializedVersion: 2
+          x: 3478
+          y: 1044
+          width: 163
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: Eat
+        priority: 100
+    - rid: 9217490162272960586
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 5fbbc8fb-da4a-4916-8a2b-f3f08834b76d
+        pos:
+          serializedVersion: 2
+          x: 3420
+          y: 827
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Hungry
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490162272960587
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 4fd41c2a-a3be-4ff1-a650-3f36115438d6
+        pos:
+          serializedVersion: 2
+          x: 2843
+          y: 831
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Hungry
+          value: 70f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490162272960588
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: f5bcb7ae-9312-4052-b51f-38295db1721e
+        pos:
+          serializedVersion: 2
+          x: 3199
+          y: 1044
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Hungry
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490162272960589
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: c6c3e391-6a8e-4992-a2ee-cdc5fa4446d2
+        pos:
+          serializedVersion: 2
+          x: 3118
+          y: 831
+          width: 243
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: 
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: 0.26, y: 1.28, z: 21.84}
+          sceneID: 44110
+        targetPosKeyName: Eat
