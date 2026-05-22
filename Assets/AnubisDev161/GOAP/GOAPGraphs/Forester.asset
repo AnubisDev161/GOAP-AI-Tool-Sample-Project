@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
-  m_Name: WoodCutter
+  m_Name: Forester
   m_EditorClassIdentifier: 
   nodes:
   - rid: 9217490144426459240
@@ -63,6 +63,7 @@ MonoBehaviour:
   - rid: 9217490163743326268
   - rid: 9217490163743326269
   - rid: 9217490163743326270
+  - rid: 9217490165827371067
   connections:
   - inputPort:
       nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
@@ -259,9 +260,9 @@ MonoBehaviour:
   agent: {fileID: 0}
   blackboard:
     facts:
-    - IsAtWoodSource
+    - IsAtGrowSpot
     - IsIdling
-    - HasWoodSource
+    - HasGrowSpot
     - IsInDanger
     - wood
     - StockpiledWood
@@ -301,11 +302,9 @@ MonoBehaviour:
       keyType: 0
       worldFactType: 2
     keys:
-    - TargetPosition
-    - WoodSource
+    - GrowSpot
     values:
-    - rid: 9217490154869227642
-    - rid: 9217490154869227643
+    - rid: 9217490165827371066
   references:
     version: 2
     RefIds:
@@ -323,7 +322,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: HasWoodSource
+          name: HasGrowSpot
           value: True
           valueType: 0
           acceptedValue: 0
@@ -343,7 +342,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: HasWoodSource
+          name: HasGrowSpot
           value: True
           valueType: 0
           acceptedValue: 0
@@ -368,7 +367,7 @@ MonoBehaviour:
         destination:
           position: {x: 0, y: 0, z: 0}
           sceneID: 0
-        targetPosKeyName: TargetPosition
+        targetPosKeyName: GrowSpot
     - rid: 9217490144426459244
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -383,7 +382,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: IsAtWoodSource
+          name: IsAtGrowSpot
           value: True
           valueType: 0
           acceptedValue: 0
@@ -431,7 +430,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: IsAtWoodSource
+          name: IsAtGrowSpot
           value: True
           valueType: 0
           acceptedValue: 0
@@ -624,7 +623,7 @@ MonoBehaviour:
           m_Bits: 8
         sphereCastRadius: 40
         targetPosKeyName: TargetPosition
-        wodSourceKeyName: WoodSource
+        wodSourceKeyName: GrowSpot
     - rid: 9217490154869227629
       type: {class: ChopTree, ns: ExampleProject, asm: Assembly-CSharp}
       data:
@@ -722,18 +721,6 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         operationType: 0
-    - rid: 9217490154869227642
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 4
-        worldFactType: 0
-    - rid: 9217490154869227643
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
     - rid: 9217490154869227644
       type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -1181,8 +1168,8 @@ MonoBehaviour:
         guid: f30f1021-ff11-41e6-a72a-6edccc329094
         pos:
           serializedVersion: 2
-          x: 3714
-          y: 355
+          x: 3537
+          y: 323
           width: 174
           height: 116
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
@@ -1196,7 +1183,7 @@ MonoBehaviour:
         guid: 7d0c4592-23d3-4cb3-8d01-fb637acf1827
         pos:
           serializedVersion: 2
-          x: 3469
+          x: 3531
           y: 542
           width: 221
           height: 172
@@ -1256,10 +1243,10 @@ MonoBehaviour:
         guid: b9500aa8-da22-4b7d-9d4c-b5310c8c1337
         pos:
           serializedVersion: 2
-          x: 3420
-          y: 355
-          width: 0
-          height: 0
+          x: 3243
+          y: 323
+          width: 221
+          height: 172
         typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 00000000
@@ -1270,3 +1257,26 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 0
+    - rid: 9217490165827371066
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 4
+        worldFactType: 0
+    - rid: 9217490165827371067
+      type: {class: PlantTree, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: 1ac7cc64-1671-4656-a731-b4521bce832a
+        pos:
+          serializedVersion: 2
+          x: 588.80005
+          y: 634.80005
+          width: 0
+          height: 0
+        typeName: ExampleProject.PlantTree, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Plant tree at grow spot
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        beaconPrefab: {fileID: 8185481705961756551, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
