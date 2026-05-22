@@ -13,6 +13,7 @@ namespace GOAP.GOAPGraph
 
         [ExposedProperty]
         public string targetPosKeyName;
+
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             var targetDestination = destination.position;

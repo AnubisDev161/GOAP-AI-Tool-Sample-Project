@@ -10,9 +10,13 @@ namespace GOAP.GOAPGraph
     {
         [ExposedProperty]
         public float range;
+
+        [ExposedProperty]
+        public string targetPosKeyName;
+
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var blackbaordKey = currentGraph.Blackboard.GetKey("TargetPos");
+            var blackbaordKey = currentGraph.Blackboard.GetKey(targetPosKeyName);
 
             if (blackbaordKey == null)
             {

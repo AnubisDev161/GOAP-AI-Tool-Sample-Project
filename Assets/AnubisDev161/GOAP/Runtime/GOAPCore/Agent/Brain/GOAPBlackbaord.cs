@@ -7,8 +7,6 @@ namespace GOAP.Core.Agent
     [Serializable]
     public class GOAPBlackbaord : ISerializationCallbackReceiver
     {
-        public WorldState currentWorldState { get; private set; }
-
         private Dictionary<string, BlackboardKey> blackboardKeys = new Dictionary<string, BlackboardKey>();
 
         // World State
@@ -155,12 +153,13 @@ namespace GOAP.Core.Agent
         {
             for (int i = 0; i < keys.Count; i++)
             {
-                if (blackboardKeys.ContainsKey(keys[i])) return;
+                if (blackboardKeys.ContainsKey(keys[i])) continue;
                 blackboardKeys.Add(keys[i], values[i]);
             }
 
             for (int i = 0; i < facts.Count; i++)
             {
+                if (worldFacts.ContainsKey(facts[i])) continue;
                 worldFacts.Add(facts[i], factValues[i]);
             }
         }

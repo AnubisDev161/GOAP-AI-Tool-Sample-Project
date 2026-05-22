@@ -1456,7 +1456,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!195 &865711138
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1503,7 +1503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0b3f383ff5025043818e8257b394235, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  <graphAsset>k__BackingField: {fileID: 11400000, guid: 4bb62e22e426b4149a87b5896c2cdc0b, type: 2}
+  <graphAsset>k__BackingField: {fileID: 11400000, guid: 1cb32bab46d08284f811db2a02ee68c8, type: 2}
   planningInterval: 5
   beaconPrefab: {fileID: 1042460851052177819, guid: 598dce1bd696a66429e5152b4c404fae, type: 3}
 --- !u!4 &865711141
@@ -1529,7 +1529,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 865711137}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 28f0318b83d8b4044bdc9a20142db5a5, type: 3}
   m_Name: 
