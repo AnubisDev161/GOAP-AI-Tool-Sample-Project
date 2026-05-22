@@ -28,5 +28,19 @@ namespace GOAP.Core
 
             return true;
         }
+
+        public static bool IsGoalAchieved(WorldState currentWorldState, GOAPGoal goal)
+        {
+            foreach (var goalFact in goal.desiredConditions)
+            {
+                if (!currentWorldState.worldFacts.TryGetValue(goalFact.Key, out var value) || !goalFact.Value.IsRequiredValue(value))
+                {
+                    return false;
+                }
+            }
+
+            goal.Achieved(currentWorldState);
+            return true;
+        }
     }
 }

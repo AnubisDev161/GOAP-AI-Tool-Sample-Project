@@ -10,5 +10,8 @@ namespace GOAP.GOAPGraph
 
         [ExposedProperty]
         public float priority = 1.0f;
+
+        [ExposedProperty]
+        public bool preconditionsFromWorldStateAfterAchieving;
     }
 }

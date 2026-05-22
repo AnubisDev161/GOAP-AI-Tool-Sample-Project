@@ -13,8 +13,8 @@ public class HungerTrigger : TimerTrigger
     public override void OnIntervalFinished()
     {
         var worldFact = GetSpecifiedWorldFact();
-        var currentValue = (float)worldFact.Value.GetValue();
 
+        var currentValue = (float)worldFact.Value.GetValue();
         AddSpecifiedWorldFactWithValue((hungerIncreasePerInterval + currentValue).ToString(), false);
     }
 }

@@ -21,10 +21,8 @@ namespace GOAP.Core.Agent
         [SerializeField]
         private float planningInterval = 5;
 
-        /// <summary>
-        /// Init is called in the Start method to ensure that the GOAPNavigation Component has already been loaded
-        /// </summary>
-        private void Start()
+ 
+        private void OnEnable()
         {
             Init();
         }
@@ -126,7 +124,7 @@ namespace GOAP.Core.Agent
                 return;
             }
 
-            if (WorldStateCompare.IsWorldStateBAchieved(goapBrain.currentWorldState.worldFacts, goapBrain.goalSelector.currentGoal.desiredConditions))
+            if (WorldStateCompare.IsGoalAchieved(goapBrain.currentWorldState, goapBrain.goalSelector.currentGoal))
             {
                 Debug.Log( "<color=green>" + $"Plan with {planDebugInfo.planSize} + actions executed successfully | cost {planDebugInfo.totalCost} | goal {goapBrain.goalSelector.currentGoal} | {this}");
                 Debug.Log($"New world state is ${goapBrain.currentWorldState.ToString()}");

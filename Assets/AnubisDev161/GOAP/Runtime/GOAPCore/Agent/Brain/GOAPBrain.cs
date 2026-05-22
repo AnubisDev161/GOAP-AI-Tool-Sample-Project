@@ -94,7 +94,7 @@ namespace GOAP.Core.Agent
             {
                 var preconditions = GetNodePreconditions(goalNode);
 
-                GOAPGoal goal = new GOAPGoal(goalNode.priority, preconditions, goalNode.name);
+                GOAPGoal goal = new GOAPGoal(goalNode.priority, preconditions, goalNode.name, goalNode.preconditionsFromWorldStateAfterAchieving);
                 goals.Add(goal);
             }
 
