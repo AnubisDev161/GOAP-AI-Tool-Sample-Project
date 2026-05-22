@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class HungerTrigger : TimerTrigger
+public class ThirstTrigger : TimerTrigger
 {
     [SerializeField]
-    private float hungerIncreasePerInterval;
+    private float thirstIncreasePerInterval;
 
     private void Start()
     {
@@ -15,6 +15,6 @@ public class HungerTrigger : TimerTrigger
         var worldFact = GetSpecifiedWorldFact();
         var currentValue = (float)worldFact.Value.GetValue();
 
-        AddSpecifiedWorldFactWithValue((hungerIncreasePerInterval + currentValue).ToString(), false);
+        AddSpecifiedWorldFactWithValue((thirstIncreasePerInterval + currentValue).ToString(), false);
     }
 }

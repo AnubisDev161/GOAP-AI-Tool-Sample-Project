@@ -58,6 +58,11 @@ MonoBehaviour:
   - rid: 9217490162272960587
   - rid: 9217490162272960588
   - rid: 9217490162272960589
+  - rid: 9217490163743326266
+  - rid: 9217490163743326267
+  - rid: 9217490163743326268
+  - rid: 9217490163743326269
+  - rid: 9217490163743326270
   connections:
   - inputPort:
       nodeId: 42424f36-c2e8-4007-bd29-a7c43cb38840
@@ -233,6 +238,24 @@ MonoBehaviour:
     outputPort:
       nodeId: c6c3e391-6a8e-4992-a2ee-cdc5fa4446d2
       portIndex: 1
+  - inputPort:
+      nodeId: 69d9e232-bb17-4548-9413-2d3bd51d243e
+      portIndex: 0
+    outputPort:
+      nodeId: 5d272e65-a5d1-4c60-9808-1fbb84337cd2
+      portIndex: 0
+  - inputPort:
+      nodeId: 7d0c4592-23d3-4cb3-8d01-fb637acf1827
+      portIndex: 0
+    outputPort:
+      nodeId: 69d9e232-bb17-4548-9413-2d3bd51d243e
+      portIndex: 1
+  - inputPort:
+      nodeId: f30f1021-ff11-41e6-a72a-6edccc329094
+      portIndex: 0
+    outputPort:
+      nodeId: b9500aa8-da22-4b7d-9d4c-b5310c8c1337
+      portIndex: 0
   agent: {fileID: 0}
   blackboard:
     facts:
@@ -245,6 +268,7 @@ MonoBehaviour:
     - AtCampfire
     - Tired
     - Hungry
+    - Thirsty
     factValues:
     - isWorldFact: 1
       keyType: 0
@@ -267,6 +291,9 @@ MonoBehaviour:
     - isWorldFact: 1
       keyType: 0
       worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 2
     - isWorldFact: 1
       keyType: 0
       worldFactType: 2
@@ -1141,10 +1168,105 @@ MonoBehaviour:
         typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 0000000001000000
-        name: 
+        name: Go Eat
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
           position: {x: 0.26, y: 1.28, z: 21.84}
           sceneID: 44110
-        targetPosKeyName: Eat
+        targetPosKeyName: 
+    - rid: 9217490163743326266
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: f30f1021-ff11-41e6-a72a-6edccc329094
+        pos:
+          serializedVersion: 2
+          x: 3714
+          y: 355
+          width: 174
+          height: 116
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: Drink
+        priority: 100
+    - rid: 9217490163743326267
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 7d0c4592-23d3-4cb3-8d01-fb637acf1827
+        pos:
+          serializedVersion: 2
+          x: 3469
+          y: 542
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Thirsty
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490163743326268
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 5d272e65-a5d1-4c60-9808-1fbb84337cd2
+        pos:
+          serializedVersion: 2
+          x: 2938
+          y: 543
+          width: 221
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Thirsty
+          value: 50f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490163743326269
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 69d9e232-bb17-4548-9413-2d3bd51d243e
+        pos:
+          serializedVersion: 2
+          x: 3186
+          y: 542
+          width: 243
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Go drink
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: 14.49, y: 1.28, z: 21.84}
+          sceneID: 44126
+        targetPosKeyName: 
+    - rid: 9217490163743326270
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: b9500aa8-da22-4b7d-9d4c-b5310c8c1337
+        pos:
+          serializedVersion: 2
+          x: 3420
+          y: 355
+          width: 0
+          height: 0
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: Thirsty
+          value: 0f
+          valueType: 2
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
