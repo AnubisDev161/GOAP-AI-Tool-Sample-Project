@@ -16,11 +16,6 @@ namespace ExampleProject
         [SerializeField]
         private string collisionExitValue;
 
-        private void OnEnable()
-        {
-
-        }
-
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;

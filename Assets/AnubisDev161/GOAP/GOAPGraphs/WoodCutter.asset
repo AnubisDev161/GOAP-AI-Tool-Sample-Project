@@ -404,6 +404,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: HasWood
         priority: 10
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490144426459246
       type: {class: StartWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -452,6 +453,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: IsIdling
         priority: 1
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490144426459254
       type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -523,6 +525,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: AtSaveSpace
         priority: 15
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490154869227584
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -580,9 +583,9 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 10.024499, y: 1.1, z: 28.612488}
-          sceneID: 44238
-        targetPosKeyName: move to save space
+          position: {x: 10.93, y: 0.58, z: 34.42}
+          sceneID: 44308
+        targetPosKeyName: 
     - rid: 9217490154869227588
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -749,6 +752,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: HasStockpiledWood
         priority: 15
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490154869227646
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -844,15 +848,16 @@ MonoBehaviour:
         portsIndices: 00000000
         name: Rest
         priority: 20
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490162272960571
       type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
         guid: e2d2e4e3-6bcd-4396-be53-f55c3a281743
         pos:
           serializedVersion: 2
-          x: 1832
-          y: 1378
-          width: 247
+          x: 1733
+          y: 1377
+          width: 313
           height: 173
         typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
@@ -861,8 +866,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 0.57, y: 1.14, z: -17.06}
-          sceneID: -14806
+          position: {x: 24.967703, y: 0.619, z: -5.5229607}
+          sceneID: 44384
         targetPosKeyName: 
     - rid: 9217490162272960573
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1057,8 +1062,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: -11.57, y: 0.81, z: -24.75}
-          sceneID: -34506
+          position: {x: 9.4, y: 0, z: -22.34}
+          sceneID: 44252
         targetPosKeyName: 
     - rid: 9217490162272960583
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1095,6 +1100,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: Eat
         priority: 100
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490162272960586
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -1172,8 +1178,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 0.26, y: 1.28, z: 21.84}
-          sceneID: 44150
+          position: {x: -11.57, y: 0.7, z: 3.3}
+          sceneID: 44284
         targetPosKeyName: 
     - rid: 9217490163743326266
       type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1190,6 +1196,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: Drink
         priority: 100
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490163743326267
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -1247,8 +1254,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 14.49, y: 1.28, z: 21.84}
-          sceneID: 44140
+          position: {x: 35.97, y: 0.6, z: 15.31}
+          sceneID: 44274
         targetPosKeyName: 
     - rid: 9217490163743326270
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}

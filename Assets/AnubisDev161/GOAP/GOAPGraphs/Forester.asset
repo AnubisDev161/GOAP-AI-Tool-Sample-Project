@@ -510,8 +510,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 10.024499, y: 1.1, z: 28.612488}
-          sceneID: 44314
+          position: {x: 23.23, y: 0.58, z: 54.06}
+          sceneID: 46556
         targetPosKeyName: move to save space
     - rid: 9217490154869227588
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -626,8 +626,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 0.57, y: 1.14, z: -17.06}
-          sceneID: -14806
+          position: {x: 24.967703, y: 0.619, z: -5.5229607}
+          sceneID: 44384
         targetPosKeyName: 
     - rid: 9217490162272960573
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -878,8 +878,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 0.26, y: 1.28, z: 21.84}
-          sceneID: 44150
+          position: {x: -11.57, y: 0.7, z: 3.3}
+          sceneID: 44284
         targetPosKeyName: 
     - rid: 9217490163743326266
       type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -954,8 +954,8 @@ MonoBehaviour:
         cost: 1
         RemovePreconditionsFromWorldState: 0
         destination:
-          position: {x: 14.49, y: 1.28, z: 21.84}
-          sceneID: 44140
+          position: {x: 35.97, y: 0.6, z: 15.31}
+          sceneID: 44274
         targetPosKeyName: 
     - rid: 9217490163743326270
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
