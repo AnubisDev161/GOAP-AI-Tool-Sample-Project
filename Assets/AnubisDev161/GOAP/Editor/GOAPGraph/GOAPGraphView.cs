@@ -50,7 +50,7 @@ namespace GOAP.GOAPGraph.Editor
             this.AddManipulator(new ClickSelector());
             this.AddManipulator(new ContentZoomer());
           
-
+            
             DrawNodes();
             DrawConnections();
           
@@ -62,8 +62,24 @@ namespace GOAP.GOAPGraph.Editor
             // Create blackboard
             AddBlackboard();
             AddWorldFactBlackboard();
+
+            StickyNote stickyNote = new StickyNote();
+            stickyNote.style.backgroundColor = new StyleColor(new Color(1, 1, 1, 0.05f));
+
+            stickyNote.style.color = Color.white;
+            stickyNote.theme = StickyNoteTheme.Black;
+
+
+
+
+            Add(stickyNote);
         }
 
+        //public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
+        //{
+        //    evt.menu.ap("Add sticky node")
+        //    base.BuildContextualMenu(evt);
+        //}
         private void AddWorldFactBlackboard()
         {
             Blackboard worldFactsBlackboard = new Blackboard();
@@ -110,7 +126,14 @@ namespace GOAP.GOAPGraph.Editor
             AddBlackboardKey(blackboard, isWorldFact: true);
         }
 
-        // If I had had the time I would have improved the perfomance here because it is called for every new letter you insert in the name, not just when pressing enter.
+        /// <summary>
+        /// If I had had the time I would have improved the perfomance here because it is called for every new letter you insert in the name, not just when pressing enter.
+        /// </summary>
+        /// <param name="blackboard"></param>
+        /// <param name="keyName"></param>
+        /// <param name="keyType"></param>
+        /// <param name="worldFactType"></param>
+        /// <param name="isWorldFact"></param>
         private void AddBlackboardKey(
             Blackboard blackboard, string keyName = "Enter name to save key", GOAPBlackbaord.BlackboardKeyType keyType = GOAPBlackbaord.BlackboardKeyType.Bool,
             WorldFactType worldFactType = WorldFactType.Bool, bool isWorldFact = false)

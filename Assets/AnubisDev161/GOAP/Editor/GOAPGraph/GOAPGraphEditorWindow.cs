@@ -9,7 +9,6 @@ namespace GOAP.GOAPGraph.Editor
         [field: SerializeField]
         public GOAPGraphAsset currentGraph {  get; private set; }
 
-
         private DragAndDropVisualMode dragAndDropMode = DragAndDropVisualMode.Generic;
         public DragAndDropVisualMode dragAndDropVisualMode => dragAndDropMode;
 
@@ -63,15 +62,6 @@ namespace GOAP.GOAPGraph.Editor
         {
             EditorUtility.SetDirty(currentGraph);
             return graphViewChange;
-        }
-
-        public void SaveAndRedrawGraph()
-        {
-            EditorUtility.SetDirty(currentGraph);
-            AssetDatabase.SaveAssets();
-            Repaint();
-            //Close();
-            //Open(currentGraph);
         }
 
         //[MenuItem("Window/AI/GOAP")]

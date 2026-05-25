@@ -13,7 +13,9 @@ namespace GOAP.Core.Agent
 
         }
 
-        // Call OnDestinationReached to inform the tree when you agent reached its destination, the graph handle the rest for you
+        /// <summary>
+        /// Call OnDestinationReached to inform the tree when your agent reached its destination, the graph will handle the rest for you
+        /// </summary> 
         public virtual void OnDestinationReached()
         {
             var brain = GetComponent<GOAPAgent>().goapBrain;
