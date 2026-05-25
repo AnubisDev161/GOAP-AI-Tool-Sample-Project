@@ -6,7 +6,10 @@ namespace GOAP.Tree
 {
     public class GOAPTree
     {
-        List<GOAPAction> availableActions;
+        private List<GOAPAction> availableActions;
+
+        // Depending on the size of your plans, this number needs to be adjusted to either decrease or increase the allowed number of iterations per plan.
+        private int maxClosedListSize = 400;
 
         public Queue<GOAPAction> GeneratePlan(WorldState currentWorldState, GOAPGoal goal, List<GOAPAction> availableActions, GOAPGraph.GOAPGraphAsset graphInstance)
         {
@@ -25,27 +28,27 @@ namespace GOAP.Tree
         private Queue<GOAPAction> BuildGraph(GOAPNode goal, WorldState currentWorldState, GOAPGraph.GOAPGraphAsset graphInstance)
         {
             WorldState goalWorldState = new WorldState(goal.requiredWorldState.worldFacts);
-            List<GOAPNode> closedList = new List<GOAPNode>();
+            Dictionary<WorldState, GOAPNode> closedList = new Dictionary<WorldState, GOAPNode>();
             ListBasedPriorityQueue openQueue = new ListBasedPriorityQueue();
-            Dictionary<GOAPNode, float> costSoFar = new Dictionary<GOAPNode, float>();
 
             openQueue.Push(goal);
 
             while (openQueue.count > 0)
             {
                 var currentNode = openQueue.Pop();
+                Debug.Log("Open queue size: " + openQueue.count);
 
                 if (WorldStateCompare.IsWorldStateBAchieved(currentWorldState, currentNode.requiredWorldState))
                 {
                     // valid plan found
-
+                    Debug.Log($"Valid plan found, iterations: {closedList.Count}");
+                    Debug.Log($"Available actions: {availableActions.Count}");
                     return ReconstructPath(currentNode);
                 }
 
-                closedList.Add(currentNode);
+                closedList.Add(currentNode.requiredWorldState, currentNode);
 
-
-                if (closedList.Count > 100)
+                if (closedList.Count > maxClosedListSize)
                 {
                     Debug.Log("Stuck in loop!");
                     break;
@@ -57,67 +60,33 @@ namespace GOAP.Tree
                     {
                         continue;
                     }
-
+                  
                     // create copy of parent's world state and apply the action's effects
                     var mutatedWorldState = currentNode.requiredWorldState.Copy();
                     action.RemoveEffectsAndAddPreconditionsToState(mutatedWorldState);
 
+                    var tentativeGCost = currentNode.gCost + action.GetCost();
+                    var hCost = CalculateHeuristic(mutatedWorldState, goalWorldState);
 
-                    if (IsInList(closedList, mutatedWorldState))
+                    if (closedList.ContainsKey(mutatedWorldState))
                     {
                         continue;
                     }
 
-                    var tentativeGCost = currentNode.gCost + action.GetCost();
-                    var hCost = 0;// CalculateHeuristic(mutatedWorldState, goalWorldState);
-                    var fCost = tentativeGCost + hCost;
-
-
-
-                    //if (openQueue.Contains(mutatedWorldState) && tentativeGCost < openQueue.GetItem(mutatedWorldState).gCost)
-                    //{
-                    //    var item = openQueue.GetItem(mutatedWorldState);
-                    //    item.gCost = tentativeGCost + item.hCost;
-                    //    item.parent = currentNode;
-
-                    //}
-                    //else if (!openQueue.Contains(mutatedWorldState))
+                    if (openQueue.Contains(mutatedWorldState) && tentativeGCost < openQueue.GetItem(mutatedWorldState).gCost)
                     {
-                        var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, fCost, tentativeGCost, hCost);
+                        openQueue.ReplaceItem(new GOAPNode(action, currentNode, mutatedWorldState, tentativeGCost, hCost));
+
+                    }
+                    else if (!openQueue.Contains(mutatedWorldState))
+                    {
+                        var nodeToAdd = new GOAPNode(action, currentNode, mutatedWorldState, tentativeGCost, hCost);
                         openQueue.Push(nodeToAdd);
-                        
-                        //Debug.Log(mutatedWorldState.ToString());
                     }
                 }
             }
 
             Debug.LogError("No valid plan found!");
-            return null;
-        }
-
-        private bool IsInList(List<GOAPNode> list, WorldState worldStateToFind)
-        {
-            foreach (var node in list)
-            {
-                if (worldStateToFind == node.requiredWorldState)
-                {
-                    return true;
-                }
-            }
-
-            return false;
-        }
-
-        private GOAPNode FindNodeInList(List<GOAPNode> list,  WorldState worldState)
-        {
-            foreach (var node in list)
-            {
-                if (node.requiredWorldState == worldState)
-                {
-                    return node;
-                }
-            }
-
             return null;
         }
 
@@ -151,7 +120,7 @@ namespace GOAP.Tree
 
         private GOAPNode CreateStartNode(GOAPGoal goal)
         {
-            GOAPNode startNode = new GOAPNode(null, null, goal.desiredConditions, 0, 0, 0);
+            GOAPNode startNode = new GOAPNode(null, null, goal.desiredConditions, 0, 0);
 
             return startNode;
         }
@@ -175,30 +144,7 @@ namespace GOAP.Tree
                 }
             }
 
-
             return satisfiesAtLeastOne;
         }
     }
-
-    public class SortedQueue
-    {
-        private List<GOAPNode> nodes = new List<GOAPNode>();
-
-        public GOAPNode Pop()
-        {
-            var node = nodes[0];
-            nodes.Remove(node);
-            return node;
-        }
-        public void Push(GOAPNode node)
-        {
-            nodes.Add(node);
-            nodes.Sort((x, y) => x.fCost.CompareTo(y.fCost));
-        }
-        public float Count()
-        {
-            return nodes.Count;
-        }
-    }
-
 }

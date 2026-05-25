@@ -1399,6 +1399,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 818325633232849181, guid: 38d5a0034f6b9784ba93ad5b85093e57, type: 3}
+      propertyPath: <graphAsset>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1d422777e3e7110459413c127428fb99, type: 2}
     - target: {fileID: 1226639271877031914, guid: 38d5a0034f6b9784ba93ad5b85093e57, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.3655529
@@ -1442,6 +1446,10 @@ PrefabInstance:
     - target: {fileID: 3670797169415694828, guid: 38d5a0034f6b9784ba93ad5b85093e57, type: 3}
       propertyPath: m_Name
       value: Forester
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670797169415694828, guid: 38d5a0034f6b9784ba93ad5b85093e57, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1570,6 +1578,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 818325633232849181, guid: 9f3610413dc9b0d429e84c7f137613b9, type: 3}
+      propertyPath: <graphAsset>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: 1cb32bab46d08284f811db2a02ee68c8, type: 2}
     - target: {fileID: 1226639271877031914, guid: 9f3610413dc9b0d429e84c7f137613b9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.959999
@@ -1613,6 +1625,10 @@ PrefabInstance:
     - target: {fileID: 3670797169415694828, guid: 9f3610413dc9b0d429e84c7f137613b9, type: 3}
       propertyPath: m_Name
       value: WoodCutter
+      objectReference: {fileID: 0}
+    - target: {fileID: 3670797169415694828, guid: 9f3610413dc9b0d429e84c7f137613b9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3909356143392153129, guid: 9f3610413dc9b0d429e84c7f137613b9, type: 3}
       propertyPath: m_IsActive
@@ -2848,13 +2864,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138626767}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.07, y: 3.34, z: -10}
+  m_LocalRotation: {x: 0.18957731, y: -0, z: -0, w: 0.9818658}
+  m_LocalPosition: {x: 10.31, y: 15.23, z: -21.75}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 21.856, y: 0, z: 0}
 --- !u!114 &2138626771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3012,6 +3028,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Threat
       objectReference: {fileID: 0}
+    - target: {fileID: 3647617265464369732, guid: 9b2d3dd35fd3a4e49a598583c67a62df, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6202648898263788420, guid: 9b2d3dd35fd3a4e49a598583c67a62df, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -3029,7 +3049,6 @@ SceneRoots:
   - {fileID: 2138626770}
   - {fileID: 1580886599}
   - {fileID: 1500490671}
-  - {fileID: 5699962061324094088}
   - {fileID: 743887023}
   - {fileID: 707900483}
   - {fileID: 1092101992}
@@ -3047,8 +3066,6 @@ SceneRoots:
   - {fileID: 1764161056}
   - {fileID: 1831140522}
   - {fileID: 328033756}
-  - {fileID: 1426429975}
-  - {fileID: 1311050902}
   - {fileID: 1931204159}
   - {fileID: 1930857663}
   - {fileID: 1954157675}
@@ -3059,3 +3076,6 @@ SceneRoots:
   - {fileID: 360860966}
   - {fileID: 1985993938}
   - {fileID: 602509817}
+  - {fileID: 5699962061324094088}
+  - {fileID: 1311050902}
+  - {fileID: 1426429975}

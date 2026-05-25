@@ -13,20 +13,14 @@ MonoBehaviour:
   m_Name: Test
   m_EditorClassIdentifier: 
   nodes:
-  - rid: 9217490158742667322
   - rid: 9217490158742667323
   - rid: 9217490158742667324
   - rid: 9217490158742667325
-  - rid: 9217490158742667326
   - rid: 9217490158742667327
   - rid: 9217490158742667328
+  - rid: 9217490222058569795
+  - rid: 9217490222058569796
   connections:
-  - inputPort:
-      nodeId: 836366d4-c1e3-480b-9f60-69098ebe2fb3
-      portIndex: 0
-    outputPort:
-      nodeId: 7609fafc-7a5d-4007-8dc0-8fafecc25697
-      portIndex: 1
   - inputPort:
       nodeId: 598cb51e-f31e-44bb-8a56-a672071a99d2
       portIndex: 0
@@ -40,15 +34,21 @@ MonoBehaviour:
       nodeId: bb602257-b3f1-49be-89dd-25806b9737f9
       portIndex: 0
   - inputPort:
-      nodeId: 7609fafc-7a5d-4007-8dc0-8fafecc25697
+      nodeId: 836366d4-c1e3-480b-9f60-69098ebe2fb3
       portIndex: 0
     outputPort:
-      nodeId: 89c8ea30-d234-4de9-8606-9e986e903eaa
+      nodeId: 24af5066-078c-4f8a-91ef-e7d83b6df2d0
+      portIndex: 1
+  - inputPort:
+      nodeId: 836366d4-c1e3-480b-9f60-69098ebe2fb3
       portIndex: 0
+    outputPort:
+      nodeId: 5b9eb27a-de4c-4c76-9acf-95e11e313fa8
+      portIndex: 1
   agent: {fileID: 0}
   blackboard:
     facts:
-    - IsAnnoying
+    - IsIdling
     factValues:
     - isWorldFact: 1
       keyType: 0
@@ -58,22 +58,6 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 9217490158742667322
-      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 7609fafc-7a5d-4007-8dc0-8fafecc25697
-        pos:
-          serializedVersion: 2
-          x: 685
-          y: 576
-          width: 243
-          height: 134
-        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: Do something
-        cost: 1
-        RemovePreconditionsFromWorldState: 0
     - rid: 9217490158742667323
       type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -87,8 +71,9 @@ MonoBehaviour:
         typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
           PublicKeyToken=null
         portsIndices: 00000000
-        name: TestGoal
+        name: Idle
         priority: 1
+        preconditionsFromWorldStateAfterAchieving: 1
     - rid: 9217490158742667324
       type: {class: StartWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -116,32 +101,12 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: IsAnnoying
+          name: IsIdling
           value: True
           valueType: 0
           acceptedValue: 0
           operationType: 0
         operationType: 0
-    - rid: 9217490158742667326
-      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 89c8ea30-d234-4de9-8606-9e986e903eaa
-        pos:
-          serializedVersion: 2
-          x: 405
-          y: 576
-          width: 234
-          height: 171
-        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-        worldFact:
-          name: IsAnnoying
-          value: False
-          valueType: 0
-          acceptedValue: 0
-          operationType: 0
-        acceptedValue: 0
     - rid: 9217490158742667327
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -156,7 +121,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: IsAnnoying
+          name: IsIdling
           value: True
           valueType: 0
           acceptedValue: 0
@@ -176,9 +141,41 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 00000000
         worldFact:
-          name: IsAnnoying
+          name: IsIdling
           value: False
           valueType: 0
           acceptedValue: 0
           operationType: 0
         operationType: 0
+    - rid: 9217490222058569795
+      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 5b9eb27a-de4c-4c76-9acf-95e11e313fa8
+        pos:
+          serializedVersion: 2
+          x: 566
+          y: 798
+          width: 243
+          height: 134
+        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: ' Idle Expansive'
+        cost: 50
+        RemovePreconditionsFromWorldState: 0
+    - rid: 9217490222058569796
+      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 24af5066-078c-4f8a-91ef-e7d83b6df2d0
+        pos:
+          serializedVersion: 2
+          x: 518
+          y: 422
+          width: 243
+          height: 134
+        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Idle
+        cost: 1
+        RemovePreconditionsFromWorldState: 0

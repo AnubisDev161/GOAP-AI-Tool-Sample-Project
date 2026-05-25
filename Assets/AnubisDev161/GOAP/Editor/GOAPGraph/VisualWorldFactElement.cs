@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UIElements;
 using GOAP.Core;
 using UnityEditor.UIElements;
+using System;
 
 namespace GOAP.GOAPGraph.Editor
 {
@@ -11,12 +12,12 @@ namespace GOAP.GOAPGraph.Editor
         private SerializedProperty serializedWorldFact;
 
         private Foldout foldOut;
+
         public VisualWorldFactElement(SerializedProperty worldFactProperty)
         {
             this.serializedWorldFact = worldFactProperty;
             foldOut = new Foldout();
             foldOut.value = true;
-
             Init();
         }
 
@@ -26,38 +27,37 @@ namespace GOAP.GOAPGraph.Editor
             var valueTypeProperty = serializedWorldFact.FindPropertyRelative("valueType");
             var valueType = (WorldFactType)valueTypeProperty.boxedValue;
 
-            VisualElement valueField =  CreateFieldByType(valueProperty, valueType);
+            // Create a suitable field according to the property's value
+            VisualElement valueField = CreateFieldByType(valueProperty, valueType);
 
             serializedWorldFact.serializedObject.ApplyModifiedProperties();
             serializedWorldFact.serializedObject.Update();
 
             // Create property fields.
-            var valueFieldName = new PropertyField(valueProperty);
-            var valueTypeField = new PropertyField(valueTypeProperty);
-            var nameField = new PropertyField(serializedWorldFact.FindPropertyRelative("name"));
+            var valueTypeField = new EnumField("ValueType", WorldFactType.Bool); /* new PropertyField(valueTypeProperty);*/
+
+            valueTypeField.BindProperty(serializedWorldFact.FindPropertyRelative("valueType"));
+            valueTypeField.RegisterValueChangedCallback(ValueTypeChangedCallback);
+
+            var nameField = new TextField("Name");
+            nameField.BindProperty(serializedWorldFact.FindPropertyRelative("name"));
 
             foldOut.Add(nameField);
-
-
-            // Add either a textField or a toggle according to the property's value
             foldOut.Add(valueField);
-
-            valueTypeField.RegisterValueChangeCallback(ValueTypeChangedCallback);
-
             foldOut.Add(valueTypeField);
             contentContainer.Add(foldOut);
         }
 
-        private void ValueTypeChangedCallback(SerializedPropertyChangeEvent evt)
+        private void ValueTypeChangedCallback(ChangeEvent<Enum> evt)
         {
-            var valueTypeProperty = evt.changedProperty;
+            var valueType =(WorldFactType)evt.newValue;
             var valueProperty = serializedWorldFact.FindPropertyRelative("value");
 
-            if (WorldFact.IsRequiredValueType((WorldFactType)valueTypeProperty.boxedValue, valueProperty.stringValue)) return;
+            if (WorldFact.IsRequiredValueType(valueType, valueProperty.stringValue)) return;
 
             object newValue = null;
 
-            switch ((WorldFactType)valueTypeProperty.boxedValue)
+            switch (valueType)
             {
                 case WorldFactType.Bool:
                     newValue = false;
@@ -76,8 +76,16 @@ namespace GOAP.GOAPGraph.Editor
             valueProperty.stringValue = newValue.ToString();
             serializedWorldFact.serializedObject.ApplyModifiedProperties();
             serializedWorldFact.serializedObject.Update();
-            var window = EditorWindow.GetWindow(typeof(GOAPGraphEditorWindow)) as GOAPGraphEditorWindow;
-            window.SaveAndRedrawGraph();
+
+            Redraw();
+        }
+
+        private void Redraw()
+        {
+            foldOut.Clear();
+            contentContainer.Clear();
+            foldOut = new Foldout();
+            Init();
         }
 
         private void OnValueFieldChanged(ChangeEvent<bool> evt)

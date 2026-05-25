@@ -126,7 +126,7 @@ namespace GOAP.Core.Agent
 
             if (WorldStateCompare.IsGoalAchieved(goapBrain.currentWorldState, goapBrain.goalSelector.currentGoal))
             {
-                Debug.Log( "<color=green>" + $"Plan with {planDebugInfo.planSize} + actions executed successfully | cost {planDebugInfo.totalCost} | goal {goapBrain.goalSelector.currentGoal} | {this}");
+                Debug.Log( "<color=green>" + $"Plan with {planDebugInfo.planSize} actions executed successfully | cost {planDebugInfo.totalCost} | goal {goapBrain.goalSelector.currentGoal} | {this}");
                 Debug.Log($"New world state is ${goapBrain.currentWorldState.ToString()}");
                 Debug.Log($"Desired world state is ${goapBrain.goalSelector.currentGoal.ToString()}");
             }

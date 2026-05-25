@@ -69,8 +69,9 @@ namespace GOAP.GOAPGraph.Editor
         {
             EditorUtility.SetDirty(currentGraph);
             AssetDatabase.SaveAssets();
-            Close();
-            Open(currentGraph);
+            Repaint();
+            //Close();
+            //Open(currentGraph);
         }
 
         //[MenuItem("Window/AI/GOAP")]

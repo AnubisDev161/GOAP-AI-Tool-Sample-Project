@@ -81,32 +81,81 @@ namespace GOAP.Core
 
         public static bool operator ==(WorldState left, WorldState right)
         {
+            //if (left.worldFacts.Count != right.worldFacts.Count) return false;
+
+            //foreach (var fact in left.worldFacts)
+            //{
+            //    if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
+            //    {
+            //        return false;
+            //    }
+            //}
+
+            //return true;
+
             if (left.worldFacts.Count != right.worldFacts.Count) return false;
+            if (left.worldFacts.Count == 0) return true;
+
+            int leftIndex = 0;
+            int rightIndex = 0;
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
+                foreach(var rightFact in right.worldFacts)
                 {
-                    return false;
+                    if (fact.Key == rightFact.Key && leftIndex == rightIndex)
+                    {
+                        if (rightFact.Value == rightFact.Value && rightFact.Value.operationType == rightFact.Value.operationType && fact.Value.acceptedValue == rightFact.Value.acceptedValue)
+                        {
+                            return true;
+                        }
+                    }
+                    rightIndex++;
                 }
+
+                leftIndex++;
             }
 
-            return true;
+            return false;
         }
 
         public static bool operator !=(WorldState left, WorldState right)
         {
+            //if (left.worldFacts.Count != right.worldFacts.Count) return true;
+
+            //foreach (var fact in left.worldFacts)
+            //{
+            //    if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
+            //    {
+            //        return true;
+            //    }
+            //}
+
+            //return false;
+
             if (left.worldFacts.Count != right.worldFacts.Count) return true;
+
+            int leftIndex = 0;
+            int rightIndex = 0;
 
             foreach (var fact in left.worldFacts)
             {
-                if (!right.worldFacts.TryGetValue(fact.Key, out var value) || value != fact.Value || value.operationType != fact.Value.operationType || value.acceptedValue != fact.Value.acceptedValue)
+                foreach (var rightFact in right.worldFacts)
                 {
-                    return true;
+                    if (fact.Key == rightFact.Key && leftIndex == rightIndex)
+                    {
+                        if (rightFact.Value == rightFact.Value && rightFact.Value.operationType == rightFact.Value.operationType && fact.Value.acceptedValue == rightFact.Value.acceptedValue)
+                        {
+                            return false;
+                        }
+                    }
+                    rightIndex++;
                 }
+
+                leftIndex++;
             }
 
-            return false;
+            return true;
         }
 
         public override string ToString()
@@ -119,6 +168,13 @@ namespace GOAP.Core
             }
 
             return allFacts;
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (!(obj is WorldState)) return false;
+
+            return (WorldState)obj == this;
         }
     }
 }

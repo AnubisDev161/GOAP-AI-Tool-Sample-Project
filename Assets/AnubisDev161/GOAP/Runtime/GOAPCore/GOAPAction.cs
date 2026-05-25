@@ -75,7 +75,7 @@ namespace GOAP.Core
         {
             if (success)
             {
-                Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name}");
+                Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name} | Action cost: {cost}");
                 RemovePreconditionsAndAddEffectsToState(worldState);
             }
 

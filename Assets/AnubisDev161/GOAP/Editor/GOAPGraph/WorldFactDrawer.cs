@@ -19,7 +19,7 @@ namespace GOAP.GOAPGraph.Editor
         {
             // Create property container element.
             var container = new VisualWorldFactElement(property);
-
+            
             return container;
         }
     }

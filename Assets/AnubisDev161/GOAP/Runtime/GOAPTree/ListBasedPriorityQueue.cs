@@ -3,6 +3,9 @@ using System.Collections.Generic;
 
 namespace GOAP.Tree
 {
+    /// <summary>
+    /// I've choosen a list as data structure because the open queue usually holds a very small amount of items in this implementation
+    /// </summary>
     public class ListBasedPriorityQueue
     {
         private List<GOAPNode> insertedNodes = new List<GOAPNode>();
@@ -21,24 +24,9 @@ namespace GOAP.Tree
                     cheapestNode = node;
                 }
             }
-
+            
             insertedNodes.Remove(cheapestNode);
             insertedStates.Remove(cheapestNode.requiredWorldState);
-
-            return cheapestNode;
-        }
-
-        public GOAPNode GetMin()
-        {
-            GOAPNode cheapestNode = null;
-
-            foreach (var node in insertedNodes)
-            {
-                if (node.fCost < cheapestNode.fCost || node.fCost == cheapestNode.fCost && node.hCost < cheapestNode.hCost)
-                {
-                    cheapestNode = node;
-                }
-            }
 
             return cheapestNode;
         }
@@ -54,6 +42,17 @@ namespace GOAP.Tree
             }
 
             return null;
+        }
+
+        public void ReplaceItem(GOAPNode newItemValue)
+        {
+            for (int i = 0; i < insertedNodes.Count; i++)
+            {
+                if (insertedNodes[i].requiredWorldState == newItemValue.requiredWorldState)
+                {
+                    insertedNodes[i] = newItemValue;
+                }
+            }
         }
 
         public bool Contains(WorldState worldStateToFind)
