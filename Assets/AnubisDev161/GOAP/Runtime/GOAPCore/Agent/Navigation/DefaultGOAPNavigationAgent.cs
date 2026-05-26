@@ -7,8 +7,11 @@ namespace GOAP.Core.Agent
     public class DefaultGOAPNavigationAgent : GOAPNavigation
     {
         private NavMeshAgent navMeshAgent;
+        private bool destinationReached;
 
-        bool destinationReached;
+        [SerializeField]
+        private float maxRemainingDistance = 2;
+
         private void OnEnable()
         {
             navMeshAgent = GetComponent<NavMeshAgent>();
@@ -16,7 +19,7 @@ namespace GOAP.Core.Agent
 
         void Update()
         {
-            if (destinationReached == false && navMeshAgent.remainingDistance <= 2)
+            if (destinationReached == false && navMeshAgent.remainingDistance <= maxRemainingDistance)
             {
                 destinationReached = true;
                 OnDestinationReached();

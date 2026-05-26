@@ -56,7 +56,12 @@ namespace GOAP.Tree
                 
                 foreach (var action in availableActions)
                 {
-                    if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts) || !action.IsAchvievable(graphInstance))
+                    if (currentNode.action != null && currentNode.action.name == "chop tree")
+                    {
+                        var x = 23;
+                    }
+
+                    if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts, currentWorldState) || !action.IsAchvievable(graphInstance))
                     {
                         continue;
                     }
@@ -125,14 +130,14 @@ namespace GOAP.Tree
             return startNode;
         }
 
-        private bool HasAnyRequiredEffects(GOAPAction action, Dictionary<string, WorldFact> preconditions)
+        private bool HasAnyRequiredEffects(GOAPAction action, Dictionary<string, WorldFact> preconditions, WorldState currentWorldState)
         {
             bool satisfiesAtLeastOne = false;
             foreach (var effect in action.effects)
             {
                 if (preconditions.TryGetValue(effect.Key, out WorldFact value))
                 {
-                    if (value.IsRequiredOperation(effect.Value))
+                    if (IsRequiredValue(value, effect.Value, currentWorldState))
                     {
                         satisfiesAtLeastOne = true; // match
                     }
@@ -145,6 +150,64 @@ namespace GOAP.Tree
             }
 
             return satisfiesAtLeastOne;
+        }
+
+        internal bool IsRequiredValue(WorldFact precondition, WorldFact effect, WorldState currentWorldState)
+        {
+            if (precondition.acceptedValue == AcceptedValue.Equals)
+            {
+                return precondition == effect;
+            }
+            else if (precondition.acceptedValue == AcceptedValue.Greater)
+            {
+               return IsValueGreater(precondition, effect, currentWorldState);
+            }
+            else
+            {
+               return IsValueSamller(precondition, effect, currentWorldState);
+            }
+        }
+
+        private bool IsValueGreater(WorldFact precondition, WorldFact effect, WorldState currentWorldState)
+        {
+            if (effect.operationType == OperationType.Add)
+            {
+                currentWorldState.worldFacts.TryGetValue(effect.name, out var worldFact);
+
+                if (worldFact.name != null && worldFact.value != string.Empty)
+                {
+                    switch (precondition.valueType)
+                    {
+                        case WorldFactType.Int:
+                            return (int)worldFact.GetValue() + (int)effect.GetValue() > (int)precondition.GetValue();
+                        case WorldFactType.Float:
+                            return (float)worldFact.GetValue() + (float)effect.GetValue() > (float)precondition.GetValue();
+                    }
+                }
+            }
+
+            return effect > precondition;
+        }
+
+        private bool IsValueSamller(WorldFact precondition, WorldFact effect, WorldState currentWorldState)
+        {
+            if (effect.operationType == OperationType.Add)
+            {
+                currentWorldState.worldFacts.TryGetValue(effect.name, out var worldFact);
+
+                if (worldFact.name != null && worldFact.value != string.Empty)
+                {
+                    switch (precondition.valueType)
+                    {
+                        case WorldFactType.Int:
+                            return (int)worldFact.GetValue() + (int)effect.GetValue() < (int)precondition.GetValue();
+                        case WorldFactType.Float:
+                            return (float)worldFact.GetValue() + (float)effect.GetValue() < (float)precondition.GetValue();
+                    }
+                }
+            }
+
+            return effect < precondition;
         }
     }
 }

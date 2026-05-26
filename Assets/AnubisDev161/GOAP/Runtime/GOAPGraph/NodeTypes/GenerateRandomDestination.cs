@@ -16,7 +16,7 @@ namespace GOAP.GOAPGraph
 
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var blackbaordKey = currentGraph.Blackboard.GetKey(targetPosKeyName);
+            var blackbaordKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, Core.Agent.GOAPBlackbaord.BlackboardKeyType.Vector3);
 
             if (blackbaordKey == null)
             {

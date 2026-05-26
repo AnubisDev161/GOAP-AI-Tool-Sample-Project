@@ -14,7 +14,7 @@ namespace ExampleProject
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             var exampleAgent = currentGraph.agent as ExampleAgent;
-            var woodSourceKey = currentGraph.Blackboard.GetKey(woodSourceKeyName);
+            var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(woodSourceKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.GameObject);
             var woodSource =  woodSourceKey.value as GameObject;
             GameObject.Destroy(woodSource);
 

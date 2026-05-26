@@ -26,8 +26,8 @@ namespace ExampleProject
             var closestTree = GetClosestTree(currentGraph.agent.transform.position);
             if (closestTree != null)
             {
-                var targetPosKey = currentGraph.Blackboard.GetKey(targetPosKeyName);
-                var woodSourceKey = currentGraph.Blackboard.GetKey(wodSourceKeyName);
+                var targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.Vector3);
+                var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(wodSourceKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.GameObject);
                 targetPosKey.value = closestTree.transform.position;
                 woodSourceKey.value = closestTree;
                 success = true;

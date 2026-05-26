@@ -141,6 +141,7 @@ namespace GOAP.Core
 
         public bool IsAchvievable(GOAPGraphAsset currentGraph)
         {
+           // if (!CheckIfPrconditionsMet(currentGraph.agent.goapBrain.currentWorldState.worldFacts)) return false;
             return actionGraphNode.IsAchvievable(currentGraph);
         }
     }

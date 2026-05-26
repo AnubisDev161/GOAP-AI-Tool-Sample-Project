@@ -144,20 +144,15 @@ namespace GOAP.Core.Agent
         {
             if (graphInstance.Blackboard.Contains(worldFact.name))
             {
-                var key = graphInstance.Blackboard.GetKey(worldFact.name);
+                var key = graphInstance.Blackboard.GetWorldFactWithExpectedType(worldFact.name, worldFact.valueType);
 
-                if (key.worldFactType == worldFact.valueType)
+                if (key != null)
                 {
                     return true;
                 }
-                else
-                {
-                    Debug.LogError($"World Fact with name: {worldFact.name}, is used as precondition or effect but has a different valueType [{worldFact.valueType}] than the declared world fact in the world state blackboard [{key.worldFactType}]. ");
-                    return false;
-                }
             }
 
-            Debug.LogError($"World Fact with name: {worldFact.name}, is used as precondition or effect but is not declared in world state blackboard");
+            Debug.LogError($"World Fact with name: {worldFact.name}, is used as precondition or effect but is not declared in world state blackboard or has a different valueType than the declared world fact in the world state blackboard");
             return false;
         }
 

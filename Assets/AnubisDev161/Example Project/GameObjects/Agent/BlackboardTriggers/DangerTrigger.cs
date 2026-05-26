@@ -20,7 +20,6 @@ namespace ExampleProject
         {
             if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
 
-            var worldFact = GetSpecifiedWorldFact();
             AddSpecifiedWorldFactWithValue(collisionEnterValue, true);
             Debug.Log("Threat in sight");
         }
@@ -29,7 +28,6 @@ namespace ExampleProject
         {
             if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
 
-            var worldFact = GetSpecifiedWorldFact();
             AddSpecifiedWorldFactWithValue(collisionExitValue, false);
             Debug.Log("Threat out of sight");
         }

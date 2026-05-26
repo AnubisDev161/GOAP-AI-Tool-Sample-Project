@@ -66,6 +66,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bac9fef75e32d73489e64aff1c520f69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxRemainingDistance: 2
 --- !u!195 &766719601940297474
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -141,8 +142,8 @@ MonoBehaviour:
   keyName: Thirsty
   expectedType: 0
   expectedWorldFactValueType: 2
-  interval: 5
-  thirstIncreasePerInterval: 5.5
+  interval: 8
+  thirstIncreasePerInterval: 2.5
 --- !u!114 &8148022530410513893
 MonoBehaviour:
   m_ObjectHideFlags: 0

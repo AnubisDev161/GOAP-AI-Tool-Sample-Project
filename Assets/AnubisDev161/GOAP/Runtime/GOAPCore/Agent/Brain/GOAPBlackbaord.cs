@@ -9,8 +9,6 @@ namespace GOAP.Core.Agent
     {
         private Dictionary<string, BlackboardKey> blackboardKeys = new Dictionary<string, BlackboardKey>();
 
-        // World State
-
         private Dictionary<string, BlackboardKey> worldFacts = new Dictionary<string, BlackboardKey>();
 
         [SerializeField]
@@ -18,8 +16,6 @@ namespace GOAP.Core.Agent
 
         [SerializeField]
         private List<BlackboardKey> factValues = new List<BlackboardKey>();
-
-        // World State end
 
         [SerializeField]
         private List<string> keys = new List<string>();
@@ -45,16 +41,34 @@ namespace GOAP.Core.Agent
             return false;
         }
 
-        public BlackboardKey GetKey(string keyName)
+        public BlackboardKey GetWorldFactWithExpectedType(string keyName, WorldFactType expectedType)
         {
-            if (blackboardKeys.ContainsKey(keyName))
+            if (worldFacts.TryGetValue(keyName, out BlackboardKey key))
             {
-                return blackboardKeys[keyName];
+                if (key.worldFactType != expectedType)
+                {
+                    Debug.LogError($"The BlackboardKey with name: {keyName} has a different worldFactType [{key.worldFactType}] than the expected WorldFactType [{expectedType}]");
+                    return null;
+                }
+
+                return worldFacts[keyName];
             }
 
-            if (worldFacts.ContainsKey(keyName))
+            Debug.LogError($"Blackboard does not contain a BlackboardKey with name: {keyName}");
+            return null;
+        }
+
+        public BlackboardKey GetKeyWithExpectedType(string keyName, BlackboardKeyType expectedType)
+        {
+            if (blackboardKeys.TryGetValue(keyName, out BlackboardKey key))
             {
-                return worldFacts[keyName];
+                if (key.keyType != expectedType)
+                {
+                    Debug.LogError($"The BlackboardKey with name: {keyName} has a different keyType [{key.keyType}] than the expected keyType [{expectedType}]");
+                    return null;
+                }
+
+                return blackboardKeys[keyName];
             }
 
             Debug.LogError($"Blackboard does not contain a BlackboardKey with name: {keyName}");

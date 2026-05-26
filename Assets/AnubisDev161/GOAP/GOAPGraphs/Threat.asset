@@ -102,7 +102,7 @@ MonoBehaviour:
     keys:
     - TargetPosition
     values:
-    - rid: 9217490154869227594
+    - rid: 9217490247600046145
   references:
     version: 2
     RefIds:
@@ -219,6 +219,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: BeAtRandomDestination
         priority: 10
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490144426459246
       type: {class: StartWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -267,6 +268,7 @@ MonoBehaviour:
         portsIndices: 00000000
         name: IsIdling
         priority: 1
+        preconditionsFromWorldStateAfterAchieving: 0
     - rid: 9217490144426459252
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -383,9 +385,9 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         operationType: 0
-    - rid: 9217490154869227594
+    - rid: 9217490247600046145
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
-        keyType: 0
+        keyType: 4
         worldFactType: 0

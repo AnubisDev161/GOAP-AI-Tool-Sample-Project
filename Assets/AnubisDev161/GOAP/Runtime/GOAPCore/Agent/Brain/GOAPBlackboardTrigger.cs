@@ -33,7 +33,7 @@ namespace GOAP.Core.Agent
         protected virtual GOAPBlackbaord.BlackboardKey GetSpecifiedlBackboardKey()
         {
             var agent = GetComponent<GOAPAgent>();
-            var blackboardKey = agent.goapBrain.graphInstance.Blackboard.GetKey(keyName);
+            var blackboardKey = agent.goapBrain.graphInstance.Blackboard.GetKeyWithExpectedType(keyName, expectedType);
 
             if (blackboardKey == null)
             {

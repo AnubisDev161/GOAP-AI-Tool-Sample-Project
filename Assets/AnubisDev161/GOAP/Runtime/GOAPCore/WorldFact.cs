@@ -249,21 +249,6 @@ namespace GOAP.Core
 
             return string.Empty;
         }
-
-        internal bool IsRequiredOperation(WorldFact other)
-        {
-            switch (other.operationType)
-            {
-                case OperationType.Set:
-                    return this == other;
-                case OperationType.Add:
-                    return acceptedValue == AcceptedValue.Greater && other > this || acceptedValue == AcceptedValue.Samller && other < this;
-
-                default:
-                    Debug.LogError("Accepted type could not be evaluated");
-                    return false;
-            }
-        }
     }
 
     [Serializable]

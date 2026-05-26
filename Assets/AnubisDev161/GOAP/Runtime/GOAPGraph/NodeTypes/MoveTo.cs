@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using GOAP.Core;
 using System;
+using GOAP.Core.Agent;
 
 namespace GOAP.GOAPGraph
 {
@@ -20,7 +21,7 @@ namespace GOAP.GOAPGraph
 
             if (targetDestination == Vector3.zero)
             {
-                var targetPosKey = currentGraph.Blackboard.GetKey(targetPosKeyName);
+                var targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAPBlackbaord.BlackboardKeyType.Vector3);
                 if (targetPosKey != null && targetPosKey.value != null)
                 {
                     targetDestination = (Vector3)targetPosKey.value;

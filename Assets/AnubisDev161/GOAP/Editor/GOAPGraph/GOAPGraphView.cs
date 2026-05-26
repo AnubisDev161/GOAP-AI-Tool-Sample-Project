@@ -139,16 +139,19 @@ namespace GOAP.GOAPGraph.Editor
             WorldFactType worldFactType = WorldFactType.Bool, bool isWorldFact = false)
         {
             EnumField valueTypeField;
+            string titleText;
             if (isWorldFact)
             {
                 valueTypeField = new EnumField(worldFactType);
+                titleText = "World fact";
             }
             else
             {
                 valueTypeField = new EnumField(keyType);
+                titleText = "Blackbaord Key";
             }
 
-            var blackboardField = new BlackboardField(null, keyName, "Blackbaord Key");
+            var blackboardField = new BlackboardField(null, keyName, titleText);
 
             blackboardField.RegisterCallback<ChangeEvent<string>>(evt =>
             {
