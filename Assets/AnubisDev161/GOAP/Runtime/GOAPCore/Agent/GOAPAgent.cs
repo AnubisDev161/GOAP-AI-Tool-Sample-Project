@@ -18,6 +18,8 @@ namespace GOAP.Core.Agent
         private Queue<GOAPAction> currentPlan;
         private PlanDebugInfo planDebugInfo;
 
+        public Action<GOAPAction> newActionStarted;
+
         [SerializeField]
         private float planningInterval = 5;
 
@@ -116,6 +118,8 @@ namespace GOAP.Core.Agent
             if (currentPlan.Count > 0)
             {
                 var action = currentPlan.Dequeue();
+                newActionStarted?.Invoke(action);
+
                 abandonCurrentPlan += action.OnAbandonCurrentPlan;
 
                 action.executed += OnActionExecuted;
