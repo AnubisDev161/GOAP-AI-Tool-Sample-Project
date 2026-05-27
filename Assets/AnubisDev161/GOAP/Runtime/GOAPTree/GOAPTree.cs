@@ -36,13 +36,13 @@ namespace GOAP.Tree
             while (openQueue.count > 0)
             {
                 var currentNode = openQueue.Pop();
-                Debug.Log("Open queue size: " + openQueue.count);
+               // Debug.Log("Open queue size: " + openQueue.count);
 
                 if (WorldStateCompare.IsWorldStateBAchieved(currentWorldState, currentNode.requiredWorldState))
                 {
                     // valid plan found
-                    Debug.Log($"Valid plan found, iterations: {closedList.Count}");
-                    Debug.Log($"Available actions: {availableActions.Count}");
+                    //Debug.Log($"Valid plan found, iterations: {closedList.Count}");
+                    //Debug.Log($"Available actions: {availableActions.Count}");
                     return ReconstructPath(currentNode);
                 }
 

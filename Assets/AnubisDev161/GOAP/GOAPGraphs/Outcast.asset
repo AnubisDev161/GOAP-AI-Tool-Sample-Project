@@ -1,0 +1,268 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f77bc538dfa3e344b2fa387e9dbb0c9, type: 3}
+  m_Name: Outcast
+  m_EditorClassIdentifier: 
+  nodes:
+  - rid: 9217490272743587903
+  - rid: 9217490272743587904
+  - rid: 9217490272743587905
+  - rid: 9217490272743587907
+  - rid: 9217490272743587908
+  - rid: 9217490272743587927
+  - rid: 9217490272743587928
+  - rid: 9217490272743588132
+  - rid: 9217490272743588147
+  connections:
+  - inputPort:
+      nodeId: 457dc66a-65a3-4cdf-a3be-e7b9307d3424
+      portIndex: 0
+    outputPort:
+      nodeId: 65229b66-fe86-4c04-b186-08d1f573438f
+      portIndex: 0
+  - inputPort:
+      nodeId: 90c45a03-446f-4b24-bf95-e17d6de07805
+      portIndex: 0
+    outputPort:
+      nodeId: dac89d91-5a84-4cac-90f9-51cab182093f
+      portIndex: 0
+  - inputPort:
+      nodeId: 90c45a03-446f-4b24-bf95-e17d6de07805
+      portIndex: 0
+    outputPort:
+      nodeId: 45f7f982-c79a-4607-8760-2f04c4657067
+      portIndex: 0
+  - inputPort:
+      nodeId: 48223336-b0a4-4fcb-ba4d-32b1cc44991a
+      portIndex: 0
+    outputPort:
+      nodeId: e9c0ac08-41aa-44f6-8bb9-9e64d1d365ea
+      portIndex: 0
+  - inputPort:
+      nodeId: 3e56574a-474f-475f-bd95-ae6fe330acd1
+      portIndex: 0
+    outputPort:
+      nodeId: 48223336-b0a4-4fcb-ba4d-32b1cc44991a
+      portIndex: 1
+  agent: {fileID: 0}
+  blackboard:
+    facts:
+    - Thirst
+    - Hunger
+    - Scared
+    - HasMonolith
+    - HasShelter
+    - HasCampfire
+    - StockpiledWood
+    factValues:
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 2
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 2
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 1
+    keys:
+    - Campfire
+    values:
+    - rid: 9217490272743588145
+  references:
+    version: 2
+    RefIds:
+    - rid: 9217490272743587903
+      type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 457dc66a-65a3-4cdf-a3be-e7b9307d3424
+        pos:
+          serializedVersion: 2
+          x: 764
+          y: -504
+          width: 281
+          height: 134
+        typeName: GOAP.GOAPGraph.GoalWorldStateNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        name: HaveAHome
+        priority: 1
+        preconditionsFromWorldStateAfterAchieving: 0
+    - rid: 9217490272743587904
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 65229b66-fe86-4c04-b186-08d1f573438f
+        pos:
+          serializedVersion: 2
+          x: 502
+          y: -504
+          width: 234
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasShelter
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490272743587905
+      type: {class: ActionNode, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 90c45a03-446f-4b24-bf95-e17d6de07805
+        pos:
+          serializedVersion: 2
+          x: 796
+          y: -196
+          width: 243
+          height: 134
+        typeName: GOAP.GOAPGraph.ActionNode, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: ConstructShack
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+    - rid: 9217490272743587907
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: dac89d91-5a84-4cac-90f9-51cab182093f
+        pos:
+          serializedVersion: 2
+          x: 503
+          y: -291
+          width: 244
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasCampfire
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 9217490272743587908
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 45f7f982-c79a-4607-8760-2f04c4657067
+        pos:
+          serializedVersion: 2
+          x: 503
+          y: -103
+          width: 261
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: StockpiledWood
+          value: 5
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490272743587927
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: e9c0ac08-41aa-44f6-8bb9-9e64d1d365ea
+        pos:
+          serializedVersion: 2
+          x: 441
+          y: 278
+          width: 261
+          height: 172
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: StockpiledWood
+          value: 1
+          valueType: 1
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 1
+    - rid: 9217490272743587928
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 3e56574a-474f-475f-bd95-ae6fe330acd1
+        pos:
+          serializedVersion: 2
+          x: 1014
+          y: 278
+          width: 244
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasCampfire
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 9217490272743588132
+      type: {class: Construct, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: 48223336-b0a4-4fcb-ba4d-32b1cc44991a
+        pos:
+          serializedVersion: 2
+          x: 729
+          y: 278
+          width: 245
+          height: 192
+        typeName: ExampleProject.Construct, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: construct campfire
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        prefab: {fileID: 1380105545441427313, guid: 6dc0d450437bc3745a67147e3ce9f661, type: 3}
+        heightOffset: 0
+        keyName: Campfire
+    - rid: 9217490272743588145
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 9217490272743588147
+      type: {class: ChopTree, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: eaa3fc89-efcf-4eb3-b253-f9bcc3c4ed5f
+        pos:
+          serializedVersion: 2
+          x: 521
+          y: 585
+          width: 243
+          height: 153
+        typeName: ExampleProject.ChopTree, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: 
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        woodSourceKeyName: 

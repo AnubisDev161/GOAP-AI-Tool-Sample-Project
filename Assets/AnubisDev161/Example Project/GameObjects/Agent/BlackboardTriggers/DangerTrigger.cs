@@ -5,7 +5,7 @@ namespace ExampleProject
 {
     /// <summary>
     /// Example trigger that simply changes the InDanger blackbaord key from true to false,
-    /// depending on whether a threat has entered or exicted the collider
+    /// depending on whether a threat has entered or exited the collider
     /// </summary>
     [RequireComponent(typeof(SphereCollider))]
     public class DangerTrigger : GOAPBlackboardTrigger
