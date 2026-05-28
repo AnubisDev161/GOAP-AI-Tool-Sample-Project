@@ -18,19 +18,28 @@ namespace ExampleProject
         [ExposedProperty]
         public string keyName;
 
+        [ExposedProperty]
+        public Destination optionalSpecificPosition;
+
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             success = false;
-            var spawnPos = new Vector3(currentGraph.agent.transform.position.x, currentGraph.agent.transform.position.y + heightOffset, currentGraph.agent.transform.position.z);
-            var instantiatedGameObject = GameObject.Instantiate(prefab, spawnPos, Quaternion.identity);
+            Vector3 spawnPos;
+            if (optionalSpecificPosition.position == Vector3.zero)
+            {
+                spawnPos = new Vector3(currentGraph.agent.transform.position.x, currentGraph.agent.transform.position.y + heightOffset, currentGraph.agent.transform.position.z);
+            }
+            else
+            {
+                spawnPos = optionalSpecificPosition.position;
+            }
+         
+            var instantiatedGameObject = GameObject.Instantiate(prefab, spawnPos, prefab.transform.rotation);
 
             var key = currentGraph.Blackboard.GetKeyWithExpectedType(keyName, GOAPBlackbaord.BlackboardKeyType.GameObject);
             key.value = instantiatedGameObject;
-
             currentGraph.Blackboard.SetKey(keyName, key);
-
             if (instantiatedGameObject != null) success = true;
-
             base.OnExecuteFinished(currentGraph, worldState, success);
         }
     }

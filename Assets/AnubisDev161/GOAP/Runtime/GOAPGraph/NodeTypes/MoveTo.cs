@@ -17,27 +17,28 @@ namespace GOAP.GOAPGraph
 
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
+            success = false;
             var targetDestination = destination.position;
 
             if (targetDestination == Vector3.zero)
             {
-                var targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAPBlackbaord.BlackboardKeyType.Vector3);
-                if (targetPosKey != null && targetPosKey.value != null)
-                {
-                    targetDestination = (Vector3)targetPosKey.value;
-                }
+                targetDestination = GetVectorFromBlackboardKey(currentGraph);
             } 
 
             if (targetDestination == Vector3.zero)
             {
-                Debug.LogError("Given vector is null or vector.zero!");
-                success = false;
+                Debug.LogError("Given vector is vector.zero!");
+                base.OnExecuteFinished(currentGraph, worldState, success);
+                return;
+            }
+
+            if (!currentGraph.agent.navigation.SetDestination(targetDestination))
+            {
                 base.OnExecuteFinished(currentGraph, worldState, success);
                 return;
             }
 
             currentGraph.agent.navigation.desinationReached += OnDestinationReached;
-            currentGraph.agent.navigation.SetDestination(targetDestination);
         }
 
         private void OnDestinationReached(GOAPGraphAsset currentGraph, WorldState worldState)
@@ -50,10 +51,29 @@ namespace GOAP.GOAPGraph
         public override void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
         {
             base.OnAbandonCurrentPlan(currentGraph, worldState);
+            currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
             currentGraph.agent.navigation.SetDestination(currentGraph.agent.transform.position);
             Debug.Log("Move to node abandoned");
-            currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
             base.OnExecuteFinished(currentGraph, worldState, false);
+        }
+
+        private Vector3 GetVectorFromBlackboardKey(GOAPGraphAsset currentGraph)
+        {
+            var targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAPBlackbaord.BlackboardKeyType.Vector3);
+
+            if (targetPosKey != null && targetPosKey.value != null)
+            {
+                return (Vector3)targetPosKey.value;
+            }
+
+            targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAPBlackbaord.BlackboardKeyType.GameObject);
+
+            if (targetPosKey != null && targetPosKey.value != null)
+            {
+                return ((GameObject)targetPosKey.value).transform.position;
+            }
+
+            return Vector3.zero;
         }
     }
 

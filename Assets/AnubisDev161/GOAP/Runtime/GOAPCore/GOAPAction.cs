@@ -73,10 +73,12 @@ namespace GOAP.Core
 
         protected virtual bool FinishExecute(GOAPGraphAsset graphAsset, WorldState worldState, bool success)
         {
+            RemovePreconditionsFromWorldState(worldState);
+
             if (success)
             {
                 Debug.Log($"Precondtions met : " + " Action executed successfully" + $" Action name : {name} | Action cost: {cost}");
-                RemovePreconditionsAndAddEffectsToState(worldState);
+                AndAddEffectsToState(worldState);
             }
 
             actionGraphNode.executeFinished -= OnGraphNodeExecuteFinished;
@@ -85,7 +87,15 @@ namespace GOAP.Core
         }
 
         // If the plan is being executed, you need to start at the current world state
-        public void RemovePreconditionsAndAddEffectsToState(WorldState currentWorldState)
+        public void AndAddEffectsToState(WorldState currentWorldState)
+        {
+            foreach (var effect in effects)
+            {
+                effect.Value.ChangeWorldFactAccordingToOperationType(currentWorldState.worldFacts);
+            }
+        }
+
+        public void RemovePreconditionsFromWorldState(WorldState currentWorldState)
         {
             // remove all the preconditions of the action from tbhe current world state if removePreconditions is true
             if (actionGraphNode.RemovePreconditionsFromWorldState)
@@ -97,12 +107,6 @@ namespace GOAP.Core
                         currentWorldState.TryRemoveFact(precondition.Key);
                     }
                 }
-            }
-            
-            foreach (var effect in effects)
-            {
-                //currentWorldState.worldFacts[effect.Key] = effect.Value.ChangeWorldFactAccordingToOperationType(currentWorldState.worldFacts);
-                effect.Value.ChangeWorldFactAccordingToOperationType(currentWorldState.worldFacts);
             }
         }
 

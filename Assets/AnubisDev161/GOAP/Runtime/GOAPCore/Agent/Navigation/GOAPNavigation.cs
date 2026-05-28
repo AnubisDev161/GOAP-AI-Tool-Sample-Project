@@ -8,9 +8,9 @@ namespace GOAP.Core.Agent
     {
         public Action<GOAPGraphAsset, WorldState> desinationReached;
 
-        public virtual void SetDestination(Vector3 destination)
+        public virtual bool SetDestination(Vector3 destination)
         {
-
+            return true;
         }
 
         /// <summary>

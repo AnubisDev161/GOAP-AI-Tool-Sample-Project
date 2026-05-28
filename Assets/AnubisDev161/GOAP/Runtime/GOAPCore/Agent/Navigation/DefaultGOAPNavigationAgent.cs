@@ -7,7 +7,7 @@ namespace GOAP.Core.Agent
     public class DefaultGOAPNavigationAgent : GOAPNavigation
     {
         private NavMeshAgent navMeshAgent;
-        private bool destinationReached;
+        private bool destinationReached = true;
 
         [SerializeField]
         private float maxRemainingDistance = 2;
@@ -26,10 +26,11 @@ namespace GOAP.Core.Agent
             }
         }
 
-        public override void SetDestination(Vector3 destination)
+        public override bool SetDestination(Vector3 destination)
         {
+            if (navMeshAgent == null) return false;
             destinationReached = false;
-            navMeshAgent.SetDestination(destination);
+           return navMeshAgent.SetDestination(destination);
         }
     }
 }

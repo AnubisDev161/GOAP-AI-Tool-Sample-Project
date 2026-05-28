@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections.Generic;
 using GOAP.GOAPGraph;
 using GOAP.Core;
+using GOAP.Core.Agent;
 
 namespace ExampleProject
 {
@@ -13,11 +14,15 @@ namespace ExampleProject
 
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
-            var exampleAgent = currentGraph.agent as ExampleAgent;
-            var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(woodSourceKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.GameObject);
+            success = false;
+            var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(woodSourceKeyName, GOAPBlackbaord.BlackboardKeyType.GameObject);
             var woodSource =  woodSourceKey.value as GameObject;
-            GameObject.Destroy(woodSource);
-
+            if (woodSource != null)
+            {
+                success = true;
+                GameObject.Destroy(woodSource);
+            }
+           
             base.OnExecuteFinished(currentGraph, worldState, success);
         }
     }

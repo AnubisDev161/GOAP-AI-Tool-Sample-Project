@@ -56,11 +56,6 @@ namespace GOAP.Tree
                 
                 foreach (var action in availableActions)
                 {
-                    if (currentNode.action != null && currentNode.action.name == "chop tree")
-                    {
-                        var x = 23;
-                    }
-
                     if (!HasAnyRequiredEffects(action, currentNode.requiredWorldState.worldFacts, currentWorldState) || !action.IsAchvievable(graphInstance))
                     {
                         continue;

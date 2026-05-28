@@ -15,9 +15,7 @@ namespace ExampleProject
         [ExposedProperty]
         public float sphereCastRadius;
         [ExposedProperty]
-        public string targetPosKeyName;
-        [ExposedProperty]
-        public string wodSourceKeyName;
+        public string woodSourceKeyName;
 
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
@@ -26,9 +24,7 @@ namespace ExampleProject
             var closestTree = GetClosestTree(currentGraph.agent.transform.position);
             if (closestTree != null)
             {
-                var targetPosKey = currentGraph.Blackboard.GetKeyWithExpectedType(targetPosKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.Vector3);
-                var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(wodSourceKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.GameObject);
-                targetPosKey.value = closestTree.transform.position;
+                var woodSourceKey = currentGraph.Blackboard.GetKeyWithExpectedType(woodSourceKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.GameObject);
                 woodSourceKey.value = closestTree;
                 success = true;
             }

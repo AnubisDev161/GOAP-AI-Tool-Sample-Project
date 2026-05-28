@@ -298,13 +298,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8338672782161861880}
-  m_LocalRotation: {x: -0, y: 0.99946785, z: -0, w: 0.03262025}
+  m_LocalRotation: {x: -0, y: -0.9999748, z: -0, w: -0.0071070963}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.08448775, y: 0.084487766, z: 0.08448775}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 5896716755599469459}
-  m_LocalEulerAnglesHint: {x: 0, y: 176.261, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -180.814, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -422,6 +422,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   agent: {fileID: 818325633232849181}
+  canvas: {fileID: 8961149469496227116}
+  updateInterval: 0.3
 --- !u!1 &8715693930490049522
 GameObject:
   m_ObjectHideFlags: 0
