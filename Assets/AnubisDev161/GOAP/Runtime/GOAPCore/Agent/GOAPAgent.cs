@@ -10,7 +10,6 @@ namespace GOAP.Core.Agent
     public class GOAPAgent : MonoBehaviour
     {
         public GOAPNavigation navigation { get; private set; }
-
         public Action<GOAPGraphAsset, WorldState> abandonCurrentPlan;
         public GOAPBrain goapBrain {  get; private set; }
         [field: SerializeField]
@@ -139,6 +138,7 @@ namespace GOAP.Core.Agent
                 Debug.LogError($"Failed to execute plan with {planDebugInfo.planSize} actions | cost {planDebugInfo.totalCost}");
                 Debug.LogError($"New world state is {goapBrain.currentWorldState.ToString()}");
                 Debug.LogError($"Desired world state is {goapBrain.goalSelector.currentGoal.ToString()}");
+                Debug.LogError($"Agent {this} stopped planning");
                 return;
             }
             

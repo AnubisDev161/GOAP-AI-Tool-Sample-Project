@@ -1,3 +1,4 @@
+using GOAP.GOAPGraph;
 using System;
 using System.Collections.Generic;
 
@@ -9,13 +10,15 @@ namespace GOAP.Core
         public Dictionary<string, WorldFact> desiredConditions {  get; private set; }
         public string name { get; private set; }
         private bool removeDesiredConditionsFromWorldStateAfterAchieving;
+        public GoalWorldStateNode goalNode { get; private set; }
 
-        public GOAPGoal(float priority, Dictionary<string, WorldFact> desiredConditions, string goalName = "baseGoal", bool removeDesiredConditionsFromWorldStateAfterAchieving = false)
+        public GOAPGoal(float priority, Dictionary<string, WorldFact> desiredConditions,  string goalName = "baseGoal", bool removeDesiredConditionsFromWorldStateAfterAchieving = false, GoalWorldStateNode goalNode)
         {
             this.priority = priority;
             this.desiredConditions = desiredConditions;
             this.name = goalName;
             this.removeDesiredConditionsFromWorldStateAfterAchieving = removeDesiredConditionsFromWorldStateAfterAchieving;
+            this.goalNode = goalNode;
         }
 
         public virtual bool IsValid()

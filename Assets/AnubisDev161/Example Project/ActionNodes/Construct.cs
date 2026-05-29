@@ -19,19 +19,22 @@ namespace ExampleProject
         public string keyName;
 
         [ExposedProperty]
-        public Destination optionalSpecificPosition;
+        public Vector3 optionalSpecificPosition;
+
+        [ExposedProperty]
+        public string optionalSpecificPositionKeyName;
 
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             success = false;
             Vector3 spawnPos;
-            if (optionalSpecificPosition.position == Vector3.zero)
+            if (optionalSpecificPosition == Vector3.zero)
             {
                 spawnPos = new Vector3(currentGraph.agent.transform.position.x, currentGraph.agent.transform.position.y + heightOffset, currentGraph.agent.transform.position.z);
             }
             else
             {
-                spawnPos = optionalSpecificPosition.position;
+                spawnPos = optionalSpecificPosition;
             }
          
             var instantiatedGameObject = GameObject.Instantiate(prefab, spawnPos, prefab.transform.rotation);

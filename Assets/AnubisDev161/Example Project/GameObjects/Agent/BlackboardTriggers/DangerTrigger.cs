@@ -18,7 +18,7 @@ namespace ExampleProject
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
+            if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), true) == null) return;
 
             AddSpecifiedWorldFactWithValue(collisionEnterValue, true);
             Debug.Log("Threat in sight");
@@ -26,7 +26,7 @@ namespace ExampleProject
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), false) == null) return;
+            if (other.gameObject.GetComponentInParent(typeof(ThreatAgent), true) == null) return;
 
             AddSpecifiedWorldFactWithValue(collisionExitValue, false);
             Debug.Log("Threat out of sight");

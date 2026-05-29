@@ -127,8 +127,9 @@ GameObject:
   - component: {fileID: 2030740392476333117}
   - component: {fileID: 3743733462572934911}
   - component: {fileID: 4476644249385552316}
+  - component: {fileID: 9122400770236402709}
   m_Layer: 0
-  m_Name: Outcast
+  m_Name: Hermit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -251,7 +252,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00d540e6d092df844b330d2ca3a8c1c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: Thirsty
+  keyName: Thirst
   expectedType: 0
   expectedWorldFactValueType: 2
   interval: 8
@@ -268,7 +269,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1386bb3233155b444967f3b97c9968bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  keyName: Hungry
+  keyName: Hunger
   expectedType: 0
   expectedWorldFactValueType: 2
   interval: 5
@@ -290,6 +291,27 @@ MonoBehaviour:
   expectedWorldFactValueType: 2
   interval: 0.1
   scaredIncreasePerInterval: 1
+--- !u!135 &9122400770236402709
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4027145250909995199}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.22
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &4877607085440544465
 GameObject:
   m_ObjectHideFlags: 0

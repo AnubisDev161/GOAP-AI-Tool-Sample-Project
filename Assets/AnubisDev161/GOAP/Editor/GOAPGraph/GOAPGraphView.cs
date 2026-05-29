@@ -2,6 +2,7 @@ using GOAP.Core;
 using GOAP.Core.Agent;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Security;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEditor.UIElements;
@@ -62,24 +63,8 @@ namespace GOAP.GOAPGraph.Editor
             // Create blackboard
             AddBlackboard();
             AddWorldFactBlackboard();
-
-            StickyNote stickyNote = new StickyNote();
-            stickyNote.style.backgroundColor = new StyleColor(new Color(1, 1, 1, 0.05f));
-
-            stickyNote.style.color = Color.white;
-            stickyNote.theme = StickyNoteTheme.Black;
-
-
-
-
-            Add(stickyNote);
         }
 
-        //public override void BuildContextualMenu(ContextualMenuPopulateEvent evt)
-        //{
-        //    evt.menu.ap("Add sticky node")
-        //    base.BuildContextualMenu(evt);
-        //}
         private void AddWorldFactBlackboard()
         {
             Blackboard worldFactsBlackboard = new Blackboard();
