@@ -50,11 +50,9 @@ namespace GOAP.GOAPGraph
 
         public override void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
         {
-            base.OnAbandonCurrentPlan(currentGraph, worldState);
             currentGraph.agent.navigation.desinationReached -= OnDestinationReached;
             currentGraph.agent.navigation.SetDestination(currentGraph.agent.transform.position);
-            Debug.Log("Move to node abandoned");
-            base.OnExecuteFinished(currentGraph, worldState, false);
+            base.OnAbandonCurrentPlan(currentGraph, worldState);
         }
 
         private Vector3 GetVectorFromBlackboardKey(GOAPGraphAsset currentGraph)

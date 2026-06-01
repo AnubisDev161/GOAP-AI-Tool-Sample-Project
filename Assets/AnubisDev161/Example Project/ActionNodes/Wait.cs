@@ -26,7 +26,7 @@ namespace ExampleProject
             currentGraph.agent.StartCoroutine(WaitForSeconds(currentGraph, worldState, success));
         }
 
-        private IEnumerator WaitForSeconds(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
+        protected IEnumerator WaitForSeconds(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
         {
             var waitTime = 0.0f;
 
@@ -51,7 +51,16 @@ namespace ExampleProject
                 }
             }
 
+            OnWaitingTimeFinished(currentGraph, worldState, success);
+        }
+
+        protected virtual void OnWaitingTimeFinished(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
+        {
             OnExecuteFinished(currentGraph, worldState, success);
+        }
+        public override void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
+        {
+            currentGraph.agent.StopAllCoroutines();
         }
     }
 }

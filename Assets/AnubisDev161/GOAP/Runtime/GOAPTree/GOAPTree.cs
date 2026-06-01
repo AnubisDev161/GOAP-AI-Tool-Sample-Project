@@ -9,7 +9,7 @@ namespace GOAP.Tree
         private List<GOAPAction> availableActions;
 
         // Depending on the size of your plans, this number needs to be adjusted to either decrease or increase the allowed number of iterations per plan.
-        private int maxClosedListSize = 400;
+        private int maxClosedListSize = 300;
 
         public Queue<GOAPAction> GeneratePlan(WorldState currentWorldState, GOAPGoal goal, List<GOAPAction> availableActions, GOAPGraph.GOAPGraphAsset graphInstance)
         {

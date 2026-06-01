@@ -44,6 +44,13 @@ public class EventUI : MonoBehaviour
         {
             agent.goapBrain.currentWorldState.TryAddFact(isNightWorldFact, true);
         }
+
+        var dayNightcycle = GameObject.FindAnyObjectByType<DayNightCycle>();
+
+        if (dayNightcycle != null)
+        {
+            dayNightcycle.StartNight();
+        }
     }
 
     private void Update()

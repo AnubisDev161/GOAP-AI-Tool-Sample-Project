@@ -1,5 +1,4 @@
 using GOAP.GOAPGraph;
-using System;
 using System.Collections.Generic;
 
 namespace GOAP.Core
@@ -12,7 +11,7 @@ namespace GOAP.Core
         private bool removeDesiredConditionsFromWorldStateAfterAchieving;
         public GoalWorldStateNode goalNode { get; private set; }
 
-        public GOAPGoal(float priority, Dictionary<string, WorldFact> desiredConditions,  string goalName = "baseGoal", bool removeDesiredConditionsFromWorldStateAfterAchieving = false, GoalWorldStateNode goalNode)
+        public GOAPGoal(float priority, Dictionary<string, WorldFact> desiredConditions,  string goalName = "baseGoal", bool removeDesiredConditionsFromWorldStateAfterAchieving = false, GoalWorldStateNode goalNode = null)
         {
             this.priority = priority;
             this.desiredConditions = desiredConditions;
@@ -51,6 +50,11 @@ namespace GOAP.Core
                 {
                     currentWorldState.TryRemoveFact(condition.Key);
                 }
+            }
+
+            if (goalNode != null)
+            {
+                goalNode.OnAchieved();
             }
         }
     }

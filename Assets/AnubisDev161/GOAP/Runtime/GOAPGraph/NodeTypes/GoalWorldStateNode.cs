@@ -13,5 +13,10 @@ namespace GOAP.GOAPGraph
 
         [ExposedProperty]
         public bool preconditionsFromWorldStateAfterAchieving;
+
+        public virtual void OnAchieved()
+        {
+
+        }
     }
 }

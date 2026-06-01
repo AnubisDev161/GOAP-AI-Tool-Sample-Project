@@ -19,6 +19,7 @@ namespace GOAP.GOAPGraph
         public virtual void OnAbandonCurrentPlan(GOAPGraphAsset currentGraph, WorldState worldState)
         {
             Debug.Log($"<color=orange>Action: {name} abandoned, current world state is {worldState}");
+            base.OnExecuteFinished(currentGraph, worldState, false);
         }
 
         /// <summary>
