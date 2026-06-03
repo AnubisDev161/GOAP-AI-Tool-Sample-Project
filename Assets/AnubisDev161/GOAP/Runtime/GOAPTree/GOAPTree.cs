@@ -20,7 +20,7 @@ namespace GOAP.Tree
 
             if (bestPlan == null)
             {
-                Debug.LogError("Plan is null!");
+                Debug.Log(AddErrorColorAndSize("Plan is null!"));
             }
 
             return bestPlan;
@@ -36,13 +36,10 @@ namespace GOAP.Tree
             while (openQueue.count > 0)
             {
                 var currentNode = openQueue.Pop();
-               // Debug.Log("Open queue size: " + openQueue.count);
 
                 if (WorldStateCompare.IsWorldStateBAchieved(currentWorldState, currentNode.requiredWorldState))
                 {
                     // valid plan found
-                    //Debug.Log($"Valid plan found, iterations: {closedList.Count}");
-                    //Debug.Log($"Available actions: {availableActions.Count}");
                     return ReconstructPath(currentNode);
                 }
 
@@ -68,11 +65,6 @@ namespace GOAP.Tree
                     var tentativeGCost = currentNode.gCost + action.GetCost();
                     var hCost = CalculateHeuristic(mutatedWorldState, goalWorldState);
 
-                    if (closedList.ContainsKey(mutatedWorldState))
-                    {
-                        continue;
-                    }
-
                     if (openQueue.Contains(mutatedWorldState) && tentativeGCost < openQueue.GetItem(mutatedWorldState).gCost)
                     {
                         openQueue.ReplaceItem(new GOAPNode(action, currentNode, mutatedWorldState, tentativeGCost, hCost));
@@ -86,10 +78,15 @@ namespace GOAP.Tree
                 }
             }
 
-            Debug.LogError("No valid plan found!");
+            Debug.Log(AddErrorColorAndSize("No valid plan found!"));
             return null;
         }
 
+        private string AddErrorColorAndSize(string errorMessage, float size = 12)
+        {
+            return $"<size={size}><color=#FF7F7F>{errorMessage}</color></size>";
+        }
+        
         private int CalculateHeuristic(WorldState worldState, WorldState goalState)
         {
             int h = 0;
@@ -121,7 +118,6 @@ namespace GOAP.Tree
         private GOAPNode CreateStartNode(GOAPGoal goal)
         {
             GOAPNode startNode = new GOAPNode(null, null, goal.desiredConditions, 0, 0);
-
             return startNode;
         }
 
