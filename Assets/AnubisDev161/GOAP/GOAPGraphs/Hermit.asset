@@ -98,10 +98,6 @@ MonoBehaviour:
   - rid: 9217490301358178420
   - rid: 9217490301358178421
   - rid: 9217490301358178422
-  - rid: 9217490301358178423
-  - rid: 9217490301358178424
-  - rid: 9217490301358178425
-  - rid: 9217490301358178426
   - rid: 9217490315186536516
   - rid: 9217490315186536524
   - rid: 9217490315186536525
@@ -136,6 +132,14 @@ MonoBehaviour:
   - rid: 9217490371410133065
   - rid: 9217490371410133066
   - rid: 9217490371410133067
+  - rid: 3990166233427476542
+  - rid: 3990166233427476544
+  - rid: 3990166233427476545
+  - rid: 3990166233427476546
+  - rid: 3990166233427476547
+  - rid: 3990166233427476548
+  - rid: 3990166233427476549
+  - rid: 3990166233427476550
   connections:
   - inputPort:
       nodeId: 457dc66a-65a3-4cdf-a3be-e7b9307d3424
@@ -468,24 +472,6 @@ MonoBehaviour:
       nodeId: 12293b2a-a3c3-4cac-8823-b8c8536196f1
       portIndex: 0
   - inputPort:
-      nodeId: 7725592f-87a4-4a0b-952c-e2d825564d2b
-      portIndex: 0
-    outputPort:
-      nodeId: 99d2d546-2994-4bcc-93d7-ec823cedbd91
-      portIndex: 0
-  - inputPort:
-      nodeId: d7c23848-9f98-4c4d-b5dd-ed09ff1ac283
-      portIndex: 0
-    outputPort:
-      nodeId: 7725592f-87a4-4a0b-952c-e2d825564d2b
-      portIndex: 1
-  - inputPort:
-      nodeId: 7725592f-87a4-4a0b-952c-e2d825564d2b
-      portIndex: 0
-    outputPort:
-      nodeId: 711de93c-6772-47d9-97ed-2b71f7437c7c
-      portIndex: 0
-  - inputPort:
       nodeId: 7cfe6837-8fcd-4e49-8298-8fa8ef3acc31
       portIndex: 0
     outputPort:
@@ -600,10 +586,58 @@ MonoBehaviour:
       nodeId: 369269f9-2d08-4d7f-9729-2c4e31cd84bf
       portIndex: 0
   - inputPort:
+      nodeId: 6450a606-5b99-4f64-8ce5-7453ce9452e1
+      portIndex: 0
+    outputPort:
+      nodeId: 12e9929d-2a0a-4305-b58a-ed1f84736016
+      portIndex: 1
+  - inputPort:
+      nodeId: ec3d00af-923e-4ad3-a064-07291e3f1195
+      portIndex: 0
+    outputPort:
+      nodeId: 97daf4bd-15e8-4034-9d90-9363796e338b
+      portIndex: 0
+  - inputPort:
+      nodeId: ec3d00af-923e-4ad3-a064-07291e3f1195
+      portIndex: 0
+    outputPort:
+      nodeId: 4fbe796f-d62d-4020-bb2f-e93d20e1db8b
+      portIndex: 0
+  - inputPort:
+      nodeId: ec3d00af-923e-4ad3-a064-07291e3f1195
+      portIndex: 0
+    outputPort:
+      nodeId: 54565a61-12ae-4888-ba19-8d8702fa139e
+      portIndex: 0
+  - inputPort:
+      nodeId: f0d26d99-97e1-4261-a5ed-5eb33a08e974
+      portIndex: 0
+    outputPort:
+      nodeId: ec3d00af-923e-4ad3-a064-07291e3f1195
+      portIndex: 1
+  - inputPort:
+      nodeId: 3143e6bb-3baf-4e43-9cfe-a034368ce46c
+      portIndex: 0
+    outputPort:
+      nodeId: ec3d00af-923e-4ad3-a064-07291e3f1195
+      portIndex: 1
+  - inputPort:
+      nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
+      portIndex: 0
+    outputPort:
+      nodeId: 693306cc-334c-4e6f-861b-06b760b962c8
+      portIndex: 0
+  - inputPort:
       nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
       portIndex: 0
     outputPort:
       nodeId: 25453478-bfbf-4aa0-a5cb-060e92c15725
+      portIndex: 0
+  - inputPort:
+      nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
+      portIndex: 0
+    outputPort:
+      nodeId: 4ca68928-e1b2-490a-9c65-98d3961521bd
       portIndex: 0
   - inputPort:
       nodeId: 74e33667-8dd3-495e-8a47-46f7e60a6e05
@@ -617,18 +651,6 @@ MonoBehaviour:
     outputPort:
       nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
       portIndex: 1
-  - inputPort:
-      nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
-      portIndex: 0
-    outputPort:
-      nodeId: 693306cc-334c-4e6f-861b-06b760b962c8
-      portIndex: 0
-  - inputPort:
-      nodeId: 19c9b949-c3a9-42c6-bfc7-e31445a3eabd
-      portIndex: 0
-    outputPort:
-      nodeId: 4ca68928-e1b2-490a-9c65-98d3961521bd
-      portIndex: 0
   - inputPort:
       nodeId: 19dafe79-b52e-4aad-9830-96aed8411c8a
       portIndex: 0
@@ -669,6 +691,7 @@ MonoBehaviour:
     - HasImprovisedCamp
     - HasRandomCalmPosition
     - AtRandomCalmPosition
+    - AtTentPosition
     factValues:
     - isWorldFact: 1
       keyType: 0
@@ -745,6 +768,9 @@ MonoBehaviour:
     - isWorldFact: 1
       keyType: 0
       worldFactType: 0
+    - isWorldFact: 1
+      keyType: 0
+      worldFactType: 0
     keys:
     - Campfire
     - WoodSource
@@ -758,17 +784,17 @@ MonoBehaviour:
     - ImprovisedCampPos
     - RandomCalmPosition
     values:
-    - rid: 9217490371410132992
-    - rid: 9217490371410132993
-    - rid: 9217490371410132994
-    - rid: 9217490371410132995
-    - rid: 9217490371410132996
-    - rid: 9217490371410132997
-    - rid: 9217490371410132998
-    - rid: 9217490371410132999
-    - rid: 9217490371410133000
-    - rid: 9217490371410133001
-    - rid: 9217490371410133002
+    - rid: 3990166233427476551
+    - rid: 3990166233427476552
+    - rid: 3990166233427476553
+    - rid: 3990166233427476554
+    - rid: 3990166233427476555
+    - rid: 3990166233427476556
+    - rid: 3990166233427476557
+    - rid: 3990166233427476558
+    - rid: 3990166233427476559
+    - rid: 3990166233427476560
+    - rid: 3990166233427476561
   references:
     version: 2
     RefIds:
@@ -1755,6 +1781,231 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 0
+    - rid: 3990166233427476542
+      type: {class: SleepAtTent, ns: ExampleProject, asm: Assembly-CSharp}
+      data:
+        guid: ec3d00af-923e-4ad3-a064-07291e3f1195
+        pos:
+          serializedVersion: 2
+          x: 2637
+          y: 7095
+          width: 278
+          height: 209
+        typeName: ExampleProject.SleepAtTent, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Sleep at tent
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        seconds: 4
+        optionalGameObject: 
+        triggerInteractIfGameObjectIsSmartObject: 0
+    - rid: 3990166233427476544
+      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 12e9929d-2a0a-4305-b58a-ed1f84736016
+        pos:
+          serializedVersion: 2
+          x: 2654
+          y: 6804
+          width: 243
+          height: 173
+        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 0000000001000000
+        name: Move to tent
+        cost: 1
+        RemovePreconditionsFromWorldState: 0
+        destination:
+          position: {x: 0, y: 0, z: 0}
+          sceneID: 0
+        targetPosKeyName: Tent
+    - rid: 3990166233427476545
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 97daf4bd-15e8-4034-9d90-9363796e338b
+        pos:
+          serializedVersion: 2
+          x: 2352
+          y: 7095
+          width: 252
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: AtTentPosition
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 3990166233427476546
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 6450a606-5b99-4f64-8ce5-7453ce9452e1
+        pos:
+          serializedVersion: 2
+          x: 2915
+          y: 6804
+          width: 252
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: AtTentPosition
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 3990166233427476547
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 54565a61-12ae-4888-ba19-8d8702fa139e
+        pos:
+          serializedVersion: 2
+          x: 2364
+          y: 7278
+          width: 234
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: HasShelter
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 3990166233427476548
+      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 4fbe796f-d62d-4020-bb2f-e93d20e1db8b
+        pos:
+          serializedVersion: 2
+          x: 2385
+          y: 7472
+          width: 213
+          height: 171
+        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsNight
+          value: True
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        acceptedValue: 0
+    - rid: 3990166233427476549
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: f0d26d99-97e1-4261-a5ed-5eb33a08e974
+        pos:
+          serializedVersion: 2
+          x: 2974
+          y: 7082
+          width: 213
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: IsNight
+          value: False
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 3990166233427476550
+      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
+      data:
+        guid: 3143e6bb-3baf-4e43-9cfe-a034368ce46c
+        pos:
+          serializedVersion: 2
+          x: 2978
+          y: 7278
+          width: 209
+          height: 171
+        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
+          PublicKeyToken=null
+        portsIndices: 00000000
+        worldFact:
+          name: AtTentPosition
+          value: False
+          valueType: 0
+          acceptedValue: 0
+          operationType: 0
+        operationType: 0
+    - rid: 3990166233427476551
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476552
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476553
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476554
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476555
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476556
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476557
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476558
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 0
+        worldFactType: 0
+    - rid: 3990166233427476559
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 5
+        worldFactType: 0
+    - rid: 3990166233427476560
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 4
+        worldFactType: 0
+    - rid: 3990166233427476561
+      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
+      data:
+        isWorldFact: 0
+        keyType: 4
+        worldFactType: 0
     - rid: 9217490272743587903
       type: {class: GoalWorldStateNode, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -2410,86 +2661,6 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 0
-    - rid: 9217490301358178423
-      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 99d2d546-2994-4bcc-93d7-ec823cedbd91
-        pos:
-          serializedVersion: 2
-          x: 815
-          y: 5486
-          width: 213
-          height: 171
-        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-        worldFact:
-          name: IsNight
-          value: True
-          valueType: 0
-          acceptedValue: 0
-          operationType: 0
-        acceptedValue: 0
-    - rid: 9217490301358178424
-      type: {class: MoveTo, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 7725592f-87a4-4a0b-952c-e2d825564d2b
-        pos:
-          serializedVersion: 2
-          x: 1092
-          y: 5484
-          width: 243
-          height: 173
-        typeName: GOAP.GOAPGraph.MoveTo, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 0000000001000000
-        name: Sleep
-        cost: 1
-        RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
-        targetPosKeyName: Tent
-    - rid: 9217490301358178425
-      type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: d7c23848-9f98-4c4d-b5dd-ed09ff1ac283
-        pos:
-          serializedVersion: 2
-          x: 1386
-          y: 5486
-          width: 213
-          height: 171
-        typeName: GOAP.GOAPGraph.Effect, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-        worldFact:
-          name: IsNight
-          value: False
-          valueType: 0
-          acceptedValue: 0
-          operationType: 0
-        operationType: 0
-    - rid: 9217490301358178426
-      type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
-      data:
-        guid: 711de93c-6772-47d9-97ed-2b71f7437c7c
-        pos:
-          serializedVersion: 2
-          x: 815
-          y: 5677
-          width: 234
-          height: 171
-        typeName: GOAP.GOAPGraph.Precondition, GOAP, Version=0.0.0.0, Culture=neutral,
-          PublicKeyToken=null
-        portsIndices: 00000000
-        worldFact:
-          name: HasShelter
-          value: True
-          valueType: 0
-          acceptedValue: 0
-          operationType: 0
-        acceptedValue: 0
     - rid: 9217490315186536516
       type: {class: GenerateRandomDestination, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -2504,7 +2675,7 @@ MonoBehaviour:
           Culture=neutral, PublicKeyToken=null
         portsIndices: 0000000001000000
         name: Generate random improvised camp position
-        cost: 1
+        cost: 2
         RemovePreconditionsFromWorldState: 0
         range: 20
         targetPosKeyName: ImprovisedCampPos
@@ -2522,7 +2693,7 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 0000000001000000
         name: Construct improvised camp
-        cost: 3
+        cost: 5
         RemovePreconditionsFromWorldState: 1
         prefab: {fileID: 5056465396647143860, guid: fe8176adba8d0f74aad60a741fad245c, type: 3}
         heightOffset: 0
@@ -2904,7 +3075,6 @@ MonoBehaviour:
         cost: 4
         RemovePreconditionsFromWorldState: 1
         seconds: 4
-        waitDurationKeyName: 
         optionalGameObject: 
         triggerInteractIfGameObjectIsSmartObject: 0
     - rid: 9217490320364666990
@@ -3107,72 +3277,6 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         acceptedValue: 0
-    - rid: 9217490371410132992
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132993
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132994
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132995
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132996
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132997
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132998
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410132999
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 0
-        worldFactType: 0
-    - rid: 9217490371410133000
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 5
-        worldFactType: 0
-    - rid: 9217490371410133001
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 4
-        worldFactType: 0
-    - rid: 9217490371410133002
-      type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
-      data:
-        isWorldFact: 0
-        keyType: 4
-        worldFactType: 0
     - rid: 9217490371410133065
       type: {class: SleepAtImprovisedCamp, ns: , asm: Assembly-CSharp}
       data:
@@ -3187,10 +3291,9 @@ MonoBehaviour:
           PublicKeyToken=null
         portsIndices: 0000000001000000
         name: sleep at improvised camp until morning
-        cost: 1
+        cost: 5
         RemovePreconditionsFromWorldState: 0
         seconds: 5
-        waitDurationKeyName: 
         optionalGameObject: ImprovisedCamp
         triggerInteractIfGameObjectIsSmartObject: 1
     - rid: 9217490371410133066

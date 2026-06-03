@@ -13,9 +13,6 @@ namespace ExampleProject
         public float seconds;
 
         [ExposedProperty]
-        public string waitDurationKeyName;
-
-        [ExposedProperty]
         public string optionalGameObject;
 
         [ExposedProperty]
@@ -28,18 +25,7 @@ namespace ExampleProject
 
         protected IEnumerator WaitForSeconds(GOAPGraphAsset currentGraph, WorldState worldState, bool success)
         {
-            var waitTime = 0.0f;
-
-            if (seconds == 0)
-            {
-                waitTime = (float)currentGraph.Blackboard.GetKeyWithExpectedType(waitDurationKeyName, GOAP.Core.Agent.GOAPBlackbaord.BlackboardKeyType.Float).value;
-            }
-            else
-            {
-                waitTime = seconds;
-            }
-
-            yield return new WaitForSeconds(waitTime);
+            yield return new WaitForSeconds(seconds);
             success = true;
 
             if (triggerInteractIfGameObjectIsSmartObject)
