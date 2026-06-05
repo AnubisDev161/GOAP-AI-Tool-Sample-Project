@@ -4,7 +4,7 @@ This is an example project that showcases my GOAP AI Tool which is an AI behavio
 
 It includes a test scene with two characters: The hermit, and the Threat:
 
-To showcase the tool I’ve chosen a survival scenario with two different agent types:
+## To showcase the tool I’ve chosen a survival scenario with two different agent types:
  
 The most important one is the Hermit, an agent whose main goal is to build a camp that includes a campfire, a monolith to have a place to calm down after being scared and a proper tent. 
 
