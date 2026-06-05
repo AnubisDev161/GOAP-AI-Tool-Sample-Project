@@ -51,7 +51,7 @@ namespace ExampleProject
             var colliders = Physics.OverlapSphere(position, minSpaceBetweenTree, treeMask);
             if (colliders == null)
             {
-                Debug.Log("<color=yellow> Found valid grow position");
+                UnityEngine.Debug.Log("<color=yellow> Found valid grow position");
                 return true;
             }
 

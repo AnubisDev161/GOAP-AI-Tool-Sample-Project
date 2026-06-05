@@ -20,7 +20,7 @@ namespace GOAP.Tree
 
             if (bestPlan == null)
             {
-                Debug.Log(AddErrorColorAndSize("Plan is null!"));
+                Debug.Log(GOAPDebug.AddErrorColorAndSize("Plan is null!"));
             }
 
             return bestPlan;
@@ -47,7 +47,7 @@ namespace GOAP.Tree
 
                 if (closedList.Count > maxClosedListSize)
                 {
-                    Debug.Log("Stuck in loop!");
+                    Debug.Log(GOAPDebug.AddErrorColorAndSize("Max closed list size reached!"));
                     break;
                 }
                 
@@ -78,13 +78,8 @@ namespace GOAP.Tree
                 }
             }
 
-            Debug.Log(AddErrorColorAndSize("No valid plan found!"));
+            Debug.Log(GOAPDebug.AddErrorColorAndSize("No valid plan found!"));
             return null;
-        }
-
-        private string AddErrorColorAndSize(string errorMessage, float size = 12)
-        {
-            return $"<size={size}><color=#FF7F7F>{errorMessage}</color></size>";
         }
         
         private int CalculateHeuristic(WorldState worldState, WorldState goalState)

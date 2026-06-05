@@ -10,7 +10,7 @@ namespace GOAP.GOAPGraph
     public class MoveTo : ActionNode
     {
         [ExposedProperty]
-        public Destination destination;
+        public Vector3 targetDestination;
 
         [ExposedProperty]
         public string targetPosKeyName;
@@ -18,7 +18,7 @@ namespace GOAP.GOAPGraph
         public override void OnExecute(GOAPGraphAsset currentGraph, WorldState worldState, Dictionary<string, WorldFact> preconditions = null, Dictionary<string, WorldFact> effects = null, bool success = true)
         {
             success = false;
-            var targetDestination = destination.position;
+            var targetDestination = this.targetDestination;
 
             if (targetDestination == Vector3.zero)
             {
@@ -73,16 +73,5 @@ namespace GOAP.GOAPGraph
 
             return Vector3.zero;
         }
-    }
-
-    // Create a wrapper class you can draw with a custom property drawer
-    [Serializable]
-    public class Destination
-    {
-        [SerializeField]
-        public Vector3 position;
-
-        [SerializeField]
-        public int sceneID;
     }
 }

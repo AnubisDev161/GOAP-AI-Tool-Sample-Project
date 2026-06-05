@@ -784,17 +784,17 @@ MonoBehaviour:
     - ImprovisedCampPos
     - RandomCalmPosition
     values:
-    - rid: 3990166233427476551
-    - rid: 3990166233427476552
-    - rid: 3990166233427476553
-    - rid: 3990166233427476554
-    - rid: 3990166233427476555
-    - rid: 3990166233427476556
-    - rid: 3990166233427476557
-    - rid: 3990166233427476558
-    - rid: 3990166233427476559
-    - rid: 3990166233427476560
-    - rid: 3990166233427476561
+    - rid: 3990166283042947175
+    - rid: 3990166283042947176
+    - rid: 3990166283042947177
+    - rid: 3990166283042947178
+    - rid: 3990166283042947179
+    - rid: 3990166283042947180
+    - rid: 3990166283042947181
+    - rid: 3990166283042947182
+    - rid: 3990166283042947183
+    - rid: 3990166283042947184
+    - rid: 3990166283042947185
   references:
     version: 2
     RefIds:
@@ -854,7 +854,7 @@ MonoBehaviour:
           serializedVersion: 2
           m_Bits: 8
         sphereCastRadius: 40
-        woodSourceKeyName: WoodSource
+        saveObjectInKeyWithName: WoodSource
     - rid: 61794279778156629
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
       data:
@@ -911,9 +911,7 @@ MonoBehaviour:
         name: move to wood source
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: WoodSource
     - rid: 61794279778156643
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1011,9 +1009,7 @@ MonoBehaviour:
         name: Stockpile wood resource
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 9.4, y: 0, z: -22.34}
-          sceneID: 46850
+        targetDestination: {x: 9.4, y: 0, z: -22.34}
         targetPosKeyName: 
     - rid: 61794279778156649
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1258,9 +1254,7 @@ MonoBehaviour:
         name: move to stone source
         cost: 1
         RemovePreconditionsFromWorldState: 1
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: StoneSource
     - rid: 61794295112270106
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1355,9 +1349,7 @@ MonoBehaviour:
         name: Stockpile stone resource
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 9.4, y: 0, z: -22.34}
-          sceneID: 46850
+        targetDestination: {x: 9.4, y: 0, z: -22.34}
         targetPosKeyName: 
     - rid: 61794295112270111
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1473,7 +1465,7 @@ MonoBehaviour:
         RemovePreconditionsFromWorldState: 0
         prefab: {fileID: 7722875281602677712, guid: 7c3734a26d75cfb438c0dbef71aa8089, type: 3}
         heightOffset: 0
-        keyName: Monolith
+        SaveObjectInKeyWithName: Monolith
         optionalSpecificPosition: {x: 12.78, y: 0.03500001, z: -20.26}
         optionalSpecificPositionKeyName: 
     - rid: 61794295112270128
@@ -1660,9 +1652,7 @@ MonoBehaviour:
         name: Calm at monolith
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: Monolith
     - rid: 61794295112270139
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1742,7 +1732,7 @@ MonoBehaviour:
         RemovePreconditionsFromWorldState: 0
         prefab: {fileID: 1979339832871907340, guid: d59530116cfbe5b4bbb0874df51232f7, type: 3}
         heightOffset: 0
-        keyName: Tent
+        SaveObjectInKeyWithName: Tent
         optionalSpecificPosition: {x: 3.86, y: 0.0041, z: -20.26}
         optionalSpecificPositionKeyName: 
     - rid: 61794300712452389
@@ -1816,9 +1806,7 @@ MonoBehaviour:
         name: Move to tent
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: Tent
     - rid: 3990166233427476545
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -1940,67 +1928,67 @@ MonoBehaviour:
           acceptedValue: 0
           operationType: 0
         operationType: 0
-    - rid: 3990166233427476551
+    - rid: 3990166283042947175
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476552
+    - rid: 3990166283042947176
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476553
+    - rid: 3990166283042947177
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476554
+    - rid: 3990166283042947178
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476555
+    - rid: 3990166283042947179
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476556
+    - rid: 3990166283042947180
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476557
+    - rid: 3990166283042947181
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476558
+    - rid: 3990166283042947182
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 0
         worldFactType: 0
-    - rid: 3990166233427476559
+    - rid: 3990166283042947183
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 5
         worldFactType: 0
-    - rid: 3990166233427476560
+    - rid: 3990166283042947184
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
         keyType: 4
         worldFactType: 0
-    - rid: 3990166233427476561
+    - rid: 3990166283042947185
       type: {class: GOAPBlackbaord/BlackboardKey, ns: GOAP.Core.Agent, asm: GOAP}
       data:
         isWorldFact: 0
@@ -2140,7 +2128,7 @@ MonoBehaviour:
         RemovePreconditionsFromWorldState: 0
         prefab: {fileID: 1380105545441427313, guid: 6dc0d450437bc3745a67147e3ce9f661, type: 3}
         heightOffset: 0
-        keyName: Campfire
+        SaveObjectInKeyWithName: Campfire
         optionalSpecificPosition: {x: 9.71, y: 0.004099994, z: -18.63}
         optionalSpecificPositionKeyName: 
     - rid: 9217490272743588147
@@ -2212,9 +2200,7 @@ MonoBehaviour:
         name: Cook food and eat
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: Campfire
     - rid: 9217490301358178377
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -2328,9 +2314,7 @@ MonoBehaviour:
         name: Drink
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: WaterSource
     - rid: 9217490301358178384
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -2466,9 +2450,7 @@ MonoBehaviour:
         name: Move to food source
         cost: 1
         RemovePreconditionsFromWorldState: 1
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: FoodSource
     - rid: 9217490301358178408
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -2697,7 +2679,7 @@ MonoBehaviour:
         RemovePreconditionsFromWorldState: 1
         prefab: {fileID: 5056465396647143860, guid: fe8176adba8d0f74aad60a741fad245c, type: 3}
         heightOffset: 0
-        keyName: ImprovisedCamp
+        SaveObjectInKeyWithName: ImprovisedCamp
         optionalSpecificPosition: {x: 0, y: 0, z: 0}
         optionalSpecificPositionKeyName: ImprovisedCampPos
     - rid: 9217490315186536525
@@ -2716,9 +2698,7 @@ MonoBehaviour:
         name: Move to improvised camp construction position
         cost: 1
         RemovePreconditionsFromWorldState: 1
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: ImprovisedCampPos
     - rid: 9217490315186536526
       type: {class: Effect, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -2976,9 +2956,7 @@ MonoBehaviour:
         name: Move to improvised camp
         cost: 1
         RemovePreconditionsFromWorldState: 0
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: ImprovisedCamp
     - rid: 9217490315186536687
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}
@@ -3213,9 +3191,7 @@ MonoBehaviour:
         name: Move to random calm position
         cost: 3
         RemovePreconditionsFromWorldState: 1
-        destination:
-          position: {x: 0, y: 0, z: 0}
-          sceneID: 0
+        targetDestination: {x: 0, y: 0, z: 0}
         targetPosKeyName: RandomCalmPosition
     - rid: 9217490320364666998
       type: {class: Precondition, ns: GOAP.GOAPGraph, asm: GOAP}

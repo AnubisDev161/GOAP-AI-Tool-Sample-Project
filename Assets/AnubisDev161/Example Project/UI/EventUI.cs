@@ -76,10 +76,10 @@ public class EventUI : MonoBehaviour
         ray = Camera.main.ScreenPointToRay(mousePos);
         Physics.Raycast(ray, out hitInfo, Mathf.Infinity);
 
-        Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
+        UnityEngine.Debug.DrawRay(ray.origin, ray.direction * 100, Color.red);
         if (hitInfo.collider != null && hitInfo.collider.TryGetComponent<ExampleAgent>(out ExampleAgent agent))
         {
-            Debug.Log("<color=white>New agent selected!");
+            UnityEngine.Debug.Log("<color=white>New agent selected!");
             selectedAgent = agent;
             UpdateBars(selectedAgent);
         }

@@ -69,7 +69,7 @@ namespace GOAP.GOAPGraph.Editor
                     newValue = 0.0f;
                     break;
                 default:
-                    Debug.LogError("Could not convert valueType to known value");
+                    UnityEngine.Debug.LogError("Could not convert valueType to known value");
                     break;
             }
 
@@ -149,7 +149,7 @@ namespace GOAP.GOAPGraph.Editor
                     floatField.value = float.Parse(value);
                     break;
                 default:
-                    Debug.LogError("Could not convert valueType to known value");
+                    UnityEngine.Debug.LogError("Could not convert valueType to known value");
                     break;
             }
 

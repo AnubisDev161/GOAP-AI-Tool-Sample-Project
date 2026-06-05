@@ -63,7 +63,7 @@ namespace GOAP.Core.Agent
             {
                 if (newPlan == null || newPlan.Count == 0)
                 {
-                    Debug.LogError($"Plan not valid, removing current {bestGoal} goal and choosing a different one");
+                    Debug.Log(GOAPDebug.AddErrorColorAndSize($"Plan not valid, removing current {bestGoal} goal and choosing a different one"));
                     availableGoals.Remove(bestGoal);
                     return CreateValidPlan();
                 }

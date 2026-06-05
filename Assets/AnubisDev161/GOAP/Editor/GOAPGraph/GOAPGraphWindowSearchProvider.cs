@@ -68,7 +68,7 @@ namespace GOAP.GOAPGraph.Editor
             elements.Sort((entry1, entry2) =>
             {
                 string[] splits1 = entry1.title.Split("/");
-                string[] splits2 = entry1.title.Split("/");
+                string[] splits2 = entry2.title.Split("/");
 
                 for (int i = 0; i < splits1.Length; i++)
                 {

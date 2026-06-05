@@ -237,7 +237,7 @@ namespace GOAP.GOAPGraph.Editor
                 Undo.RecordObject(serializedObject.targetObject, "Removed Node");
 
                 List<GOAPGraphEditorNode> nodesToRemove = graphViewChange.elementsToRemove.OfType<GOAPGraphEditorNode>().ToList();
-                Debug.Log("Nodes removed: " +  nodesToRemove.Count);
+                UnityEngine.Debug.Log("Nodes removed: " +  nodesToRemove.Count);
 
                 if (nodesToRemove.Count > 0)
                 {

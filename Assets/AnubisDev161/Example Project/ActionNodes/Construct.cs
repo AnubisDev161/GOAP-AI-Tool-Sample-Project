@@ -16,7 +16,7 @@ namespace ExampleProject
         public float heightOffset;
 
         [ExposedProperty]
-        public string keyName;
+        public string SaveObjectInKeyWithName;
 
         [ExposedProperty]
         public Vector3 optionalSpecificPosition;
@@ -39,9 +39,9 @@ namespace ExampleProject
          
             var instantiatedGameObject = GameObject.Instantiate(prefab, spawnPos, prefab.transform.rotation);
 
-            var key = currentGraph.Blackboard.GetKeyWithExpectedType(keyName, GOAPBlackbaord.BlackboardKeyType.GameObject);
+            var key = currentGraph.Blackboard.GetKeyWithExpectedType(SaveObjectInKeyWithName, GOAPBlackbaord.BlackboardKeyType.GameObject);
             key.value = instantiatedGameObject;
-            currentGraph.Blackboard.SetKey(keyName, key);
+            currentGraph.Blackboard.SetKey(SaveObjectInKeyWithName, key);
             if (instantiatedGameObject != null) success = true;
             base.OnExecuteFinished(currentGraph, worldState, success);
         }
