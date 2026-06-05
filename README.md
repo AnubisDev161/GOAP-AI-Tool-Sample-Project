@@ -30,7 +30,12 @@ The dayNightCycle. The default time is day and that won’t change unless the us
 
 After pressing this button, the light changes and a new goal gets available for the hermit: Sleep. This goal can be achieved in two ways, SleepAtImprovised camp and SleepAtTent. 
 
-All the graphical content I used in the example project was provided by several asset packages that I used.
+
+The first one is more expansive than the other and requires a wood resource that has not yet been stockpiled. The second one is less expansive but requires a proper tent. 
+
+There are also two different resource types for construction, stone and wood. In this rather naive implementation there is no real inventory or something similar, all resources are saved in the world state for easy usage.
+
+## All the graphical content I used in the example project was provided by several asset packages that I used.
 
 Used packages:
 
@@ -39,8 +44,3 @@ FREE - Modular Character - Fantasy RPG Human Male by Blink
 Mini Legion Grunt PBR HP Polyart by Dungeon Mason 
 Environment Pack: Free Forest Sample by Supercyan 
 
-
-
-The first one is more expansive than the other and requires a wood resource that has not yet been stockpiled. The second one is less expansive but requires a proper tent. 
-
-There are also two different resource types for construction, stone and wood. In this rather naive implementation there is no real inventory or something similar, all resources are saved in the world state for easy usage. 
