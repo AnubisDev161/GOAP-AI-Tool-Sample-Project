@@ -4,10 +4,6 @@ This is an example project that showcases my GOAP AI Tool which is an AI behavio
 
 It includes a test scene with two characters: The hermit, and the Threat:
 
-2.3.9 Example project
-
-The example project with a fully built camp
-
 To showcase the tool I’ve chosen a survival scenario with two different agent types:
  
 The most important one is the Hermit, an agent whose main goal is to build a camp that includes a campfire, a monolith to have a place to calm down after being scared and a proper tent. 
@@ -17,16 +13,11 @@ The hermit also has some needs like hunger, thirst and fear (scared). To satisfy
 The water source can be collected at a small pond which is next to the second agent, the Threat. 
 
 
-
-
-
 The  hermit character
 
 The threat is very simple, it only has two goals, idle and moveToRandomPosition.
 
 Its only purpose is to demonstrate how a plan can be changed at runtime when the current world state changes during execution.
-
-
 
 
 The threat character
