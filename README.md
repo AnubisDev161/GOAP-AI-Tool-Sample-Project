@@ -26,7 +26,7 @@ Its only purpose is to demonstrate how a plan can be changed at runtime when the
 To further illustrate this re-planing there is another element in the project: 
 The dayNightCycle. The default time is day and that won’t change unless the user is pressing the button start Night:
  
-The example project at night
+## The example project at night
 
 After pressing this button, the light changes and a new goal gets available for the hermit: Sleep. This goal can be achieved in two ways, SleepAtImprovised camp and SleepAtTent. 
 
