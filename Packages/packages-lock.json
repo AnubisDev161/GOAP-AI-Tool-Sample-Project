@@ -1,5 +1,14 @@
 {
   "dependencies": {
+    "com.anubisdev161.goap-ai-tool": {
+      "version": "https://github.com/AnubisDev161/GOAP-AI-Tool.git",
+      "depth": 0,
+      "source": "git",
+      "dependencies": {
+        "com.unity.test-framework": "1.6.0"
+      },
+      "hash": "2e733e06de26fb2cde17a8e8b29886b21db6c52d"
+    },
     "com.unity.ai.navigation": {
       "version": "2.0.8",
       "depth": 0,
