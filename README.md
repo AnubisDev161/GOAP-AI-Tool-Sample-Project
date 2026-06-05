@@ -13,14 +13,14 @@ The hermit also has some needs like hunger, thirst and fear (scared). To satisfy
 The water source can be collected at a small pond which is next to the second agent, the Threat. 
 
 
-The  hermit character
+## The  hermit character
 
 The threat is very simple, it only has two goals, idle and moveToRandomPosition.
 
 Its only purpose is to demonstrate how a plan can be changed at runtime when the current world state changes during execution.
 
 
-The threat character
+## The threat character
 
 
 To further illustrate this re-planing there is another element in the project: 
