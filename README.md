@@ -39,8 +39,11 @@ There are also two different resource types for construction, stone and wood. In
 
 Used packages:
 
-POLY - Medieval Camp by ANIMPIC STUDIO
-FREE - Modular Character - Fantasy RPG Human Male by Blink 
-Mini Legion Grunt PBR HP Polyart by Dungeon Mason 
-Environment Pack: Free Forest Sample by Supercyan 
+- POLY - Medieval Camp by ANIMPIC STUDIO
+ 
+- FREE - Modular Character - Fantasy RPG Human Male by Blink 
+
+- Mini Legion Grunt PBR HP Polyart by Dungeon Mason 
+
+- Environment Pack: Free Forest Sample by Supercyan 
 
