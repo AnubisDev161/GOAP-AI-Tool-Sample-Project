@@ -26,7 +26,7 @@ The threat is very simple, it only has two goals, idle and moveToRandomPosition.
 Its only purpose is to demonstrate how a plan can be changed at runtime when the current world state changes during execution.
 
 ## The example project at night
-<img width="1917" height="866" alt="image" src="https://github.com/user-attachments/assets/53b0227b-31d4-44c4-b623-168b713b4448" />![Uploading image.png…]()
+<img width="1917" height="857" alt="Screenshot 2026-08-24 151416" src="https://github.com/user-attachments/assets/557e1481-b30e-4533-9185-7f679482d377" />
 
 To further illustrate this re-planing there is another element in the project: 
 The dayNightCycle. The default time is day and that won’t change unless the user is pressing the button Start Night:
