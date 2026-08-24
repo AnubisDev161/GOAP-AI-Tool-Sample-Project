@@ -6358,6 +6358,7 @@ GameObject:
   - component: {fileID: 1945727145}
   - component: {fileID: 1945727144}
   - component: {fileID: 1945727143}
+  - component: {fileID: 1945727146}
   m_Layer: 5
   m_Name: NightButton
   m_TagString: Untagged
@@ -6431,7 +6432,19 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 262059769}
         m_TargetAssemblyTypeName: EventUI, Assembly-CSharp
-        m_MethodName: OnBeingNightButtonClicked
+        m_MethodName: OnStartNightButtonClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1945727146}
+        m_TargetAssemblyTypeName: StartNightButton, Assembly-CSharp
+        m_MethodName: OnStartNightButtonClicked
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6479,6 +6492,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1945727141}
   m_CullTransparentMesh: 1
+--- !u!114 &1945727146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1945727141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b269603d3fd2fc24cbf15366fa18da7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1954157675
 PrefabInstance:
   m_ObjectHideFlags: 0

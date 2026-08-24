@@ -31,7 +31,7 @@ public class EventUI : MonoBehaviour
     [SerializeField]
     private ExampleAgent selectedAgent;
 
-    public void OnBeingNightButtonClicked()
+    public void OnStartNightButtonClicked()
     {
         var allAgents = GameObject.FindObjectsByType<ExampleAgent>(FindObjectsSortMode.InstanceID);
 

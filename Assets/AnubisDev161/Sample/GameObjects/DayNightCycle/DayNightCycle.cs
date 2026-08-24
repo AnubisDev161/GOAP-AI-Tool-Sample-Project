@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace ExampleProject
@@ -12,6 +13,7 @@ namespace ExampleProject
         private Color nightColor;
 
         public static DayNightCycle instance;
+        public Action OnNightEnded;
 
         public void StartNight()
         {
@@ -21,6 +23,7 @@ namespace ExampleProject
         public void EndNight()
         {
             GetComponent<Light>().color = defaultColor;
+            OnNightEnded?.Invoke();
         }
     }
 }
