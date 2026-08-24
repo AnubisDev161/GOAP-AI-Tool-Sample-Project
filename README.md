@@ -31,8 +31,11 @@ Its only purpose is to demonstrate how a plan can be changed at runtime when the
 To further illustrate this re-planing there is another element in the project: 
 The dayNightCycle. The default time is day and that won’t change unless the user is pressing the button Start Night:
 
-After pressing this button, the light changes and a new goal gets available for the hermit: Sleep. This goal can be achieved in two ways, SleepAtImprovised camp and SleepAtTent. 
+After pressing this button, the light changes and a new goal gets available for the hermit: Sleep. 
 
+<img width="485" height="377" alt="Screenshot 2026-08-24 152439" src="https://github.com/user-attachments/assets/8586768a-5ad3-4cf4-b981-92072900722f" />
+
+This goal can be achieved in two ways, SleepAtImprovised camp and SleepAtTent. 
 The first one is more expansive than the other and requires a wood resource that has not yet been stockpiled. The second one is less expansive but requires a proper tent. 
 
 There are also two different resource types for construction, stone and wood. In this rather naive implementation there is no real inventory or something similar, all resources are saved in the world state for easy usage.
